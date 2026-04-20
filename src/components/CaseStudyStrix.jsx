@@ -12,7 +12,7 @@ const t = {
     title: 'STRIX',
     tagline: 'Deploying Claude inside a regulated Korean enterprise',
     meta: 'SK On · 2024 · Enterprise RAG · 5 min read',
-    tldr: 'How I rolled out an LLM knowledge system to 600+ users in a division governed by National Core Technology regulations — on-premise, inside the tools people already lived in, with executive buy-in earned by reframing cost.',
+    tldr: 'How I rolled out an LLM knowledge system inside a division governed by National Core Technology regulations — on-premise, inside the tools people already lived in. Featured on SK Group\'s mySUNI (1,000+ learners), adopted daily by our 30-person strategy team, with executive buy-in earned by reframing cost.',
     s1: {
       label: '01 — Situation',
       body: [
@@ -61,7 +61,7 @@ const t = {
       label: '05 — Outcome',
       funnelIntro: 'A funnel, not a single headline number:',
       metrics: [
-        { num: '1,000+', label: 'SK Group employees aware', sub: 'Featured on mySUNI (SK Group\'s internal learning platform) as a Best Practice case' },
+        { num: '1,000+', label: 'SK Group employees learned', sub: 'Featured on mySUNI (SK Group\'s internal learning platform) as a Best Practice case' },
         { num: '600+', label: 'Registered users', sub: 'Across SK On' },
         { num: '~30', label: 'Daily active users', sub: 'Inside Strategy Division — adopted as standard workflow' },
         { num: 'CEO', label: 'Executive visibility', sub: 'Presented to CEO and C-level as a Best Practice case' },
@@ -95,7 +95,7 @@ const t = {
     title: 'STRIX',
     tagline: '규제 받는 한국 엔터프라이즈 내부에 Claude를 배포한 기록',
     meta: 'SK On · 2024 · Enterprise RAG · 5분 분량',
-    tldr: '국가핵심기술 규제 하의 600명+ 조직에, Claude를 온프레미스로 — 사용자가 이미 쓰는 도구 안에서 — 배포하고, 비용을 재정의해 경영진 승인을 받아낸 프로젝트.',
+    tldr: '국가핵심기술 규제 하의 조직에 Claude를 온프레미스로 — 사용자가 이미 쓰는 도구 안에서 — 배포한 프로젝트. SK그룹 mySUNI에 Best Practice로 등재되어 1,000명+이 학습, 전략기획본부 30명이 매일 사용. 비용을 재정의해 경영진 승인까지 받아냈습니다.',
     s1: {
       label: '01 — 상황',
       body: [
@@ -144,7 +144,7 @@ const t = {
       label: '05 — 결과',
       funnelIntro: '단일 헤드라인 숫자가 아니라 퍼널로 보기:',
       metrics: [
-        { num: '1,000+', label: 'SK 그룹 임직원 인지', sub: 'mySUNI(SK 그룹 사내 학습 플랫폼)에 Best Practice 사례로 게시' },
+        { num: '1,000+', label: 'SK 그룹 임직원 학습', sub: 'mySUNI(SK 그룹 사내 학습 플랫폼)에 Best Practice 사례로 게시' },
         { num: '600+', label: '등록 사용자', sub: 'SK On 전사' },
         { num: '~30', label: '일일 활성 사용자', sub: '전략기획본부에서 표준 워크플로우로 정착' },
         { num: 'CEO', label: '경영진 가시성', sub: 'CEO 및 C-level 대상 Best Practice 사례로 발표' },

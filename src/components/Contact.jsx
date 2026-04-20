@@ -36,6 +36,7 @@ export default function Contact() {
               >
                 {lang === 'en' ? 'Resume (PDF)' : '이력서 (PDF)'}
               </a>
+              <a href="https://github.com/commet" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'github', location: 'contact_section' })} className="text-stone-400 hover:text-stone-900 transition-colors no-underline">GitHub</a>
               <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'linkedin', location: 'contact_section' })} className="text-stone-400 hover:text-stone-900 transition-colors no-underline">LinkedIn</a>
               <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'threads', location: 'contact_section' })} className="text-stone-400 hover:text-stone-900 transition-colors no-underline">Threads</a>
             </div>

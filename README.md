@@ -1,16 +1,44 @@
-# React + Vite
+# yc-tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site for Yaechan Lee (이예찬) — Enterprise AI × Go-to-Market × Strategy.
 
-Currently, two official plugins are available:
+Live: https://yc-tech.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+React 19 · Vite 8 · Tailwind 4 · Framer Motion · Vercel (static + serverless functions)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Bilingual (KR/EN) with client-side toggle
+- STRIX case study at `/case-study/strix`
+- **Objection Simulator** (`/api/objection-simulator`) — takes a one-line pitch, returns three stakeholder objections (CFO / Security / End User) via Claude Sonnet 4.6. IP-based rate limit via Upstash Redis.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Local development
+
+```bash
+npm install
+npm run dev       # Vite dev server
+npm run build     # production build
+npm run lint
+```
+
+## Environment variables
+
+Required for the Objection Simulator (`/api/objection-simulator.js`):
+
+| Variable | Required | Notes |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | Yes | Anthropic API key. Without it the endpoint returns 503 with a fallback URL. |
+| `UPSTASH_REDIS_REST_URL` | No | Enables 5 req / 24h per-IP rate limit. Without it, rate limiting is disabled. |
+| `UPSTASH_REDIS_REST_TOKEN` | No | Pair with the URL above. |
+
+Static pages work without any env vars.
+
+## Deploy
+
+```bash
+vercel --prod
+```
+
+SPA rewrite for case-study routes is configured in `vercel.json`.

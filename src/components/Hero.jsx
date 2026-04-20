@@ -8,14 +8,14 @@ const t = {
     credential: 'Seoul National University · SK On Strategy · Claude Builder',
     statement: (
       <>
-        I deployed Claude to 600+ enterprise users — navigating security reviews, executive buy-in, and cross-department rollout. I know how Korean enterprises adopt AI, because{' '}
-        <span className="text-accent">I drove it from the inside.</span>
+        At SK On, I built <span className="font-semibold">STRIX</span> — the Claude-powered RAG that reached 1,000+ employees through SK Group's mySUNI and ran daily in our 30-person strategy division. Security review, executive buy-in, cross-department rollout — I drove all of it.{' '}
+        <span className="text-accent">I know how Korean enterprises adopt AI, because I was the one adopting it.</span>
       </>
     ),
-    context: 'Before that, I co-founded a B2B healthcare startup and sold to hospital directors — where I learned that enterprise adoption fails when buyers can\'t defend the purchase to their board. 4 years of corporate strategy at SK On, 3 AI products shipped, all powered by Claude.',
+    context: 'Before SK On, I co-founded a B2B healthcare startup and sold to hospital directors. The lesson that still steers how I build: enterprise adoption fails when buyers can\'t defend the purchase to their board.',
     stats: [
       { num: '4 yrs', label: 'Enterprise strategy', context: 'Portfolio optimization and business valuation at Korea\'s leading EV battery manufacturer' },
-      { num: '3', label: 'Products shipped', context: 'Enterprise knowledge system, consumer art curation, and a developer thinking tool' },
+      { num: '3', label: 'Products shipped', context: 'STRIX (enterprise RAG), Overture (AI thinking tool), SAYU (art curation)' },
       { num: 'KR/EN', label: 'Bilingual', context: 'Interpreted general-level Korea-US military meetings at USFK' },
     ],
   },
@@ -24,14 +24,14 @@ const t = {
     credential: '서울대학교 · SK On 전략기획 · Claude Builder',
     statement: (
       <>
-        Claude를 600명 이상의 엔터프라이즈 사용자에게 배포했습니다 — 보안 심사, 경영진 설득, 전사 확산까지.{' '}
+        SK On에서 <span className="font-semibold">STRIX</span>를 만들었습니다 — SK그룹 mySUNI로 1,000명+에게 노출되고, 전략기획본부 30명이 매일 사용한 Claude 기반 RAG. 보안 심사, 경영진 설득, 전사 확산까지 제가 직접 통과시켰습니다.{' '}
         <span className="text-accent">한국 기업이 AI를 도입하는 과정을 안에서 경험한 사람입니다.</span>
       </>
     ),
-    context: 'B2B 헬스케어 스타트업을 공동 창업하고 병원장에게 직접 영업했습니다 — 구매자가 이사회에 설명할 수 없으면 도입은 실패한다는 것을 배웠습니다. SK On 전략기획 4년, Claude 기반 AI 제품 3개를 직접 만들어 배포했습니다.',
+    context: 'SK On 이전엔 B2B 헬스케어 스타트업을 공동 창업해 병원장에게 직접 영업했습니다. 그때 배운 한 가지가 지금도 제 설계를 지배합니다 — 구매자가 이사회에 설명하지 못하면, 엔터프라이즈 도입은 실패한다는 것.',
     stats: [
       { num: '4년', label: '엔터프라이즈 전략', context: '한국 대표 EV 배터리 기업에서 포트폴리오 최적화 및 기업가치 평가' },
-      { num: '3개', label: '제품 출시', context: '사내 지식 시스템, 아트 큐레이션 서비스, 개발자 사고 도구' },
+      { num: '3개', label: '제품 출시', context: 'STRIX (엔터프라이즈 RAG), Overture (AI 사고 도구), SAYU (아트 큐레이션)' },
       { num: 'KR/EN', label: '이중 언어', context: '주한미군사 장성급 한미 군사회의 통역' },
     ],
   },
