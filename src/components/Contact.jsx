@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
+import { useLang } from '../LangContext'
 
 export default function Contact() {
+  const { lang } = useLang()
+
   return (
     <section id="contact" className="py-14 md:py-20 px-6 md:px-10 border-t border-stone-200">
       <div className="max-w-[1200px] mx-auto">
@@ -13,7 +16,9 @@ export default function Contact() {
         >
           <div>
             <p className="text-[22px] md:text-[26px] text-stone-900 font-medium tracking-[-0.02em] leading-snug">
-              Let's talk about AI, enterprise adoption, or art.
+              {lang === 'en'
+                ? 'Let\'s talk about AI adoption, go-to-market, or art.'
+                : 'AI 도입, Go-to-Market, 또는 아트에 대해 이야기하고 싶습니다.'}
             </p>
           </div>
           <div className="md:text-right">
@@ -23,7 +28,6 @@ export default function Contact() {
             <div className="flex md:justify-end items-center gap-5 mt-3 text-[13px]">
               <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors no-underline">LinkedIn</a>
               <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors no-underline">Threads</a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors no-underline">GitHub</a>
             </div>
           </div>
         </motion.div>

@@ -1,12 +1,29 @@
 import { motion } from 'framer-motion'
+import { useLang } from '../LangContext'
 
-const writings = [
-  { title: 'Milla Jovovich pushed a repo to GitHub', platform: 'LinkedIn · Threads', note: 'Viral', href: '#' },
-  { title: 'Introducing Claude Code Remote Control', platform: 'LinkedIn', note: 'First in Korean', href: '#' },
-  { title: 'How to use AI hard without getting dumber', platform: 'LinkedIn', note: null, href: '#' },
-]
+const t = {
+  en: {
+    section: 'Writing',
+    items: [
+      { title: 'Milla Jovovich pushed a repo to GitHub', platform: 'LinkedIn · Threads', note: 'Viral', href: '#' },
+      { title: 'Introducing Claude Code Remote Control', platform: 'LinkedIn', note: 'First in Korean', href: '#' },
+      { title: 'How to use AI hard without getting dumber', platform: 'LinkedIn', note: null, href: '#' },
+    ],
+  },
+  kr: {
+    section: '글',
+    items: [
+      { title: '밀라 요보비치가 GitHub에 레포를 올렸습니다', platform: 'LinkedIn · Threads', note: '바이럴', href: '#' },
+      { title: 'Claude Code Remote Control 소개', platform: 'LinkedIn', note: '한국어 최초', href: '#' },
+      { title: 'AI를 열심히 쓰면서도 멍청해지지 않는 법', platform: 'LinkedIn', note: null, href: '#' },
+    ],
+  },
+}
 
 export default function Writing() {
+  const { lang } = useLang()
+  const c = t[lang]
+
   return (
     <section id="writing" className="py-14 md:py-20 px-6 md:px-10">
       <div className="max-w-[1200px] mx-auto">
@@ -17,10 +34,10 @@ export default function Writing() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          Writing
+          {c.section}
         </motion.h2>
 
-        {writings.map((w, i) => (
+        {c.items.map((w, i) => (
           <motion.a
             key={w.title}
             href={w.href}

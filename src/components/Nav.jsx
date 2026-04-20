@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useLang } from '../LangContext'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const { lang, setLang } = useLang()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -17,7 +19,7 @@ export default function Nav() {
         <a href="#" className="text-[14px] font-semibold text-stone-900 no-underline tracking-[-0.03em]">
           YC<span className="text-accent">.</span>
         </a>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-5">
           {[
             { label: 'Work', href: '#work' },
             { label: 'Background', href: '#background' },
@@ -27,6 +29,15 @@ export default function Nav() {
               {item.label}
             </a>
           ))}
+
+          {/* Language toggle */}
+          <button
+            onClick={() => setLang(lang === 'en' ? 'kr' : 'en')}
+            className="text-[12px] text-stone-400 hover:text-stone-900 transition-colors tracking-wide border border-stone-200 rounded-md px-2 py-0.5 cursor-pointer bg-transparent"
+          >
+            {lang === 'en' ? 'KR' : 'EN'}
+          </button>
+
           <a href="mailto:yclee913@gmail.com" className="text-[13px] text-accent hover:text-stone-900 transition-colors no-underline font-medium">
             Contact
           </a>

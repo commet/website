@@ -1,3 +1,4 @@
+import { LangProvider } from './LangContext'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -8,14 +9,16 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-warm-bg">
-      <Nav />
-      <Hero />
-      <Projects />
-      <Background />
-      <Writing />
-      <Contact />
-      <Footer />
-    </div>
+    <LangProvider>
+      <div className="min-h-screen bg-warm-bg">
+        <Nav />
+        <Hero />
+        <Projects />
+        <Background />
+        <Writing />
+        <Contact />
+        <Footer />
+      </div>
+    </LangProvider>
   )
 }
