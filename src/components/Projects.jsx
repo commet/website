@@ -8,6 +8,7 @@ const t = {
   en: {
     section: 'Selected Work',
     strix: {
+      chapter: '01 — Case Study',
       sub: 'Enterprise RAG System',
       date: 'SK On · 2024',
       mysuni: 'Featured on SK Group mySUNI',
@@ -20,11 +21,13 @@ const t = {
       caseStudyCta: 'Read the full case study',
     },
     sayu: {
+      chapter: '02 — Live Product',
       sub: 'AI Art Curation',
       desc: '16 AI curators that understand your aesthetic taste. 5,000+ artworks, 12,000 exhibition records, 200+ users onboarded. Built and operate end-to-end: data architecture, Claude integration, personalization engine, onboarding to retention.',
       cta: 'Experience SAYU',
     },
     overture: {
+      chapter: '03 — Live Demo',
       sub: 'AI Thinking Tool',
       desc: 'For people navigating unfamiliar territory with AI. The biggest barrier to AI adoption isn\'t technical — it\'s cognitive. Overture helps you think clearly enough to harness it.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
@@ -36,6 +39,7 @@ const t = {
   kr: {
     section: '주요 프로젝트',
     strix: {
+      chapter: '01 — 케이스 스터디',
       sub: '엔터프라이즈 RAG 시스템',
       date: 'SK On · 2024',
       mysuni: 'SK그룹 mySUNI Best Practice 선정',
@@ -48,11 +52,13 @@ const t = {
       caseStudyCta: '전체 케이스 스터디 읽기',
     },
     sayu: {
+      chapter: '02 — 라이브 제품',
       sub: 'AI 아트 큐레이션',
       desc: '당신의 취향을 이해하는 16명의 AI 큐레이터. 5,000점 이상의 작품, 12,000개의 전시 데이터, 200명 이상의 사용자. 데이터 설계부터 Claude 연동, 개인화 엔진, 온보딩부터 리텐션까지 직접 구축·운영.',
       cta: 'SAYU 경험하기',
     },
     overture: {
+      chapter: '03 — 라이브 데모',
       sub: 'AI 사고 도구',
       desc: 'AI와 함께 낯선 영역을 탐색하는 사람을 위한 도구. AI 도입의 가장 큰 장벽은 기술이 아니라 인지입니다. Overture는 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
@@ -74,6 +80,7 @@ function Strix() {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
+      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-3 font-medium">{c.chapter}</p>
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-6">
         <div className="flex items-baseline gap-3">
           <span className="text-[24px] md:text-[28px] font-bold text-stone-900 tracking-[-0.03em]">STRIX</span>
@@ -152,12 +159,13 @@ function Sayu() {
 
   return (
     <motion.div
-      className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center"
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
+      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-6 font-medium">{c.chapter}</p>
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center">
       <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'image' })} className="md:col-span-5 block group">
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream border border-stone-200/40">
           <div className="absolute inset-5 grid grid-cols-3 grid-rows-3 gap-1.5">
@@ -184,6 +192,7 @@ function Sayu() {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
         </a>
       </div>
+      </div>
     </motion.div>
   )
 }
@@ -194,41 +203,29 @@ function Overture() {
 
   return (
     <motion.div
-      className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center"
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
-      <div className="md:col-span-6 md:order-1">
+      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-6 font-medium">{c.chapter}</p>
+      {/* Intro: title + description + quote */}
+      <div className="max-w-[760px] mb-8">
         <div className="flex items-baseline gap-3 mb-3">
           <span className="text-[24px] md:text-[28px] font-bold text-stone-900 tracking-[-0.03em]">Overture</span>
           <span className="text-[13px] text-accent font-medium">{c.sub}</span>
         </div>
-        <p className="text-stone-500 leading-[1.75] mb-2">{c.desc}</p>
-        <p className="font-serif italic text-stone-600 text-[15px] leading-relaxed mb-4">{c.quote}</p>
-        <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'overture', area: 'cta' })}
-          className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
-          {c.cta}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-        </a>
+        <p className="text-stone-500 leading-[1.75] mb-3">{c.desc}</p>
+        <p className="font-serif italic text-stone-600 text-[15px] leading-relaxed">{c.quote}</p>
       </div>
-      <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'overture', area: 'image' })} className="md:col-span-5 md:col-start-8 md:order-2 block group">
-        <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-900 flex items-center justify-center border border-stone-800">
-          <div className="text-center px-8 space-y-4">
-            {[
-              { en: 'Define the problem', kr: '문제를 정의하라' },
-              { en: 'Structure your thinking', kr: '사고를 구조화하라' },
-              { en: 'Reach your destination', kr: '목적지에 도착하라' },
-            ].map((step, i) => (
-              <div key={step.en} className={`flex items-center gap-3 transition-opacity duration-500 ${i < 2 ? 'opacity-30 group-hover:opacity-50' : 'opacity-80 group-hover:opacity-100'}`}>
-                <span className="text-[10px] text-accent font-bold font-mono w-5">{String(i+1).padStart(2,'0')}</span>
-                <span className="text-[13px] text-white/80">{lang === 'en' ? step.en : step.kr}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </a>
+
+      {/* Widget — the live Overture slice */}
+      <div className="mb-4">
+        <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-3 font-medium">
+          {c.tryLabel}
+        </p>
+        <ObjectionSimulator />
+      </div>
     </motion.div>
   )
 }
@@ -249,10 +246,13 @@ export default function Projects() {
           {t[lang].section}
         </motion.h2>
         <Strix />
-        <div className="border-t border-stone-100 my-12 md:my-16" />
+        <div className="h-20 md:h-28" />
         <Sayu />
-        <div className="border-t border-stone-100 my-12 md:my-16" />
-        <Overture />
+      </div>
+      <div className="bg-cream/40 mt-20 md:mt-28 py-16 md:py-24 px-6 md:px-10 -mx-6 md:-mx-10">
+        <div className="max-w-[1200px] mx-auto">
+          <Overture />
+        </div>
       </div>
     </section>
   )

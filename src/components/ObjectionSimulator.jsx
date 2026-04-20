@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
+import { navigate } from '../navigate'
 
 const t = {
   en: {
@@ -265,7 +266,7 @@ export default function ObjectionSimulator() {
                   onClick={(e) => {
                     e.preventDefault()
                     track('case_study_open', { study: 'strix', location: 'simulator_bridge' })
-                    import('../navigate').then((m) => m.navigate('/case-study/strix'))
+                    navigate('/case-study/strix')
                   }}
                   className="text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors whitespace-nowrap"
                 >
