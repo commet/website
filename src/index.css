@@ -5,10 +5,8 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-body: "Inter", "Pretendard Variable", sans-serif;
 
-  --color-warm-bg: #FAF9F7;
-  --color-warm-card: #FFFFFF;
-  --color-warm-subtle: #F5F4F0;
-
+  --color-warm-bg: #FAFAF8;
+  --color-cream: #F6F3EE;
   --color-stone-50: #FAFAF9;
   --color-stone-100: #F5F5F4;
   --color-stone-200: #E7E5E4;
@@ -19,54 +17,26 @@
   --color-stone-700: #44403C;
   --color-stone-800: #292524;
   --color-stone-900: #1C1917;
-
-  --color-amber-50: #FFFBEB;
-  --color-amber-100: #FEF3C7;
-  --color-amber-200: #FDE68A;
-  --color-amber-500: #F59E0B;
-  --color-amber-600: #D97706;
-  --color-amber-700: #B45309;
-  --color-amber-800: #92400E;
+  --color-accent: #C4703F;
+  --color-accent-light: #E8C4A0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background-color: #FAF9F7;
+  background-color: #FAFAF8;
   color: #1C1917;
-  font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  font-family: "Inter", "Pretendard Variable", -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  letter-spacing: -0.01em;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
-::selection {
-  background-color: #FDE68A;
-  color: #92400E;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #D97706;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Custom scrollbar for webkit */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #D6D3D1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #A8A29E;
-}
+::selection { background-color: #C4703F; color: #fff; }
+a:focus-visible { outline: 2px solid #C4703F; outline-offset: 3px; border-radius: 2px; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 2px; }
