@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
 
 const t = {
@@ -72,9 +73,9 @@ export default function Hero() {
           <div className="flex flex-col justify-between">
             <p className="text-stone-500 leading-[1.75] mb-6">{c.context}</p>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px]">
-              <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" className="text-stone-900 font-medium no-underline hover:text-accent transition-colors">LinkedIn</a>
-              <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" className="text-stone-900 font-medium no-underline hover:text-accent transition-colors">Threads</a>
-              <a href="mailto:yclee913@gmail.com" className="text-stone-400 no-underline hover:text-accent transition-colors">yclee913@gmail.com</a>
+              <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'linkedin', location: 'hero' })} className="text-stone-900 font-medium no-underline hover:text-accent transition-colors">LinkedIn</a>
+              <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'threads', location: 'hero' })} className="text-stone-900 font-medium no-underline hover:text-accent transition-colors">Threads</a>
+              <a href="mailto:yclee913@gmail.com" onClick={() => track('contact_click', { location: 'hero' })} className="text-stone-400 no-underline hover:text-accent transition-colors">yclee913@gmail.com</a>
             </div>
           </div>
         </motion.div>

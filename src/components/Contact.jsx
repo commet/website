@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
 
 export default function Contact() {
@@ -22,12 +23,21 @@ export default function Contact() {
             </p>
           </div>
           <div className="md:text-right">
-            <a href="mailto:yclee913@gmail.com" className="text-xl text-accent hover:text-stone-900 transition-colors no-underline font-semibold">
+            <a href="mailto:yclee913@gmail.com" onClick={() => track('contact_click', { location: 'contact_section' })} className="text-xl text-accent hover:text-stone-900 transition-colors no-underline font-semibold">
               yclee913@gmail.com
             </a>
             <div className="flex md:justify-end items-center gap-5 mt-3 text-[13px]">
-              <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors no-underline">LinkedIn</a>
-              <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors no-underline">Threads</a>
+              <a
+                href="/yaechan-lee-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('cv_download', { location: 'contact_section' })}
+                className="text-stone-900 font-medium hover:text-accent transition-colors no-underline"
+              >
+                {lang === 'en' ? 'Resume (PDF)' : '이력서 (PDF)'}
+              </a>
+              <a href="https://www.linkedin.com/in/yaechan-lee/" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'linkedin', location: 'contact_section' })} className="text-stone-400 hover:text-stone-900 transition-colors no-underline">LinkedIn</a>
+              <a href="https://www.threads.com/@and__yc" target="_blank" rel="noopener noreferrer" onClick={() => track('social_click', { target: 'threads', location: 'contact_section' })} className="text-stone-400 hover:text-stone-900 transition-colors no-underline">Threads</a>
             </div>
           </div>
         </motion.div>

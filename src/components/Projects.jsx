@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
+import { navigate } from '../navigate'
+import ObjectionSimulator from './ObjectionSimulator'
 
 const t = {
   en: {
@@ -14,6 +17,7 @@ const t = {
       quote: '"By my standards, you saved me a month of struggling."',
       cite: '— PM at another SK subsidiary',
       users: 'users',
+      caseStudyCta: 'Read the full case study',
     },
     sayu: {
       sub: 'AI Art Curation',
@@ -25,6 +29,8 @@ const t = {
       desc: 'For people navigating unfamiliar territory with AI. The biggest barrier to AI adoption isn\'t technical — it\'s cognitive. Overture helps you think clearly enough to harness it.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
       cta: 'Try Overture',
+      tryLabel: 'Try a live slice of Overture',
+      tryHint: "Type a pitch. Watch three stakeholders raise the objections you'd actually hear.",
     },
   },
   kr: {
@@ -39,6 +45,7 @@ const t = {
       quote: '"제 기준으로 삽질할 1달은 아꼈어요."',
       cite: '— 타 SK 계열사 PM',
       users: '명 사용',
+      caseStudyCta: '전체 케이스 스터디 읽기',
     },
     sayu: {
       sub: 'AI 아트 큐레이션',
@@ -50,6 +57,8 @@ const t = {
       desc: 'AI와 함께 낯선 영역을 탐색하는 사람을 위한 도구. AI 도입의 가장 큰 장벽은 기술이 아니라 인지입니다. Overture는 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
       cta: 'Overture 체험하기',
+      tryLabel: 'Overture의 한 조각, 지금 써보기',
+      tryHint: '아이디어를 한 줄 적어보세요. 세 명의 이해관계자가 실제로 던질 반대 의견을 보여드립니다.',
     },
   },
 }
@@ -111,7 +120,19 @@ function Strix() {
       {/* Content below */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-6">
-          <p className="text-stone-500 leading-[1.75]">{c.desc}</p>
+          <p className="text-stone-500 leading-[1.75] mb-5">{c.desc}</p>
+          <a
+            href="/case-study/strix"
+            onClick={(e) => {
+              e.preventDefault()
+              track('case_study_open', { study: 'strix', location: 'projects_card' })
+              navigate('/case-study/strix')
+            }}
+            className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors"
+          >
+            {c.caseStudyCta}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+          </a>
         </div>
         <div className="md:col-span-5 md:col-start-8">
           <blockquote className="border-l-2 border-accent/30 pl-4 mb-5">
@@ -137,7 +158,7 @@ function Sayu() {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
-      <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" className="md:col-span-5 block group">
+      <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'image' })} className="md:col-span-5 block group">
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream border border-stone-200/40">
           <div className="absolute inset-5 grid grid-cols-3 grid-rows-3 gap-1.5">
             <div className="col-span-2 row-span-2 rounded-lg bg-gradient-to-br from-stone-800/8 to-stone-600/4 group-hover:from-stone-800/14 transition-all duration-700" />
@@ -157,7 +178,7 @@ function Sayu() {
           <span className="text-[13px] text-accent font-medium">{c.sub}</span>
         </div>
         <p className="text-stone-500 leading-[1.75] mb-4">{c.desc}</p>
-        <a href="https://sayu.my" target="_blank" rel="noopener noreferrer"
+        <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'cta' })}
           className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
           {c.cta}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
@@ -186,13 +207,13 @@ function Overture() {
         </div>
         <p className="text-stone-500 leading-[1.75] mb-2">{c.desc}</p>
         <p className="font-serif italic text-stone-600 text-[15px] leading-relaxed mb-4">{c.quote}</p>
-        <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer"
+        <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'overture', area: 'cta' })}
           className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
           {c.cta}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
         </a>
       </div>
-      <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer" className="md:col-span-5 md:col-start-8 md:order-2 block group">
+      <a href="https://overture-beta.vercel.app" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'overture', area: 'image' })} className="md:col-span-5 md:col-start-8 md:order-2 block group">
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-900 flex items-center justify-center border border-stone-800">
           <div className="text-center px-8 space-y-4">
             {[
