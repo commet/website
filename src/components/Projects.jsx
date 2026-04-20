@@ -8,11 +8,12 @@ const t = {
       sub: 'Enterprise RAG System',
       date: 'SK On · 2024',
       mysuni: 'Featured on SK Group mySUNI',
-      reviews: '31 reviews on mySUNI',
+      reviews: 'Employee reviews on mySUNI',
       feedback: 'Direct feedback from SK subsidiary PM',
-      desc: 'LLM-powered knowledge system for SK On\'s Strategy Division. Navigated enterprise constraints — data security, audit trails, executive skepticism — and drove organization-wide adoption. Presented to CEO and C-level as best practice case.',
+      desc: 'LLM-powered knowledge system for SK On\'s Strategy Division. Navigated enterprise constraints — data security, audit trails, executive skepticism — and drove organization-wide adoption. Presented to CEO and C-level as a best practice case.',
       quote: '"By my standards, you saved me a month of struggling."',
       cite: '— PM at another SK subsidiary',
+      users: 'users',
     },
     sayu: {
       sub: 'AI Art Curation',
@@ -21,7 +22,7 @@ const t = {
     },
     overture: {
       sub: 'AI Thinking Tool',
-      desc: 'For people navigating unfamiliar territory with AI. The biggest barrier to AI adoption isn\'t technical — it\'s cognitive. Overture helps you think sharply enough to harness it.',
+      desc: 'For people navigating unfamiliar territory with AI. The biggest barrier to AI adoption isn\'t technical — it\'s cognitive. Overture helps you think clearly enough to harness it.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
       cta: 'Try Overture',
     },
@@ -32,11 +33,12 @@ const t = {
       sub: '엔터프라이즈 RAG 시스템',
       date: 'SK On · 2024',
       mysuni: 'SK그룹 mySUNI Best Practice 선정',
-      reviews: 'mySUNI 리뷰 31개',
+      reviews: 'mySUNI 수강생 리뷰',
       feedback: '타 SK 계열사 PM의 직접 피드백',
       desc: 'SK On 전략기획실을 위한 LLM 기반 지식 시스템. 데이터 보안, 감사 추적, 경영진 설득 등 엔터프라이즈 제약을 돌파하고 전사 도입까지 이끌었습니다. CEO 및 C-level 대상 Best Practice로 발표.',
       quote: '"제 기준으로 삽질할 1달은 아꼈어요."',
       cite: '— 타 SK 계열사 PM',
+      users: '명 사용',
     },
     sayu: {
       sub: 'AI 아트 큐레이션',
@@ -45,7 +47,7 @@ const t = {
     },
     overture: {
       sub: 'AI 사고 도구',
-      desc: 'AI와 함께 낯선 영역을 탐색하는 사람을 위한 도구. AI 도입의 가장 큰 장벽은 기술이 아니라 인지입니다. Overture는 생각을 뾰족하게 만듭니다.',
+      desc: 'AI와 함께 낯선 영역을 탐색하는 사람을 위한 도구. AI 도입의 가장 큰 장벽은 기술이 아니라 인지입니다. Overture는 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
       cta: 'Overture 체험하기',
     },
@@ -71,8 +73,10 @@ function Strix() {
         <span className="text-[12px] text-stone-400">{c.date}</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mb-8">
-        <div className="md:col-span-7 rounded-2xl overflow-hidden border border-stone-200/60 bg-white">
+      {/* Image layout: full-width main, then two small evidence shots */}
+      <div className="space-y-3 mb-8">
+        {/* Main screenshot in browser frame */}
+        <div className="rounded-2xl overflow-hidden border border-stone-200/60 bg-white">
           <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-stone-100 bg-stone-50/50">
             <div className="w-2.5 h-2.5 rounded-full bg-stone-200" />
             <div className="w-2.5 h-2.5 rounded-full bg-stone-200" />
@@ -82,27 +86,29 @@ function Strix() {
           <img src="/images/strix-video.jpeg" alt={c.mysuni} className="w-full h-auto block" />
         </div>
 
-        <div className="md:col-span-5 grid grid-rows-2 gap-3">
+        {/* Two evidence images side by side — compact, equal height */}
+        <div className="grid grid-cols-2 gap-3">
           <div className="rounded-2xl overflow-hidden border border-stone-200/60 bg-white">
-            <div className="flex items-center px-4 py-2 border-b border-stone-100 bg-stone-50/50">
+            <div className="flex items-center px-3 py-1.5 border-b border-stone-100 bg-stone-50/50">
               <span className="text-[10px] text-stone-400">{c.reviews}</span>
             </div>
-            <div className="h-[200px] md:h-auto md:flex-1 overflow-hidden">
+            <div className="h-[160px] overflow-hidden">
               <img src="/images/strix-mysuni.jpeg" alt={c.reviews} className="w-full h-full object-cover object-top" />
             </div>
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-stone-200/60 bg-stone-900">
-            <div className="flex items-center px-4 py-2 border-b border-stone-800">
+            <div className="flex items-center px-3 py-1.5 border-b border-stone-800">
               <span className="text-[10px] text-stone-500">{c.feedback}</span>
             </div>
-            <div className="h-[200px] md:h-auto md:flex-1 overflow-hidden">
+            <div className="h-[160px] overflow-hidden">
               <img src="/images/strix-feedback.jpeg" alt={c.feedback} className="w-full h-full object-cover object-[50%_75%]" />
             </div>
           </div>
         </div>
       </div>
 
+      {/* Content below */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-6">
           <p className="text-stone-500 leading-[1.75]">{c.desc}</p>
@@ -112,10 +118,7 @@ function Strix() {
             <p className="text-[15px] text-stone-700 italic leading-relaxed">{c.quote}</p>
             <cite className="text-[12px] text-stone-400 not-italic block mt-1.5">{c.cite}</cite>
           </blockquote>
-          <div className="flex gap-5 text-[13px]">
-            <span className="text-stone-900 font-semibold">600+<span className="text-stone-400 font-normal ml-1">{lang === 'en' ? 'users' : '명'}</span></span>
-            <span className="text-stone-900 font-semibold">31<span className="text-stone-400 font-normal ml-1">{lang === 'en' ? 'reviews' : '개 리뷰'}</span></span>
-          </div>
+          <span className="text-[13px] text-stone-900 font-semibold">600+<span className="text-stone-400 font-normal ml-1">{c.users}</span></span>
         </div>
       </div>
     </motion.div>

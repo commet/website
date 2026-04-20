@@ -5,17 +5,17 @@ const t = {
   en: {
     section: 'Writing',
     items: [
-      { title: 'Milla Jovovich pushed a repo to GitHub', platform: 'LinkedIn · Threads', note: 'Viral', href: '#' },
-      { title: 'Introducing Claude Code Remote Control', platform: 'LinkedIn', note: 'First in Korean', href: '#' },
-      { title: 'How to use AI hard without getting dumber', platform: 'LinkedIn', note: null, href: '#' },
+      { title: 'Milla Jovovich pushed a repo to GitHub', platform: 'LinkedIn · Threads', href: '#' },
+      { title: 'Introducing Claude Code Remote Control', platform: 'LinkedIn', href: '#' },
+      { title: 'How to use AI intensely without losing your edge', platform: 'LinkedIn', href: '#' },
     ],
   },
   kr: {
     section: '글',
     items: [
-      { title: '밀라 요보비치가 GitHub에 레포를 올렸습니다', platform: 'LinkedIn · Threads', note: '바이럴', href: '#' },
-      { title: 'Claude Code Remote Control 소개', platform: 'LinkedIn', note: '한국어 최초', href: '#' },
-      { title: 'AI를 열심히 쓰면서도 멍청해지지 않는 법', platform: 'LinkedIn', note: null, href: '#' },
+      { title: '밀라 요보비치가 GitHub에 레포를 올렸습니다', platform: 'LinkedIn · Threads', href: '#' },
+      { title: 'Claude Code Remote Control 소개', platform: 'LinkedIn', href: '#' },
+      { title: 'AI를 열심히 쓰면서도 멍청해지지 않는 법', platform: 'LinkedIn', href: '#' },
     ],
   },
 }
@@ -49,14 +49,7 @@ export default function Writing() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.05, duration: 0.4 }}
           >
-            <div className="flex items-center gap-4 flex-1 min-w-0">
-              <span className="text-[15px] text-stone-700 group-hover:text-accent transition-colors truncate font-medium">{w.title}</span>
-              {w.note && (
-                <span className="text-[10px] text-accent bg-accent/8 rounded px-1.5 py-0.5 flex-shrink-0 uppercase tracking-wider font-semibold hidden sm:block">
-                  {w.note}
-                </span>
-              )}
-            </div>
+            <span className="text-[15px] text-stone-700 group-hover:text-accent transition-colors truncate font-medium">{w.title}</span>
             <div className="flex items-center gap-3 flex-shrink-0 ml-4">
               <span className="text-[12px] text-stone-400 hidden md:block">{w.platform}</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"

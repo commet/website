@@ -13,9 +13,9 @@ const t = {
     ),
     context: 'Before that, I co-founded a B2B healthcare startup and sold to hospital directors — where I learned that enterprise adoption fails when buyers can\'t defend the purchase to their board. 4 years of corporate strategy at SK On, 3 AI products shipped, all powered by Claude.',
     stats: [
-      { num: '4 yrs', label: 'Enterprise strategy', context: 'SK On · EV battery' },
-      { num: '3', label: 'Products shipped', context: 'Enterprise · Consumer · Dev' },
-      { num: 'KR/EN', label: 'Bilingual', context: 'Military interpreter level' },
+      { num: '4 yrs', label: 'Enterprise strategy', context: 'Portfolio optimization and business valuation at Korea\'s leading EV battery manufacturer' },
+      { num: '3', label: 'Products shipped', context: 'Enterprise knowledge system, consumer art curation, and a developer thinking tool' },
+      { num: 'KR/EN', label: 'Bilingual', context: 'Interpreted general-level Korea-US military meetings at USFK' },
     ],
   },
   kr: {
@@ -29,9 +29,9 @@ const t = {
     ),
     context: 'B2B 헬스케어 스타트업을 공동 창업하고 병원장에게 직접 영업했습니다 — 구매자가 이사회에 설명할 수 없으면 도입은 실패한다는 것을 배웠습니다. SK On 전략기획 4년, Claude 기반 AI 제품 3개를 직접 만들어 배포했습니다.',
     stats: [
-      { num: '4년', label: '엔터프라이즈 전략', context: 'SK On · EV 배터리' },
-      { num: '3개', label: '제품 출시', context: '엔터프라이즈 · 소비자 · 개발자' },
-      { num: 'KR/EN', label: '이중 언어', context: '군 통역 수준' },
+      { num: '4년', label: '엔터프라이즈 전략', context: '한국 대표 EV 배터리 기업에서 포트폴리오 최적화 및 기업가치 평가' },
+      { num: '3개', label: '제품 출시', context: '사내 지식 시스템, 아트 큐레이션 서비스, 개발자 사고 도구' },
+      { num: 'KR/EN', label: '이중 언어', context: '주한미군사 장성급 한미 군사회의 통역' },
     ],
   },
 }
@@ -80,7 +80,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-3 -mx-6 md:-mx-10"
+          className="grid grid-cols-1 md:grid-cols-3 -mx-6 md:-mx-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -88,11 +88,11 @@ export default function Hero() {
           {c.stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`px-6 md:px-10 py-6 md:py-8 ${i === 1 ? 'border-x border-stone-200 bg-cream/40' : ''}`}
+              className={`px-6 md:px-10 py-6 md:py-8 ${i === 1 ? 'border-y md:border-y-0 md:border-x border-stone-200 bg-cream/40' : ''}`}
             >
               <span className="text-2xl md:text-[32px] font-bold text-stone-900 tracking-tight block leading-none">{stat.num}</span>
-              <span className="text-[13px] text-stone-700 block mt-2">{stat.label}</span>
-              <span className="text-[11px] text-stone-400">{stat.context}</span>
+              <span className="text-[13px] text-stone-700 block mt-2 font-medium">{stat.label}</span>
+              <span className="text-[12px] text-stone-400 leading-snug block mt-1">{stat.context}</span>
             </div>
           ))}
         </motion.div>

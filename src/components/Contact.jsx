@@ -17,8 +17,8 @@ export default function Contact() {
           <div>
             <p className="text-[22px] md:text-[26px] text-stone-900 font-medium tracking-[-0.02em] leading-snug">
               {lang === 'en'
-                ? 'Let\'s talk about AI adoption, go-to-market, or art.'
-                : 'AI 도입, Go-to-Market, 또는 아트에 대해 이야기하고 싶습니다.'}
+                ? 'Always happy to connect.'
+                : '편하게 연락 주세요.'}
             </p>
           </div>
           <div className="md:text-right">
