@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
 import { navigate } from '../navigate'
+import StakeholderMap from './StakeholderMap'
 
 const t = {
   en: {
@@ -14,26 +15,18 @@ const t = {
     meta: 'SK On · 2024 · Enterprise RAG · 5 min read',
     tldr: 'How I rolled out an LLM knowledge system inside a division governed by National Core Technology regulations — on-premise, inside the tools people already lived in. Featured on SK Group\'s mySUNI (1,000+ learners), adopted daily by our 30-person strategy team, with executive buy-in earned by reframing cost.',
     s1: {
-      label: '01 — Situation',
+      label: 'Situation',
       body: [
         `SK On is one of the world's top-three EV battery manufacturers. Its Strategy Division owns portfolio decisions, business valuation, and competitive intelligence — work that turns on thousands of dense internal documents every month.`,
         `LLMs were the obvious unlock. But SK On's battery technology is designated 국가핵심기술 (National Core Technology) under Korean law — subject to National Intelligence Service oversight and formal audit. "Just use ChatGPT" was never a real option. A system had to be built from inside the boundary.`,
       ],
     },
     s2: {
-      label: '02 — Stakeholder map',
+      label: 'Stakeholder map',
       intro: 'Five groups had to say yes. Each had a different reason to say no.',
-      headers: { group: 'Group', want: 'What they wanted', block: 'Why they might block' },
-      rows: [
-        { group: 'Strategy Division leadership', want: 'Productivity unlock for analysts', block: 'Reputational risk if regulated data leaks' },
-        { group: 'Information Security Office', want: 'Clean NIS audit posture', block: 'Default answer to external AI: no' },
-        { group: 'IT Infrastructure', want: 'Maintainable, boring systems', block: 'Would inherit ongoing ops burden' },
-        { group: 'Legal', want: 'Defensible posture on regulated data', block: 'Liability when data leaves the boundary' },
-        { group: 'C-suite / CEO', want: 'Risk-adjusted ROI, unambiguous', block: 'Would not sign without clean economics' },
-      ],
     },
     s3: {
-      label: '03 — Objections, as raised in the security review',
+      label: 'Objections, as raised in the security review',
       intro: 'Three questions the review actually asked. I kept them in my notes verbatim:',
       items: [
         'Battery internal data is designated National Core Technology and subject to NIS audit. How do we guarantee nothing leaves our boundary? Is this truly on-premise?',
@@ -42,7 +35,7 @@ const t = {
       ],
     },
     s4: {
-      label: '04 — Resolution',
+      label: 'Resolution',
       secHead: 'Clearing the security review',
       sec: [
         { title: 'Data boundary', body: `Architected as on-premise RAG. No Strategy Division data left the SK On network; every LLM call was proxied through an internal gateway. This was the only architecture Information Security would sign.` },
@@ -58,7 +51,7 @@ const t = {
       ],
     },
     s5: {
-      label: '05 — Outcome',
+      label: 'Outcome',
       funnelIntro: 'A funnel, not a single headline number:',
       metrics: [
         { num: '1,000+', label: 'SK Group employees learned', sub: 'Featured on mySUNI (SK Group\'s internal learning platform) as a Best Practice case' },
@@ -73,7 +66,7 @@ const t = {
       evidenceCaption: 'Featured on SK Group mySUNI as a Best Practice case',
     },
     s6: {
-      label: '06 — What transferred',
+      label: 'What transferred',
       intro: 'Three patterns I took from STRIX that apply directly to how Anthropic sells into Korean enterprises:',
       items: [
         'Korean enterprises buy risk posture first, capability second. Lead with the governance story; let the benchmarks follow.',
@@ -97,26 +90,18 @@ const t = {
     meta: 'SK On · 2024 · Enterprise RAG · 5분 분량',
     tldr: '국가핵심기술 규제 하의 조직에 Claude를 온프레미스로 — 사용자가 이미 쓰는 도구 안에서 — 배포한 프로젝트. SK그룹 mySUNI에 Best Practice로 등재되어 1,000명+이 학습, 전략기획본부 30명이 매일 사용. 비용을 재정의해 경영진 승인까지 받아냈습니다.',
     s1: {
-      label: '01 — 상황',
+      label: '상황',
       body: [
         `SK On은 세계 Top 3 EV 배터리 제조사. 전략기획본부는 포트폴리오 의사결정, 기업가치 평가, 경쟁정보 분석을 담당 — 매달 수천 건의 무거운 내부 문서를 뒤지는 일이 구조적으로 발생합니다.`,
         `LLM은 당연한 해법이었습니다. 하지만 SK On의 배터리 기술은 **국가핵심기술**로 지정되어 국정원 감시와 공식 감사를 받습니다. "ChatGPT 쓰자"는 실질적 선택지가 아니었습니다. 경계 안쪽에서 처음부터 설계해야 했습니다.`,
       ],
     },
     s2: {
-      label: '02 — 이해관계자 지도',
+      label: '이해관계자 지도',
       intro: '5개 그룹이 각기 다른 이유로 No를 말할 수 있는 구조였습니다.',
-      headers: { group: '그룹', want: '원하는 것', block: '막을 수 있는 이유' },
-      rows: [
-        { group: '전략기획본부 리더십', want: '애널리스트 생산성 해금', block: '규제 데이터 리스크로 인한 평판 훼손' },
-        { group: '정보보안팀', want: '국정원 감사 대응 태세', block: '외부 AI에 대한 기본값: 불가' },
-        { group: 'IT 인프라', want: '유지보수 가능한 지루한 시스템', block: '운영 부담이 자기 쪽으로 전이됨' },
-        { group: '법무', want: '규제 데이터에 대한 방어 가능한 포지션', block: '데이터가 경계 밖으로 나가는 순간의 책임' },
-        { group: 'C-suite / CEO', want: '명확한 리스크 조정 ROI', block: '깔끔한 경제학 없이는 서명 불가' },
-      ],
     },
     s3: {
-      label: '03 — 보안심사에서 실제 제기된 반대',
+      label: '보안심사에서 실제 제기된 반대',
       intro: '심사에서 실제로 나온 세 가지 질문. 기록 그대로 남겼습니다:',
       items: [
         '배터리 내부 정보는 국가핵심기술로 지정되어 국정원 감사 대상이다. 외부로 유출되지 않는다는 것을 어떻게 보장하나? 온프레미스 맞는가?',
@@ -125,7 +110,7 @@ const t = {
       ],
     },
     s4: {
-      label: '04 — 돌파',
+      label: '돌파',
       secHead: '보안심사 통과',
       sec: [
         { title: '데이터 경계', body: `온프레미스 RAG로 설계. 전략기획본부의 어떤 데이터도 SK On 네트워크 밖으로 나가지 않음. 모든 LLM 호출은 내부 게이트웨이를 통한 프록시. 정보보안팀이 승인한 유일한 아키텍처였습니다.` },
@@ -141,7 +126,7 @@ const t = {
       ],
     },
     s5: {
-      label: '05 — 결과',
+      label: '결과',
       funnelIntro: '단일 헤드라인 숫자가 아니라 퍼널로 보기:',
       metrics: [
         { num: '1,000+', label: 'SK 그룹 임직원 학습', sub: 'mySUNI(SK 그룹 사내 학습 플랫폼)에 Best Practice 사례로 게시' },
@@ -156,7 +141,7 @@ const t = {
       evidenceCaption: 'SK 그룹 mySUNI에 Best Practice 사례로 게시',
     },
     s6: {
-      label: '06 — 전이 가능한 것',
+      label: '전이 가능한 것',
       intro: 'Anthropic이 한국 엔터프라이즈를 공략할 때 바로 적용되는 세 가지 패턴을 STRIX에서 가져갑니다:',
       items: [
         '한국 엔터프라이즈는 성능이 아니라 리스크 포스처를 먼저 삽니다. 거버넌스 서사를 앞세우고, 벤치마크는 뒤에 배치하세요.',
@@ -176,7 +161,7 @@ const t = {
 function Section({ label, children }) {
   return (
     <motion.section
-      className="py-10 md:py-14 border-t border-stone-200"
+      className="py-14 md:py-20 border-t border-stone-200"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -269,41 +254,35 @@ export default function CaseStudyStrix() {
           <Section label={c.s1.label}>
             <div className="max-w-[760px] space-y-5">
               {c.s1.body.map((p, i) => (
-                <p key={i} className="text-[16px] text-stone-700 leading-[1.8]">{p}</p>
+                <p key={i} className="text-[17px] text-stone-700 leading-[1.8]">{p}</p>
               ))}
             </div>
           </Section>
 
-          {/* 02 Stakeholder map */}
+          {/* 02 Stakeholder map — interactive */}
           <Section label={c.s2.label}>
-            <p className="text-[16px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s2.intro}</p>
-            <div className="border-t border-stone-200">
-              <div className="hidden md:grid grid-cols-12 gap-4 py-3 text-[11px] uppercase tracking-[0.2em] text-stone-400">
-                <div className="col-span-4">{c.s2.headers.group}</div>
-                <div className="col-span-4">{c.s2.headers.want}</div>
-                <div className="col-span-4">{c.s2.headers.block}</div>
-              </div>
-              {c.s2.rows.map((r) => (
-                <div key={r.group} className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 py-5 border-t border-stone-200">
-                  <div className="md:col-span-4 text-[15px] font-medium text-stone-900">{r.group}</div>
-                  <div className="md:col-span-4 text-[14px] text-stone-600 leading-relaxed">{r.want}</div>
-                  <div className="md:col-span-4 text-[14px] text-stone-500 leading-relaxed">{r.block}</div>
-                </div>
-              ))}
-            </div>
+            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s2.intro}</p>
+            <StakeholderMap lang={lang} />
           </Section>
 
-          {/* 03 Objections */}
+          {/* 03 Objections — stagger fade-in as each enters */}
           <Section label={c.s3.label}>
-            <p className="text-[16px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s3.intro}</p>
-            <div className="space-y-6 max-w-[820px]">
+            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s3.intro}</p>
+            <div className="space-y-7 max-w-[820px]">
               {c.s3.items.map((q, i) => (
-                <blockquote key={i} className="border-l-2 border-accent/50 pl-5 py-1">
+                <motion.blockquote
+                  key={i}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.5, delay: 0.12 * i, ease: [0.22, 1, 0.36, 1] }}
+                  className="border-l-2 border-accent/50 pl-5 py-1"
+                >
                   <span className="text-[11px] text-stone-400 uppercase tracking-[0.2em] block mb-2">
                     {lang === 'en' ? `Q${i+1}` : `질문 ${i+1}`}
                   </span>
-                  <p className="text-[16px] text-stone-800 italic leading-[1.7]">"{q}"</p>
-                </blockquote>
+                  <p className="text-[17px] text-stone-800 italic leading-[1.7]">"{q}"</p>
+                </motion.blockquote>
               ))}
             </div>
           </Section>
@@ -326,7 +305,7 @@ export default function CaseStudyStrix() {
             {/* Executive */}
             <div>
               <h3 className="text-[20px] md:text-[22px] font-semibold text-stone-900 tracking-[-0.02em] mb-4">{c.s4.execHead}</h3>
-              <p className="text-[16px] text-stone-700 leading-[1.8] max-w-[760px] mb-6">{c.s4.execIntro}</p>
+              <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-6">{c.s4.execIntro}</p>
               <div className="border-t border-stone-200">
                 {c.s4.exec.map((item) => (
                   <div key={item.title} className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-6 border-b border-stone-200">
@@ -340,7 +319,7 @@ export default function CaseStudyStrix() {
 
           {/* 05 Outcome */}
           <Section label={c.s5.label}>
-            <p className="text-[16px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s5.funnelIntro}</p>
+            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s5.funnelIntro}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-4 border-t border-stone-200">
               {c.s5.metrics.map((m, i) => (
@@ -367,10 +346,10 @@ export default function CaseStudyStrix() {
               <div className="px-4 py-3 text-[12px] text-stone-400 border-t border-stone-100">{c.s5.evidenceCaption}</div>
             </div>
 
-            {/* Quote */}
-            <blockquote className="mt-12 max-w-[820px] border-l-2 border-accent pl-6 py-2">
-              <p className="font-serif italic text-[20px] md:text-[24px] text-stone-800 leading-[1.55]">{c.s5.quote}</p>
-              <cite className="text-[13px] text-stone-400 not-italic block mt-3">{c.s5.cite}</cite>
+            {/* Quote — editorial breakout */}
+            <blockquote className="mt-16 md:mt-24 mb-6 md:mb-10 max-w-[900px]">
+              <p className="font-serif italic text-[26px] md:text-[36px] text-stone-800 leading-[1.3] tracking-[-0.01em]">{c.s5.quote}</p>
+              <cite className="text-[13px] text-stone-400 not-italic block mt-6 tracking-wide">{c.s5.cite}</cite>
             </blockquote>
 
             {/* Honest limits */}
@@ -380,17 +359,28 @@ export default function CaseStudyStrix() {
             </div>
           </Section>
 
-          {/* 06 What transferred */}
+          {/* 06 What transferred — pulled insights */}
           <Section label={c.s6.label}>
-            <p className="text-[16px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s6.intro}</p>
-            <ol className="space-y-6 max-w-[820px]">
+            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-12 md:mb-16">{c.s6.intro}</p>
+            <div className="space-y-12 md:space-y-16 max-w-[900px]">
               {c.s6.items.map((item, i) => (
-                <li key={i} className="grid grid-cols-[auto_1fr] gap-5 items-baseline">
-                  <span className="text-[13px] text-accent font-mono font-semibold">{String(i+1).padStart(2,'0')}</span>
-                  <p className="text-[16px] md:text-[17px] text-stone-800 leading-[1.7]">{item}</p>
-                </li>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative pl-10 md:pl-14"
+                >
+                  <span className="absolute left-0 top-1.5 text-[12px] text-accent/70 font-mono tracking-[0.2em]">
+                    {String(i+1).padStart(2,'0')}
+                  </span>
+                  <p className="font-serif italic text-[22px] md:text-[28px] text-stone-800 leading-[1.4] tracking-[-0.01em]">
+                    {item}
+                  </p>
+                </motion.div>
               ))}
-            </ol>
+            </div>
           </Section>
 
           {/* CTA */}
