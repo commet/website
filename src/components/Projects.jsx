@@ -26,7 +26,7 @@ const sayuAnimals = [
 const t = {
   en: {
     section: 'Selected Work',
-    thread: 'Same engine, three surfaces — curation at enterprise scale, at the scale of a single decision, and at the scale of inner life.',
+    thread: 'Three products, one thesis — AI gets adopted when it lives inside what users already do, not when it asks them to change.',
     strix: {
       chapter: '01 — Case Study',
       sub: 'Enterprise RAG System',
@@ -35,6 +35,7 @@ const t = {
       reviews: 'Employee reviews on mySUNI',
       feedback: 'Direct feedback from SK subsidiary PM',
       desc: 'LLM-powered knowledge system for SK On\'s Strategy Division. Navigated enterprise constraints — data security, audit trails, executive skepticism — and drove organization-wide adoption. Presented to CEO and C-level as a best practice case.',
+      transferPreview: 'Three patterns inside the case study: selling risk posture before capability · putting Claude inside Excel · CapEx framing, not SaaS.',
       quote: '"By my standards, you saved me a month of struggling."',
       cite: '— PM at another SK subsidiary',
       stat1: 'registered',
@@ -45,7 +46,8 @@ const t = {
       chapter: '03 — Live Product',
       sub: 'AI Art Curation',
       desc: 'The bet: AI can curate for feeling, not just retrieval. 16 personality types (APT), 5M+ artworks indexed, global exhibition matching. Built end-to-end — taxonomy, vector search (pgvector), AI counselor, onboarding loop.',
-      proof: '100% quiz completion · 20% viral coefficient · live at sayu.my',
+      proof: '100% onboarding completion · 20% K-factor · live at sayu.my',
+      proofNote: 'Owned end-to-end: acquisition, activation, retention.',
       cta: 'Experience SAYU',
     },
     overture: {
@@ -56,12 +58,12 @@ const t = {
       cite: '— Overture\'s first user, a developer who also designs',
       cta: 'Try Overture',
       tryLabel: 'Try a live slice of Overture',
-      tryHint: "Type a pitch. Watch three stakeholders raise the objections you'd actually hear.",
+      tryHint: 'The three personas — CFO, Security, End User — raise objections shaped by the ones I actually faced building STRIX.',
     },
   },
   kr: {
     section: '주요 프로젝트',
-    thread: '같은 엔진, 세 표면 — 엔터프라이즈 규모에서, 하나의 결정 앞에서, 그리고 한 사람의 내면에서 AI가 curation하는 법.',
+    thread: '세 제품, 하나의 명제 — AI는 사용자에게 바뀌라고 요구할 때가 아니라, 이미 하고 있는 일 안에 스며들 때 채택됩니다.',
     strix: {
       chapter: '01 — 케이스 스터디',
       sub: '엔터프라이즈 RAG 시스템',
@@ -70,6 +72,7 @@ const t = {
       reviews: 'mySUNI 수강생 리뷰',
       feedback: '타 SK 계열사 PM의 직접 피드백',
       desc: 'SK On 전략기획본부를 위한 LLM 기반 지식 시스템. 데이터 보안, 감사 추적, 경영진 설득 등 엔터프라이즈 제약을 돌파하고 전사 도입까지 이끌었습니다. CEO 및 C-level 대상 Best Practice로 발표.',
+      transferPreview: '케이스 스터디 안의 세 가지 패턴: 성능보다 리스크 포스처 먼저 · Claude를 Excel 안에 · SaaS가 아니라 CapEx로.',
       quote: '"제 기준으로 삽질할 1달은 아꼈어요."',
       cite: '— 타 SK 계열사 PM',
       stat1: '명 등록',
@@ -80,7 +83,8 @@ const t = {
       chapter: '03 — 라이브 제품',
       sub: 'AI 아트 큐레이션',
       desc: '내기 하나 — AI는 정보 검색이 아니라 감정을 curation할 수 있을까. 16가지 성향 유형(APT), 500만+ 작품 인덱싱, 글로벌 전시 매칭. 분류 체계부터 벡터 검색(pgvector), AI 큐레이터 플로우, 온보딩 루프까지 전부 설계·운영.',
-      proof: '퀴즈 완료율 100% · 바이럴 계수 20% · sayu.my 운영 중',
+      proof: '온보딩 완료율 100% · K-factor 20% · sayu.my 운영 중',
+      proofNote: '유입 · 활성화 · 리텐션 전부 직접 설계하고 계측했습니다.',
       cta: 'SAYU 경험하기',
     },
     overture: {
@@ -91,7 +95,7 @@ const t = {
       cite: '— Overture 첫 사용자, 개발자이자 디자이너',
       cta: 'Overture 체험하기',
       tryLabel: 'Overture의 한 조각, 지금 써보기',
-      tryHint: '아이디어를 한 줄 적어보세요. 세 명의 이해관계자가 실제로 던질 반대 의견을 보여드립니다.',
+      tryHint: '세 페르소나 — CFO · 보안 · 현업 — 이 제기하는 반대는 제가 STRIX를 만들며 실제로 마주친 반발에서 설계됐습니다.',
     },
   },
 }
@@ -157,6 +161,7 @@ function Strix() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-6">
           <p className="text-stone-500 leading-[1.75] mb-5">{c.desc}</p>
+          <p className="text-[13px] text-stone-700 leading-[1.7] mb-5 border-l-2 border-accent/40 pl-3.5">{c.transferPreview}</p>
           <a
             href="/case-study/strix"
             onClick={(e) => {
@@ -240,7 +245,8 @@ function Sayu() {
           <span className="text-[13px] text-accent font-medium">{c.sub}</span>
         </div>
         <p className="text-stone-500 leading-[1.75] mb-3">{c.desc}</p>
-        <p className="text-[13px] text-stone-700 font-medium mb-5">{c.proof}</p>
+        <p className="text-[13px] text-stone-700 font-medium mb-1">{c.proof}</p>
+        <p className="text-[12px] text-stone-500 leading-[1.6] mb-5">{c.proofNote}</p>
         <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'cta' })}
           className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
           {c.cta}
@@ -279,8 +285,11 @@ function Overture() {
 
       {/* Widget — the live Overture slice */}
       <div className="mb-4">
-        <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-3 font-medium">
+        <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-2 font-medium">
           {c.tryLabel}
+        </p>
+        <p className="text-[13px] text-stone-600 leading-[1.7] max-w-[760px] mb-4">
+          {c.tryHint}
         </p>
         <ObjectionSimulator />
       </div>

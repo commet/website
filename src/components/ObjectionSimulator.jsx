@@ -27,7 +27,7 @@ const t = {
     charCount: (n) => `${n}/500`,
     personas: { CFO: 'CFO', Security: 'Security', 'End User': 'End User' },
     errors: {
-      rate_limited: 'Demo limit reached (5 per day per visitor). Come back tomorrow, or try Overture in full →',
+      rate_limited: "You've run this five times today — the shared demo cap. The full Overture has no limit →",
       not_configured: 'Interactive demo is warming up. Try Overture in full while I finish wiring this →',
       generation_failed: 'Generation failed. Try again, or open the full Overture →',
       bad_model_output: 'The model returned something unparseable. Try a different phrasing.',
@@ -58,7 +58,7 @@ const t = {
     charCount: (n) => `${n}/500`,
     personas: { CFO: 'CFO', Security: '보안/법무', 'End User': '현업 직원' },
     errors: {
-      rate_limited: '데모 제한에 도달했습니다 (방문자당 하루 5회). 내일 다시 오시거나 전체 Overture에서 체험 →',
+      rate_limited: '오늘 이미 5번 써보셨네요 — 공유 데모의 한도입니다. 전체 Overture는 제한 없이 쓰실 수 있어요 →',
       not_configured: '인터랙티브 데모 준비 중입니다. 전체 Overture에서 먼저 체험해보세요 →',
       generation_failed: '생성에 실패했습니다. 다시 시도하거나 전체 Overture에서 →',
       bad_model_output: '모델 응답이 파싱되지 않았습니다. 다른 표현으로 다시 시도해주세요.',

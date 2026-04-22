@@ -5,7 +5,7 @@ import { useLang } from '../LangContext'
 const t = {
   en: {
     tagline: 'Enterprise AI × Go-to-Market × Strategy',
-    credential: 'Seoul National University · SK On Strategy · Claude Builder',
+    credential: 'Seoul National University · SK On Strategy · Enterprise AI Adoption',
     statement: (
       <>
         At SK On, I built <span className="font-semibold">STRIX</span> — the Claude-powered RAG that reached 1,000+ employees through SK Group's mySUNI and ran daily in our 30-person strategy division. Security review, executive buy-in, cross-department rollout — I drove all of it.{' '}
@@ -21,7 +21,7 @@ const t = {
   },
   kr: {
     tagline: 'Enterprise AI × Go-to-Market × 전략',
-    credential: '서울대학교 · SK On 전략기획 · Claude Builder',
+    credential: '서울대학교 · SK On 전략기획 · 엔터프라이즈 AI 도입',
     statement: (
       <>
         SK On에서 <span className="font-semibold">STRIX</span>를 만들었습니다 — SK그룹 mySUNI로 1,000명+에게 노출되고, 전략기획본부 30명이 매일 사용한 Claude 기반 RAG. 보안 심사, 경영진 설득, 전사 확산까지 제가 직접 통과시켰습니다.{' '}

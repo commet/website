@@ -45,8 +45,16 @@ const posts = [
 ]
 
 const labels = {
-  en: { section: 'Writing', platform: 'LinkedIn' },
-  kr: { section: '글', platform: 'LinkedIn' },
+  en: {
+    section: 'Writing',
+    subtitle: 'Notes on enterprise AI adoption, constraints as design input, and what AI changes about building.',
+    platform: 'LinkedIn',
+  },
+  kr: {
+    section: '글',
+    subtitle: '엔터프라이즈 AI 도입, 제약을 설계 입력값으로, AI가 \'만들기\'에 일으키는 변화에 대한 기록.',
+    platform: 'LinkedIn',
+  },
 }
 
 export default function Writing() {
@@ -57,7 +65,7 @@ export default function Writing() {
     <section id="writing" className="py-14 md:py-20 px-6 md:px-10">
       <div className="max-w-[1200px] mx-auto">
         <motion.h2
-          className="text-[12px] text-stone-400 uppercase tracking-[0.2em] mb-6"
+          className="text-[12px] text-stone-400 uppercase tracking-[0.2em] mb-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -65,6 +73,15 @@ export default function Writing() {
         >
           {l.section}
         </motion.h2>
+        <motion.p
+          className="font-serif italic text-stone-600 text-[16px] md:text-[17px] leading-[1.55] max-w-[760px] mb-8 md:mb-10"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          {l.subtitle}
+        </motion.p>
 
         {posts.map((p, i) => (
           <motion.a
