@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { useLang } from '../LangContext'
 import { navigate } from '../navigate'
-import StakeholderMap from './StakeholderMap'
 
 const t = {
   en: {
@@ -24,6 +23,15 @@ const t = {
     s2: {
       label: 'Stakeholder map',
       intro: 'Five groups had to say yes. Each had a different reason to say no.',
+      wantLabel: 'Wanted',
+      blockLabel: 'Might block',
+      rows: [
+        { group: 'Strategy Division leadership', want: 'Productivity unlock for analysts', block: 'Reputational risk if regulated data leaks' },
+        { group: 'Information Security Office', want: 'Clean NIS audit posture', block: 'Default answer to external AI: no' },
+        { group: 'IT Infrastructure', want: 'Maintainable, boring systems', block: 'Would inherit ongoing ops burden' },
+        { group: 'Legal', want: 'Defensible posture on regulated data', block: 'Liability when data leaves the boundary' },
+        { group: 'C-suite / CEO', want: 'Risk-adjusted ROI, unambiguous', block: 'Would not sign without clean economics' },
+      ],
     },
     s3: {
       label: 'Objections, as raised in the security review',
@@ -99,6 +107,15 @@ const t = {
     s2: {
       label: '이해관계자 지도',
       intro: '5개 그룹이 각기 다른 이유로 No를 말할 수 있는 구조였습니다.',
+      wantLabel: '원하는 것',
+      blockLabel: '막을 수 있는 이유',
+      rows: [
+        { group: '전략기획본부 리더십', want: '애널리스트 생산성 해금', block: '규제 데이터 리스크로 인한 평판 훼손' },
+        { group: '정보보안팀', want: '국정원 감사 대응 태세', block: '외부 AI에 대한 기본값: 불가' },
+        { group: 'IT 인프라', want: '유지보수 가능한 지루한 시스템', block: '운영 부담이 자기 쪽으로 전이됨' },
+        { group: '법무', want: '규제 데이터에 대한 방어 가능한 포지션', block: '데이터가 경계 밖으로 나가는 순간의 책임' },
+        { group: 'C-suite / CEO', want: '명확한 리스크 조정 ROI', block: '깔끔한 경제학 없이는 서명 불가' },
+      ],
     },
     s3: {
       label: '보안심사에서 실제 제기된 반대',
@@ -259,10 +276,33 @@ export default function CaseStudyStrix() {
             </div>
           </Section>
 
-          {/* 02 Stakeholder map — interactive */}
+          {/* 02 Stakeholder map — elevated blocks */}
           <Section label={c.s2.label}>
-            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-8">{c.s2.intro}</p>
-            <StakeholderMap lang={lang} />
+            <p className="text-[17px] text-stone-700 leading-[1.8] max-w-[760px] mb-10 md:mb-14">{c.s2.intro}</p>
+            <div className="max-w-[900px] divide-y divide-stone-200/80">
+              {c.s2.rows.map((r, i) => (
+                <motion.div
+                  key={r.group}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 md:gap-8"
+                >
+                  <h3 className="md:col-span-4 text-[19px] md:text-[22px] font-semibold text-stone-900 tracking-[-0.01em] leading-[1.25] mb-5 md:mb-0">
+                    {r.group}
+                  </h3>
+                  <div className="md:col-span-4">
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-stone-400 mb-2">{c.s2.wantLabel}</div>
+                    <p className="text-[15px] md:text-[16px] text-stone-700 leading-[1.65]">{r.want}</p>
+                  </div>
+                  <div className="md:col-span-4 mt-4 md:mt-0">
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-stone-400 mb-2">{c.s2.blockLabel}</div>
+                    <p className="text-[15px] md:text-[16px] text-accent/85 leading-[1.65]">{r.block}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </Section>
 
           {/* 03 Objections — stagger fade-in as each enters */}
