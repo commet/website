@@ -1,5 +1,11 @@
 {
   "rewrites": [
     { "source": "/case-study/:slug", "destination": "/" }
+  ],
+  "crons": [
+    {
+      "path": "/api/daily-report",
+      "schedule": "0 0 * * *"
+    }
   ]
 }
