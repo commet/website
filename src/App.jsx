@@ -4,6 +4,7 @@ import { LangProvider } from './LangContext'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
+import BreathQuote from './components/BreathQuote'
 import Background from './components/Background'
 import Writing from './components/Writing'
 import Contact from './components/Contact'
@@ -16,6 +17,7 @@ function MainPage() {
       <Nav />
       <Hero />
       <Projects />
+      <BreathQuote />
       <Background />
       <Writing />
       <Contact />

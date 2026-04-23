@@ -45,7 +45,8 @@ const t = {
     sayu: {
       chapter: '03 — Live Product',
       sub: 'AI Art Curation',
-      desc: 'The bet: AI can curate for feeling, not just retrieval. 16 personality types (APT), 5M+ artworks indexed, global exhibition matching. Built end-to-end — taxonomy, vector search (pgvector), AI counselor, onboarding loop.',
+      desc: 'The bet: AI can curate for feeling, not just retrieval.',
+      stack: '16 APT types · 5M+ artworks indexed · global exhibition matching · built end-to-end (taxonomy, pgvector, AI counselor, onboarding)',
       proof: '100% onboarding completion · 20% K-factor · live at sayu.my',
       proofNote: 'Owned end-to-end: acquisition, activation, retention.',
       cta: 'Experience SAYU',
@@ -53,7 +54,7 @@ const t = {
     overture: {
       chapter: '02 — Live Demo',
       sub: 'AI Thinking Tool',
-      desc: 'For people navigating unfamiliar territory with AI. The biggest barrier to AI adoption isn\'t technical — it\'s cognitive. Overture helps you think clearly enough to harness it.',
+      desc: 'The real barrier to AI adoption isn\'t technical — it\'s cognitive. Overture sharpens thinking so you can harness what\'s in front of you.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
       cite: '— Overture\'s first user, a developer who also designs',
       cta: 'Try Overture',
@@ -82,7 +83,8 @@ const t = {
     sayu: {
       chapter: '03 — 라이브 제품',
       sub: 'AI 아트 큐레이션',
-      desc: '내기 하나 — AI는 정보 검색이 아니라 감정을 curation할 수 있을까. 16가지 성향 유형(APT), 500만+ 작품 인덱싱, 글로벌 전시 매칭. 분류 체계부터 벡터 검색(pgvector), AI 큐레이터 플로우, 온보딩 루프까지 전부 설계·운영.',
+      desc: '내기 하나 — AI는 정보 검색이 아니라 감정을 curation할 수 있을까.',
+      stack: '16 APT 유형 · 500만+ 작품 인덱싱 · 글로벌 전시 매칭 · end-to-end 설계 (분류 체계, pgvector, AI 큐레이터, 온보딩)',
       proof: '온보딩 완료율 100% · K-factor 20% · sayu.my 운영 중',
       proofNote: '유입 · 활성화 · 리텐션 전부 직접 설계하고 계측했습니다.',
       cta: 'SAYU 경험하기',
@@ -90,7 +92,7 @@ const t = {
     overture: {
       chapter: '02 — 라이브 데모',
       sub: 'AI 사고 도구',
-      desc: 'AI와 함께 낯선 영역을 탐색하는 사람을 위한 도구. AI 도입의 가장 큰 장벽은 기술이 아니라 인지입니다. Overture는 사고를 선명하게 만듭니다.',
+      desc: 'AI 도입의 진짜 장벽은 기술이 아니라 인지입니다. Overture는 낯선 영역에서도 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
       cite: '— Overture 첫 사용자, 개발자이자 디자이너',
       cta: 'Overture 체험하기',
@@ -111,32 +113,28 @@ function Strix() {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
-      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-3 font-medium">{c.chapter}</p>
-      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-6">
-        <div className="flex items-baseline gap-3">
-          <span className="text-[24px] md:text-[28px] font-bold text-stone-900 tracking-[-0.03em]">STRIX</span>
-          <span className="text-[13px] text-accent font-medium">{c.sub}</span>
+      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-4 font-medium">{c.chapter}</p>
+
+      {/* Poster title — display scale */}
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 mb-6 md:mb-8 pb-2 border-b border-stone-200">
+        <div>
+          <h3 className="text-[clamp(3rem,8.5vw,6rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">STRIX</h3>
+          <p className="font-serif italic text-[18px] md:text-[22px] text-stone-600 mt-2 tracking-[-0.01em]">{c.sub}</p>
         </div>
-        <span className="text-[12px] text-stone-400">{c.date}</span>
+        <span className="text-[12px] text-stone-400 tracking-wide pb-2">{c.date}</span>
       </div>
 
-      {/* Image layout: full-width main, then two small evidence shots */}
-      <div className="space-y-3 mb-8">
-        {/* Main screenshot in browser frame */}
-        <div className="rounded-2xl overflow-hidden border border-stone-200/60 bg-white">
-          <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-stone-100 bg-stone-50/50">
-            <div className="w-2.5 h-2.5 rounded-full bg-stone-200" />
-            <div className="w-2.5 h-2.5 rounded-full bg-stone-200" />
-            <div className="w-2.5 h-2.5 rounded-full bg-stone-200" />
-            <span className="ml-3 text-[10px] text-stone-400 truncate">mysuni.sk.com</span>
-          </div>
-          <div className="aspect-[16/9] overflow-hidden bg-stone-50">
+      {/* Main image — no chrome, full-bleed feel */}
+      <div className="space-y-3 mb-10 md:mb-12">
+        <figure>
+          <div className="aspect-[16/9] overflow-hidden bg-stone-50 rounded-2xl">
             <img src="/images/strix-video.jpeg" alt={c.mysuni} className="w-full h-full object-cover object-center block" />
           </div>
-        </div>
+          <figcaption className="text-[11px] text-stone-400 mt-2 tracking-wide italic">{c.mysuni}</figcaption>
+        </figure>
 
         {/* Two evidence images side by side */}
-        <div className="grid grid-cols-2 gap-3 items-start">
+        <div className="grid grid-cols-2 gap-3 items-start pt-2">
           <div className="rounded-2xl overflow-hidden border border-stone-200/60 bg-white">
             <div className="flex items-center px-3 py-1.5 border-b border-stone-100 bg-stone-50/50">
               <span className="text-[10px] text-stone-400">{c.reviews}</span>
@@ -245,6 +243,7 @@ function Sayu() {
           <span className="text-[13px] text-accent font-medium">{c.sub}</span>
         </div>
         <p className="text-stone-500 leading-[1.75] mb-3">{c.desc}</p>
+        <p className="text-[12px] text-stone-400 leading-[1.65] mb-5">{c.stack}</p>
         <p className="text-[13px] text-stone-700 font-medium mb-1">{c.proof}</p>
         <p className="text-[12px] text-stone-500 leading-[1.6] mb-5">{c.proofNote}</p>
         <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'cta' })}
