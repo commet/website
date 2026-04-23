@@ -26,7 +26,12 @@ const sayuAnimals = [
 const t = {
   en: {
     section: 'Selected Work',
-    thread: 'Three products, one thesis — AI gets adopted when it lives inside what users already do, not when it asks them to change.',
+    thread: (
+      <>
+        Three products, one thesis — AI gets adopted when it lives inside what users already do,{' '}
+        <span className="md:whitespace-nowrap">not when it asks them to change.</span>
+      </>
+    ),
     strix: {
       chapter: '01 — Case Study',
       sub: 'Enterprise RAG System',
