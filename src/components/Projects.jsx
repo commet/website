@@ -40,7 +40,14 @@ const t = {
       reviews: 'Employee reviews on mySUNI',
       feedback: 'Direct feedback from SK subsidiary PM',
       desc: 'LLM-powered knowledge system for SK On\'s Strategy Division. Navigated enterprise constraints — data security, audit trails, executive skepticism — and drove organization-wide adoption. Presented to CEO and C-level as a best practice case.',
-      transferPreview: 'Three patterns inside the case study: selling risk posture before capability · putting Claude inside Excel · CapEx framing, not SaaS.',
+      transferPreview: {
+        intro: 'Three patterns inside the case study',
+        items: [
+          'Risk posture sold before capability',
+          'Claude delivered inside Excel, not a new tab',
+          'Cost reframed as CapEx, not SaaS',
+        ],
+      },
       quote: '"By my standards, you saved me a month of struggling."',
       cite: '— PM at another SK subsidiary',
       stat1: 'registered',
@@ -59,7 +66,8 @@ const t = {
     overture: {
       chapter: '02 — Live Demo',
       sub: 'AI Thinking Tool',
-      desc: 'The real barrier to AI adoption isn\'t technical — it\'s cognitive. Overture sharpens thinking so you can harness what\'s in front of you.',
+      desc1: 'The real barrier to AI adoption isn\'t technical — it\'s cognitive.',
+      desc2: 'Overture sharpens thinking so you can harness what\'s in front of you.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
       cite: '— Overture\'s first user, a developer who also designs',
       cta: 'Try Overture',
@@ -78,7 +86,14 @@ const t = {
       reviews: 'mySUNI 수강생 리뷰',
       feedback: '타 SK 계열사 PM의 직접 피드백',
       desc: 'SK On 전략기획본부를 위한 LLM 기반 지식 시스템. 데이터 보안, 감사 추적, 경영진 설득 등 엔터프라이즈 제약을 돌파하고 전사 도입까지 이끌었습니다. CEO 및 C-level 대상 Best Practice로 발표.',
-      transferPreview: '케이스 스터디 안의 세 가지 패턴: 성능보다 리스크 포스처 먼저 · Claude를 Excel 안에 · SaaS가 아니라 CapEx로.',
+      transferPreview: {
+        intro: '케이스 스터디 안의 세 가지 패턴',
+        items: [
+          '성능이 아니라 리스크 포스처를 먼저 판 방법',
+          'Claude를 새 탭이 아니라 Excel 안으로 배달',
+          '비용을 SaaS가 아니라 CapEx로 재정의',
+        ],
+      },
       quote: '"제 기준으로 삽질할 1달은 아꼈어요."',
       cite: '— 타 SK 계열사 PM',
       stat1: '명 등록',
@@ -97,7 +112,8 @@ const t = {
     overture: {
       chapter: '02 — 라이브 데모',
       sub: 'AI 사고 도구',
-      desc: 'AI 도입의 진짜 장벽은 기술이 아니라 인지입니다. Overture는 낯선 영역에서도 사고를 선명하게 만듭니다.',
+      desc1: 'AI 도입의 진짜 장벽은 기술이 아니라 인지입니다.',
+      desc2: 'Overture는 낯선 영역에서도 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
       cite: '— Overture 첫 사용자, 개발자이자 디자이너',
       cta: 'Overture 체험하기',
@@ -133,7 +149,7 @@ function Strix() {
       <div className="space-y-3 mb-10 md:mb-12">
         <figure>
           <div className="aspect-[16/9] overflow-hidden bg-stone-50 rounded-2xl">
-            <img src="/images/strix-video.jpeg" alt={c.mysuni} className="w-full h-full object-cover object-center block" />
+            <img src="/images/strix-video.jpeg" alt={c.mysuni} className="w-full h-full object-cover object-top block" />
           </div>
           <figcaption className="text-[11px] text-stone-400 mt-2 tracking-wide italic">{c.mysuni}</figcaption>
         </figure>
@@ -144,7 +160,7 @@ function Strix() {
             <div className="flex items-center px-3 py-1.5 border-b border-stone-100 bg-stone-50/50">
               <span className="text-[10px] text-stone-400">{c.reviews}</span>
             </div>
-            <div className="h-[200px] overflow-hidden">
+            <div className="h-[260px] md:h-[300px] overflow-hidden">
               <img src="/images/strix-mysuni.jpeg" alt={c.reviews} className="w-full h-full object-cover object-top" />
             </div>
           </div>
@@ -153,7 +169,7 @@ function Strix() {
             <div className="flex items-center px-3 py-1.5 border-b border-stone-800">
               <span className="text-[10px] text-stone-500">{c.feedback}</span>
             </div>
-            <div className="h-[200px] bg-stone-900 flex items-center justify-center p-2">
+            <div className="h-[260px] md:h-[300px] bg-stone-900 flex items-center justify-center p-2">
               <img src="/images/strix-feedback-quote.jpeg" alt={c.feedback} className="max-w-full max-h-full object-contain" />
             </div>
           </div>
@@ -163,8 +179,18 @@ function Strix() {
       {/* Content below */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-6">
-          <p className="text-stone-500 leading-[1.75] mb-5">{c.desc}</p>
-          <p className="text-[13px] text-stone-700 leading-[1.7] mb-5 border-l-2 border-accent/40 pl-3.5">{c.transferPreview}</p>
+          <p className="text-stone-500 leading-[1.75] mb-6">{c.desc}</p>
+          <div className="mb-7 bg-cream/50 border border-stone-200/70 rounded-xl p-5">
+            <p className="text-[11px] text-stone-500 uppercase tracking-[0.22em] font-medium mb-3.5">{c.transferPreview.intro}</p>
+            <ul className="space-y-2.5">
+              {c.transferPreview.items.map((item, i) => (
+                <li key={i} className="flex gap-3 text-[14px] text-stone-800 leading-[1.55]">
+                  <span className="text-accent font-mono text-[12px] tracking-wide leading-[1.7] flex-shrink-0 font-semibold">0{i+1}</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
           <a
             href="/case-study/strix"
             onClick={(e) => {
@@ -243,14 +269,14 @@ function Sayu() {
         </div>
       </a>
       <div className="md:col-span-6 md:col-start-7">
-        <div className="flex items-baseline gap-3 mb-3">
-          <span className="text-[24px] md:text-[28px] font-bold text-stone-900 tracking-[-0.03em]">SAYU</span>
-          <span className="text-[13px] text-accent font-medium">{c.sub}</span>
+        <div className="mb-5 md:mb-7 pb-2 border-b border-stone-200">
+          <h3 className="text-[clamp(2.5rem,7vw,5rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">SAYU</h3>
+          <p className="font-serif italic text-[17px] md:text-[20px] text-stone-600 mt-2 tracking-[-0.01em]">{c.sub}</p>
         </div>
-        <p className="text-stone-500 leading-[1.75] mb-3">{c.desc}</p>
-        <p className="text-[12px] text-stone-400 leading-[1.65] mb-5">{c.stack}</p>
-        <p className="text-[13px] text-stone-700 font-medium mb-1">{c.proof}</p>
-        <p className="text-[12px] text-stone-500 leading-[1.6] mb-5">{c.proofNote}</p>
+        <p className="text-[17px] md:text-[18px] text-stone-800 leading-[1.55] mb-3">{c.desc}</p>
+        <p className="text-[12px] text-stone-400 leading-[1.65] mb-6">{c.stack}</p>
+        <p className="text-[14px] text-stone-900 font-semibold mb-1">{c.proof}</p>
+        <p className="text-[12px] text-stone-500 leading-[1.6] mb-6">{c.proofNote}</p>
         <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'cta' })}
           className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
           {c.cta}
@@ -273,17 +299,23 @@ function Overture() {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6 }}
     >
-      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-6 font-medium">{c.chapter}</p>
-      {/* Intro: title + description + quote */}
-      <div className="max-w-[760px] mb-8">
-        <div className="flex items-baseline gap-3 mb-3">
-          <span className="text-[24px] md:text-[28px] font-bold text-stone-900 tracking-[-0.03em]">Overture</span>
-          <span className="text-[13px] text-accent font-medium">{c.sub}</span>
+      <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-4 font-medium">{c.chapter}</p>
+
+      {/* Poster title */}
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 mb-8 md:mb-10 pb-2 border-b border-stone-200">
+        <div>
+          <h3 className="text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">Overture</h3>
+          <p className="font-serif italic text-[18px] md:text-[22px] text-stone-600 mt-2 tracking-[-0.01em]">{c.sub}</p>
         </div>
-        <p className="text-stone-500 leading-[1.75] mb-3">{c.desc}</p>
-        <blockquote className="border-l-2 border-accent/30 pl-4">
-          <p className="font-serif italic text-stone-600 text-[15px] leading-relaxed">{c.quote}</p>
-          <cite className="text-[12px] text-stone-400 not-italic block mt-1.5">{c.cite}</cite>
+      </div>
+
+      {/* Intro: description + quote */}
+      <div className="max-w-[760px] mb-10">
+        <p className="text-[17px] md:text-[19px] text-stone-800 leading-[1.5] tracking-[-0.005em] mb-2">{c.desc1}</p>
+        <p className="text-[15px] md:text-[16px] text-stone-500 leading-[1.7] mb-7">{c.desc2}</p>
+        <blockquote className="border-l-2 border-accent/60 pl-5 py-2">
+          <p className="font-serif italic text-stone-800 text-[20px] md:text-[24px] leading-[1.5] tracking-[-0.01em]">{c.quote}</p>
+          <cite className="text-[12px] text-stone-400 not-italic block mt-3 tracking-wide">{c.cite}</cite>
         </blockquote>
       </div>
 

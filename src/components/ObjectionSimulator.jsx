@@ -144,7 +144,7 @@ export default function ObjectionSimulator() {
   }
 
   return (
-    <div className="border border-stone-200/70 rounded-2xl bg-white overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+    <div className="border border-stone-300/80 rounded-2xl bg-white overflow-hidden shadow-md shadow-stone-300/40">
       {/* Header */}
       <div className="flex items-center justify-between px-5 md:px-7 py-3.5 border-b border-stone-100 bg-stone-50/40">
         <span className="text-[11px] text-stone-500 uppercase tracking-[0.22em] font-medium">

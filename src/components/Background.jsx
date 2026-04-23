@@ -32,7 +32,7 @@ const t = {
       {
         org: 'Seoul National University',
         detail: 'B.A. Economics · B.A. Science & Technology Studies (Double Major)',
-        note: 'GPA 4.0/4.3 · National Merit Scholarship (Full Tuition) · 1st Place, SNU STS Academic Conference',
+        note: 'GPA 4.0/4.3 · National Merit Scholarship, Full Tuition (top scorer, Korea National CSAT) · 1st Place, SNU STS Academic Conference',
       },
       {
         org: 'Curating School Seoul',
@@ -71,7 +71,7 @@ const t = {
       {
         org: '서울대학교',
         detail: '경제학부 · 과학기술학(STS) 이중전공',
-        note: 'GPA 4.0/4.3 · 국가장학금(전액) · SNU STS 학술대회 1등',
+        note: 'GPA 4.0/4.3 · 국가장학금 전액 (수능 전국 수석) · SNU STS 학술대회 1등',
       },
       {
         org: '큐레이팅스쿨서울',
