@@ -66,12 +66,10 @@ const t = {
     overture: {
       chapter: '02 — Live Demo',
       sub: 'AI Thinking Tool',
-      desc1: 'The real barrier to AI adoption isn\'t technical — it\'s cognitive.',
-      desc2: 'Overture sharpens thinking so you can harness what\'s in front of you.',
+      desc: 'The real barrier to AI adoption isn\'t technical — it\'s cognitive. Overture sharpens thinking so you can harness what\'s in front of you.',
       quote: '"Blunt thinking can\'t harness AI. Overture sharpens your thinking."',
       cite: '— Overture\'s first user, a developer who also designs',
       cta: 'Try Overture',
-      tryLabel: 'Try a live slice of Overture',
       tryHint: 'The three personas — CFO, Security, End User — raise objections shaped by the ones I actually faced building STRIX.',
     },
   },
@@ -112,12 +110,10 @@ const t = {
     overture: {
       chapter: '02 — 라이브 데모',
       sub: 'AI 사고 도구',
-      desc1: 'AI 도입의 진짜 장벽은 기술이 아니라 인지입니다.',
-      desc2: 'Overture는 낯선 영역에서도 사고를 선명하게 만듭니다.',
+      desc: 'AI 도입의 진짜 장벽은 기술이 아니라 인지입니다. Overture는 낯선 영역에서도 사고를 선명하게 만듭니다.',
       quote: '"생각이 뭉툭하면 AI를 다룰 수 없다. Overture는 생각을 뾰족하게 만든다."',
       cite: '— Overture 첫 사용자, 개발자이자 디자이너',
       cta: 'Overture 체험하기',
-      tryLabel: 'Overture의 한 조각, 지금 써보기',
       tryHint: '세 페르소나 — CFO · 보안 · 현업 — 이 제기하는 반대는 제가 STRIX를 만들며 실제로 마주친 반발에서 설계됐습니다.',
     },
   },
@@ -176,51 +172,55 @@ function Strix() {
         </div>
       </div>
 
-      {/* Content below */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      {/* Row 1: desc (left) | quote + stats (right) — peer balance */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-14">
         <div className="md:col-span-6">
-          <p className="text-stone-500 leading-[1.75] mb-6">{c.desc}</p>
-          <div className="mb-7 bg-cream/50 border border-stone-200/70 rounded-xl p-5">
-            <p className="text-[11px] text-stone-500 uppercase tracking-[0.22em] font-medium mb-3.5">{c.transferPreview.intro}</p>
-            <ul className="space-y-2.5">
-              {c.transferPreview.items.map((item, i) => (
-                <li key={i} className="flex gap-3 text-[14px] text-stone-800 leading-[1.55]">
-                  <span className="text-accent font-mono text-[12px] tracking-wide leading-[1.7] flex-shrink-0 font-semibold">0{i+1}</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <a
-            href="/case-study/strix"
-            onClick={(e) => {
-              e.preventDefault()
-              track('case_study_open', { study: 'strix', location: 'projects_card' })
-              navigate('/case-study/strix')
-            }}
-            className="inline-flex items-center gap-2 text-[14px] font-semibold no-underline bg-accent text-white px-4 py-2.5 rounded-lg hover:bg-stone-900 transition-colors shadow-sm"
-          >
-            {c.caseStudyCta}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-          </a>
+          <p className="text-stone-500 leading-[1.75]">{c.desc}</p>
         </div>
         <div className="md:col-span-5 md:col-start-8">
-          <blockquote className="border-l-2 border-accent/30 pl-4 mb-5">
-            <p className="text-[15px] text-stone-700 italic leading-relaxed">{c.quote}</p>
-            <cite className="text-[12px] text-stone-400 not-italic block mt-1.5">{c.cite}</cite>
+          <blockquote className="border-l-2 border-accent/50 pl-5 mb-5">
+            <p className="text-[16px] md:text-[17px] text-stone-800 italic leading-[1.55]">{c.quote}</p>
+            <cite className="text-[12px] text-stone-400 not-italic block mt-2">{c.cite}</cite>
           </blockquote>
           <div className="text-[13px] space-y-1">
             <div>
               <span className="text-stone-900 font-semibold">600+</span>
-              <span className="text-stone-400 font-normal ml-1">{c.stat1}</span>
+              <span className="text-stone-500 font-normal ml-1">{c.stat1}</span>
             </div>
             <div>
               <span className="text-stone-900 font-semibold">~30</span>
-              <span className="text-stone-400 font-normal ml-1">{c.stat2}</span>
+              <span className="text-stone-500 font-normal ml-1">{c.stat2}</span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Row 2: Three patterns — full-width callout */}
+      <div className="bg-cream/50 border border-stone-200/70 rounded-xl p-5 md:p-7 mb-8 md:mb-10 max-w-[860px]">
+        <p className="text-[11px] text-stone-500 uppercase tracking-[0.22em] font-medium mb-4">{c.transferPreview.intro}</p>
+        <ul className="space-y-3 md:space-y-3.5">
+          {c.transferPreview.items.map((item, i) => (
+            <li key={i} className="flex gap-4 text-[15px] md:text-[16px] text-stone-800 leading-[1.55]">
+              <span className="text-accent font-mono text-[12px] tracking-wide leading-[1.8] flex-shrink-0 font-semibold">0{i+1}</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Row 3: CTA */}
+      <a
+        href="/case-study/strix"
+        onClick={(e) => {
+          e.preventDefault()
+          track('case_study_open', { study: 'strix', location: 'projects_card' })
+          navigate('/case-study/strix')
+        }}
+        className="inline-flex items-center gap-2 text-[14px] font-semibold no-underline bg-accent text-white px-5 py-3 rounded-lg hover:bg-stone-900 transition-colors shadow-sm"
+      >
+        {c.caseStudyCta}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+      </a>
     </motion.div>
   )
 }
@@ -301,34 +301,28 @@ function Overture() {
     >
       <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-4 font-medium">{c.chapter}</p>
 
-      {/* Poster title */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 mb-8 md:mb-10 pb-2 border-b border-stone-200">
-        <div>
-          <h3 className="text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">Overture</h3>
-          <p className="font-serif italic text-[18px] md:text-[22px] text-stone-600 mt-2 tracking-[-0.01em]">{c.sub}</p>
-        </div>
+      {/* Title: subtitle sized down so title dominates, no divider */}
+      <div className="mb-10 md:mb-12">
+        <h3 className="text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">Overture</h3>
+        <p className="font-serif italic text-[14px] md:text-[16px] text-stone-500 mt-2 tracking-[-0.01em]">{c.sub}</p>
       </div>
 
-      {/* Intro: description + quote */}
-      <div className="max-w-[760px] mb-10">
-        <p className="text-[17px] md:text-[19px] text-stone-800 leading-[1.5] tracking-[-0.005em] mb-2">{c.desc1}</p>
-        <p className="text-[15px] md:text-[16px] text-stone-500 leading-[1.7] mb-7">{c.desc2}</p>
-        <blockquote className="border-l-2 border-accent/60 pl-5 py-2">
-          <p className="font-serif italic text-stone-800 text-[20px] md:text-[24px] leading-[1.5] tracking-[-0.01em]">{c.quote}</p>
-          <cite className="text-[12px] text-stone-400 not-italic block mt-3 tracking-wide">{c.cite}</cite>
-        </blockquote>
-      </div>
+      {/* Unified desc */}
+      <p className="text-[16px] md:text-[17px] text-stone-700 leading-[1.75] max-w-[760px] mb-8">
+        {c.desc}
+      </p>
 
-      {/* Widget — the live Overture slice */}
-      <div className="mb-4">
-        <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] mb-2 font-medium">
-          {c.tryLabel}
-        </p>
-        <p className="text-[13px] text-stone-600 leading-[1.7] max-w-[760px] mb-4">
-          {c.tryHint}
-        </p>
-        <ObjectionSimulator />
-      </div>
+      {/* Supporting quote — subdued, not competing with title */}
+      <blockquote className="border-l border-stone-300 pl-4 mb-10 max-w-[760px]">
+        <p className="font-serif italic text-stone-700 text-[16px] md:text-[18px] leading-[1.55]">{c.quote}</p>
+        <cite className="text-[12px] text-stone-400 not-italic block mt-2 tracking-wide">{c.cite}</cite>
+      </blockquote>
+
+      {/* Simulator: bridge hint directly above, no eyebrow (simulator has its own) */}
+      <p className="text-[13px] text-stone-500 leading-[1.65] max-w-[760px] mb-4">
+        {c.tryHint}
+      </p>
+      <ObjectionSimulator />
     </motion.div>
   )
 }
