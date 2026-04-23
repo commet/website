@@ -269,14 +269,24 @@ function Sayu() {
         </div>
       </a>
       <div className="md:col-span-6 md:col-start-7">
-        <div className="mb-5 md:mb-7 pb-2 border-b border-stone-200">
+        {/* Title + subtitle — subtitle sized down to match Overture, title dominates */}
+        <div className="mb-8 md:mb-10">
           <h3 className="text-[clamp(2.5rem,7vw,5rem)] font-bold text-stone-900 tracking-[-0.05em] leading-[0.92]">SAYU</h3>
-          <p className="font-serif italic text-[17px] md:text-[20px] text-stone-600 mt-2 tracking-[-0.01em]">{c.sub}</p>
+          <p className="font-serif italic text-[14px] md:text-[16px] text-stone-500 mt-2 tracking-[-0.01em]">{c.sub}</p>
         </div>
-        <p className="text-[17px] md:text-[18px] text-stone-800 leading-[1.55] mb-3">{c.desc}</p>
-        <p className="text-[12px] text-stone-400 leading-[1.65] mb-6">{c.stack}</p>
-        <p className="text-[14px] text-stone-900 font-semibold mb-1">{c.proof}</p>
-        <p className="text-[12px] text-stone-500 leading-[1.6] mb-6">{c.proofNote}</p>
+
+        {/* Unit 1: thesis + tech specs as one continuous block */}
+        <div className="mb-6 md:mb-7">
+          <p className="text-[17px] md:text-[18px] text-stone-800 leading-[1.55] mb-2">{c.desc}</p>
+          <p className="text-[13px] text-stone-400 leading-[1.65]">{c.stack}</p>
+        </div>
+
+        {/* Unit 2: metrics + ownership note as one block, separated by thin line */}
+        <div className="mb-7 md:mb-8 pt-5 border-t border-stone-200/70">
+          <p className="text-[15px] text-stone-900 font-semibold mb-1">{c.proof}</p>
+          <p className="text-[12.5px] text-stone-500 italic leading-[1.6]">{c.proofNote}</p>
+        </div>
+
         <a href="https://sayu.my" target="_blank" rel="noopener noreferrer" onClick={() => track('project_click', { project: 'sayu', area: 'cta' })}
           className="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium no-underline hover:text-stone-900 transition-colors">
           {c.cta}
