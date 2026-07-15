@@ -9,10 +9,17 @@ const t = {
     skillsTitle: 'Skills',
     experience: [
       {
+        org: 'Praxis',
+        role: 'Founder — AI Transformation Consulting & Products',
+        period: '2026 – Present',
+        highlights: true,
+        detail: 'Independent AX practice. Won and delivered a maritime-logistics AI engagement end-to-end (research → POC → deployed control tower), and shipped Argus — a decision-navigation product — solo across four surfaces.',
+      },
+      {
         org: 'SK On',
         role: 'Professional Manager, Strategic Planning',
-        period: '2022 – Present',
-        detail: 'Corporate strategy, portfolio optimization, and business valuation for Korea\'s leading EV battery manufacturer. Supported pre-IPO readiness. Selected as AI Frontier representative — SK Group\'s internal AI leadership cohort.',
+        period: '2022 – 2026',
+        detail: 'Corporate strategy, portfolio optimization, and business valuation for Korea\'s leading EV battery manufacturer. Supported pre-IPO readiness. Selected as AI Frontier representative — SK Group\'s internal AI leadership cohort. Built STRIX, featured on internal broadcast and mySUNI.',
       },
       {
         org: 'Brain Music Lab',
@@ -48,10 +55,17 @@ const t = {
     skillsTitle: '스킬',
     experience: [
       {
+        org: 'Praxis',
+        role: '대표 — AX 컨설팅 & 프로덕트',
+        period: '2026 – 현재',
+        highlights: true,
+        detail: '1인 AX 사업. 해운물류 기업의 AI 전환 프로젝트를 독립 수주해 리서치 → POC → control tower 배포까지 전 주기 수행. 판단 항해 제품 Argus를 4개 표면으로 혼자 출시.',
+      },
+      {
         org: 'SK On',
         role: '전략기획본부 매니저',
-        period: '2022 – 현재',
-        detail: '한국 대표 EV 배터리 기업의 전사 전략기획, 포트폴리오 최적화, 기업가치 평가. Pre-IPO 준비 지원. AI Frontier 대표 선정 — SK그룹 사내 AI 리더십 코호트.',
+        period: '2022 – 2026',
+        detail: '한국 대표 EV 배터리 기업의 전사 전략기획, 포트폴리오 최적화, 기업가치 평가. Pre-IPO 준비 지원. AI Frontier 대표 선정 — SK그룹 사내 AI 리더십 코호트. STRIX 구축 — 사내 방송·mySUNI 소개.',
       },
       {
         org: 'Brain Music Lab',
@@ -141,7 +155,7 @@ export default function Background() {
             <div className="mt-8 pt-6 border-t border-stone-200/60">
               <h3 className="text-[13px] font-semibold text-stone-900 uppercase tracking-[0.1em] mb-3">{c.skillsTitle}</h3>
               <div className="flex flex-wrap gap-1.5">
-                {['Claude API', 'RAG Systems', 'pgvector', 'Python', 'SQL', 'VBA',
+                {['Claude API', 'MCP Servers', 'Multi-Agent Systems', 'RAG Systems', 'pgvector', 'Python', 'SQL', 'VBA',
                   lang === 'en' ? 'Korean (Native)' : '한국어 (모국어)',
                   lang === 'en' ? 'English (Fluent — Military interpreter)' : '영어 (유창 — 군 통역 수준)',
                 ].map((skill) => (

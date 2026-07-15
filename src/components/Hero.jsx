@@ -4,24 +4,24 @@ import { useLang } from '../LangContext'
 
 const t = {
   en: {
-    credential: 'Seoul National University · SK On Strategy · Enterprise AI Adoption',
+    credential: 'Founder, Praxis · ex-SK On Strategy · Seoul National University',
     anchor: 'I know how Korean enterprises adopt AI, because I was the one adopting it.',
     statement: `At SK On, I built STRIX — the Claude-powered RAG that reached 1,000+ employees through SK Group's mySUNI and ran daily in our 30-person strategy division. Security review, executive buy-in, cross-department rollout — I drove all of it.`,
     context: 'Before SK On: co-founded a B2B healthcare startup, sold neuroscience-based subscriptions to hospital directors.',
     stats: [
       { num: '4 yrs', label: 'Enterprise strategy' },
-      { num: '3', label: 'Products shipped' },
+      { num: '5', label: 'Products shipped' },
       { num: 'KR/EN', label: 'Bilingual · Military interpreter' },
     ],
   },
   kr: {
-    credential: '서울대학교 · SK On 전략기획 · 엔터프라이즈 AI 도입',
+    credential: 'Praxis 대표 · ex-SK On 전략기획 · 서울대학교',
     anchor: '한국 기업이 AI를 도입하는 과정을 안에서 경험한 사람입니다.',
     statement: 'SK On에서 STRIX를 만들었습니다 — SK그룹 mySUNI로 1,000명+에게 노출되고, 전략기획본부 30명이 매일 사용한 Claude 기반 RAG. 보안 심사, 경영진 설득, 전사 확산까지 제가 직접 통과시켰습니다.',
     context: 'SK On 이전: B2B 헬스케어 스타트업을 공동 창업해 뇌과학 기반 구독 서비스를 병원장에게 직접 영업.',
     stats: [
       { num: '4년', label: '엔터프라이즈 전략' },
-      { num: '3개', label: '제품 출시' },
+      { num: '5개', label: '제품 출시' },
       { num: 'KR/EN', label: '이중 언어 · 군 통역' },
     ],
   },
