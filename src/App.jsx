@@ -23,7 +23,7 @@ const caseId =
 function Page() {
   const { lang } = useLang();
   useEffect(() => {
-    document.title = `${caseId ? `${caseId.toUpperCase()} / ` : ""}${lang === "kr" ? "이예찬 | AX 사업과 제품을 만듭니다" : "Yaechan Lee | AX leadership & building"}`;
+    document.title = `${caseId ? `${caseId.toUpperCase()} / ` : ""}${lang === "kr" ? "이예찬 | AI 사업과 제품 개발" : "Yaechan Lee | AI ventures & product development"}`;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical)
       canonical.href = `https://yclee.today${caseId ? `/case-study/${caseId}` : "/"}`;

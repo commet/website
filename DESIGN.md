@@ -1,203 +1,245 @@
 ---
 name: Yaechan Lee
-description: An editorial record of work, evidence, and collaboration.
+description: A technical product portfolio built around actual interfaces and concrete design decisions.
 colors:
-  paper: "#f7f6f2"
-  ink: "#242a28"
-  muted: "#656b65"
-  line: "#d5d9cf"
-  accent: "#9c3f27"
-  tint: "#eceee6"
-  dark: "#26352e"
-  dark-text: "#f1f2e8"
-  dark-muted: "#c5cec3"
-  dark-line: "#81917f"
-  dark-action: "#e6ecd7"
-  evidence-ground: "#e3e8e9"
+  paper: "#fcfcfc"
+  ink: "#18202b"
+  muted: "#586372"
+  line: "#dce1e7"
+  accent: "#2255d9"
+  tint: "#f0f3f7"
+  dark: "#151c28"
 typography:
   display:
-    fontFamily: "Instrument Serif, serif"
-    fontWeight: 400
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "clamp(34px, 3.5vw, 52px)"
+    fontWeight: 650
+    lineHeight: 1.32
+    letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Pretendard, sans-serif"
-    fontWeight: 500
-    lineHeight: 1.5
-    letterSpacing: "-0.02em"
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "32px"
+    fontWeight: 600
+    letterSpacing: "-0.035em"
+  title:
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "24px"
+    fontWeight: 650
+    letterSpacing: "-0.035em"
   body:
-    fontFamily: "Pretendard, sans-serif"
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "16px"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.8
   label:
-    fontFamily: "Pretendard, sans-serif"
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "12px"
     fontWeight: 400
   text-link:
-    fontFamily: "Pretendard, sans-serif"
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "14px"
-    fontWeight: 550
+    fontWeight: 600
+    lineHeight: 1.6
 rounded:
   square: "0"
-  circle: "50%"
 spacing:
-  compact: "12px"
-  inline: "20px"
-  section: "35px"
-  spread: "80px"
+  compact: "8px"
+  inline: "12px"
+  inset: "16px"
+  group: "24px"
+  block: "32px"
+  section: "48px"
+  spread: "64px"
+  major: "96px"
 components:
   text-link:
-    textColor: "{colors.ink}"
-    typography: "{typography.text-link}"
-    padding: "0 0 6px"
-  text-link-hover:
     textColor: "{colors.accent}"
+    typography: "{typography.text-link}"
+    padding: "8px 0"
   language-button:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.circle}"
-    width: "42px"
-    height: "42px"
+    rounded: "{rounded.square}"
+    height: "36px"
   language-button-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-  evidence-tab:
+    textColor: "{colors.accent}"
+  scenario-tab:
     backgroundColor: "transparent"
-    textColor: "{colors.muted}"
-    padding: "6px 0"
-  evidence-tab-selected:
-    textColor: "{colors.ink}"
+    textColor: "#bfcbda"
+    padding: "10px 16px"
+    rounded: "{rounded.square}"
+  scenario-tab-selected:
+    backgroundColor: "#e9efff"
+    textColor: "#183c91"
   event-link:
-    backgroundColor: "{colors.dark-action}"
-    textColor: "{colors.dark}"
+    backgroundColor: "{colors.accent}"
+    textColor: "#ffffff"
+    padding: "13px 16px"
     rounded: "{rounded.square}"
-    padding: "15px 20px"
-  evidence-frame:
-    backgroundColor: "{colors.evidence-ground}"
+  event-link-hover:
+    backgroundColor: "#173fa8"
+    textColor: "#ffffff"
+  media-frame:
+    backgroundColor: "{colors.tint}"
+    padding: "24px"
     rounded: "{rounded.square}"
-    width: "100%"
+  viewer-action:
+    backgroundColor: "#273244"
+    textColor: "#ffffff"
+    padding: "10px 16px"
+    rounded: "{rounded.square}"
+  viewer-action-hover:
+    backgroundColor: "#3a4b67"
+    textColor: "#ffffff"
+  contact-action:
+    textColor: "#ffffff"
+    padding: "16px 0 10px"
 ---
 
 # Design System: Yaechan Lee
 
 ## Overview
 
-**Creative North Star: "The Editorial Work Record"**
+**Creative North Star: "The Technical Product Monograph"**
 
-A warm, restrained editorial world gives the work room to be examined. Book-serif names establish identity; Korean and English reading text stays in a quiet sans serif. Hairline divisions and broad margins organize the page without enclosing every thought in a card.
+A neutral technical portfolio makes actual software the visual material. Cool-white ground, ink headings, and cobalt actions hold together work with very different interfaces. Pretendard carries both Korean and English, from the role statement to compact project metadata.
 
-Real project imagery carries its own visual detail and color. The surrounding interface remains calm enough for captions, scope, and context to stay legible. A dark green field and a pale green field provide changes in reading pace within the same flat material language.
+Projects read as exhibits: a product name, subtitle, and context identify the work before its actual media and concrete explanation. Thin rules and open columns establish structure; dark product stages and the contact field provide contrast without introducing a separate identity.
 
 **Key Characteristics:**
-- Warm paper, charcoal ink, and a restrained rust accent.
-- Self-hosted serif identity paired with bilingual sans-serif reading text.
-- Square evidence panels, hairline divisions, and open column layouts.
-- Visible content, explicit links, and keyboard-readable control states.
+- Cool-white surfaces, dark ink, and cobalt interaction states.
+- One self-hosted bilingual sans serif with a controlled heading hierarchy.
+- Actual product captures, square frames, and visible contextual information.
+- Equal project and collaborator contact paths, with keyboard-accessible controls.
 
-Recorded from `src/index.css`, `src/components/Site.jsx`, `src/components/CaseStudy.jsx`, and `src/components/Notes.jsx` for `/`, `/case-study/fsk`, and `/case-study/strix`. Surface sequencing and product claims remain in `PRODUCT.md` and `.impeccable/direction.md`; they are not design tokens.
+Recorded from `src/index.css`, `src/components/Site.jsx`, `src/components/CaseStudy.jsx`, and `src/components/Notes.jsx`, including the final responsive overrides. This replaces the rejected bookish identity. Product claims and page strategy remain in `PRODUCT.md` and `.impeccable/direction.md`.
 
 ## Colors
 
-The palette combines warm neutral paper with green-charcoal structure and a single rust interaction accent.
+A single cobalt accent sits within a cool neutral palette. The frontmatter owns the exact shared colors; product screenshots retain their native palettes.
 
 ### Primary
 
-- **Rust (`accent`)** marks identity punctuation, the small role dot, selected evidence underlines, ordinary link hover, and focus on light surfaces.
+- **Cobalt (`accent`)** identifies text actions, ordinary hover states, the event action, event metadata, and the human-review step in the document workflow.
 
 ### Neutral
 
-- **Warm Paper (`paper`)** is the page ground.
-- **Charcoal Ink (`ink`)** carries headings, reading text, and strong hairlines.
-- **Muted Ink (`muted`)** carries supporting prose, captions, and metadata.
-- **Paper Rule (`line`)** divides sections and rows.
-- **Pale Green (`tint`)** provides a quiet full-width contact field.
-- **Forest Ink (`dark`)** provides the dark community field.
-- **Dark Text, Dark Muted, and Dark Rule** provide its separate foreground hierarchy.
-- **Dark Action** fills the event link and supplies the visible focus outline on the dark field.
-- **Evidence Ground** sits behind real screenshots, including contained images with spare space.
+- **Cool White (`paper`)** is the page ground and event surface.
+- **Technical Ink (`ink`)** carries headings, primary text, strong rules, and the identity mark.
+- **Muted Ink (`muted`)** carries supporting prose and metadata on light backgrounds.
+- **Cool Rule (`line`)** divides rows and frames light media.
+- **Pale Slate (`tint`)** grounds the community field, standard media frames, and quiet supporting containers.
+- **Deep Ink (`dark`)** grounds the contact field. The screenshot stage uses a closely related dark surface with its own light foregrounds and filled tab states.
 
-**The Quiet Frame Rule.** Keep the surrounding site palette restrained; colors inside genuine project evidence belong to that evidence and need not match the site accent.
+**The Evidence Frame Rule.** Keep site chrome neutral; color inside actual product captures belongs to the product and does not become a site token.
 
 ## Typography
 
-**Display Font:** Instrument Serif, with serif fallback.  
-**Body and Label Font:** Pretendard, with sans-serif fallback. Both primary fonts are self-hosted with swap loading.
+**Display, Body, and Label Font:** Pretendard, with Apple system and generic sans-serif fallbacks. The variable font is self-hosted with swap loading; no separate serif or monospace display family is used.
 
-The contrast is between bookish Latin identity and clear bilingual reading text. The scale is role-based rather than a mathematical progression. Font weights between regular and semibold use Pretendard's variable range.
+The hierarchy uses size and weight within one bilingual family. Large text is confident but compact, while paragraphs have generous leading. The scale follows content roles rather than a fixed mathematical ratio.
 
 ### Hierarchy
 
-- **Display:** the shared serif family and regular weight apply to identity and case names. The home name uses `clamp(70px, 8vw, 96px)` with a tight line-height of 0.9; case names use 96px with line-height 1.1. These are surface variants, not one universal display size.
-- **Headline:** reading headings generally occupy 26–40px, with medium weight and comfortable line-height. The hero statement uses weight 600 and line-height 1.45; case section headings use 29px and line-height 1.5.
-- **Title:** project titles use 31px and weight 550; prose subtitles use 20–21px with more leading. Writing titles use 19px, weight 450, and line-height 1.65.
-- **Body:** the frontmatter defines the base reading role. Supporting homepage prose often uses 15px; case prose uses 16px with line-height 1.9. Longer introduction copy is capped at 760px, and evidence descriptions at 560px.
-- **Label:** small supporting text is usually 12–14px. The system uses sentence case and normal tracking, with tabular numerals where dates or outcome figures need alignment.
+- **Display:** the frontmatter describes the main role statement. Case names use a larger variant (72px, weight 600, line-height 1.1), becoming 56px on mobile. The home statement becomes 38px at the intermediate breakpoint, a 28–42px clamp on mobile, and 54px at very wide widths.
+- **Headline:** section storytelling generally uses 25–34px and weights 550–650. Repeated major content headings use the frontmatter headline role; section labels are smaller (20px desktop, 18px mobile).
+- **Title:** product names use the frontmatter title role, becoming 20px on mobile. Writing titles use 19px, weight 550, line-height 1.5, becoming 16px on mobile.
+- **Body:** substantive explanations use the frontmatter body role and generally become 15px on mobile. Case introductions are larger (18px desktop, 16px mobile). Paragraph measures are constrained within columns; case introductions stop at 780px and project body copy at 550px. The hero context currently changes to 15px at the intermediate breakpoint.
+- **Label:** dates, captions, source labels, and context use 12–14px. Text actions use the frontmatter link role, becoming 13px on mobile. Scenario fact values are compact data (14px desktop, 13px mobile), distinct from ordinary explanatory paragraphs.
 
-**The Reading Language Rule.** Preserve word boundaries in Korean and explicit whitespace in English when headings reflow. Headings balance their lines; paragraphs can wrap long strings to prevent overflow.
+**The Reading Hierarchy Rule.** Use readable body text for explanations and compact labels for metadata. Preserve Korean word boundaries and English whitespace; keep heading tracking no tighter than -0.035em.
 
 ## Layout
 
-The main centered container has a 1280px maximum and 56px side gutters. At 1000px and below, gutters become 32px; at 700px and below, they become 20px. Content sections use generous vertical spacing and recurring 1px horizontal rules. Values are deliberately varied by content density rather than forced onto a single spacing multiple.
+A centered shell stops at 1280px, with 48px desktop gutters. Gutters become 32px at 1100px and below, and 20px at 760px and below. The sticky header is 88px tall on desktop and 72px on mobile. Scroll padding leaves room for the header. Section divisions use 1px rules; recurring spacing steps are recorded in the frontmatter, with content-specific 20px, 40px, 56px, and 80px adjustments present in the build.
 
-Desktop pairs a title or visual with adjacent explanatory copy. Home spreads commonly use equal columns, with 55–80px gaps; case copy uses a narrower heading column and a 100px gap. At 700px and below, these reading spreads become one column. Case metadata remains a compact label/value grid, and case metrics become individual horizontal label/value rows.
+Desktop uses an asymmetric two-column hero, full-width product exhibits, and title/copy spreads. DocAgent spans the full content width, with an enlarged source-review image followed by a two-column explanation and four-stage workflow. STRIX also spans the full width: its project header sits above a contained image on the left and copy on the right, with a 48px column gap. Project headers consistently place name and subtitle before media, with year and context aligned to the right. The Argus exhibit follows the same header pattern, then pairs its real screenshot with explanatory text. Case studies use a masthead, role/context definition list, anchored contents, ruled text sections, and full-width figures.
 
-Navigation stays visible on mobile. The header reduces from 106px to 78px, with tighter navigation spacing and a 34px language button. The home name becomes `clamp(60px, 16vw, 88px)` with line-height 1; case names become 76px. Supporting mobile body text generally uses 15px.
+At 760px and below, the hero, DocAgent explanation, STRIX image/copy spread, Argus, community, about, case copy, and contact pair stack. The four-stage workflow becomes a vertical ordered list. The event date becomes a horizontal row above the event content. Project context metadata and the About navigation link are hidden to preserve space. Writing rows keep thumbnail, title, and arrow while omitting the source column.
 
-Evidence spans the reading container. The interactive frame changes from aspect-ratio 2.336 on desktop to 1.58 on mobile while retaining `object-fit: contain`; captions keep a named full-image link. Case figures preserve their natural image ratio. Ordinary project preview imagery uses a 1.75 frame and can crop with `object-fit: cover`.
+Standard preview frames contain their images inside a 1.67 aspect ratio with 24px insets, reducing to 16px on mobile. The Argus frame uses 1.44. The lead FSK exhibit preserves the entire current Electrovaya interface at its native 1920 × 1080 ratio: left shipment status, central route map, right risk monitoring, and bottom voyage schedule remain visible together. This is the captured product’s composition, not a layout template for the portfolio. Its caption identifies the version and example data and offers enlargement. The DocAgent source-review capture is likewise full-width and uncropped at its native 2280 × 1280 ratio, with redaction and implementation scope stated alongside. Both use the shared evidence viewer. The schedule comparison follows the monitoring exhibit as an explicitly labeled earlier-version decision example; it preserves its native ratio and provides a separate full-image action. Evidence figures and the schedule stage extend 10px into mobile gutters. The schedule’s three-column fact list becomes stacked label/value rows on mobile. Case figures contain images without cropping and retain captions and full-image links.
 
 ## Elevation & Depth
 
-There are no box shadows, floating cards, gradients, or simulated material textures in the site chrome. Depth comes from alternating paper, pale green, and forest fields, from screenshot content, and from the distance between text and hairline dividers. Focus outlines are interaction affordances rather than elevation.
+The page is structurally flat: whitespace, thin rules, and alternating neutral fields provide separation. Actual media uses a restrained soft shadow, and the dark FSK stage carries a lighter ambient shadow. This is a technical exhibit surface, not a floating-card interface. Focus uses a blue 3px outline with 5px offset, including controls on dark surfaces.
 
-**The Flat Surface Rule.** Continue the page through spacing, rules, and tonal fields; keep evidence panels and editorial content flat.
+### Shadow Vocabulary
+
+- **Product stage:** `0 8px 28px #17243a0b` gives the large dark exhibit a slight lift.
+- **Contained media:** `0 4px 18px #17243a14` separates screenshots from their frame backgrounds.
+
+**The Media Depth Rule.** Keep page sections flat; reserve soft shadows for actual media and its stage.
 
 ## Shapes
 
-Rectangular image panels and filled action links have square corners. The circular language switch and tiny circular role indicator are functional exceptions to that rectangular field language. Underlines and thin strokes carry control state. Arrow icons are inline stroked SVGs, usually 20px, with smaller caption and index variants.
+Frames, event actions, language controls, identity marks, and tab groups have square corners. One-pixel strokes organize surfaces. The small circular scenario indicator is a status cue, not a rounded component language. Directional icons are inline stroked SVGs, normally 20px; compact captions and mobile rows use smaller variants.
 
 ## Components
 
-### Text links
+### Text actions
 
-Quiet, underlined actions are the common navigation primitive. The reusable text link pairs a medium-weight label with an SVG arrow and a hairline lower border. Hover turns the label rust. Focus uses a 2px rust outline with 5px offset; links in the dark field use the pale action color for their outline and a light warm hover color. Hero contact actions share the same visual weight with one another.
+Cobalt text and an inline arrow form the ordinary action. Hero actions are ink with a lower rule; both contact destinations have matching weight. Hover moves the arrow 3px over 180ms. Shared visible focus applies to links and buttons.
 
 ### Navigation and language control
 
-The masthead combines a serif wordmark, visible text links, and a circular outlined language button. The language button inverts to ink and paper on hover. It displays the destination language and has a full accessible label. A skip link appears on keyboard focus. No collapsed mobile menu or active-page pill is implemented.
+The sticky translucent cool-white masthead uses a square ink identity mark, a bilingual name, visible text navigation, and a square outlined language button. The language button displays the destination language and has a full accessible name. Hover changes text to cobalt. Mobile tightens spacing and hides only the About link. A skip link appears on keyboard focus.
 
-### Evidence viewer
+### Full-interface evidence viewer
 
-Two text tabs use a 2px rust underline and ink text for selection; inactive tabs remain muted. The selected tab is in the tab order, arrow keys switch tabs, and Home/End select the endpoints. Image, caption, headline, and description change together. The panel can receive keyboard focus. Selection is signaled by both color and the underline.
+A shared evidence-image component serves both the complete Electrovaya monitor and the redacted DocAgent source-review capture. Each image is an enlargement button with a zoom-in cursor and an accessible label. A separate visible caption action opens its native dialog, whose title has a unique ID so multiple exhibits remain independently labeled. The monitor retains its map and surrounding status, risk, and schedule panels; the document capture retains review fields and source evidence together. The caption and viewer note state example-data provenance or redaction and implementation scope as appropriate.
 
-The incoming image reveals through a short clip animation (380ms with the shared easing curve). Reduced-motion preference removes animation and smooth scrolling. Case pages repeat evidence as ordinary figures with full-image links; the screenshot is never the sole explanation of the work.
+The square dark dialog leaves 16px around the viewport, uses a dim deep-ink backdrop, and divides title/actions, image, and provenance note with fine rules. It opens in fit-to-screen mode; Original size uses that asset’s supplied intrinsic dimensions with scrollable panning, and Fit to screen restores containment. The toggle exposes its state with `aria-pressed`. The image region is keyboard-focusable. A named Close control and native Escape dismissal close the dialog; page scrolling is locked while it is open and restored afterward. Reopening resets to fit mode.
 
-### Editorial rows and project containers
+The toolbar uses bordered dark buttons with a lighter hover fill. Below the mobile breakpoint it wraps, reduces padding, and keeps the image and provenance note within the viewport. Shared focus styling applies to its controls and scroll region. This is an evidence-inspection component, not a generic modal family or a live embedded dashboard.
 
-Project previews are open articles, with imagery above the title and descriptive copy. Writing is a ruled list with thumbnail, title, source, and external arrow; the source column disappears on mobile. Neither pattern introduces a floating card shell. The Argus typographic panel is a working link with an accessible name and a subtle green hover change; its one-off product colors are not global palette tokens.
+### Scenario tabs and product stage
 
-### Dark-field action
+Two tabs sit inside a bordered dark group. Selection has a pale-blue fill and dark-blue text; inactive tabs have light muted text. Hover lightens the dark tab surface, while the selected tab becomes white. The selected tab alone is in the tab order; Left/Right, Home, and End change selection and focus. Each associated panel can receive focus and inactive panels are hidden.
 
-The event action is a full-width pale rectangle with dark text and a trailing arrow. Its hover becomes white; keyboard focus retains a light outline. The surrounding event information is organized by rules and a compact definition list. This filled treatment belongs to the dark field; ordinary page links remain textual.
+Switching tabs changes the actual screenshot, result, assigned sailing, arrival window, and reason together. The full-image action is named in visible text and accessible markup. Example-data labeling sits beside the controls. The screenshot change itself is immediate; no clip reveal or entrance animation is implemented.
 
-### Contact pair and case details
+### Project exhibits and figures
 
-Project and collaboration contact options have matching hierarchy, rules, text size, and email action styling. They sit side by side on desktop and stack on mobile. Case pages use definition lists for responsibility/context and for distinctly labeled figures; captions and implementation scope remain ordinary text. No input, form, chip, modal, or generic card component is implemented.
+Project names, subtitles, and context precede actual media and concrete body text. Light frames contain screenshots and add a slight image shadow; linked previews move their image upward 3px over 250ms on hover. Case figures keep caption and full-image link adjacent. Argus uses an actual homepage capture and links to the language-specific product destination.
+
+### Document workflow
+
+An ordered list explains receive → extract and code match → human review → order integration below the actual source-review image. It is explanatory content, not a simulated product interface. Four equal desktop columns use thin vertical separators and inline SVG arrows; the human-review title and supporting operator-judgment label use cobalt. A nearby status identifies implementation and validation scope.
+
+At the mobile breakpoint, the stages stack with horizontal separators and downward arrows. Stage titles are 16px semibold; supporting status labels are 12px. Step explanations and the primary DocAgent explanation use 16px desktop and 15px mobile.
+
+### Event panel and filled action
+
+A square bordered white panel sits in the pale community field. Date and event content form columns on desktop and stack on mobile. The cobalt full-width action has white text and a trailing arrow; hover darkens the fill. Event status is supporting information below the event title, not a reusable eyebrow style.
+
+### Writing rows
+
+A ruled list pairs a thumbnail with a medium-weight title, source, and external arrow. The full row is a link with shared hover and focus treatments. Mobile preserves the title and arrow while reducing the thumbnail and omitting the source.
+
+### Contact pair
+
+Two options share heading size, copy measure, spacing, and underlined actions inside a deep-ink field. They sit in equal columns and stack on mobile with a separating rule. Light text, muted blue-gray prose, and pale-blue hover states retain contrast. The general email and booking route remain available alongside both paths.
+
+Reduced-motion preference disables transitions, animations, and smooth scrolling. The evidence viewer is the implemented native dialog. No input, general-purpose modal, filter-chip, or generic rounded-card component family exists.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** pair real evidence with readable captions, context, and a named full-image link.
-- **Do** use serif identity and sans-serif bilingual reading text for their established roles.
-- **Do** retain visible keyboard focus, selected-tab underlines, and reduced-motion behavior.
-- **Do** let desktop spreads collapse into a single reading column while preserving whitespace between words.
-- **Do** keep the two contact paths equal in hierarchy and visual weight.
+- **Do** identify each project with its name, subtitle, and context before its media and explanation.
+- **Do** pair actual product evidence with readable context and a named enlargement action or full-image link where detailed inspection is needed.
+- **Do** preserve the complete monitoring interface and its surrounding information panels when presenting the system; let viewers inspect it in fit and original-size modes.
+- **Do** distinguish actual interface captures from explanatory workflow diagrams, and keep evidence scope visible in captions and viewer notes.
+- **Do** use Pretendard across Korean and English, with explanatory body text at 16px desktop and 15px mobile.
+- **Do** retain visible focus, filled selected-tab states, keyboard tab navigation, and reduced-motion support.
+- **Do** keep business inquiries and collaborator contact paths equal in hierarchy and action styling.
 
 ### Don't:
 
-- **Don't** add floating card shells, shadows, or rounded screenshot panels to the flat editorial world.
-- **Don't** make screenshot text carry information that must be read in surrounding prose.
-- **Don't** promote one project's illustration colors or bespoke display size into the shared token system.
-- **Don't** invent an input, chip, modal, or button family that the build does not implement.
+- **Don't** restore the rejected serif identity, warm paper palette, or ornamental bookish framing.
+- **Don't** replace actual product evidence with invented interface illustrations or decorative typographic mockups.
+- **Don't** make small text embedded in screenshots the only source of an important explanation.
+- **Don't** turn one product's colors or a compact metadata size into a default for the whole site.
+- **Don't** add a rounded card, input, chip, or general-purpose modal family that the build does not implement.
 
-Not canonized: one-off Argus panel colors, event display sizing, scrollbar/selection colors, and 10–11px ancillary copy are observed details, not reusable system defaults. The small ancillary sizes must not become the default for new reading content.
+Not canonized: one-off product-frame colors, event date sizing, compact scenario fact values, and the intermediate-width 15px hero context are implementation details rather than reusable body defaults. The letterform identity marks are brand identifiers, not permission to use glyphs as interface icons. The viewer uses a named Close action without a decorative glyph; use inline SVG for future icons. No decorative kicker treatment is defined.

@@ -1,324 +1,302 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T02:55:10.933779+00:00",
+  "generatedAt": "2026-11-02T04:45:12.869597+00:00",
   "title": "Design System: Yaechan Lee",
   "extensions": {
     "colorMeta": {
       "paper": {
         "role": "neutral",
-        "displayName": "Warm Paper",
+        "displayName": "Cool White",
         "tonalRamp": [
-          "oklch(15.0% 0.0054 95.1)",
-          "oklch(26.4% 0.0054 95.1)",
-          "oklch(37.9% 0.0054 95.1)",
-          "oklch(49.3% 0.0054 95.1)",
-          "oklch(60.7% 0.0054 95.1)",
-          "oklch(72.1% 0.0054 95.1)",
-          "oklch(83.6% 0.0054 95.1)",
-          "oklch(95.0% 0.0054 95.1)"
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Charcoal Ink",
+        "displayName": "Technical Ink",
         "tonalRamp": [
-          "oklch(15.0% 0.0092 173.6)",
-          "oklch(26.4% 0.0092 173.6)",
-          "oklch(37.9% 0.0092 173.6)",
-          "oklch(49.3% 0.0092 173.6)",
-          "oklch(60.7% 0.0092 173.6)",
-          "oklch(72.1% 0.0092 173.6)",
-          "oklch(83.6% 0.0092 173.6)",
-          "oklch(95.0% 0.0092 173.6)"
+          "oklch(15% 0.025 255)",
+          "oklch(25% 0.025 255)",
+          "oklch(35% 0.025 255)",
+          "oklch(45% 0.025 255)",
+          "oklch(55% 0.025 255)",
+          "oklch(65% 0.025 255)",
+          "oklch(80% 0.025 255)",
+          "oklch(95% 0.025 255)"
         ]
       },
       "muted": {
         "role": "neutral",
         "displayName": "Muted Ink",
         "tonalRamp": [
-          "oklch(15.0% 0.0118 145.4)",
-          "oklch(26.4% 0.0118 145.4)",
-          "oklch(37.9% 0.0118 145.4)",
-          "oklch(49.3% 0.0118 145.4)",
-          "oklch(60.7% 0.0118 145.4)",
-          "oklch(72.1% 0.0118 145.4)",
-          "oklch(83.6% 0.0118 145.4)",
-          "oklch(95.0% 0.0118 145.4)"
+          "oklch(15% 0.025 255)",
+          "oklch(25% 0.025 255)",
+          "oklch(35% 0.025 255)",
+          "oklch(45% 0.025 255)",
+          "oklch(55% 0.025 255)",
+          "oklch(65% 0.025 255)",
+          "oklch(80% 0.025 255)",
+          "oklch(95% 0.025 255)"
         ]
       },
       "line": {
         "role": "neutral",
-        "displayName": "Paper Rule",
+        "displayName": "Cool Rule",
         "tonalRamp": [
-          "oklch(15.0% 0.0142 124.6)",
-          "oklch(26.4% 0.0142 124.6)",
-          "oklch(37.9% 0.0142 124.6)",
-          "oklch(49.3% 0.0142 124.6)",
-          "oklch(60.7% 0.0142 124.6)",
-          "oklch(72.1% 0.0142 124.6)",
-          "oklch(83.6% 0.0142 124.6)",
-          "oklch(95.0% 0.0142 124.6)"
+          "oklch(15% 0.01 255)",
+          "oklch(25% 0.01 255)",
+          "oklch(35% 0.01 255)",
+          "oklch(45% 0.01 255)",
+          "oklch(55% 0.01 255)",
+          "oklch(65% 0.01 255)",
+          "oklch(80% 0.01 255)",
+          "oklch(95% 0.01 255)"
         ]
       },
       "accent": {
         "role": "primary",
-        "displayName": "Rust",
+        "displayName": "Cobalt",
         "tonalRamp": [
-          "oklch(15.0% 0.1300 35.5)",
-          "oklch(26.4% 0.1300 35.5)",
-          "oklch(37.9% 0.1300 35.5)",
-          "oklch(49.3% 0.1300 35.5)",
-          "oklch(60.7% 0.1300 35.5)",
-          "oklch(72.1% 0.1300 35.5)",
-          "oklch(83.6% 0.1300 35.5)",
-          "oklch(95.0% 0.1300 35.5)"
+          "oklch(15% 0.2 264)",
+          "oklch(25% 0.2 264)",
+          "oklch(35% 0.2 264)",
+          "oklch(45% 0.2 264)",
+          "oklch(55% 0.2 264)",
+          "oklch(65% 0.2 264)",
+          "oklch(80% 0.2 264)",
+          "oklch(95% 0.2 264)"
         ]
       },
       "tint": {
         "role": "neutral",
-        "displayName": "Pale Green",
+        "displayName": "Pale Slate",
         "tonalRamp": [
-          "oklch(15.0% 0.0108 118.0)",
-          "oklch(26.4% 0.0108 118.0)",
-          "oklch(37.9% 0.0108 118.0)",
-          "oklch(49.3% 0.0108 118.0)",
-          "oklch(60.7% 0.0108 118.0)",
-          "oklch(72.1% 0.0108 118.0)",
-          "oklch(83.6% 0.0108 118.0)",
-          "oklch(95.0% 0.0108 118.0)"
+          "oklch(15% 0.012 255)",
+          "oklch(25% 0.012 255)",
+          "oklch(35% 0.012 255)",
+          "oklch(45% 0.012 255)",
+          "oklch(55% 0.012 255)",
+          "oklch(65% 0.012 255)",
+          "oklch(80% 0.012 255)",
+          "oklch(95% 0.012 255)"
         ]
       },
       "dark": {
         "role": "neutral",
-        "displayName": "Forest Ink",
+        "displayName": "Deep Ink",
         "tonalRamp": [
-          "oklch(15.0% 0.0235 164.7)",
-          "oklch(26.4% 0.0235 164.7)",
-          "oklch(37.9% 0.0235 164.7)",
-          "oklch(49.3% 0.0235 164.7)",
-          "oklch(60.7% 0.0235 164.7)",
-          "oklch(72.1% 0.0235 164.7)",
-          "oklch(83.6% 0.0235 164.7)",
-          "oklch(95.0% 0.0235 164.7)"
-        ]
-      },
-      "dark-text": {
-        "role": "neutral",
-        "displayName": "Dark Text",
-        "tonalRamp": [
-          "oklch(15.0% 0.0133 111.3)",
-          "oklch(26.4% 0.0133 111.3)",
-          "oklch(37.9% 0.0133 111.3)",
-          "oklch(49.3% 0.0133 111.3)",
-          "oklch(60.7% 0.0133 111.3)",
-          "oklch(72.1% 0.0133 111.3)",
-          "oklch(83.6% 0.0133 111.3)",
-          "oklch(95.0% 0.0133 111.3)"
-        ]
-      },
-      "dark-muted": {
-        "role": "neutral",
-        "displayName": "Dark Muted",
-        "tonalRamp": [
-          "oklch(15.0% 0.0180 140.0)",
-          "oklch(26.4% 0.0180 140.0)",
-          "oklch(37.9% 0.0180 140.0)",
-          "oklch(49.3% 0.0180 140.0)",
-          "oklch(60.7% 0.0180 140.0)",
-          "oklch(72.1% 0.0180 140.0)",
-          "oklch(83.6% 0.0180 140.0)",
-          "oklch(95.0% 0.0180 140.0)"
-        ]
-      },
-      "dark-line": {
-        "role": "neutral",
-        "displayName": "Dark Rule",
-        "tonalRamp": [
-          "oklch(15.0% 0.0322 142.1)",
-          "oklch(26.4% 0.0322 142.1)",
-          "oklch(37.9% 0.0322 142.1)",
-          "oklch(49.3% 0.0322 142.1)",
-          "oklch(60.7% 0.0322 142.1)",
-          "oklch(72.1% 0.0322 142.1)",
-          "oklch(83.6% 0.0322 142.1)",
-          "oklch(95.0% 0.0322 142.1)"
-        ]
-      },
-      "dark-action": {
-        "role": "neutral",
-        "displayName": "Dark Action",
-        "tonalRamp": [
-          "oklch(15.0% 0.0286 119.9)",
-          "oklch(26.4% 0.0286 119.9)",
-          "oklch(37.9% 0.0286 119.9)",
-          "oklch(49.3% 0.0286 119.9)",
-          "oklch(60.7% 0.0286 119.9)",
-          "oklch(72.1% 0.0286 119.9)",
-          "oklch(83.6% 0.0286 119.9)",
-          "oklch(95.0% 0.0286 119.9)"
-        ]
-      },
-      "evidence-ground": {
-        "role": "neutral",
-        "displayName": "Evidence Ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.0056 211.0)",
-          "oklch(26.4% 0.0056 211.0)",
-          "oklch(37.9% 0.0056 211.0)",
-          "oklch(49.3% 0.0056 211.0)",
-          "oklch(60.7% 0.0056 211.0)",
-          "oklch(72.1% 0.0056 211.0)",
-          "oklch(83.6% 0.0056 211.0)",
-          "oklch(95.0% 0.0056 211.0)"
+          "oklch(15% 0.03 260)",
+          "oklch(25% 0.03 260)",
+          "oklch(35% 0.03 260)",
+          "oklch(45% 0.03 260)",
+          "oklch(55% 0.03 260)",
+          "oklch(65% 0.03 260)",
+          "oklch(80% 0.03 260)",
+          "oklch(95% 0.03 260)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Serif identity",
-        "purpose": "Person, wordmark, and case names; size varies by surface."
-      },
-      "headline": {
-        "displayName": "Reading headline",
-        "purpose": "Section and case headings."
+        "displayName": "Role statement",
+        "purpose": "Compact bilingual home headline; case names use a larger surface variant."
       },
       "body": {
-        "displayName": "Bilingual body",
-        "purpose": "Korean and English explanatory prose."
-      },
-      "label": {
-        "displayName": "Supporting label",
-        "purpose": "Metadata and captions."
-      },
-      "text-link": {
-        "displayName": "Editorial action",
-        "purpose": "Reusable underlined links."
+        "displayName": "Explanatory body",
+        "purpose": "Readable product and design-decision prose."
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "product-stage",
+        "value": "0 8px 28px #17243a0b",
+        "purpose": "Subtle lift beneath the dark product stage."
+      },
+      {
+        "name": "contained-media",
+        "value": "0 4px 18px #17243a14",
+        "purpose": "Separate screenshots from light frames."
+      }
+    ],
     "motion": [
       {
-        "name": "ease",
-        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "The evidence-image reveal."
+        "name": "arrow-hover",
+        "value": "transform 0.18s ease",
+        "purpose": "Move action arrows 3px right on hover."
       },
       {
-        "name": "frame-reveal",
-        "value": "380ms",
-        "purpose": "Clip inset moves from 0 0 5% 0 to 0 on evidence change."
-      },
-      {
-        "name": "view-transition",
-        "value": "180ms",
-        "purpose": "Root view-transition pseudo-elements, when a transition is invoked."
+        "name": "media-hover",
+        "value": "transform 0.25s ease",
+        "purpose": "Move linked preview imagery 3px upward on hover."
       },
       {
         "name": "reduced-motion",
-        "value": "none",
-        "purpose": "Remove animations and transitions; switch smooth scrolling to auto."
+        "value": "transition: none; animation: none; scroll-behavior: auto",
+        "purpose": "Remove motion when the user requests it."
       }
     ],
     "breakpoints": [
       {
-        "name": "compact-desktop",
-        "value": "1000px"
-      },
-      {
-        "name": "single-column",
-        "value": "700px"
-      },
-      {
         "name": "wide",
         "value": "1600px"
+      },
+      {
+        "name": "intermediate",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
       }
-    ]
+    ],
+    "focus": {
+      "outline": "3px solid #4778f5",
+      "outlineOffset": "5px"
+    },
+    "tonalRampNote": "Preview ramps are synthesized in OKLCH for the panel; they are not additional implementation tokens.",
+    "evidenceViewer": {
+      "element": "dialog",
+      "opening": "showModal(); reset to fit mode; lock page scroll",
+      "dismissal": "Named Close action or native Escape; restore page scroll",
+      "width": "calc(100vw - 32px)",
+      "height": "calc(100vh - 32px)",
+      "background": "#111722",
+      "border": "1px solid #465164",
+      "backdrop": "#0b111dec",
+      "fit": "Contain the complete image in the available image region",
+      "originalSize": "Use each asset’s supplied intrinsic dimensions; current monitor 1920px × 1080px, current source-review capture 2280px × 1280px; overflow scrolling; focusable image region",
+      "toggleState": "aria-pressed",
+      "provenance": "Example-data provenance for the monitor; redaction and implementation/validation scope for document review. Visible in each caption and dialog footer.",
+      "composition": "Preserve each entire interface. Current monitor has left shipment status, central map, right segment monitoring and bottom voyage schedule. Document review keeps fields and original source together. Earlier-version schedule comparison remains a separate labeled example.",
+      "identity": "One shared EvidenceImage component; independent native dialog title IDs generated with useId",
+      "assets": [
+        {
+          "src": "/images/work/electrovaya-full.png",
+          "width": 1920,
+          "height": 1080,
+          "purpose": "Actual Electrovaya v1.2.0 interface with explicitly labeled example data"
+        },
+        {
+          "src": "/images/fsk/document-review.webp",
+          "width": 2280,
+          "height": 1280,
+          "purpose": "Redacted actual source-review implementation example"
+        }
+      ]
+    }
   },
   "components": [
     {
-      "name": "Text link",
+      "name": "Text action",
       "kind": "button",
       "refersTo": "text-link",
-      "description": "The reusable underlined editorial action.",
-      "html": "<a class=\"ds-text-link\" href=\"/case-study/fsk\">Explore the FSK work<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
-      "css": ".ds-text-link{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:inline-flex;align-items:center;gap:13px;font-size:14px;font-weight:550;border-bottom:1px solid var(--line,#d5d9cf);padding-bottom:6px;text-decoration:none}.ds-text-link:hover{color:var(--accent,#9c3f27)}.ds-text-link:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}"
+      "description": "Ordinary cobalt action with a directional SVG.",
+      "html": "<a class=\"ds-text-link\" href=\"#work\">View the project<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-text-link{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:inline-flex;align-items:center;gap:12px;color:var(--accent,#2255d9);font-size:14px;font-weight:600;line-height:1.6;padding:8px 0;text-decoration:none}.ds-text-link svg{transition:transform .18s ease}.ds-text-link:hover svg{transform:translateX(3px)}.ds-text-link:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-text-link svg{transition:none}}"
     },
     {
-      "name": "Language button",
+      "name": "Language control",
       "kind": "button",
       "refersTo": "language-button",
-      "description": "Circular destination-language control; the application supplies switching behavior.",
+      "description": "Square outlined destination-language control.",
       "html": "<button class=\"ds-language\" aria-label=\"Switch to English\">EN</button>",
-      "css": ".ds-language{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;width:42px;height:42px;border:1px solid var(--line,#d5d9cf);background:transparent;border-radius:50%;font-size:12px;cursor:pointer}.ds-language:hover{background:var(--ink,#242a28);border-color:var(--ink,#242a28);color:var(--paper,#f7f6f2)}.ds-language:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-language{width:34px;height:34px;font-size:11px}}"
+      "css": ".ds-language{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;height:36px;min-width:42px;background:transparent;border:1px solid var(--line,#dce1e7);border-radius:0;color:var(--ink,#18202b);font-size:12px;font-weight:650;cursor:pointer}.ds-language:hover{color:var(--accent,#2255d9)}.ds-language:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
     },
     {
-      "name": "Visible masthead navigation",
-      "kind": "nav",
-      "description": "Text navigation remains visible at narrow widths.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"/#work\">Work</a><a href=\"/#community\">Community</a><a href=\"/#contact\">Contact</a></nav>",
-      "css": ".ds-nav{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;align-items:center;gap:32px;font-size:14px}.ds-nav a{color:inherit;text-decoration:none;padding-block:10px}.ds-nav a:hover{color:var(--accent,#9c3f27)}.ds-nav a:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-nav{gap:18px;font-size:12px}}"
-    },
-    {
-      "name": "Evidence tabs",
+      "name": "Scenario tabs",
       "kind": "custom",
-      "refersTo": "evidence-tab",
-      "description": "Selected and unselected tab appearance. Application logic supplies panel changes, arrow keys, and roving tabindex.",
-      "html": "<div class=\"ds-evidence-tabs\" role=\"tablist\" aria-label=\"FSK project views\"><button role=\"tab\" aria-selected=\"true\" tabindex=\"0\">Logistics visibility</button><button role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Document review</button></div>",
-      "css": ".ds-evidence-tabs{display:flex;gap:26px;margin-bottom:16px}.ds-evidence-tabs button{font-family:Pretendard,sans-serif;font-size:13px;line-height:1.75;padding:6px 0;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted,#656b65);cursor:pointer}.ds-evidence-tabs button[aria-selected=\"true\"]{color:var(--ink,#242a28);border-bottom-color:var(--accent,#9c3f27)}.ds-evidence-tabs button:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}"
+      "refersTo": "scenario-tab",
+      "description": "Dark tab group with a pale filled selected state; the application supplies selection and keyboard behavior.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"Release-delay scenarios\"><button role=\"tab\" aria-selected=\"true\">Baseline plan</button><button role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Release delayed 3 days</button></div>",
+      "css": ".ds-tabs{display:inline-flex;padding:3px;border:1px solid #465164;background:#111722;gap:3px}.ds-tabs button{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;border:0;border-radius:0;background:transparent;padding:10px 16px;color:#bfcbda;font-size:13px;font-weight:550;cursor:pointer}.ds-tabs button[aria-selected=\"true\"]{background:#e9efff;color:#183c91}.ds-tabs button:hover{background:#293649;color:#fff}.ds-tabs button[aria-selected=\"true\"]:hover{background:#fff;color:#183c91}.ds-tabs button:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
     },
     {
-      "name": "Dark-field event action",
+      "name": "Filled event action",
       "kind": "button",
       "refersTo": "event-link",
-      "description": "Square pale action on the dark community field.",
-      "html": "<div class=\"ds-dark-field\"><a class=\"ds-event-link\" href=\"https://fdethon.beyonddeploy.kr/\" target=\"_blank\" rel=\"noopener noreferrer\">FDEthon event details<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></div>",
-      "css": ".ds-dark-field{background:var(--dark,#26352e);padding:20px}.ds-event-link{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;justify-content:space-between;align-items:center;background:#e6ecd7;color:var(--dark,#26352e);padding:15px 20px;font-size:14px;text-decoration:none}.ds-event-link:hover{background:white;color:var(--dark,#26352e)}.ds-event-link:focus-visible{outline:2px solid #e6ecd7;outline-offset:5px}"
+      "description": "Full-width cobalt event action on a light panel.",
+      "html": "<a class=\"ds-event-link\" href=\"#event\">View event details<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-event-link{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;background:var(--accent,#2255d9);color:white;font-size:13px;font-weight:550;text-decoration:none}.ds-event-link:hover{background:#173fa8;color:white}.ds-event-link:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Visible text links share the compact sans-serif hierarchy.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#work\">Work</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:32px;color:var(--ink,#18202b);font-size:14px;font-weight:550}.ds-nav a{padding:14px 0;text-decoration:none;color:inherit}.ds-nav a:hover{color:var(--accent,#2255d9)}.ds-nav a:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}@media(max-width:760px){.ds-nav{gap:16px;font-size:12px}.ds-nav a:nth-child(2){display:none}}"
     },
     {
       "name": "Contact action",
+      "kind": "button",
+      "refersTo": "contact-action",
+      "description": "Matching underlined actions for both contact paths on a deep-ink field.",
+      "html": "<div class=\"ds-contact\"><a class=\"ds-contact-action\" href=\"mailto:hello@example.com\">Discuss a project<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-contact{background:var(--dark,#151c28);padding:24px}.ds-contact-action{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:inline-flex;align-items:center;gap:40px;border-bottom:1px solid #778398;font-size:14px;padding:16px 0 10px;margin-top:12px;color:white;text-decoration:none}.ds-contact-action:hover{color:#a9c2ff}.ds-contact-action:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
+    },
+    {
+      "name": "Evidence viewer toolbar",
       "kind": "custom",
-      "description": "Matching ruled email action used for each of the two contact intents.",
-      "html": "<a class=\"ds-contact-action\" href=\"mailto:yclee913@gmail.com\">Email about a project<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
-      "css": ".ds-contact-action{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #bcc5b4;padding-block:27px 16px;font-size:14px;font-weight:550;text-decoration:none}.ds-contact-action:hover{color:var(--accent,#9c3f27)}.ds-contact-action:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-contact-action{padding-top:21px}}"
+      "refersTo": "viewer-action",
+      "description": "Shared control row for monitor and document-review native dialogs. Preview shows appearance; application behavior supplies per-asset fit/original-size switching, scroll lock, Close, and Escape dismissal.",
+      "html": "<div class=\"ds-viewer-toolbar\"><h2>Electrovaya route monitoring — full interface</h2><div><button aria-pressed=\"false\">Original size</button><button>Close</button></div></div>",
+      "css": ".ds-viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 24px;background:#111722;color:#fff;border-bottom:1px solid #3e4652;font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif}.ds-viewer-toolbar h2{font-size:16px;font-weight:550;margin:0}.ds-viewer-toolbar>div{display:flex;gap:12px}.ds-viewer-toolbar button{font:inherit;background:#273244;color:#fff;padding:10px 16px;border:1px solid #53617a;border-radius:0;font-size:13px;cursor:pointer}.ds-viewer-toolbar button:hover{background:#3a4b67}.ds-viewer-toolbar button:focus-visible{outline:3px solid #4778f5;outline-offset:5px}@media(max-width:760px){.ds-viewer-toolbar{padding:12px;flex-wrap:wrap;gap:12px}.ds-viewer-toolbar h2{font-size:14px}.ds-viewer-toolbar button{font-size:12px;padding:10px 12px}}"
+    },
+    {
+      "name": "Document workflow explanation",
+      "kind": "custom",
+      "description": "Four-stage explanatory ordered list beneath real document evidence, with human review in cobalt. This is prose, not product UI.",
+      "html": "<section class=\"ds-workflow\"><div class=\"ds-workflow-heading\"><h4>From one email to an order</h4><span>Workflow / Implementation and validation</span></div><ol><li><div><strong>Receive</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Group the email and attachments by customer and shipment type.</p></li><li><div><strong>Extract and match</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Read the documents and match company, airport, and port codes.</p></li><li class=\"ds-human-review\"><div><strong>Review and approve</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Flag discrepancies and missing values for operator correction and approval.</p><span>Operator judgment</span></li><li><div><strong>Check and integrate</strong></div><p>Check existing orders, then connect approved values to KEROL.</p></li></ol></section>",
+      "css": ".ds-workflow{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink,#18202b);padding:28px 0;border-block:1px solid var(--line,#dce1e7)}.ds-workflow-heading{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin-bottom:28px}.ds-workflow-heading h4{font-size:21px;margin:0}.ds-workflow-heading>span{color:var(--muted,#586372);font-size:12px}.ds-workflow ol{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;padding:0;margin:0}.ds-workflow li{padding:0 24px;border-left:1px solid var(--line,#dce1e7)}.ds-workflow li:first-child{padding-left:0;border:0}.ds-workflow li:last-child{padding-right:0}.ds-workflow li>div{display:flex;align-items:center;justify-content:space-between;gap:12px}.ds-workflow strong{font-size:16px;font-weight:600}.ds-workflow svg{flex-shrink:0;color:var(--muted,#586372);width:16px}.ds-workflow li p{margin:12px 0 0;color:var(--muted,#586372);font-size:16px;line-height:1.75}.ds-workflow .ds-human-review strong{color:var(--accent,#2255d9)}.ds-workflow li>span{display:block;color:var(--accent,#2255d9);font-size:12px;margin-top:12px}@media(max-width:760px){.ds-workflow li p{font-size:15px}.ds-workflow-heading{flex-direction:column;gap:8px;margin-bottom:20px}.ds-workflow ol{grid-template-columns:1fr}.ds-workflow li,.ds-workflow li:first-child,.ds-workflow li:last-child{padding:20px 0;border:0;border-top:1px solid var(--line,#dce1e7)}.ds-workflow li:first-child{padding-top:0;border:0}.ds-workflow li:last-child{padding-bottom:0}.ds-workflow svg{transform:rotate(90deg)}}"
     }
   ],
   "narrative": {
-    "northStar": "The Editorial Work Record",
-    "overview": "A warm, restrained editorial world gives the work room to be examined. Book-serif names establish identity; Korean and English reading text stays in a quiet sans serif. Hairline divisions and broad margins organize the page without enclosing every thought in a card.\n\nReal project imagery carries its own visual detail and color. The surrounding interface remains calm enough for captions, scope, and context to stay legible. A dark green field and a pale green field provide changes in reading pace within the same flat material language.",
+    "northStar": "The Technical Product Monograph",
+    "overview": "A neutral technical portfolio makes actual software the visual material. Cool-white ground, ink headings, and cobalt actions hold together work with very different interfaces. Pretendard carries both Korean and English, from the role statement to compact project metadata.\n\nProjects read as exhibits: a product name, subtitle, and context identify the work before its actual media and concrete explanation. Thin rules and open columns establish structure; dark product stages and the contact field provide contrast without introducing a separate identity.",
     "keyCharacteristics": [
-      "Warm paper, charcoal ink, and a restrained rust accent.",
-      "Self-hosted serif identity paired with bilingual sans-serif reading text.",
-      "Square evidence panels, hairline divisions, and open column layouts.",
-      "Visible content, explicit links, and keyboard-readable control states."
+      "Cool-white surfaces, dark ink, and cobalt interaction states.",
+      "One self-hosted bilingual sans serif with a controlled heading hierarchy.",
+      "Actual product captures, square frames, and visible contextual information.",
+      "Equal project and collaborator contact paths, with keyboard-accessible controls."
     ],
     "rules": [
       {
-        "name": "The Quiet Frame Rule",
-        "body": "Keep the surrounding site palette restrained; colors inside genuine project evidence belong to that evidence and need not match the site accent.",
+        "name": "The Evidence Frame Rule",
+        "body": "Keep site chrome neutral; color inside actual product captures belongs to the product and does not become a site token.",
         "section": "colors"
       },
       {
-        "name": "The Reading Language Rule",
-        "body": "Preserve word boundaries in Korean and explicit whitespace in English when headings reflow. Headings balance their lines; paragraphs can wrap long strings to prevent overflow.",
+        "name": "The Reading Hierarchy Rule",
+        "body": "Use readable body text for explanations and compact labels for metadata. Preserve Korean word boundaries and English whitespace; keep heading tracking no tighter than -0.035em.",
         "section": "typography"
       },
       {
-        "name": "The Flat Surface Rule",
-        "body": "Continue the page through spacing, rules, and tonal fields; keep evidence panels and editorial content flat.",
+        "name": "The Media Depth Rule",
+        "body": "Keep page sections flat; reserve soft shadows for actual media and its stage.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** pair real evidence with readable captions, context, and a named full-image link.",
-      "**Do** use serif identity and sans-serif bilingual reading text for their established roles.",
-      "**Do** retain visible keyboard focus, selected-tab underlines, and reduced-motion behavior.",
-      "**Do** let desktop spreads collapse into a single reading column while preserving whitespace between words.",
-      "**Do** keep the two contact paths equal in hierarchy and visual weight."
+      "Do identify each project with its name, subtitle, and context before its media and explanation.",
+      "Do pair actual product evidence with readable context and a named enlargement action or full-image link where detailed inspection is needed.",
+      "Do preserve the complete monitoring interface and its surrounding information panels when presenting the system; let viewers inspect it in fit and original-size modes.",
+      "Do distinguish actual interface captures from explanatory workflow diagrams, and keep evidence scope visible in captions and viewer notes.",
+      "Do use Pretendard across Korean and English, with explanatory body text at 16px desktop and 15px mobile.",
+      "Do retain visible focus, filled selected-tab states, keyboard tab navigation, and reduced-motion support.",
+      "Do keep business inquiries and collaborator contact paths equal in hierarchy and action styling."
     ],
     "donts": [
-      "**Don't** add floating card shells, shadows, or rounded screenshot panels to the flat editorial world.",
-      "**Don't** make screenshot text carry information that must be read in surrounding prose.",
-      "**Don't** promote one project's illustration colors or bespoke display size into the shared token system.",
-      "**Don't** invent an input, chip, modal, or button family that the build does not implement."
+      "Don't restore the rejected serif identity, warm paper palette, or ornamental bookish framing.",
+      "Don't replace actual product evidence with invented interface illustrations or decorative typographic mockups.",
+      "Don't make small text embedded in screenshots the only source of an important explanation.",
+      "Don't turn one product's colors or a compact metadata size into a default for the whole site.",
+      "Don't add a rounded card, input, chip, or general-purpose modal family that the build does not implement."
     ]
   }
 }

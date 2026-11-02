@@ -18,7 +18,7 @@ export default function Notes() {
   return (
     <section id="writing" className="notes shell">
       <div className="section-bar">
-        <h2>{lang === "kr" ? "만들면서 남긴 생각" : "Notes from the work"}</h2>
+        <h2>{lang === "kr" ? "글과 기록" : "Writing & notes"}</h2>
         <Link href="https://www.linkedin.com/in/yaechan-lee/recent-activity/all/">
           {lang === "kr" ? "LinkedIn 활동" : "LinkedIn activity"}
           <Arrow external />
