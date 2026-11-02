@@ -48,3 +48,11 @@ npx vercel promote <deployment-url> --scope team_Rl6K0F7x6qLFP2crqbJ6uNAL
 `npm test`는 한국 시간 기준 모집 마감의 마지막 분과 행사 종료 경계를 확인합니다. 브라우저에서 홈, 두 상세 페이지, 언어 유지, 탭의 키보드 이동, 연락 링크, 데스크톱과 모바일 표시를 확인했습니다. 로컬 시각 검토 캡처는 `.impeccable/review/`에 있으며 git과 배포에서 제외합니다.
 
 개편 전 미커밋 변경은 이름이 지정된 git stash와 `/tmp/yclee-site-refresh-backup/pre-existing.patch`에 보관했습니다. 예약 링크는 새 연락 영역에 반영했습니다. 별도 근거를 확인하지 못한 월 120시간 절감 문구는 공개 성과에 넣지 않았습니다.
+
+## Signal Desk
+
+Homepage `#intelligence` is a working public-data agent. GET `/api/intelligence?mission=world|panama|newark` retrieves NOAA/NWS, NASA EONET and USGS observations. POST takes `{ "mission": "world", "lang": "kr" }` and streams NDJSON events for actual model planning, source calls and the cited result; a cached result returns JSON. It accepts fixed missions only. The model never receives arbitrary URLs or customer data.
+
+Production reuses server-only `ANTHROPIC_API_KEY`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`; optional `SIGNAL_DESK_MODEL` overrides the existing Sonnet default. AI execution fails closed without shared storage. Limits: 4 uncached requests/IP/10 minutes, 60 total/hour, two model calls/run, 10-minute result cache, 90-second function ceiling. Provider failures are separate from zero results. Brief citations must reference successfully retrieved source IDs and actual record IDs.
+
+`npm run dev` serves the public-data API through a development-only Vite middleware. Live AI requires those server-side variables in the dev process (or `vercel dev` with development credentials); no production secrets are pulled into source. An unconfigured local AI run shows a retryable unavailable state while real public feeds continue to work. `npm test` covers geographical filtering, unsupported/empty/failed feeds, stale catalog entries, citation integrity and safe URLs, as well as event-date boundaries. The old homepage schedule tabs are removed; release planning remains in `/case-study/fsk`.

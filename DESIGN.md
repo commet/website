@@ -7,6 +7,8 @@ colors:
   muted: "#586372"
   line: "#dce1e7"
   accent: "#2255d9"
+  accent-deep: "#173fa8"
+  source-success: "#176647"
   tint: "#f0f3f7"
   dark: "#151c28"
 typography:
@@ -34,6 +36,15 @@ typography:
   label:
     fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "12px"
+    fontWeight: 400
+  body-compact:
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.8
+  label-detail:
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontSize: "13px"
     fontWeight: 400
   text-link:
     fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif"
@@ -63,21 +74,29 @@ components:
     height: "36px"
   language-button-hover:
     textColor: "{colors.accent}"
-  scenario-tab:
+  desk-scope:
     backgroundColor: "transparent"
-    textColor: "#bfcbda"
-    padding: "10px 16px"
+    textColor: "{colors.muted}"
+    padding: "9px 14px"
     rounded: "{rounded.square}"
-  scenario-tab-selected:
-    backgroundColor: "#e9efff"
-    textColor: "#183c91"
+  desk-scope-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "#ffffff"
+  desk-run:
+    backgroundColor: "{colors.accent}"
+    textColor: "#ffffff"
+    padding: "15px 20px"
+    rounded: "{rounded.square}"
+  desk-run-hover:
+    backgroundColor: "{colors.accent-deep}"
+    textColor: "#ffffff"
   event-link:
     backgroundColor: "{colors.accent}"
     textColor: "#ffffff"
     padding: "13px 16px"
     rounded: "{rounded.square}"
   event-link-hover:
-    backgroundColor: "#173fa8"
+    backgroundColor: "{colors.accent-deep}"
     textColor: "#ffffff"
   media-frame:
     backgroundColor: "{colors.tint}"
@@ -112,7 +131,7 @@ Projects read as exhibits: a product name, subtitle, and context identify the wo
 - Actual product captures, square frames, and visible contextual information.
 - Equal project and collaborator contact paths, with keyboard-accessible controls.
 
-Recorded from `src/index.css`, `src/components/Site.jsx`, `src/components/CaseStudy.jsx`, and `src/components/Notes.jsx`, including the final responsive overrides. This replaces the rejected bookish identity. Product claims and page strategy remain in `PRODUCT.md` and `.impeccable/direction.md`.
+Recorded from `src/index.css`, `src/components/Site.jsx`, `src/components/CaseStudy.jsx`, and `src/components/Notes.jsx`, and the local Signal Desk extension in `src/components/IntelligenceHub.jsx` and its stylesheet, including the final responsive overrides. This replaces the rejected bookish identity. Product claims and page strategy remain in `Product.md`, `.impeccable/direction.md`, and the relevant surface brief.
 
 ## Colors
 
@@ -120,7 +139,9 @@ A single cobalt accent sits within a cool neutral palette. The frontmatter owns 
 
 ### Primary
 
-- **Cobalt (`accent`)** identifies text actions, ordinary hover states, the event action, event metadata, and the human-review step in the document workflow.
+- **Cobalt (`accent`)** identifies text actions, ordinary hover states, the event and agent-run actions, event metadata, citations, and the human-review step in the document workflow.
+
+The deeper cobalt (`accent-deep`) is the shared filled-action hover state. Successful source retrieval uses restrained green (`source-success`) with an explicit text status; it means a source responded, not that a place or shipment is safe. This semantic exception does not introduce a second brand accent.
 
 ### Neutral
 
@@ -129,7 +150,7 @@ A single cobalt accent sits within a cool neutral palette. The frontmatter owns 
 - **Muted Ink (`muted`)** carries supporting prose and metadata on light backgrounds.
 - **Cool Rule (`line`)** divides rows and frames light media.
 - **Pale Slate (`tint`)** grounds the community field, standard media frames, and quiet supporting containers.
-- **Deep Ink (`dark`)** grounds the contact field. The screenshot stage uses a closely related dark surface with its own light foregrounds and filled tab states.
+- **Deep Ink (`dark`)** grounds the contact field. The screenshot stage uses a closely related dark surface with its own light foregrounds. Signal Desk uses Deep Ink for its compact header and Technical Ink for the selected scope.
 
 **The Evidence Frame Rule.** Keep site chrome neutral; color inside actual product captures belongs to the product and does not become a site token.
 
@@ -145,7 +166,9 @@ The hierarchy uses size and weight within one bilingual family. Large text is co
 - **Headline:** section storytelling generally uses 25–34px and weights 550–650. Repeated major content headings use the frontmatter headline role; section labels are smaller (20px desktop, 18px mobile).
 - **Title:** product names use the frontmatter title role, becoming 20px on mobile. Writing titles use 19px, weight 550, line-height 1.5, becoming 16px on mobile.
 - **Body:** substantive explanations use the frontmatter body role and generally become 15px on mobile. Case introductions are larger (18px desktop, 16px mobile). Paragraph measures are constrained within columns; case introductions stop at 780px and project body copy at 550px. The hero context currently changes to 15px at the intermediate breakpoint.
-- **Label:** dates, captions, source labels, and context use 12–14px. Text actions use the frontmatter link role, becoming 13px on mobile. Scenario fact values are compact data (14px desktop, 13px mobile), distinct from ordinary explanatory paragraphs.
+- **Label:** dates, captions, source labels, and context use 12–14px. Text actions use the frontmatter link role, becoming 13px on mobile. Signal Desk uses the compact body role for findings and the detail-label role for source coverage, execution status, citations, and scope notes; source names and subsection titles use 15px semibold. Observation and collection times use 12px with tabular numerals.
+
+Signal Desk keeps the existing role-based scale: its section heading is 28px (25px mobile), request is 24px (21px at 1000px, 22px mobile), report title is 25px (22px mobile), and finding titles are 17px. The dark header title is 22px (20px mobile). These compact application roles supplement the portfolio hierarchy; they do not shrink general explanatory copy. The report summary remains 16px (15px mobile), with a 70ch maximum measure.
 
 **The Reading Hierarchy Rule.** Use readable body text for explanations and compact labels for metadata. Preserve Korean word boundaries and English whitespace; keep heading tracking no tighter than -0.035em.
 
@@ -157,7 +180,9 @@ Desktop uses an asymmetric two-column hero, full-width product exhibits, and tit
 
 At 760px and below, the hero, DocAgent explanation, STRIX image/copy spread, Argus, community, about, case copy, and contact pair stack. The four-stage workflow becomes a vertical ordered list. The event date becomes a horizontal row above the event content. Project context metadata and the About navigation link are hidden to preserve space. Writing rows keep thumbnail, title, and arrow while omitting the source column.
 
-Standard preview frames contain their images inside a 1.67 aspect ratio with 24px insets, reducing to 16px on mobile. The Argus frame uses 1.44. The lead FSK exhibit preserves the entire current Electrovaya interface at its native 1920 × 1080 ratio: left shipment status, central route map, right risk monitoring, and bottom voyage schedule remain visible together. This is the captured product’s composition, not a layout template for the portfolio. Its caption identifies the version and example data and offers enlargement. The DocAgent source-review capture is likewise full-width and uncropped at its native 2280 × 1280 ratio, with redaction and implementation scope stated alongside. Both use the shared evidence viewer. The schedule comparison follows the monitoring exhibit as an explicitly labeled earlier-version decision example; it preserves its native ratio and provides a separate full-image action. Evidence figures and the schedule stage extend 10px into mobile gutters. The schedule’s three-column fact list becomes stacked label/value rows on mobile. Case figures contain images without cropping and retain captions and full-image links.
+Standard preview frames contain their images inside a 1.67 aspect ratio with 24px insets, reducing to 16px on mobile. The Argus frame uses 1.44. The lead FSK exhibit preserves the entire current Electrovaya interface at its native 1920 × 1080 ratio: left shipment status, central route map, right risk monitoring, and bottom voyage schedule remain visible together. This is the captured product’s composition, not a layout template for the portfolio. Its caption identifies the version and example data and offers enlargement. The DocAgent source-review capture is likewise full-width and uncropped at its native 2280 × 1280 ratio, with redaction and implementation scope stated alongside. Both use the shared evidence viewer. Signal Desk follows the monitoring exhibit on the homepage, replacing the sailing comparison controls. The release-planning simulation remains in the FSK case study as actual interface evidence with example sailings, caption, and full-image action. Homepage evidence figures extend 10px into mobile gutters. Case figures contain images without cropping and retain captions and full-image links.
+
+Signal Desk is one square ruled workspace: a dark title row, request and scope controls, execution strip, report plus source column, and full-width evidence ledger. The source column is 300px, reducing to 260px at 1000px. At 760px, the intro, request, report and sources stack; the source divider moves from the left to the top, and each ledger record stacks provider, original title and observation time. Desktop task padding is 28px, report padding 32px; mobile insets are 18px. Scope controls wrap instead of becoming a horizontal scroller.
 
 ## Elevation & Depth
 
@@ -172,7 +197,7 @@ The page is structurally flat: whitespace, thin rules, and alternating neutral f
 
 ## Shapes
 
-Frames, event actions, language controls, identity marks, and tab groups have square corners. One-pixel strokes organize surfaces. The small circular scenario indicator is a status cue, not a rounded component language. Directional icons are inline stroked SVGs, normally 20px; compact captions and mobile rows use smaller variants.
+Frames, event actions, language controls, identity marks, and Signal Desk controls have square corners. One-pixel strokes organize surfaces. The small circular execution indicator is a status cue, not a rounded component language. Directional icons are inline stroked SVGs, normally 20px; compact captions and mobile rows use smaller variants.
 
 ## Components
 
@@ -192,11 +217,19 @@ The square dark dialog leaves 16px around the viewport, uses a dim deep-ink back
 
 The toolbar uses bordered dark buttons with a lighter hover fill. Below the mobile breakpoint it wraps, reduces padding, and keeps the image and provenance note within the viewport. Shared focus styling applies to its controls and scroll region. This is an evidence-inspection component, not a generic modal family or a live embedded dashboard.
 
-### Scenario tabs and product stage
+### Signal Desk request and execution
 
-Two tabs sit inside a bordered dark group. Selection has a pale-blue fill and dark-blue text; inactive tabs have light muted text. Hover lightens the dark tab surface, while the selected tab becomes white. The selected tab alone is in the tab order; Left/Right, Home, and End change selection and focus. Each associated panel can receive focus and inactive panels are hidden.
+This is a local operational extension of the monograph, separate from the client-system evidence. Three fixed requests use pressed-state scope buttons: Global signals, Around Panama, and Newark arrival. Global weather coverage is US-only while natural events and earthquakes are worldwide; Panama uses a 1,000km event radius without NWS coverage; Newark uses a 750km event radius and point-based NWS alerts. Scope selection resets the briefing, tool state, errors, and ledger selection. The scope group uses `aria-pressed`, ordinary button keyboard behavior, an ink selected fill and a pale unselected hover; it is not a tablist. The cobalt Run agent action initiates briefing generation. Scopes and run action are disabled while busy.
 
-Switching tabs changes the actual screenshot, result, assigned sailing, arrival window, and reason together. The full-image action is named in visible text and accessible markup. Example-data labeling sits beside the controls. The screenshot change itself is immediate; no clip reveal or entrance animation is implemented.
+Source observations load as the section approaches the viewport; paid briefing generation starts only from the run control. A polite live execution strip reports ready, source selection, API querying, evidence comparison/writing, completion, or interruption. Actual tool-start and tool-end events update provider rows; a pending tool says it is querying, a completed source distinguishes retrieved records from the provider’s scoped result count, unsupported coverage remains explicit, and unavailable sources remain failed rather than zero. Collection time stays beside each source. A completed brief shows its generation time; a cache hit is labeled as a recent result. An error alert includes retry, and failed source loading has a separate retry action. Status is expressed in words, not color alone.
+
+### Signal Desk briefing and evidence ledger
+
+The report separates summary, ruled findings, each finding’s follow-up action, and a pale unverified-items block. Source rows name NOAA/NWS, NASA EONET and USGS, link to API documentation, and state coverage and retrieval time. All displayed times are labeled KST; record observation time is distinct from collection and briefing generation. NASA is a bounded recent catalog sample, and the visible source and cache limitations remain adjacent to the workspace. Findings describe sampled evidence and cannot establish full-population counts, absence of risk, or transport impact.
+
+The initial ledger previews two records per provider. Show all reveals every retrieved record available to the workspace; Collapse restores that preview, not a new query. This is a view expansion, not a claim to expose the entire upstream catalog. A finding’s citation filters the ledger to its record IDs, with source fallback when it has no record IDs, marks the selected citation with `aria-pressed`, and focuses the ledger heading before scrolling it into view. Clearing a citation through Show all exposes the full retrieved set. Each row retains provider, original source title/link, and observation time; source text remains in its original English. Empty and failed states do not imply no risk.
+
+The pending dot pulses only during real execution (1.4s); reduced-motion preference removes the pulse and citation navigation scrolls immediately. Shared visible focus covers buttons, links and the focusable ledger heading. No entrance choreography or simulated tool calls are part of this component.
 
 ### Project exhibits and figures
 
@@ -220,7 +253,7 @@ A ruled list pairs a thumbnail with a medium-weight title, source, and external 
 
 Two options share heading size, copy measure, spacing, and underlined actions inside a deep-ink field. They sit in equal columns and stack on mobile with a separating rule. Light text, muted blue-gray prose, and pale-blue hover states retain contrast. The general email and booking route remain available alongside both paths.
 
-Reduced-motion preference disables transitions, animations, and smooth scrolling. The evidence viewer is the implemented native dialog. No input, general-purpose modal, filter-chip, or generic rounded-card component family exists.
+Reduced-motion preference disables transitions, animations, and smooth scrolling. The evidence viewer is the implemented native dialog. Signal Desk adds fixed scope buttons and citation filtering; no free-text input, general-purpose modal, or generic rounded-card component family exists.
 
 ## Do's and Don'ts
 
@@ -231,7 +264,7 @@ Reduced-motion preference disables transitions, animations, and smooth scrolling
 - **Do** preserve the complete monitoring interface and its surrounding information panels when presenting the system; let viewers inspect it in fit and original-size modes.
 - **Do** distinguish actual interface captures from explanatory workflow diagrams, and keep evidence scope visible in captions and viewer notes.
 - **Do** use Pretendard across Korean and English, with explanatory body text at 16px desktop and 15px mobile.
-- **Do** retain visible focus, filled selected-tab states, keyboard tab navigation, and reduced-motion support.
+- **Do** retain visible focus, pressed scope states, keyboard-operable citations, and reduced-motion support.
 - **Do** keep business inquiries and collaborator contact paths equal in hierarchy and action styling.
 
 ### Don't:
@@ -242,4 +275,4 @@ Reduced-motion preference disables transitions, animations, and smooth scrolling
 - **Don't** turn one product's colors or a compact metadata size into a default for the whole site.
 - **Don't** add a rounded card, input, chip, or general-purpose modal family that the build does not implement.
 
-Not canonized: one-off product-frame colors, event date sizing, compact scenario fact values, and the intermediate-width 15px hero context are implementation details rather than reusable body defaults. The letterform identity marks are brand identifiers, not permission to use glyphs as interface icons. The viewer uses a named Close action without a decorative glyph; use inline SVG for future icons. No decorative kicker treatment is defined.
+Not canonized: one-off product-frame and Signal Desk chrome colors, event date sizing, and the intermediate-width 15px hero context are implementation details rather than reusable body defaults. The letterform identity marks are brand identifiers, not permission to use glyphs as interface icons. The viewer uses a named Close action without a decorative glyph; use inline SVG for future icons. No decorative kicker treatment is defined.

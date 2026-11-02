@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { useLang } from "../LangContext";
 import { eventState } from "../event";
+import IntelligenceHub from "./IntelligenceHub";
 
 export function Arrow({ external = false }) {
   return (
@@ -120,33 +121,6 @@ export function Hero() {
     </section>
   );
 }
-const scenarios = [
-  {
-    image: "/images/work/sailing-plan.png",
-    label: ["기준 계획", "Baseline plan"],
-    sailing: "NAVIOS UNISON 641E",
-    arrival: ["11월 16–20일", "Nov 16–20"],
-    value: ["도착 일정 유지", "Arrival unchanged"],
-    detail: [
-      "선적 마감 전에 준비가 끝나 예정된 항차를 이용합니다.",
-      "The shipment is ready before the cutoff and keeps its planned sailing.",
-    ],
-  },
-  {
-    image: "/images/work/sailing-delay.png",
-    label: ["출고 3일 지연", "Release delayed 3 days"],
-    sailing: "COYHAIQUE 642E",
-    arrival: ["11월 23–27일", "Nov 23–27"],
-    value: [
-      "다음 항차 배정 / 도착 7일 지연",
-      "Next sailing / Arrival 7 days later",
-    ],
-    detail: [
-      "선적 마감을 넘겨 다음 주 항차로 배정됩니다.",
-      "Missing the sailing cutoff moves the shipment to the following week.",
-    ],
-  },
-];
 function EvidenceImage({ src, width, height, title, caption, alt, note, priority = false }) {
   const { lang } = useLang();
   const kr = lang === "kr";
@@ -236,16 +210,6 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
 export function Evidence() {
   const { lang } = useLang();
   const kr = lang === "kr";
-  const l = kr ? 0 : 1;
-  const [active, setActive] = useState(0);
-  function onKey(event) {
-    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-    event.preventDefault();
-    const next =
-      event.key === "Home" ? 0 : event.key === "End" ? 1 : 1 - active;
-    setActive(next);
-    document.getElementById(`scenario-tab-${next}`)?.focus();
-  }
   return (
     <section
       id="work"
@@ -254,11 +218,9 @@ export function Evidence() {
     >
       <div className="section-heading">
         <h2 id="work-title">{kr ? "주요 프로젝트" : "Selected work"}</h2>
-        <span>
-          {kr
-            ? "고객 프로젝트와 자체 제품"
-            : "Client work and independent products"}
-        </span>
+        <a href="#intelligence" className="text-link">
+          {kr ? "AI 에이전트 직접 실행" : "Try the live AI agent"}<Arrow />
+        </a>
       </div>
       <article className="featured-work">
         <div className="project-head">
@@ -325,118 +287,7 @@ export function Evidence() {
             </dl>
           </div>
         </div>
-        <div className="schedule-heading">
-          <h4>
-            {kr
-              ? "출고 3일 지연, 도착은 7일 뒤."
-              : "A three-day release delay can cost a week."}
-          </h4>
-          <p>
-            {kr
-              ? "Electrovaya 초기 출고 시뮬레이터 / 예시 시나리오"
-              : "Electrovaya release simulator, earlier version / Example scenario"}
-          </p>
-        </div>
-        <div className="product-stage">
-          <div className="stage-toolbar">
-            <div
-              className="scenario-tabs"
-              role="tablist"
-              aria-label={kr ? "출고 지연 시나리오" : "Release-delay scenarios"}
-            >
-              {scenarios.map((s, i) => (
-                <button
-                  key={s.image}
-                  role="tab"
-                  id={`scenario-tab-${i}`}
-                  aria-controls={`scenario-panel-${i}`}
-                  aria-selected={active === i}
-                  tabIndex={active === i ? 0 : -1}
-                  onKeyDown={onKey}
-                  onClick={() => setActive(i)}
-                >
-                  {s.label[l]}
-                </button>
-              ))}
-            </div>
-            <span className="stage-note">
-              {kr
-                ? "실제 제품 / 예시 항차 데이터"
-                : "Actual interface / Example sailing data"}
-            </span>
-          </div>
-          {scenarios.map((s, i) => (
-            <div
-              role="tabpanel"
-              id={`scenario-panel-${i}`}
-              aria-labelledby={`scenario-tab-${i}`}
-              hidden={active !== i}
-              tabIndex="0"
-              key={s.image}
-            >
-              <img
-                className="schedule-image"
-                src={s.image}
-                width="1306"
-                height={i === 0 ? 564 : 616}
-                alt={
-                  kr
-                    ? `운항계획과 출고 지연 분석: ${s.label[0]}`
-                    : `Sailing plan and release-delay analysis: ${s.label[1]}`
-                }
-                loading="lazy"
-              />
-              <div className="scenario-result">
-                <span className="scenario-indicator" aria-hidden="true" />
-                <strong>{s.value[l]}</strong>
-
-                <a
-                  href={s.image}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={
-                    kr ? "시나리오 화면 크게 보기" : "Open full scenario image"
-                  }
-                >
-                  {kr ? "화면 크게 보기" : "View full image"}
-                  <Arrow external />
-                </a>
-              </div>
-              <dl className="scenario-facts">
-                <div>
-                  <dt>{kr ? "배정 항차" : "Assigned sailing"}</dt>
-                  <dd>{s.sailing}</dd>
-                </div>
-                <div>
-                  <dt>{kr ? "도착 일정" : "Arrival window"}</dt>
-                  <dd>{s.arrival[l]}</dd>
-                </div>
-                <div>
-                  <dt>{kr ? "변경 이유" : "Why it changes"}</dt>
-                  <dd>{s.detail[l]}</dd>
-                </div>
-              </dl>
-            </div>
-          ))}
-        </div>
-        <div className="feature-description">
-          <h4>
-            {kr
-              ? "출고일에 맞춰 항차를 다시 배정"
-              : "Reassign the sailing when release dates change"}
-          </h4>
-          <div>
-            <p>
-              {kr
-                ? "주 1회 출항하는 노선에서는 선적 마감을 넘기면 다음 주 배를 기다려야 합니다. 출고일을 조정하면 이용 가능한 항차를 다시 찾고, 해상 운송과 항만 대기, 내륙 운송을 반영해 도착 범위를 계산하도록 만들었습니다."
-                : "A small release delay can mean missing a weekly sailing. I built a tool that recalculates the sailing and arrival as the release date changes, and separates ocean, port, and inland delays."}
-            </p>
-            <a className="text-link" href="/case-study/fsk">
-              {kr ? "설계 과정 자세히 보기" : "The project and design decisions"}
-              <Arrow />
-            </a>
-          </div>
-        </div>
+        <IntelligenceHub />
       </article>
     </section>
   );

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T04:45:12.869597+00:00",
+  "generatedAt": "2026-11-02T07:08:22.427850+00:00",
   "title": "Design System: Yaechan Lee",
   "extensions": {
     "colorMeta": {
@@ -101,6 +101,34 @@
           "oklch(80% 0.03 260)",
           "oklch(95% 0.03 260)"
         ]
+      },
+      "accent-deep": {
+        "role": "primary",
+        "displayName": "Deep Cobalt",
+        "tonalRamp": [
+          "oklch(15% 0.2 264)",
+          "oklch(25% 0.2 264)",
+          "oklch(35% 0.2 264)",
+          "oklch(45% 0.2 264)",
+          "oklch(55% 0.2 264)",
+          "oklch(65% 0.2 264)",
+          "oklch(80% 0.2 264)",
+          "oklch(95% 0.2 264)"
+        ]
+      },
+      "source-success": {
+        "role": "semantic",
+        "displayName": "Successful Source",
+        "tonalRamp": [
+          "oklch(15% 0.08 160)",
+          "oklch(25% 0.08 160)",
+          "oklch(35% 0.08 160)",
+          "oklch(45% 0.08 160)",
+          "oklch(55% 0.08 160)",
+          "oklch(65% 0.08 160)",
+          "oklch(80% 0.08 160)",
+          "oklch(95% 0.08 160)"
+        ]
       }
     },
     "typographyMeta": {
@@ -111,6 +139,14 @@
       "body": {
         "displayName": "Explanatory body",
         "purpose": "Readable product and design-decision prose."
+      },
+      "body-compact": {
+        "displayName": "Compact explanatory body",
+        "purpose": "Signal Desk finding detail and follow-up, and mobile explanatory copy."
+      },
+      "label-detail": {
+        "displayName": "Detailed metadata",
+        "purpose": "Source coverage and status, scope notes and citations; not a replacement for body prose."
       }
     },
     "shadows": [
@@ -140,6 +176,11 @@
         "name": "reduced-motion",
         "value": "transition: none; animation: none; scroll-behavior: auto",
         "purpose": "Remove motion when the user requests it."
+      },
+      {
+        "name": "pending-source",
+        "value": "signal-pulse 1.4s ease-out infinite; 50% opacity: .25",
+        "purpose": "Execution indicator only while planning, collecting or synthesizing; disabled for reduced motion."
       }
     ],
     "breakpoints": [
@@ -150,6 +191,10 @@
       {
         "name": "intermediate",
         "value": "1100px"
+      },
+      {
+        "name": "desk-intermediate",
+        "value": "1000px"
       },
       {
         "name": "mobile",
@@ -174,7 +219,7 @@
       "originalSize": "Use each asset’s supplied intrinsic dimensions; current monitor 1920px × 1080px, current source-review capture 2280px × 1280px; overflow scrolling; focusable image region",
       "toggleState": "aria-pressed",
       "provenance": "Example-data provenance for the monitor; redaction and implementation/validation scope for document review. Visible in each caption and dialog footer.",
-      "composition": "Preserve each entire interface. Current monitor has left shipment status, central map, right segment monitoring and bottom voyage schedule. Document review keeps fields and original source together. Earlier-version schedule comparison remains a separate labeled example.",
+      "composition": "Preserve each entire interface. Current monitor has left shipment status, central map, right segment monitoring and bottom voyage schedule. Document review keeps fields and original source together. Release-planning evidence remains in the FSK case study; homepage comparison controls are replaced by Signal Desk.",
       "identity": "One shared EvidenceImage component; independent native dialog title IDs generated with useId",
       "assets": [
         {
@@ -190,6 +235,41 @@
           "purpose": "Redacted actual source-review implementation example"
         }
       ]
+    },
+    "signalDesk": {
+      "scope": "Local extension of the existing monograph; public-data demo separate from client evidence.",
+      "layout": {
+        "columns": "minmax(0,1fr) 300px",
+        "intermediateColumns": "minmax(0,1fr) 260px at 1000px",
+        "mobile": "At 760px, stack report, sources and ledger fields; 18px inset."
+      },
+      "chrome": {
+        "border": "1px solid #bdc7d5",
+        "headerMetadata": "#c5cedb",
+        "selection": "#c9d9ff"
+      },
+      "typeRoles": {
+        "sectionHeading": "28px; 25px mobile",
+        "request": "24px; 21px at 1000px; 22px mobile",
+        "reportTitle": "25px; 22px mobile",
+        "findingTitle": "17px / 600",
+        "headerTitle": "22px; 20px mobile",
+        "sourceTitle": "15px / 600",
+        "metadata": "12–13px; tabular numerals for time"
+      },
+      "states": [
+        "ready",
+        "choosing sources",
+        "querying APIs",
+        "comparing evidence / writing brief",
+        "brief ready",
+        "run interrupted"
+      ],
+      "sources": "Real tool events update querying, completed, outside-coverage or unavailable text; success green denotes retrieval only. Collection times are separate from observation and generation times. Cached completion is labeled recent result.",
+      "ledger": "Preview two records per provider; expand to every retrieved record; collapse to preview. Citation filters exact IDs or falls back to sources, focuses heading and scrolls. Clearing filter exposes the complete retrieved set.",
+      "coverage": "Global: US NWS, worldwide natural events and earthquakes. Panama: 1,000km event radius, outside NWS coverage. Newark: 750km events, point NWS alerts. NASA 30-day catalog capped at 100; USGS 7-day M4.5+; cache up to ten minutes.",
+      "brief": "Summary, findings, follow-up actions, citations and explicit unknowns. Claims stay within sampled evidence; no absence-of-risk or shipping-impact inference.",
+      "accessibility": "Pressed scope and citation states, polite live execution strip, busy report, alert/retry errors, focusable ledger heading. Reduced motion disables pulse and smooth citation scroll."
     }
   },
   "components": [
@@ -208,14 +288,6 @@
       "description": "Square outlined destination-language control.",
       "html": "<button class=\"ds-language\" aria-label=\"Switch to English\">EN</button>",
       "css": ".ds-language{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;height:36px;min-width:42px;background:transparent;border:1px solid var(--line,#dce1e7);border-radius:0;color:var(--ink,#18202b);font-size:12px;font-weight:650;cursor:pointer}.ds-language:hover{color:var(--accent,#2255d9)}.ds-language:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
-    },
-    {
-      "name": "Scenario tabs",
-      "kind": "custom",
-      "refersTo": "scenario-tab",
-      "description": "Dark tab group with a pale filled selected state; the application supplies selection and keyboard behavior.",
-      "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"Release-delay scenarios\"><button role=\"tab\" aria-selected=\"true\">Baseline plan</button><button role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Release delayed 3 days</button></div>",
-      "css": ".ds-tabs{display:inline-flex;padding:3px;border:1px solid #465164;background:#111722;gap:3px}.ds-tabs button{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;border:0;border-radius:0;background:transparent;padding:10px 16px;color:#bfcbda;font-size:13px;font-weight:550;cursor:pointer}.ds-tabs button[aria-selected=\"true\"]{background:#e9efff;color:#183c91}.ds-tabs button:hover{background:#293649;color:#fff}.ds-tabs button[aria-selected=\"true\"]:hover{background:#fff;color:#183c91}.ds-tabs button:focus-visible{outline:3px solid #4778f5;outline-offset:5px;}"
     },
     {
       "name": "Filled event action",
@@ -254,6 +326,29 @@
       "description": "Four-stage explanatory ordered list beneath real document evidence, with human review in cobalt. This is prose, not product UI.",
       "html": "<section class=\"ds-workflow\"><div class=\"ds-workflow-heading\"><h4>From one email to an order</h4><span>Workflow / Implementation and validation</span></div><ol><li><div><strong>Receive</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Group the email and attachments by customer and shipment type.</p></li><li><div><strong>Extract and match</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Read the documents and match company, airport, and port codes.</p></li><li class=\"ds-human-review\"><div><strong>Review and approve</strong><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></div><p>Flag discrepancies and missing values for operator correction and approval.</p><span>Operator judgment</span></li><li><div><strong>Check and integrate</strong></div><p>Check existing orders, then connect approved values to KEROL.</p></li></ol></section>",
       "css": ".ds-workflow{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink,#18202b);padding:28px 0;border-block:1px solid var(--line,#dce1e7)}.ds-workflow-heading{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin-bottom:28px}.ds-workflow-heading h4{font-size:21px;margin:0}.ds-workflow-heading>span{color:var(--muted,#586372);font-size:12px}.ds-workflow ol{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;padding:0;margin:0}.ds-workflow li{padding:0 24px;border-left:1px solid var(--line,#dce1e7)}.ds-workflow li:first-child{padding-left:0;border:0}.ds-workflow li:last-child{padding-right:0}.ds-workflow li>div{display:flex;align-items:center;justify-content:space-between;gap:12px}.ds-workflow strong{font-size:16px;font-weight:600}.ds-workflow svg{flex-shrink:0;color:var(--muted,#586372);width:16px}.ds-workflow li p{margin:12px 0 0;color:var(--muted,#586372);font-size:16px;line-height:1.75}.ds-workflow .ds-human-review strong{color:var(--accent,#2255d9)}.ds-workflow li>span{display:block;color:var(--accent,#2255d9);font-size:12px;margin-top:12px}@media(max-width:760px){.ds-workflow li p{font-size:15px}.ds-workflow-heading{flex-direction:column;gap:8px;margin-bottom:20px}.ds-workflow ol{grid-template-columns:1fr}.ds-workflow li,.ds-workflow li:first-child,.ds-workflow li:last-child{padding:20px 0;border:0;border-top:1px solid var(--line,#dce1e7)}.ds-workflow li:first-child{padding-top:0;border:0}.ds-workflow li:last-child{padding-bottom:0}.ds-workflow svg{transform:rotate(90deg)}}"
+    },
+    {
+      "name": "Signal Desk scope controls",
+      "kind": "custom",
+      "refersTo": "desk-scope",
+      "description": "Fixed request selection using pressed buttons; the application supplies selection and disables them while running.",
+      "html": "<div class=\"ds-scopes\" role=\"group\" aria-label=\"Scope\"><button aria-pressed=\"true\">Global signals</button><button aria-pressed=\"false\">Around Panama</button><button aria-pressed=\"false\">Newark arrival</button></div>",
+      "css": ".ds-scopes{display:flex;flex-wrap:wrap;gap:6px}.ds-scopes button{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;padding:9px 14px;border:1px solid var(--line,#dce1e7);border-radius:0;background:transparent;color:var(--muted,#586372);cursor:pointer}.ds-scopes button[aria-pressed=\"true\"]{background:var(--ink,#18202b);color:white;border-color:var(--ink,#18202b)}.ds-scopes button:hover:not(:disabled):not([aria-pressed=\"true\"]){background:var(--tint,#f0f3f7);color:var(--ink,#18202b)}.ds-scopes button:focus-visible{outline:3px solid #4778f5;outline-offset:5px}.ds-scopes button:disabled{cursor:wait;opacity:.65}@media(max-width:760px){.ds-scopes{gap:5px}.ds-scopes button{padding:9px 10px;font-size:13px}}"
+    },
+    {
+      "name": "Signal Desk run action",
+      "kind": "button",
+      "refersTo": "desk-run",
+      "description": "Explicitly starts the agent; running disables the control.",
+      "html": "<button class=\"ds-run\">Run agent<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-run{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:20px;border:0;border-radius:0;background:var(--accent,#2255d9);color:white;padding:15px 20px;font-size:15px;font-weight:550;cursor:pointer}.ds-run:hover:not(:disabled){background:#173fa8}.ds-run:focus-visible{outline:3px solid #4778f5;outline-offset:5px}.ds-run:disabled{cursor:wait;opacity:.65}"
+    },
+    {
+      "name": "Signal Desk citation",
+      "kind": "button",
+      "description": "Filters the evidence ledger and focuses its heading; preview demonstrates the visual state only.",
+      "html": "<button class=\"ds-citation\" aria-pressed=\"true\">Show evidence <span>NASA EONET</span><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-citation{font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:10px;border:0;border-radius:0;background:transparent;color:var(--accent,#2255d9);padding:12px 0 0;font-size:13px;text-align:left;cursor:pointer}.ds-citation span{color:var(--muted,#586372)}.ds-citation:hover,.ds-citation[aria-pressed=\"true\"]{text-decoration:underline;text-underline-offset:4px}.ds-citation:focus-visible{outline:3px solid #4778f5;outline-offset:5px}@media(max-width:760px){.ds-citation{flex-wrap:wrap}}"
     }
   ],
   "narrative": {
@@ -288,7 +383,7 @@
       "Do preserve the complete monitoring interface and its surrounding information panels when presenting the system; let viewers inspect it in fit and original-size modes.",
       "Do distinguish actual interface captures from explanatory workflow diagrams, and keep evidence scope visible in captions and viewer notes.",
       "Do use Pretendard across Korean and English, with explanatory body text at 16px desktop and 15px mobile.",
-      "Do retain visible focus, filled selected-tab states, keyboard tab navigation, and reduced-motion support.",
+      "Do retain visible focus, pressed scope states, keyboard-operable citations, and reduced-motion support.",
       "Do keep business inquiries and collaborator contact paths equal in hierarchy and action styling."
     ],
     "donts": [
