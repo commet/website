@@ -45,3 +45,7 @@ DocAgent evidence reviewed: local docextract review UI, FMS Doc Agent 검토 flo
 
 ## Company context (2026-11-02)
 The user asked to explain FSK for visitors unfamiliar with the company. Public headings and case introductions identify it as 물류기업 FSK L&S (logistics company), and DocAgent is introduced as logistics document automation. No unverified company-size or group-affiliation claim is added.
+
+## Editorial review (2026-11-02)
+User requested a more substantial improvement assessment and an immediate copy pass. Retained the direct leadership/building headline; shortened its supporting paragraph to actual client and SK On experience. Removed repeated abstract claims and slogans across project, community, about and contact copy. Headlines now identify the operation or design decision, and KEROL is explained as the logistics operations system. English copy distinguishes enterprise AI delivery from venture investing. Authored post titles, historical metrics, company scope and implementation-status qualifications remain intact.
+Broader proposals, not yet implemented: shorten the long FSK sequence on the homepage so all four projects are discoverable earlier; organize case studies around the business problem, the user's decisions and verified evidence; build a small public-data interactive demonstration of one genuine workflow while retaining full-screen product evidence. Do not silently turn these proposals into a redesign.

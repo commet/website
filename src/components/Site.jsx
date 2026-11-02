@@ -89,9 +89,9 @@ export function Hero() {
             </>
           ) : (
             <>
-              I lead AI ventures.
+              I lead enterprise AI.
               <br />
-              <span>I build the products.</span>
+              <span>And build the software.</span>
             </>
           )}
         </h1>
@@ -99,8 +99,8 @@ export function Hero() {
       <div className="hero-context">
         <p>
           {kr
-            ? "물류 관제, 문서 자동화, 사내 지식 시스템. 기업의 복잡한 업무를 분석하고, 제품을 설계하고 개발합니다. Arkpoint의 파트너로 Enterprise AX 사업을 이끌고 있습니다."
-            : "Logistics monitoring, document automation, and internal knowledge systems. I work through complex operations, then design and build the software. I lead Enterprise AX as a partner at Arkpoint."}
+            ? "물류기업의 운송 관제부터 SK On의 사내 AI까지. 업무를 분석하고, 제품을 설계하고, 직접 개발해 왔습니다."
+            : "From shipment monitoring for a logistics company to internal AI at SK On. My work spans understanding the operation, designing the product, and writing the software."}
         </p>
         <div className="role-line">
           <span>Arkpoint</span>
@@ -128,8 +128,8 @@ const scenarios = [
     arrival: ["11월 16–20일", "Nov 16–20"],
     value: ["도착 일정 유지", "Arrival unchanged"],
     detail: [
-      "출고 여유가 남아 있어 예정된 항차를 이용합니다.",
-      "The shipment stays on its planned sailing while release slack remains.",
+      "선적 마감 전에 준비가 끝나 예정된 항차를 이용합니다.",
+      "The shipment is ready before the cutoff and keeps its planned sailing.",
     ],
   },
   {
@@ -142,7 +142,7 @@ const scenarios = [
       "Next sailing / Arrival 7 days later",
     ],
     detail: [
-      "선적 가능한 날짜가 넘어가면 다음 주 항차로 바뀝니다.",
+      "선적 마감을 넘겨 다음 주 항차로 배정됩니다.",
       "Missing the sailing cutoff moves the shipment to the following week.",
     ],
   },
@@ -256,8 +256,8 @@ export function Evidence() {
         <h2 id="work-title">{kr ? "주요 프로젝트" : "Selected work"}</h2>
         <span>
           {kr
-            ? "기업 AX와 독립 제품"
-            : "Client engagements & independent products"}
+            ? "고객 프로젝트와 자체 제품"
+            : "Client work and independent products"}
         </span>
       </div>
       <article className="featured-work">
@@ -292,14 +292,14 @@ export function Evidence() {
         <div className="map-description">
           <h4>
             {kr
-              ? "부산에서 미국 현장까지, 하나의 관제 화면으로."
-              : "One view from Busan to the delivery site."}
+              ? "운송 현황과 위험을 함께 보는 관제."
+              : "Shipment status and risk, in one view."}
           </h4>
           <div>
             <p>
               {kr
-                ? "부산에서 파나마 운하와 Newark를 거쳐 Jamestown까지. 해상·내륙 운송 경로에 기상과 항만 정보를 연결했습니다. 담당자가 구간별 위험과 일정에 미치는 영향을 함께 살펴볼 수 있도록 설계했습니다."
-                : "The equipment travels from Busan through the Panama Canal to Newark, then inland to Jamestown. I brought the ocean and inland legs onto one map, with weather and port conditions reviewed by segment."}
+                ? "부산에서 미국 뉴욕주 공장까지 설비를 보내는 프로젝트입니다. 운송 현황과 구간별 위험을 항차 일정에 연결했습니다. 담당자가 도착 예정일과 확인할 이슈를 함께 볼 수 있도록 설계했습니다."
+                : "Equipment travels from Busan to a factory in New York State. Shipment status and route risks flank the map, with the voyage schedule below. Operators can review expected arrivals and outstanding issues together."}
             </p>
             <dl className="map-capabilities">
               <div>
@@ -318,8 +318,8 @@ export function Evidence() {
                 <dt>{kr ? "확인할 위험" : "Risk review"}</dt>
                 <dd>
                   {kr
-                    ? "기상, 운하 통항, 기항 항만 부하"
-                    : "Weather, canal transit, and port load"}
+                    ? "기상, 운하 통항, 항만 혼잡"
+                    : "Weather, canal transit, and port congestion"}
                 </dd>
               </div>
             </dl>
@@ -328,8 +328,8 @@ export function Evidence() {
         <div className="schedule-heading">
           <h4>
             {kr
-              ? "출고 일정이 바뀌면, 도착일도 다시 계산합니다."
-              : "Change the release date. Recalculate the arrival."}
+              ? "출고 3일 지연, 도착은 7일 뒤."
+              : "A three-day release delay can cost a week."}
           </h4>
           <p>
             {kr
@@ -422,13 +422,13 @@ export function Evidence() {
         <div className="feature-description">
           <h4>
             {kr
-              ? "출고 3일 지연이 도착 7일 지연이 되는 순간."
-              : "Three days late at departure. Seven at arrival."}
+              ? "출고일에 맞춰 항차를 다시 배정"
+              : "Reassign the sailing when release dates change"}
           </h4>
           <div>
             <p>
               {kr
-                ? "주 1회 출항하는 배를 놓치면, 하루의 차이가 일주일이 됩니다. 출고일을 바꿀 때 이용 가능한 항차와 도착일을 다시 계산하도록 만들었습니다. 위 예시는 출고 3일 지연이 다음 주 항차 배정으로 이어지는 경우입니다."
+                ? "주 1회 출항하는 노선에서는 선적 마감을 넘기면 다음 주 배를 기다려야 합니다. 출고일을 조정하면 이용 가능한 항차를 다시 찾고, 해상 운송과 항만 대기, 내륙 운송을 반영해 도착 범위를 계산하도록 만들었습니다."
                 : "A small release delay can mean missing a weekly sailing. I built a tool that recalculates the sailing and arrival as the release date changes, and separates ocean, port, and inland delays."}
             </p>
             <a className="text-link" href="/case-study/fsk">
@@ -478,25 +478,25 @@ export function SelectedWork() {
             alt={kr ? "왼쪽 검증 항목의 중량 불일치 경고와 오른쪽 원문 하이라이트를 나란히 확인하는 화면" : "A weight discrepancy on the left, with highlighted source evidence on the right"}
             note={kr ? "원문 대조 기능의 구현 예시입니다. 전체 주문 연동 흐름은 구축과 검증을 진행하고 있습니다." : "Implementation example of source comparison. The complete order integration is under development and validation."} />
           <div id="doc-workflow" className="doc-explanation">
-            <h4>{kr ? "값 하나에도, 확인할 근거가 있습니다." : "Every field has evidence to check."}</h4>
-            <p>{kr ? "서류마다 다른 중량, 제각각인 거래처 이름, 빠진 필수값. 추출한 값 옆에 원문과 불일치 이유를 붙였습니다. 담당자는 확인이 필요한 항목을 찾아 수정하고, 승인한 결과를 주문으로 넘깁니다." : "Conflicting weights, inconsistent company names, and missing required fields. Extracted values sit beside their source and the reason for a flag, so operators can review, correct, and approve them for order creation."}</p>
+            <h4>{kr ? "불일치를 찾고, 원문으로 확인합니다." : "Flag discrepancies. Check the source."}</h4>
+            <p>{kr ? "운송장과 포장명세서의 중량이 다를 때, 두 값을 원문과 함께 보여줍니다. 불일치와 누락을 확인하는 검증 화면을 만들었고, 담당자가 승인한 값을 주문 시스템에 연결하는 과정까지 구축하고 있습니다." : "When the air waybill and packing list disagree on weight, an operator needs the source. I built a review screen that flags discrepancies beside the original document, and am building the connection from reviewed fields to order creation."}</p>
           </div>
           <div className="doc-workflow">
             <div className="doc-workflow-heading">
-              <h4>{kr ? "메일 한 통이 주문이 되기까지" : "From one email to an order"}</h4>
+              <h4>{kr ? "문서 검토와 주문 연동 흐름" : "Document review and order integration"}</h4>
               <span>{kr ? "업무 흐름 / 구축·검증 중" : "Workflow / Implementation and validation"}</span>
             </div>
             <ol>
               {(kr ? [
-                ["메일과 첨부 접수", "본문과 첨부서류를 묶고 고객과 운송 유형을 구분합니다."],
-                ["판독과 코드 매칭", "서류에서 값을 읽고 거래처, 공항, 항만 코드를 맞춥니다."],
-                ["원문 대조와 검토", "서류 간 불일치와 누락을 표시하고 담당자가 수정·승인합니다."],
-                ["기존 주문 확인과 연동", "중복 여부를 확인한 뒤 승인된 값을 KEROL 주문으로 연결합니다."],
+                ["메일과 첨부 접수", "메일 본문과 첨부서류에서 고객과 운송 유형을 확인합니다."],
+                ["항목 추출과 코드 연결", "중량과 수량 등을 읽고, 거래처와 항만 이름을 시스템 코드에 연결합니다."],
+                ["원문 대조와 검토", "불일치와 누락을 표시합니다. 담당자는 원문을 대조해 수정하고 승인합니다."],
+                ["주문 확인과 시스템 연동", "기존 주문을 조회한 뒤 승인된 값을 물류 업무 시스템 KEROL에 연결합니다."],
               ] : [
                 ["Receive", "Group the email and attachments by customer and shipment type."],
                 ["Extract and match", "Read the documents and match company, airport, and port codes."],
                 ["Review and approve", "Flag discrepancies and missing values for operator correction and approval."],
-                ["Check and integrate", "Check existing orders, then connect approved values to KEROL."],
+                ["Check and integrate", "Check existing orders, then connect approved fields to KEROL, the logistics operations system."],
               ]).map(([title, body], i) => <li key={title} className={i === 2 ? "human-review" : undefined}>
                 <div><strong>{title}</strong>{i < 3 && <Arrow />}</div><p>{body}</p>
                 {i === 2 && <span>{kr ? "담당자의 판단" : "Operator judgment"}</span>}
@@ -531,12 +531,12 @@ export function SelectedWork() {
           </a>
           <h4>
             {kr
-              ? "팀에서 시작해, 조직이 쓰는 도구로."
-              : "Built in one team. Adopted across the company."}
+              ? "개발부터 사내 도입까지 맡았습니다."
+              : "I built it and led the internal rollout."}
           </h4>
           <p>
             {kr
-              ? "SK On 전략기획 업무에서 출발한 AI 지식 시스템입니다. 직접 개발하고 보안 협의, 경영진 설명, 사용자 교육을 거쳐 사내로 확산했습니다. 당시 시스템 등록자는 600명 이상, 전략기획본부 일상 사용자는 약 30명이었습니다."
+              ? "SK On 전략기획팀에서 문서를 찾고 정리하던 업무에 AI를 적용했습니다. 시스템 개발과 보안 협의, 경영진 설명, 사용자 교육까지 맡았습니다. 당시 등록자는 600명 이상, 전략기획본부 일상 사용자는 약 30명이었습니다."
               : "I built STRIX for strategy work at SK On and led security discussions, executive communication, training, and rollout. It reached over 600 registrations, with around 30 daily users in the Strategy Division at the time."}
           </p>
           <a className="text-link" href="/case-study/strix">
@@ -550,7 +550,7 @@ export function SelectedWork() {
           title="Argus"
           subtitle={
             kr
-              ? "의사결정의 근거와 후속 검토를 기록하는 제품"
+              ? "결정의 근거를 기록하고 다시 검토하는 도구"
               : "A record of decisions, assumptions, and follow-up"
           }
           context={kr ? "독립 제품" : "Independent product"}
@@ -576,13 +576,13 @@ export function SelectedWork() {
           <div className="argus-copy">
             <h4>
               {kr
-                ? "그때, 왜 그 결정을 했는지."
-                : "Why you made that call."}
+                ? "결정의 이유까지 기록합니다."
+                : "Keep the reasoning behind the decision."}
             </h4>
             <p>
               {kr
-                ? "결정의 근거와 가정, 나중에 확인할 일을 한곳에 남깁니다. 시간이 지난 뒤 판단을 되짚어볼 수 있도록 기획하고, 설계와 개발을 직접 하고 있습니다."
-                : "A product for recording what a decision rests on and what to check later. I own the product, design, and engineering."}
+                ? "무엇을 근거로 결정했는지, 어떤 가정이 맞아야 하는지, 다음에 무엇을 확인할지 남깁니다. 판단을 나중에 다시 검토할 수 있는 제품으로, 기획과 설계, 개발을 직접 하고 있습니다."
+                : "Record the evidence behind a decision, the assumptions it depends on, and what to check next. I design and build the product so those judgments can be revisited later."}
             </p>
             <Link href={argusUrl} className="text-link">
               {kr ? "Argus 사용해 보기" : "Try Argus"}
@@ -610,14 +610,14 @@ export function Community() {
         <SectionHeading
           aside={kr ? "Beyond Deploy 운영진" : "Beyond Deploy organizing team"}
         >
-          {kr ? "만드는 사람들과 함께" : "With fellow builders"}
+          {kr ? "커뮤니티와 해커톤" : "Community and hackathons"}
         </SectionHeading>
         <div className="community-layout">
           <div className="community-copy">
             <h3>Beyond Deploy</h3>
             <p>
               {kr
-                ? "AI를 고객의 업무에 적용하는 사람들이 모입니다. 운영진으로 모임과 해커톤을 기획하며, 개발 과정의 선택과 시행착오를 나눕니다."
+                ? "AI 제품을 고객의 업무에 적용하는 사람들의 커뮤니티입니다. 운영진으로 참여해 프로젝트 경험을 나누는 모임과 해커톤을 함께 기획합니다."
                 : "A community for people building AI into client operations. As part of the organizing team, I help plan gatherings and hackathons where we share implementation choices and lessons from the work."}
             </p>
             <Link href="https://beyonddeploy.kr/" className="text-link">
@@ -648,8 +648,8 @@ export function Community() {
               </div>
               <p>
                 {kr
-                  ? "고객 인터뷰부터 문제 정의, 구현, 피칭까지. 실제 업무의 복잡함을 풀어보는 FDE 해커톤을 함께 기획하고 있습니다."
-                  : "Client interviews, problem definition, implementation, and a pitch. I am helping organize an FDE hackathon built around the complexity of real work."}
+                  ? "고객의 요구를 듣고, 풀어야 할 문제를 정하고, 팀으로 구현해 발표하는 해커톤입니다. Beyond Deploy 운영진으로 기획에 참여하고 있습니다."
+                  : "A hackathon where teams listen to a client, define the problem, build a solution, and present it. I am helping organize it as part of the Beyond Deploy team."}
               </p>
               <dl className="event-details">
                 <div>
@@ -710,8 +710,8 @@ export function About() {
         <div className="about-copy">
           <h3>
             {kr
-              ? "전략기획에서 제품 개발로."
-              : "From corporate strategy to product development."}
+              ? "전략기획을 하며, 직접 만들기 시작했습니다."
+              : "I started building while working in strategy."}
           </h3>
           <p>
             {kr
@@ -720,8 +720,8 @@ export function About() {
           </p>
           <p>
             {kr
-              ? "서울대학교에서 경제학과 과학기술학을 공부했습니다. 사업의 우선순위를 정하는 일과 제품을 구현하는 일을 함께 해왔습니다."
-              : "I studied Economics and Science & Technology Studies at Seoul National University. My work combines setting business priorities with hands-on product development."}
+              ? "서울대학교에서 경제학과 과학기술학을 공부했습니다. 지금도 무엇을 만들지 판단하는 일과 직접 구현하는 일을 함께 하고 있습니다."
+              : "I studied Economics and Science & Technology Studies at Seoul National University. I continue to combine deciding what to build with building it myself."}
           </p>
           <Link
             href="https://www.linkedin.com/in/yaechan-lee/"
@@ -776,7 +776,7 @@ export function About() {
               <h4>{kr ? "미술도 좋아합니다." : "Outside work, art."}</h4>
               <p>
                 {kr
-                  ? "취향으로 작품을 만나는 큐레이션 프로젝트 SAYU를 만들었고, 큐레이팅스쿨서울에서도 공부했습니다."
+                  ? "취향에 맞는 미술 작품을 찾아보는 SAYU를 만들었습니다. 큐레이팅스쿨서울에서 공부하며 전시와 큐레이션에도 관심을 이어가고 있습니다."
                   : "I built SAYU, an art-curation project based on taste, and studied at Curating School Seoul."}
               </p>
             </div>
@@ -794,9 +794,9 @@ export function Contact() {
       id: "project-contact",
       title: kr ? "프로젝트 상담" : "Discuss a project",
       body: kr
-        ? "반복되는 수작업, 흩어진 정보, 도입 이후 멈춘 AI 프로젝트. 지금 풀고 싶은 업무와 제약을 알려주세요. 적용할 범위부터 함께 짚어보겠습니다."
-        : "Manual work, fragmented information, or an AI project that has stalled. Tell me what needs to change and what stands in the way. We can work out the scope together.",
-      action: kr ? "프로젝트 메일 보내기" : "Email about a project",
+        ? "AI를 적용할 업무를 찾고 있거나, 구상한 시스템을 실제로 만들어야 한다면 연락 주세요. 현재 업무와 목표를 듣고 범위와 구현 방법을 함께 검토하겠습니다."
+        : "Get in touch if you are deciding where AI could help or need to build a system you have in mind. We can review the current workflow, goals, scope, and implementation together.",
+      action: kr ? "프로젝트 문의하기" : "Email about a project",
       subject: kr ? "AX 프로젝트 문의" : "AX project inquiry",
       event: "project",
     },
@@ -804,9 +804,9 @@ export function Contact() {
       id: "collaborate-contact",
       title: kr ? "협업 제안" : "Collaborate",
       body: kr
-        ? "함께 개발할 제품, 같이 풀어볼 고객의 문제, 나누고 싶은 경험이 있다면 연락 주세요. 개발자, 기획자, 사업 파트너와 연결되고 싶습니다."
-        : "Have a product to build, a client problem to work through, or experience to share? I would like to meet developers, product people, and business partners.",
-      action: kr ? "협업 메일 보내기" : "Email about collaborating",
+        ? "함께 만들 제품이나 같이 맡을 프로젝트를 제안해 주세요. 개발, 기획, 사업 경험을 나누거나 커뮤니티에서 만나는 자리도 좋습니다."
+        : "Suggest a product to build or a project to take on together. I am also open to exchanging experience in engineering, product, and business, or meeting through the community.",
+      action: kr ? "협업 제안하기" : "Email about collaborating",
       subject: kr ? "협업 제안" : "Collaboration",
       event: "collaborate",
     },
@@ -815,7 +815,7 @@ export function Contact() {
     <section id="contact" className="contact">
       <div className="shell">
         <div className="contact-title">
-          <h2>{kr ? "함께할 일을 이야기해요." : "Let’s talk about the work."}</h2>
+          <h2>{kr ? "함께 만들 일이 있다면." : "Have something in mind?"}</h2>
           <a href="mailto:yclee913@gmail.com">
             yclee913@gmail.com
             <Arrow external />
@@ -840,8 +840,8 @@ export function Contact() {
         <div className="contact-bottom">
           <span>
             {kr
-              ? "메일 또는 15분 미팅으로 시작할 수 있습니다."
-              : "Start with an email or a 15-minute call."}
+              ? "메일로 내용을 보내거나, 짧은 미팅을 예약해 주세요."
+              : "Send a note or book a short call."}
           </span>
           <Link
             href="https://calendly.com/yclee913/15-min-meeting"
