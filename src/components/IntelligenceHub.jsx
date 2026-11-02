@@ -32,6 +32,8 @@ function Desk({ kr }) {
   const [filter, setFilter] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [reload, setReload] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
+  const [evidenceOpen, setEvidenceOpen] = useState(false);
   const root = useRef(null);
   const ledger = useRef(null);
   const runController = useRef(null);
@@ -52,17 +54,24 @@ function Desk({ kr }) {
     return () => { observer.disconnect(); controller.abort(); };
   }, [mission, reload]);
   useEffect(() => () => runController.current?.abort(), []);
+  useEffect(() => {
+    if (!busy) return;
+    const started = Date.now();
+    const timer = setInterval(() => setElapsed(Math.floor((Date.now() - started) / 1000)), 1000);
+    return () => clearInterval(timer);
+  }, [busy]);
   function changeMission(id) {
     if (busy || id === mission) return;
-    setMission(id); setSources([]); setResult(null); setError(null); setFilter(null); setExpanded(false); setTools({}); setPhase('idle'); setFeedState('loading');
+    setMission(id); setSources([]); setResult(null); setError(null); setFilter(null); setExpanded(false); setTools({}); setPhase('idle'); setFeedState('loading'); setEvidenceOpen(false);
   }
   function showEvidence(finding) {
+    setEvidenceOpen(true);
     setFilter({ records: finding.records, sources: finding.sources });
     requestAnimationFrame(() => { ledger.current?.focus({ preventScroll: true }); ledger.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); });
   }
   async function run() {
     if (busy) return;
-    setPhase('planning'); setError(null); setResult(null); setFilter(null); setExpanded(false); setTools({});
+    setElapsed(0); setEvidenceOpen(false); setPhase('planning'); setError(null); setResult(null); setFilter(null); setExpanded(false); setTools({});
     const controller = new AbortController();
     runController.current = controller;
     const timeout = setTimeout(() => controller.abort(), 80000);
@@ -103,49 +112,70 @@ function Desk({ kr }) {
   const records = displaySources.flatMap(s => s.records || []);
   const previewRecords = providers.flatMap(p => displaySources.find(s => s.id === p.id)?.records.slice(0, 2) || []);
   const visibleRecords = filter ? records.filter(r => filter.records.length ? filter.records.includes(r.id) : filter.sources.includes(r.source)) : expanded ? records : previewRecords;
-  const phases = { idle: ['요청 대기', 'Ready'], planning: ['조회할 정보 선택 중', 'Choosing sources'], collecting: ['API 조회 중', 'Checking APIs'], synthesizing: ['근거 대조 · 브리핑 작성 중', 'Comparing evidence · Writing brief'], done: ['브리핑 완료', 'Brief ready'], error: ['실행 중단', 'Run interrupted'] };
+  const phases = { idle: ['실행 준비', 'Ready to run'], planning: ['정보원 연결 중', 'Connecting sources'], collecting: ['공개 정보를 가져오는 중', 'Gathering observations'], synthesizing: ['근거를 대조하고 핵심을 추리는 중', 'Finding what deserves attention'], done: ['브리핑 완료', 'Brief ready'], error: ['실행 중단', 'Run interrupted'] };
+  const step = phase === 'done' ? 3 : phase === 'synthesizing' ? 2 : busy ? 1 : 0;
   return <section className="intelligence" id="intelligence" ref={root} aria-labelledby="intelligence-title">
     <div className="intelligence-intro">
-      <h4 id="intelligence-title">{kr ? '정보를 모으고, 확인할 일을 찾는 에이전트.' : 'An agent that finds what needs a closer look.'}</h4>
-      <p>{kr ? '질문에 맞는 API를 조회하고, 흩어진 관측 정보를 근거와 함께 정리합니다. 아래에서 직접 실행해 보세요.' : 'It chooses APIs for the question, checks observations, and builds a briefing with sources. Run it below.'}</p>
+      <h4 id="intelligence-title">{kr ? '흩어진 정보에서, 지금 볼 것만.' : 'Scattered information. A clear next step.'}</h4>
+      <p>{kr ? '기상·재해·지진 API를 연결해 확인할 이슈와 근거를 한곳에 모았습니다. 범위를 고르고 직접 실행해 보세요.' : 'Weather, natural events, and earthquakes, connected in one briefing. Choose a scope and try it.'}</p>
     </div>
     <div className="signal-desk">
-      <header className="desk-header"><h5>Signal Desk</h5><span>{kr ? '공개 데이터로 실행하는 AI 데모' : 'Working AI demo · Public data'}</span></header>
+      <header className="desk-header"><h5>Signal Desk</h5><span>{kr ? '공개 API × AI 브리핑' : 'Public APIs × AI briefing'}</span></header>
       <div className="desk-task">
         <div className="desk-scopes" role="group" aria-label={kr ? '조회 범위' : 'Scope'}>{missions.map(m => <button key={m.id} aria-pressed={mission === m.id} disabled={busy} onClick={() => changeMission(m.id)}>{m.name[l]}</button>)}</div>
-        <div className="desk-request"><p>{selected.prompt[l]}</p><button className="desk-run" onClick={run} disabled={busy}>{busy ? (kr ? '실행 중' : 'Running') : result ? (kr ? '브리핑 다시 확인' : 'Check briefing again') : (kr ? '에이전트 실행' : 'Run agent')}<Arrow /></button></div>
+        <div className="desk-request"><p>{selected.prompt[l]}</p><button className="desk-run" onClick={run} disabled={busy}>{busy ? (kr ? '확인 중' : 'Working') : result ? (kr ? '다시 확인' : 'Check again') : (kr ? '에이전트 실행' : 'Run agent')}<Arrow /></button></div>
       </div>
-      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong><span>{result ? `${result.cached ? (kr ? '최근 결과 · ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : kr ? '정보 선택 → API 조회 → 근거 대조 → 브리핑' : 'Choose sources → Query APIs → Compare → Brief'}</span></div>
-      <div className="desk-workspace">
-        <div className="desk-brief" aria-busy={busy}>
-          {result ? <>
-            <h5>{result.brief.title}</h5><p className="brief-summary">{result.brief.summary}</p>
-            <ol className="brief-findings">{result.brief.findings.map((f, i) => <li key={i}><h6>{f.title}</h6><p>{f.detail}</p><p className="brief-action"><strong>{kr ? '다음 확인' : 'Follow up'}</strong> {f.action}</p><button className="brief-citation" onClick={() => showEvidence(f)} aria-pressed={filter?.records === f.records}>{kr ? '근거 보기' : 'Show evidence'} <span>{f.sources.map(id => providers.find(p => p.id === id)?.name).join(' · ')}</span><Arrow /></button></li>)}</ol>
-            {result.brief.unknowns.length > 0 && <div className="brief-unknown"><h6>{kr ? '아직 확인되지 않은 것' : 'What remains unverified'}</h6><ul>{result.brief.unknowns.map(v => <li key={v}>{v}</li>)}</ul></div>}
-          </> : <div className="brief-awaiting"><svg viewBox="0 0 180 62" width="180" height="62" fill="none" aria-hidden="true"><path d="M12 10h42l34 21h70M12 31h146M12 52h42l34-21" stroke="currentColor" strokeWidth="1.2"/><circle cx="12" cy="10" r="4" fill="currentColor"/><circle cx="12" cy="31" r="4" fill="currentColor"/><circle cx="12" cy="52" r="4" fill="currentColor"/><rect x="146" y="19" width="24" height="24" fill="var(--paper)" stroke="currentColor" strokeWidth="1.5"/></svg><h5>{busy ? (kr ? '공개 정보를 확인하고 있습니다.' : 'Checking the public sources.') : (kr ? '어떤 정보를 봐야 할지부터.' : 'Start with what to look at.')}</h5><p>{busy ? (kr ? '조회한 데이터가 도착하면 출처 목록에 표시됩니다. 브리핑에는 확인된 근거와 추가로 살펴볼 일을 나눠 담습니다.' : 'Source results appear as they arrive. The briefing separates observations from suggested follow-up.') : (kr ? '범위를 고르고 실행하면 AI가 필요한 소스를 선택합니다. 기상 특보, 자연재해, 지진 관측을 대조해 읽기 쉬운 브리핑으로 만듭니다.' : 'Choose a scope and run the agent. It selects relevant sources and turns weather alerts, natural events, and earthquake observations into a readable briefing.')}</p></div>}
-          {error && <div className="desk-error" role="alert"><p>{error[l]}</p><button onClick={run}>{kr ? '다시 실행' : 'Retry'}</button></div>}
-        </div>
-        <aside className="desk-sources" aria-label={kr ? '연결된 정보원' : 'Connected sources'}><h5>{kr ? '연결된 정보원' : 'Connected sources'}</h5>
-          {providers.map(p => {
-            const source = displaySources.find(s => s.id === p.id); const state = tools[p.id];
-            let status = kr ? '조회 대기' : 'Not queried';
-            if (feedState === 'loading' && !source) status = kr ? '불러오는 중' : 'Loading';
-            if (source?.status === 'ok') status = kr ? `${source.count}건 중 ${source.records.length}건 수집` : `${source.records.length} of ${source.count} records retrieved`;
-            if (source?.status === 'not_applicable' || (mission === 'panama' && p.id === 'weather')) status = kr ? '해당 지역 미지원' : 'Outside coverage';
-            if (source?.status === 'unavailable' || (feedState === 'error' && !source)) status = kr ? '조회 실패' : 'Unavailable';
-            if (state === 'running') status = kr ? '에이전트가 조회 중' : 'Agent is querying';
-            return <div className="source-row" key={p.id}><div><strong>{p.name}</strong><a href={p.url} target="_blank" rel="noreferrer">{kr ? 'API 안내' : 'API docs'}<Arrow /></a></div><p>{p.coverage[l]}</p><span className={source?.status === 'ok' ? 'source-ok' : ''}>{status}</span>{source?.fetchedAt && <time dateTime={source.fetchedAt}>{kr ? '수집 ' : 'Retrieved '}{formatTime(source.fetchedAt, kr)} KST</time>}</div>;
-          })}
-          <p className="desk-scope-note">{mission === 'world' ? (kr ? '기상 특보는 미국, 재해·지진은 전 세계를 조회합니다.' : 'Weather alerts cover the US; natural events and earthquakes cover the world.') : mission === 'panama' ? (kr ? '파나마 운하 기준 반경 1,000km의 관측을 조회합니다. NOAA 기상 특보는 이 지역을 지원하지 않습니다.' : 'Observations within 1,000 km of the Panama Canal. NOAA alerts do not cover this area.') : (kr ? '재해·지진은 Newark 반경 750km, 기상 특보는 Newark 지점 기준입니다.' : 'Events and earthquakes within 750 km of Newark; weather alerts at the Newark point.')}</p>
+      <div className="desk-connections" aria-label={kr ? '정보원 연결 상태' : 'Source connections'}>
+        {providers.map(p => {
+          const source = displaySources.find(s => s.id === p.id);
+          const state = tools[p.id];
+          const unsupported = source?.status === 'not_applicable' || (mission === 'panama' && p.id === 'weather');
+          let status = kr ? '연결 대기' : 'Waiting';
+          if (feedState === 'loading' && !source) status = kr ? '불러오는 중' : 'Loading';
+          if (source?.status === 'ok') status = kr ? `${source.records.length}건 ${result || state === 'ok' ? '확인' : '준비'}` : `${source.records.length} records ${result || state === 'ok' ? 'checked' : 'ready'}`;
+          if (unsupported) status = kr ? '이 지역 미지원' : 'Outside coverage';
+          if (source?.status === 'unavailable' || (feedState === 'error' && !source)) status = kr ? '연결 실패' : 'Unavailable';
+          if (state === 'running') status = kr ? '조회 중' : 'Querying';
+          return <div className="desk-connection" key={p.id} data-state={state === 'running' ? 'running' : unsupported ? 'unsupported' : source?.status}>
+            <span className="connection-label">{p.label[l]}</span><strong>{p.name}</strong><span className="connection-status"><i aria-hidden="true" />{status}</span>
+          </div>;
+        })}
+      </div>
+      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong><span>{result ? `${result.cached ? (kr ? '최근 결과 · ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
+      <div className="desk-brief" aria-busy={busy}>
+        {result ? <>
+          <h5 className="brief-headline">{result.brief.title}</h5><p className="brief-summary">{result.brief.summary}</p>
+          <ol className="brief-findings">{result.brief.findings.map((f, i) => <li key={i}>
+            <span className="finding-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div><h6>{f.title}</h6><p className="brief-action">{f.action}</p>
+              <details className="finding-detail"><summary>{kr ? '판단 근거' : 'Why this matters'}</summary><p>{f.detail}</p><button className="brief-citation" onClick={() => showEvidence(f)} aria-pressed={filter?.records === f.records}>{kr ? '원문 확인' : 'View sources'} <span>{f.sources.map(id => providers.find(p => p.id === id)?.name).join(' · ')}</span><Arrow /></button></details>
+            </div>
+          </li>)}</ol>
+        </> : <div className="brief-awaiting">
+          <div className="brief-progress" aria-label={kr ? '실행 단계' : 'Run stages'}>{[[kr ? 'API 조회' : 'Query APIs'], [kr ? '핵심 정리' : 'Find signals'], [kr ? '브리핑' : 'Brief']].map(([label], i) => <span key={i} data-state={step > i + 1 ? 'done' : step === i + 1 ? 'active' : 'pending'}><b aria-hidden="true">0{i + 1}</b>{label}</span>)}</div>
+          <h5>{busy ? phases[phase][l] : (kr ? '세 개의 정보원. 하나의 브리핑.' : 'Three sources. One briefing.')}</h5>
+          <p>{busy ? (phase === 'synthesizing' ? (kr ? '도착한 관측을 읽고, 확인할 이슈와 다음 행동을 정리하고 있습니다.' : 'Reading the observations to identify relevant signals and next steps.') : (kr ? '정보원을 동시에 조회합니다. 도착한 결과는 위에 바로 표시됩니다.' : 'Querying sources in parallel. Results appear above as they arrive.')) : (kr ? '관측을 모으고, 근거를 대조하고, 다음에 확인할 일까지. 긴 원문은 접어두고 핵심부터 보여드립니다.' : 'Gather observations, compare the evidence, and find the next thing to check. Start with the essentials; open the sources when you need them.')}</p>
+          {busy && <p className="desk-elapsed"><span>{elapsed}{kr ? '초 경과' : 's elapsed'}</span>{elapsed >= 15 && <span>{kr ? '응답이 늦어지고 있습니다. 수집한 원문은 아래에서 먼저 볼 수 있습니다.' : 'Taking a little longer. You can already open the source records below.'}</span>}</p>}
+        </div>}
+        {error && <div className="desk-error" role="alert"><p>{error[l]}</p><button onClick={run}>{kr ? '다시 실행' : 'Retry'}</button></div>}
+      </div>
+      <details className="desk-evidence" id="signal-evidence" open={evidenceOpen} onToggle={event => setEvidenceOpen(event.currentTarget.open)}>
+        <summary>{kr ? '근거와 조회 범위' : 'Sources & coverage'}<span>{kr ? `수집 원문 ${records.length}건` : `${records.length} retrieved records`}</span></summary>
+        <div className="evidence-content">
+          <div className="evidence-ledger-head"><h5 ref={ledger} tabIndex={-1}>{filter ? (kr ? '브리핑의 근거' : 'Briefing evidence') : (kr ? '수집한 원문' : 'Source observations')}</h5>{filter && <button onClick={() => { setFilter(null); setExpanded(true); }}>{kr ? '전체 보기' : 'Show all'}</button>}</div>
+          {visibleRecords.length ? <ul>{visibleRecords.map(r => <li key={r.id}><span>{providers.find(p => p.id === r.source)?.name}</span><a href={r.url || providers.find(p => p.id === r.source).url} target="_blank" rel="noreferrer">{r.title}<Arrow /></a><time dateTime={r.occurredAt}>{formatTime(r.occurredAt, kr)} KST</time></li>)}</ul> : <p className="ledger-empty">{feedState === 'loading' ? (kr ? '공개 API에서 정보를 불러오고 있습니다.' : 'Loading observations from public APIs.') : displaySources.some(s => s.status === 'ok') ? (kr ? '조회 범위에 표시할 관측이 없습니다. 위험이 없다는 뜻은 아닙니다.' : 'No observations in this scope. This does not establish the absence of risk.') : (kr ? '현재 원문을 가져오지 못했습니다.' : 'Source records are unavailable.')}</p>}
+          {!filter && records.length > previewRecords.length && <button className="desk-retry-feeds" onClick={() => setExpanded(v => !v)}>{expanded ? (kr ? '미리보기로 접기' : 'Collapse to preview') : (kr ? `원문 ${records.length}건 모두 보기` : `Show all ${records.length} records`)}</button>}
+          <div className="source-metadata">{providers.map(p => {
+            const source = displaySources.find(s => s.id === p.id);
+            return <p key={p.id}><a href={p.url} target="_blank" rel="noreferrer">{p.name} ↗</a><span>{p.coverage[l]}{source?.status === 'ok' ? (kr ? ` · 조회 ${source.count}건 중 ${source.records.length}건 수집` : ` · ${source.records.length} of ${source.count} retrieved`) : ''}{source?.fetchedAt ? ` · ${formatTime(source.fetchedAt, kr)} KST` : ''}</span></p>;
+          })}</div>
+          <p className="desk-scope-note">{mission === 'world' ? (kr ? '기상 특보는 미국, 재해·지진은 전 세계를 조회합니다.' : 'Weather alerts cover the US; natural events and earthquakes cover the world.') : mission === 'panama' ? (kr ? '파나마 운하 반경 1,000km를 조회합니다. NOAA 기상 특보는 이 지역을 지원하지 않습니다.' : 'Within 1,000 km of the Panama Canal. NOAA alerts do not cover this area.') : (kr ? '재해·지진은 Newark 반경 750km, 기상 특보는 Newark 지점 기준입니다.' : 'Events and earthquakes within 750 km of Newark; weather alerts at Newark point.')}</p>
+          {result?.brief.unknowns.length > 0 && <div className="brief-unknown"><h6>{kr ? '추가 확인이 필요한 부분' : 'Still to verify'}</h6><ul>{result.brief.unknowns.map(v => <li key={v}>{v}</li>)}</ul></div>}
           {feedState === 'error' && !busy && <button className="desk-retry-feeds" onClick={() => { setFeedState('loading'); setReload(v => v + 1); }}>{kr ? '정보원 다시 조회' : 'Retry sources'}</button>}
-        </aside>
-      </div>
-      <div className="desk-evidence" id="signal-evidence">
-        <div className="evidence-ledger-head"><h5 ref={ledger} tabIndex={-1}>{filter ? (kr ? '브리핑의 근거' : 'Briefing evidence') : (kr ? '수집한 원문' : 'Source observations')}</h5>{filter ? <button onClick={() => { setFilter(null); setExpanded(true); }}>{kr ? '전체 보기' : 'Show all'}</button> : <span>{kr ? '원문 제목 · 관측 시각' : 'Original title · Observation time'}</span>}</div>
-        {visibleRecords.length ? <ul>{visibleRecords.map(r => <li key={r.id}><span>{providers.find(p => p.id === r.source)?.name}</span><a href={r.url || providers.find(p => p.id === r.source).url} target="_blank" rel="noreferrer">{r.title}<Arrow /></a><time dateTime={r.occurredAt}>{formatTime(r.occurredAt, kr)} KST</time></li>)}</ul> : <p className="ledger-empty">{feedState === 'loading' ? (kr ? '공개 API에서 정보를 불러오고 있습니다.' : 'Loading observations from public APIs.') : sources.some(s => s.status === 'ok') ? (kr ? '조회 범위에서 표시할 관측이 없습니다. 이것이 위험이 없다는 뜻은 아닙니다.' : 'No observations to display in this scope. This does not establish the absence of risk.') : (kr ? '현재 원문을 가져오지 못했습니다. 정보원을 다시 조회해 주세요.' : 'Source records are unavailable. Retry the sources.')}</p>}
-        {!filter && records.length > previewRecords.length && <button className="desk-retry-feeds" onClick={() => setExpanded(v => !v)}>{expanded ? (kr ? '미리보기로 접기' : 'Collapse to preview') : (kr ? `수집한 원문 ${records.length}건 모두 보기` : `Show all ${records.length} retrieved records`)}</button>}
-      </div>
-      <footer className="desk-footnote"><p>{kr ? '고객 시스템과 별개인 공개 데이터 데모입니다. 관측 사실이 운송 지연을 뜻하지는 않습니다. 항만 운영·선박 위치·고객 일정은 연결하지 않았습니다.' : 'A public-data demo, separate from client systems. An observation does not establish a shipping delay. Port operations, vessel positions, and client schedules are not connected.'}</p><span>{kr ? '최대 10분 캐시 · NASA 목록 최대 100건 · 원문 영어' : 'Up to 10-minute cache · NASA catalog capped at 100 · English source text'}</span></footer>
+          <p className="desk-scope-note">{kr ? '최대 10분 캐시 · NASA 목록 최대 100건 · 원문 영어. 항만 운영·선박 위치·고객 일정은 연결하지 않았습니다.' : 'Up to 10-minute cache · NASA catalog capped at 100 · English source text. Port operations, vessel positions, and client schedules are not connected.'}</p>
+        </div>
+      </details>
+      <footer className="desk-footnote"><p>{kr ? '공개 데이터 데모 · 수집된 표본 기준이며, 운송 영향이나 안전 여부를 판단하지 않습니다.' : 'Public-data demo · Based on retrieved samples, not a determination of shipping impact or safety.'}</p></footer>
     </div>
     <a className="text-link intelligence-case-link" href="/case-study/fsk">{kr ? '운송 관제와 출고 계획의 실제 설계 과정' : 'The shipment monitoring and planning case study'}<Arrow /></a>
   </section>;

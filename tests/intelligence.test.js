@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { distanceKm, normalizeSource, fetchSource, safeUrl, sourceUrl, validateBrief, boundEmptyFindings } from '../lib/intelligence.js';
+import { distanceKm, normalizeSource, fetchSource, safeUrl, sourceUrl, validateBrief, boundEmptyFindings, groundBrief } from '../lib/intelligence.js';
 
 test('regional filtering uses distance across the antimeridian, excluding distant events', () => {
   assert.ok(distanceKm(0, 179, 0, -179) < 225);
@@ -51,4 +51,17 @@ test('zero-result sources cannot carry invented contextual findings', () => {
   assert.doesNotMatch(JSON.stringify(boundEmptyFindings(valid, [source], 'en')), /Unsupported seasonal fact/);
   source.count = 3;
   assert.equal(validateBrief(brief, [source]), null);
+});
+
+
+test('one unsupported finding cannot suppress valid evidence or leak into the headline', () => {
+  const sources = [{ id: 'earthquakes', status: 'ok', count: 3, records: [{ id: 'earthquakes-1' }] }, { id: 'disasters', status: 'ok', count: 0, records: [] }];
+  const good = { title: 'Recorded earthquake', detail: 'One cited observation', action: 'Check the authority', sources: ['earthquakes'], records: ['earthquakes-1'] };
+  const bad = { title: 'Unsupported absence', detail: 'No earthquakes', action: 'None', sources: ['disasters', 'earthquakes'], records: [] };
+  const draft = { title: 'Unsupported mixed headline', summary: 'Unsupported combined summary', findings: [good, bad], unknowns: [] };
+  const brief = groundBrief(draft, sources, 'en');
+  assert.equal(brief.findings.length, 1);
+  assert.equal(brief.title, good.title);
+  assert.equal(brief.summary, good.detail);
+  assert.equal(groundBrief({ ...draft, findings: [bad] }, sources, 'en'), null);
 });

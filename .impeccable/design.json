@@ -239,36 +239,36 @@
     "signalDesk": {
       "scope": "Local extension of the existing monograph; public-data demo separate from client evidence.",
       "layout": {
-        "columns": "minmax(0,1fr) 300px",
-        "intermediateColumns": "minmax(0,1fr) 260px at 1000px",
-        "mobile": "At 760px, stack report, sources and ledger fields; 18px inset."
+        "columns": "Three source columns above a full-width brief; two finding columns",
+        "intermediateColumns": "Source statuses stack within their columns at 1000px",
+        "mobile": "At 760px, stack findings and ledger fields; retain compact source rail; 18px inset."
       },
       "chrome": {
-        "border": "1px solid #bdc7d5",
+        "border": "1px solid var(--line)",
         "headerMetadata": "#c5cedb",
         "selection": "#c9d9ff"
       },
       "typeRoles": {
         "sectionHeading": "28px; 25px mobile",
         "request": "24px; 21px at 1000px; 22px mobile",
-        "reportTitle": "25px; 22px mobile",
+        "reportTitle": "30px; 25px mobile",
         "findingTitle": "17px / 600",
         "headerTitle": "22px; 20px mobile",
-        "sourceTitle": "15px / 600",
+        "sourceTitle": "17px / 600; 13px mobile",
         "metadata": "12–13px; tabular numerals for time"
       },
       "states": [
         "ready",
-        "choosing sources",
+        "connecting sources",
         "querying APIs",
         "comparing evidence / writing brief",
         "brief ready",
         "run interrupted"
       ],
       "sources": "Real tool events update querying, completed, outside-coverage or unavailable text; success green denotes retrieval only. Collection times are separate from observation and generation times. Cached completion is labeled recent result.",
-      "ledger": "Preview two records per provider; expand to every retrieved record; collapse to preview. Citation filters exact IDs or falls back to sources, focuses heading and scrolls. Clearing filter exposes the complete retrieved set.",
+      "ledger": "Closed by default; citation opens the disclosure. Preview two records per provider; expand to every retrieved record; collapse to preview. Citation filters exact IDs or falls back to sources, focuses heading and scrolls. Clearing filter exposes the complete retrieved set.",
       "coverage": "Global: US NWS, worldwide natural events and earthquakes. Panama: 1,000km event radius, outside NWS coverage. Newark: 750km events, point NWS alerts. NASA 30-day catalog capped at 100; USGS 7-day M4.5+; cache up to ten minutes.",
-      "brief": "Summary, findings, follow-up actions, citations and explicit unknowns. Claims stay within sampled evidence; no absence-of-risk or shipping-impact inference.",
+      "brief": "Large headline, concise summary, at most two findings with follow-up actions. Native disclosures contain explanations, citations and unknowns. Claims stay within sampled evidence; no absence-of-risk or shipping-impact inference.",
       "accessibility": "Pressed scope and citation states, polite live execution strip, busy report, alert/retry errors, focusable ledger heading. Reduced motion disables pulse and smooth citation scroll."
     }
   },
