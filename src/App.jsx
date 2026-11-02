@@ -23,6 +23,12 @@ const caseId =
 function Page() {
   const { lang } = useLang();
   useEffect(() => {
+    // The browser may resolve an incoming section link before React mounts it.
+    if (caseId || path !== "/") return;
+    const target = window.location.hash.slice(1);
+    if (target) document.getElementById(target)?.scrollIntoView({ behavior: "instant" });
+  }, []);
+  useEffect(() => {
     document.title = `${caseId ? `${caseId.toUpperCase()} / ` : ""}${lang === "kr" ? "이예찬 | AI 사업과 제품 개발" : "Yaechan Lee | AI ventures & product development"}`;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical)
