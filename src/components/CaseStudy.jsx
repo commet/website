@@ -5,14 +5,14 @@ import { Arrow, Link } from "./Site";
 const content = {
   fsk: {
     kr: {
-      title: "FSK",
-      subtitle: "운송 계획, 문서 처리, 수금 대사.",
+      title: "FSK L&S",
+      subtitle: "물류기업의 운송 관제와 문서 자동화.",
       meta: "고객 프로젝트 / Praxis / 2026",
       intro:
-        "FSK의 물류 업무를 분석하며 운송 관제, 문서 처리, 수금 대사를 설계하고 개발했습니다. 관제는 구축해 배포했고, 문서에서 읽은 값을 주문 시스템에 연결하는 흐름은 구축·검증을 진행하고 있습니다.",
+        "물류기업 FSK L&S의 업무를 분석하며 운송 관제, 문서 처리, 수금 대사를 설계하고 개발했습니다. 관제는 구축해 배포했고, 문서에서 읽은 값을 주문 시스템에 연결하는 흐름은 구축·검증을 진행하고 있습니다.",
       role: "도메인 리서치, 업무 분석, 제품 설계, 개발과 현업 피드백 반영",
       context:
-        "Praxis를 통한 독립 AX 프로젝트. FSK 담당자들과 업무 맥락을 확인하며 진행했습니다.",
+        "Praxis를 통한 독립 AX 프로젝트. FSK L&S 담당자들과 업무 맥락을 확인하며 진행했습니다.",
       sections: [
         {
           title: "출고 3일 지연이 도착 7일 지연으로 바뀌는 이유",
@@ -63,14 +63,14 @@ const content = {
         "문서에서 값을 읽는 일은 자동화하되, 원문이 모호하거나 기존 코드와 맞지 않을 때는 담당자에게 돌려줍니다. 일정은 계산하되, 확정된 계획과 예측값은 구분합니다. 이 경계를 정하고 화면과 기존 시스템에 반영하는 일까지 맡았습니다.",
     },
     en: {
-      title: "FSK",
+      title: "FSK L&S",
       subtitle: "Shipment planning, document review, and reconciliation.",
       meta: "Client work / Praxis / 2026",
       intro:
-        "My work at FSK spans shipment monitoring, document processing, and invoice–payment reconciliation. The control tower is built and deployed; the workflow connecting extracted document fields to order creation is under implementation and validation.",
+        "My work for logistics company FSK L&S spans shipment monitoring, document processing, and invoice–payment reconciliation. The control tower is built and deployed; the workflow connecting extracted document fields to order creation is under implementation and validation.",
       role: "Domain research, workflow analysis, product design, engineering, and iteration with users",
       context:
-        "An independent AX engagement through Praxis, developed in dialogue with FSK operators.",
+        "An independent AX engagement through Praxis, developed in dialogue with FSK L&S operators.",
       sections: [
         {
           title: "Why a three-day release delay can cost a week",
@@ -332,7 +332,7 @@ export default function CaseStudy({ id }) {
           {kr
             ? id === "fsk"
               ? "STRIX의 사내 도입 경험도 보기"
-              : "FSK의 물류 AX 작업도 보기"
+              : "물류기업 FSK L&S의 AX 사례 보기"
             : id === "fsk"
               ? "Read about adoption at SK On"
               : "Explore logistics AX at FSK"}

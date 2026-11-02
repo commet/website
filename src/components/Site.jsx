@@ -267,11 +267,11 @@ export function Evidence() {
               F
             </span>
             <div>
-              <h3>{kr ? "FSK 운송 관제" : "FSK Control Tower"}</h3>
+              <h3>{kr ? "물류기업 FSK L&S" : "FSK L&S / Logistics"}</h3>
               <p>
                 {kr
-                  ? "출고 계획부터 항로 감시까지"
-                  : "Shipment planning and route monitoring"}
+                  ? "설비 운송 관제 / 출고 계획부터 항로 감시까지"
+                  : "Equipment shipment control / Planning and route monitoring"}
               </p>
             </div>
           </div>
@@ -469,8 +469,8 @@ export function SelectedWork() {
     >
       <div className="project-grid">
         <article id="doc-agent" className="project doc-project">
-          <WorkHeading title="FSK DocAgent"
-            subtitle={kr ? "메일에서 주문까지 이어지는 문서 자동화" : "Document automation from inbox to order"}
+          <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
+            subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문 연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
           <EvidenceImage src="/images/fsk/document-review.webp" width={2280} height={1280}
             title={kr ? "DocAgent 원문 대조와 검증" : "DocAgent source review"}
