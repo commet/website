@@ -1,7 +1,7 @@
 export const missions = [
-  { id: 'world', name: ['전 세계 이슈', 'Global signals'], prompt: ['지금 확인할 기상·재해 이슈를 정리해줘.', 'Brief me on weather and natural events worth checking.'] },
-  { id: 'panama', name: ['파나마 주변', 'Around Panama'], prompt: ['파나마 주변에서 확인할 일이 있을까?', 'What should I check around Panama?'] },
-  { id: 'newark', name: ['미국 도착지', 'Newark arrival'], prompt: ['Newark 도착지 주변 상황을 확인해줘.', 'Check conditions around the Newark arrival area.'] },
+  { id: 'panama', name: ['파나마 통과 전', 'Before Panama'], prompt: ['파나마 통과 전, 확인할 외부 이슈를 정리해줘.', 'What external events should I check before the Panama leg?'] },
+  { id: 'newark', name: ['미국 도착 전', 'Before US arrival'], prompt: ['미국 도착지 주변의 기상·재해 이슈를 확인해줘.', 'Check conditions around the Newark arrival area.'] },
+  { id: 'world', name: ['전체 관측', 'Global signals'], prompt: ['지금 확인할 기상·재해 이슈를 정리해줘.', 'Brief me on weather and natural events worth checking.'] },
 ];
 export const providers = [
   { id: 'weather', name: 'NOAA / NWS', label: ['기상 특보', 'Weather alerts'], coverage: ['미국 기상 특보', 'US weather alerts'], url: 'https://www.weather.gov/documentation/services-web-api' },

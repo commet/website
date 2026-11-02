@@ -16,11 +16,13 @@
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
     "@vercel/analytics": "^2.0.1",
+    "d3-geo": "^3.1.1",
     "framer-motion": "^12.38.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "resend": "^6.12.2",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

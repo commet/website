@@ -28,7 +28,7 @@ React + Vite. 한국어 기본, 영어 지원. 언어 선택을 로컬에 저장
 - `src/event.js`: FDE톤 모집 마감 및 행사 시점 상태
 - `scripts/generate-og-image.py`: 소셜 공유 이미지 생성 (`pillow`, `fonttools[woff]` 필요)
 
-FSK 이름과 프로젝트 이미지 공개는 사용자 허락을 확인했습니다. 전체 관제 화면은 별도 `commet/electrovaya` 저장소의 v1.2.0(`b4f7413`)을 예시 데이터로 구동한 1920×1080 캡처입니다. 왼쪽 현황, 중앙 지도, 오른쪽 감시, 하단 일정을 자르지 않았습니다. DocAgent는 식별정보를 가린 검증 화면과 공개용으로 요약한 4단계 업무 흐름을 제시하며, 주문 연동은 구축·검증 중임을 명시합니다. 운항계획의 두 화면은 Electrovaya 앱 소스를 기존 테스트 항차 데이터로 구동해 캡처했으며, 예시 데이터임을 표시합니다. 출고 3일 지연과 도착 7일 지연의 관계는 예시 시나리오이며 실측 성과가 아닙니다. 고객 수량, 담당자, 계약 정보는 포함하지 않습니다. 절감 시간, 비용 효과, 예측 정확도는 검증 없이 추가하지 않습니다.
+FSK 이름과 프로젝트 이미지 공개는 사용자 허락을 확인했습니다. 전체 관제 화면은 별도 고객사 관제 저장소의 v1.2.0(`b4f7413`)을 예시 데이터로 구동한 1920×1080 캡처입니다. 왼쪽 현황, 중앙 지도, 오른쪽 감시, 하단 일정을 자르지 않았습니다. DocAgent는 식별정보를 가린 검증 화면과 공개용으로 요약한 4단계 업무 흐름을 제시하며, 주문 연동은 구축·검증 중임을 명시합니다. 운항계획의 두 화면은 고객사 관제 앱 소스를 기존 테스트 항차 데이터로 구동해 캡처했으며, 예시 데이터임을 표시합니다. 출고 3일 지연과 도착 7일 지연의 관계는 예시 시나리오이며 실측 성과가 아닙니다. 고객 수량, 담당자, 계약 정보는 포함하지 않습니다. 절감 시간, 비용 효과, 예측 정확도는 검증 없이 추가하지 않습니다.
 
 ## Hosting
 
@@ -56,3 +56,5 @@ Homepage `#intelligence` is a working public-data agent. GET `/api/intelligence?
 Production reuses server-only `ANTHROPIC_API_KEY`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`; optional `SIGNAL_DESK_MODEL` overrides the latency-oriented Haiku 4.5 default. AI execution fails closed without shared storage. Limits: 4 uncached requests/IP/10 minutes, 60 total/hour, one model call/run, 10-minute result cache, 90-second function ceiling. Provider failures are separate from zero results. Brief citations must reference successfully retrieved source IDs and actual record IDs.
 
 `npm run dev` serves the public-data API through a development-only Vite middleware. Live AI requires those server-side variables in the dev process (or `vercel dev` with development credentials); no production secrets are pulled into source. An unconfigured local AI run shows a retryable unavailable state while real public feeds continue to work. `npm test` covers geographical filtering, unsupported/empty/failed feeds, stale catalog entries, citation integrity and safe URLs, as well as event-date boundaries. The old homepage schedule tabs are removed; release planning remains in `/case-study/fsk`.
+
+The public monitoring capture is re-rendered with the end-client name replaced by 고객사; the former named asset is not shipped. Signal Desk starts with the Panama leg and includes a local Natural Earth map with the geolocated NASA/USGS observations. Weather alerts remain in the briefing because this integration does not supply their map geometry. Geography: Natural Earth public-domain land polygons via world-atlas 2.0.2 (ISC), rendered using d3-geo and topojson-client.

@@ -14,3 +14,5 @@ First viewport of the section: concrete request and run control, source status, 
 Signature: choosing a finding exposes the records that support it, with explicit unknowns when API coverage is insufficient.
 
 Refinement: compact source rail, real elapsed time and execution stages, a large concise headline with at most two findings. Finding explanations and the evidence ledger are collapsed initially. Citations open and focus the ledger. Coverage and unknowns remain available within the disclosure; a sample/demo scope note remains visible.
+
+Story refinement: open with the equipment-arrival business question in the parent exhibit, then the delivered monitoring interface and the decisions it supports. Demo begins with Panama and adds a real observation map, point selection and source reading panel. It demonstrates the public-information portion of the workflow without claiming client-production AI deployment. End-client name withheld in copy, image and public asset name.

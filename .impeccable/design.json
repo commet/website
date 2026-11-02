@@ -269,7 +269,13 @@
       "ledger": "Closed by default; citation opens the disclosure. Preview two records per provider; expand to every retrieved record; collapse to preview. Citation filters exact IDs or falls back to sources, focuses heading and scrolls. Clearing filter exposes the complete retrieved set.",
       "coverage": "Global: US NWS, worldwide natural events and earthquakes. Panama: 1,000km event radius, outside NWS coverage. Newark: 750km events, point NWS alerts. NASA 30-day catalog capped at 100; USGS 7-day M4.5+; cache up to ten minutes.",
       "brief": "Large headline, concise summary, at most two findings with follow-up actions. Native disclosures contain explanations, citations and unknowns. Claims stay within sampled evidence; no absence-of-risk or shipping-impact inference.",
-      "accessibility": "Pressed scope and citation states, polite live execution strip, busy report, alert/retry errors, focusable ledger heading. Reduced motion disables pulse and smooth citation scroll."
+      "accessibility": "Pressed scope and citation states, polite live execution strip, busy report, alert/retry errors, focusable ledger heading. Reduced motion disables pulse and smooth citation scroll.",
+      "observationMap": {
+        "geography": "Natural Earth public-domain land via world-atlas 2.0.2; local asset",
+        "display": "Dark geographic field, actual NASA/USGS points, query-radius outline, side reading panel; stacked mobile",
+        "interaction": "Select a point or use previous/next; original record link; no fabricated weather locations",
+        "default": "Panama before transit, then US arrival, then global observations"
+      }
     }
   },
   "components": [

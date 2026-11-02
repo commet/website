@@ -2,13 +2,14 @@
  * Existing technical monograph, local extension. Experience → operate.
  * FIRST VIEWPORT: one concrete request, live source connections, and a readable briefing.
  * Signature: actual tool-call events become cited observations; citations filter the evidence ledger.
- * Preserve full Electrovaya capture; this separate public-data demo replaces homepage sailing tabs.
+ * Preserve full client-monitoring capture; this separate public-data demo replaces homepage sailing tabs.
  * FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
  */
 import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../LangContext';
 import { missions, providers } from '../intelligence-config';
 import './IntelligenceHub.css';
+import SignalMap from './SignalMap';
 
 function Arrow() { return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>; }
 function formatTime(value, kr) {
@@ -22,7 +23,7 @@ const errorCopy = {
 };
 function Desk({ kr }) {
   const l = kr ? 0 : 1;
-  const [mission, setMission] = useState('world');
+  const [mission, setMission] = useState('panama');
   const [sources, setSources] = useState([]);
   const [result, setResult] = useState(null);
   const [phase, setPhase] = useState('idle');
@@ -116,8 +117,8 @@ function Desk({ kr }) {
   const step = phase === 'done' ? 3 : phase === 'synthesizing' ? 2 : busy ? 1 : 0;
   return <section className="intelligence" id="intelligence" ref={root} aria-labelledby="intelligence-title">
     <div className="intelligence-intro">
-      <h4 id="intelligence-title">{kr ? '흩어진 정보에서, 지금 볼 것만.' : 'Scattered information. A clear next step.'}</h4>
-      <p>{kr ? '기상·재해·지진 API를 연결해 확인할 이슈와 근거를 한곳에 모았습니다. 범위를 고르고 직접 실행해 보세요.' : 'Weather, natural events, and earthquakes, connected in one briefing. Choose a scope and try it.'}</p>
+      <h4 id="intelligence-title">{kr ? '항로 주변의 변화를, AI가 먼저 읽는다면.' : 'Let AI read the signals along the route.'}</h4>
+      <p>{kr ? '운송 관제에서 필요한 외부 정보 확인을 공개 데이터로 체험해 보세요. 파나마와 미국 도착지 주변의 관측을 모아, AI가 확인할 이슈와 근거를 정리합니다.' : 'Try the external-information check behind shipment monitoring. Explore observations around Panama or the US arrival area, then ask AI to identify what needs a closer look.'}</p>
     </div>
     <div className="signal-desk">
       <header className="desk-header"><h5>Signal Desk</h5><span>{kr ? '공개 API × AI 브리핑' : 'Public APIs × AI briefing'}</span></header>
@@ -125,6 +126,8 @@ function Desk({ kr }) {
         <div className="desk-scopes" role="group" aria-label={kr ? '조회 범위' : 'Scope'}>{missions.map(m => <button key={m.id} aria-pressed={mission === m.id} disabled={busy} onClick={() => changeMission(m.id)}>{m.name[l]}</button>)}</div>
         <div className="desk-request"><p>{selected.prompt[l]}</p><button className="desk-run" onClick={run} disabled={busy}>{busy ? (kr ? '확인 중' : 'Working') : result ? (kr ? '다시 확인' : 'Check again') : (kr ? '에이전트 실행' : 'Run agent')}<Arrow /></button></div>
       </div>
+      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong>{result && <a className="desk-brief-jump" href="#signal-brief">{kr ? '브리핑 보기' : 'Read briefing'}<Arrow /></a>}<span>{result ? `${result.cached ? (kr ? '최근 결과 · ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
+      <SignalMap key={mission} mission={mission} sources={displaySources} loading={feedState === 'loading' && !displaySources.length} kr={kr} />
       <div className="desk-connections" aria-label={kr ? '정보원 연결 상태' : 'Source connections'}>
         {providers.map(p => {
           const source = displaySources.find(s => s.id === p.id);
@@ -141,8 +144,8 @@ function Desk({ kr }) {
           </div>;
         })}
       </div>
-      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong><span>{result ? `${result.cached ? (kr ? '최근 결과 · ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
-      <div className="desk-brief" aria-busy={busy}>
+
+      <div className="desk-brief" id="signal-brief" aria-busy={busy}>
         {result ? <>
           <h5 className="brief-headline">{result.brief.title}</h5><p className="brief-summary">{result.brief.summary}</p>
           <ol className="brief-findings">{result.brief.findings.map((f, i) => <li key={i}>
@@ -152,9 +155,9 @@ function Desk({ kr }) {
             </div>
           </li>)}</ol>
         </> : <div className="brief-awaiting">
-          <div className="brief-progress" aria-label={kr ? '실행 단계' : 'Run stages'}>{[[kr ? 'API 조회' : 'Query APIs'], [kr ? '핵심 정리' : 'Find signals'], [kr ? '브리핑' : 'Brief']].map(([label], i) => <span key={i} data-state={step > i + 1 ? 'done' : step === i + 1 ? 'active' : 'pending'}><b aria-hidden="true">0{i + 1}</b>{label}</span>)}</div>
-          <h5>{busy ? phases[phase][l] : (kr ? '세 개의 정보원. 하나의 브리핑.' : 'Three sources. One briefing.')}</h5>
-          <p>{busy ? (phase === 'synthesizing' ? (kr ? '도착한 관측을 읽고, 확인할 이슈와 다음 행동을 정리하고 있습니다.' : 'Reading the observations to identify relevant signals and next steps.') : (kr ? '정보원을 동시에 조회합니다. 도착한 결과는 위에 바로 표시됩니다.' : 'Querying sources in parallel. Results appear above as they arrive.')) : (kr ? '관측을 모으고, 근거를 대조하고, 다음에 확인할 일까지.' : 'Gather observations, compare the evidence, and find the next thing to check.')}</p>
+          {busy && <div className="brief-progress" aria-label={kr ? '실행 단계' : 'Run stages'}>{[[kr ? 'API 조회' : 'Query APIs'], [kr ? '핵심 정리' : 'Find signals'], [kr ? '브리핑' : 'Brief']].map(([label], i) => <span key={i} data-state={step > i + 1 ? 'done' : step === i + 1 ? 'active' : 'pending'}><b aria-hidden="true">0{i + 1}</b>{label}</span>)}</div>}
+          <h5>{busy ? phases[phase][l] : (kr ? '이 구간에서, 무엇을 확인해야 할까?' : 'What needs a closer look on this leg?')}</h5>
+          <p>{busy ? (phase === 'synthesizing' ? (kr ? '도착한 관측을 읽고, 확인할 이슈와 다음 행동을 정리하고 있습니다.' : 'Reading the observations to identify relevant signals and next steps.') : (kr ? '정보원을 동시에 조회합니다. 도착한 결과는 위에 바로 표시됩니다.' : 'Querying sources in parallel. Results appear above as they arrive.')) : (kr ? '지도의 관측만으로 운송 영향을 단정할 수는 없습니다. AI가 조회한 근거를 읽고, 담당자가 추가로 확인할 일을 정리합니다.' : 'An observation alone does not establish a shipping impact. The agent reads the evidence and suggests what an operator should check next.')}</p>
           {busy && <p className="desk-elapsed"><span>{elapsed}{kr ? '초 경과' : 's elapsed'}</span>{elapsed >= 15 && <span>{kr ? '응답이 늦어지고 있습니다. 수집한 원문은 아래에서 먼저 볼 수 있습니다.' : 'Taking a little longer. You can already open the source records below.'}</span>}</p>}
         </div>}
         {error && <div className="desk-error" role="alert"><p>{error[l]}</p><button onClick={run}>{kr ? '다시 실행' : 'Retry'}</button></div>}

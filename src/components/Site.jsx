@@ -244,44 +244,49 @@ export function Evidence() {
             </span>
           </div>
         </div>
+        <div className="shipment-story">
+          <h4>{kr ? <>설비는 언제<br />미국 공장에 도착할까?</> : <>When will the equipment<br />reach the US factory?</>}</h4>
+          <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송. 부산에서 여러 항차로 출발한 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was handling a client's equipment shipment: multiple sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
+          <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p></div>
+        </div>
         <EvidenceImage
-          src="/images/work/electrovaya-full.png" width={1920} height={1080} priority
-          title={kr ? "Electrovaya 운송 관제" : "Electrovaya shipment control"}
-          caption={kr ? "Electrovaya v1.2.0 / 예시 데이터로 재현한 전체 화면" : "Electrovaya v1.2.0 / Full interface with example data"}
-          alt={kr ? "왼쪽 운송 현황, 중앙 부산에서 파나마와 Newark를 잇는 지도, 오른쪽 구간 감시, 하단 항차 일정이 모두 보이는 Electrovaya 전체 화면" : "Full Electrovaya interface: shipment status on the left, route map in the center, risk monitoring on the right, and voyage schedule below"}
+          src="/images/work/client-monitoring.png" width={1920} height={1080} priority
+          title={kr ? "고객사 설비 운송 관제" : "Client equipment shipment control"}
+          caption={kr ? "고객사 운송 관제 / 고객명 비공개 · 예시 데이터" : "Client shipment control / Client name withheld · Example data"}
+          alt={kr ? "왼쪽 운송 현황, 중앙 부산에서 파나마와 Newark를 잇는 지도, 오른쪽 구간 감시, 하단 항차 일정이 모두 보이는 고객사 운송 관제 전체 화면" : "Full client monitoring interface: shipment status on the left, route map in the center, risk monitoring on the right, and voyage schedule below"}
           note={kr ? "2026년 12월 24일 상황을 가정한 시연입니다. 화면의 일정과 물량은 예시이며 실제 운송 현황이 아닙니다." : "Demonstration as of December 24, 2026. Dates and quantities are examples, not live shipment data."}
         />
         <div className="map-description">
           <h4>
             {kr
-              ? "운송 현황과 위험을 함께 보는 관제."
-              : "Shipment status and risk, in one view."}
+              ? "일정과 위험을 한 화면에 연결했습니다."
+              : "Connect the schedule, the risks, and the next decision."}
           </h4>
           <div>
             <p>
               {kr
-                ? "부산에서 미국 뉴욕주 공장까지 설비를 보내는 프로젝트입니다. 운송 현황과 구간별 위험을 항차 일정에 연결했습니다. 담당자가 도착 예정일과 확인할 이슈를 함께 볼 수 있도록 설계했습니다."
-                : "Equipment travels from Busan to a factory in New York State. Shipment status and route risks flank the map, with the voyage schedule below. Operators can review expected arrivals and outstanding issues together."}
+                ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제를 설계·개발해 배포했습니다. 일정이 바뀌면 대체 항차를 살펴보고, 항로 주변의 위험과 도착 예상 범위를 같은 화면에서 확인할 수 있습니다."
+                : "I worked with operators to understand their workflow and exceptions, then designed, built, and deployed the control tower. They can explore alternative sailings when plans change and review route risks alongside arrival ranges."}
             </p>
             <dl className="map-capabilities">
               <div>
-                <dt>{kr ? "해상 구간" : "Ocean leg"}</dt>
+                <dt>{kr ? "일정이 바뀌면" : "When plans change"}</dt>
                 <dd>
                   {kr
-                    ? "부산 → 파나마 운하 → Newark"
-                    : "Busan → Panama Canal → Newark"}
+                    ? "이용 가능한 항차와 도착일 재계산"
+                    : "Recalculate available sailings and arrival dates"}
                 </dd>
               </div>
               <div>
-                <dt>{kr ? "내륙 구간" : "Inland leg"}</dt>
-                <dd>{kr ? "Newark → Jamestown" : "Newark → Jamestown"}</dd>
+                <dt>{kr ? "항로를 살피면" : "Along the route"}</dt>
+                <dd>{kr ? "기상·운하·항만의 확인 사항을 구간별로" : "Weather, canal, and port issues by leg"}</dd>
               </div>
               <div>
-                <dt>{kr ? "확인할 위험" : "Risk review"}</dt>
+                <dt>{kr ? "판단이 필요하면" : "Before a decision"}</dt>
                 <dd>
                   {kr
-                    ? "기상, 운하 통항, 항만 혼잡"
-                    : "Weather, canal transit, and port congestion"}
+                    ? "계획과 예측, 확인된 근거를 구분"
+                    : "Distinguish plans, estimates, and observed evidence"}
                 </dd>
               </div>
             </dl>
