@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T02:55:10.933779+00:00",
+  "title": "Design System: Yaechan Lee",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "tonalRamp": [
+          "oklch(15.0% 0.0054 95.1)",
+          "oklch(26.4% 0.0054 95.1)",
+          "oklch(37.9% 0.0054 95.1)",
+          "oklch(49.3% 0.0054 95.1)",
+          "oklch(60.7% 0.0054 95.1)",
+          "oklch(72.1% 0.0054 95.1)",
+          "oklch(83.6% 0.0054 95.1)",
+          "oklch(95.0% 0.0054 95.1)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Charcoal Ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.0092 173.6)",
+          "oklch(26.4% 0.0092 173.6)",
+          "oklch(37.9% 0.0092 173.6)",
+          "oklch(49.3% 0.0092 173.6)",
+          "oklch(60.7% 0.0092 173.6)",
+          "oklch(72.1% 0.0092 173.6)",
+          "oklch(83.6% 0.0092 173.6)",
+          "oklch(95.0% 0.0092 173.6)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.0118 145.4)",
+          "oklch(26.4% 0.0118 145.4)",
+          "oklch(37.9% 0.0118 145.4)",
+          "oklch(49.3% 0.0118 145.4)",
+          "oklch(60.7% 0.0118 145.4)",
+          "oklch(72.1% 0.0118 145.4)",
+          "oklch(83.6% 0.0118 145.4)",
+          "oklch(95.0% 0.0118 145.4)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Paper Rule",
+        "tonalRamp": [
+          "oklch(15.0% 0.0142 124.6)",
+          "oklch(26.4% 0.0142 124.6)",
+          "oklch(37.9% 0.0142 124.6)",
+          "oklch(49.3% 0.0142 124.6)",
+          "oklch(60.7% 0.0142 124.6)",
+          "oklch(72.1% 0.0142 124.6)",
+          "oklch(83.6% 0.0142 124.6)",
+          "oklch(95.0% 0.0142 124.6)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Rust",
+        "tonalRamp": [
+          "oklch(15.0% 0.1300 35.5)",
+          "oklch(26.4% 0.1300 35.5)",
+          "oklch(37.9% 0.1300 35.5)",
+          "oklch(49.3% 0.1300 35.5)",
+          "oklch(60.7% 0.1300 35.5)",
+          "oklch(72.1% 0.1300 35.5)",
+          "oklch(83.6% 0.1300 35.5)",
+          "oklch(95.0% 0.1300 35.5)"
+        ]
+      },
+      "tint": {
+        "role": "neutral",
+        "displayName": "Pale Green",
+        "tonalRamp": [
+          "oklch(15.0% 0.0108 118.0)",
+          "oklch(26.4% 0.0108 118.0)",
+          "oklch(37.9% 0.0108 118.0)",
+          "oklch(49.3% 0.0108 118.0)",
+          "oklch(60.7% 0.0108 118.0)",
+          "oklch(72.1% 0.0108 118.0)",
+          "oklch(83.6% 0.0108 118.0)",
+          "oklch(95.0% 0.0108 118.0)"
+        ]
+      },
+      "dark": {
+        "role": "neutral",
+        "displayName": "Forest Ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.0235 164.7)",
+          "oklch(26.4% 0.0235 164.7)",
+          "oklch(37.9% 0.0235 164.7)",
+          "oklch(49.3% 0.0235 164.7)",
+          "oklch(60.7% 0.0235 164.7)",
+          "oklch(72.1% 0.0235 164.7)",
+          "oklch(83.6% 0.0235 164.7)",
+          "oklch(95.0% 0.0235 164.7)"
+        ]
+      },
+      "dark-text": {
+        "role": "neutral",
+        "displayName": "Dark Text",
+        "tonalRamp": [
+          "oklch(15.0% 0.0133 111.3)",
+          "oklch(26.4% 0.0133 111.3)",
+          "oklch(37.9% 0.0133 111.3)",
+          "oklch(49.3% 0.0133 111.3)",
+          "oklch(60.7% 0.0133 111.3)",
+          "oklch(72.1% 0.0133 111.3)",
+          "oklch(83.6% 0.0133 111.3)",
+          "oklch(95.0% 0.0133 111.3)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "tonalRamp": [
+          "oklch(15.0% 0.0180 140.0)",
+          "oklch(26.4% 0.0180 140.0)",
+          "oklch(37.9% 0.0180 140.0)",
+          "oklch(49.3% 0.0180 140.0)",
+          "oklch(60.7% 0.0180 140.0)",
+          "oklch(72.1% 0.0180 140.0)",
+          "oklch(83.6% 0.0180 140.0)",
+          "oklch(95.0% 0.0180 140.0)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Rule",
+        "tonalRamp": [
+          "oklch(15.0% 0.0322 142.1)",
+          "oklch(26.4% 0.0322 142.1)",
+          "oklch(37.9% 0.0322 142.1)",
+          "oklch(49.3% 0.0322 142.1)",
+          "oklch(60.7% 0.0322 142.1)",
+          "oklch(72.1% 0.0322 142.1)",
+          "oklch(83.6% 0.0322 142.1)",
+          "oklch(95.0% 0.0322 142.1)"
+        ]
+      },
+      "dark-action": {
+        "role": "neutral",
+        "displayName": "Dark Action",
+        "tonalRamp": [
+          "oklch(15.0% 0.0286 119.9)",
+          "oklch(26.4% 0.0286 119.9)",
+          "oklch(37.9% 0.0286 119.9)",
+          "oklch(49.3% 0.0286 119.9)",
+          "oklch(60.7% 0.0286 119.9)",
+          "oklch(72.1% 0.0286 119.9)",
+          "oklch(83.6% 0.0286 119.9)",
+          "oklch(95.0% 0.0286 119.9)"
+        ]
+      },
+      "evidence-ground": {
+        "role": "neutral",
+        "displayName": "Evidence Ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.0056 211.0)",
+          "oklch(26.4% 0.0056 211.0)",
+          "oklch(37.9% 0.0056 211.0)",
+          "oklch(49.3% 0.0056 211.0)",
+          "oklch(60.7% 0.0056 211.0)",
+          "oklch(72.1% 0.0056 211.0)",
+          "oklch(83.6% 0.0056 211.0)",
+          "oklch(95.0% 0.0056 211.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Serif identity",
+        "purpose": "Person, wordmark, and case names; size varies by surface."
+      },
+      "headline": {
+        "displayName": "Reading headline",
+        "purpose": "Section and case headings."
+      },
+      "body": {
+        "displayName": "Bilingual body",
+        "purpose": "Korean and English explanatory prose."
+      },
+      "label": {
+        "displayName": "Supporting label",
+        "purpose": "Metadata and captions."
+      },
+      "text-link": {
+        "displayName": "Editorial action",
+        "purpose": "Reusable underlined links."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The evidence-image reveal."
+      },
+      {
+        "name": "frame-reveal",
+        "value": "380ms",
+        "purpose": "Clip inset moves from 0 0 5% 0 to 0 on evidence change."
+      },
+      {
+        "name": "view-transition",
+        "value": "180ms",
+        "purpose": "Root view-transition pseudo-elements, when a transition is invoked."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Remove animations and transitions; switch smooth scrolling to auto."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1000px"
+      },
+      {
+        "name": "single-column",
+        "value": "700px"
+      },
+      {
+        "name": "wide",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "The reusable underlined editorial action.",
+      "html": "<a class=\"ds-text-link\" href=\"/case-study/fsk\">Explore the FSK work<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-text-link{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:inline-flex;align-items:center;gap:13px;font-size:14px;font-weight:550;border-bottom:1px solid var(--line,#d5d9cf);padding-bottom:6px;text-decoration:none}.ds-text-link:hover{color:var(--accent,#9c3f27)}.ds-text-link:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}"
+    },
+    {
+      "name": "Language button",
+      "kind": "button",
+      "refersTo": "language-button",
+      "description": "Circular destination-language control; the application supplies switching behavior.",
+      "html": "<button class=\"ds-language\" aria-label=\"Switch to English\">EN</button>",
+      "css": ".ds-language{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;width:42px;height:42px;border:1px solid var(--line,#d5d9cf);background:transparent;border-radius:50%;font-size:12px;cursor:pointer}.ds-language:hover{background:var(--ink,#242a28);border-color:var(--ink,#242a28);color:var(--paper,#f7f6f2)}.ds-language:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-language{width:34px;height:34px;font-size:11px}}"
+    },
+    {
+      "name": "Visible masthead navigation",
+      "kind": "nav",
+      "description": "Text navigation remains visible at narrow widths.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"/#work\">Work</a><a href=\"/#community\">Community</a><a href=\"/#contact\">Contact</a></nav>",
+      "css": ".ds-nav{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;align-items:center;gap:32px;font-size:14px}.ds-nav a{color:inherit;text-decoration:none;padding-block:10px}.ds-nav a:hover{color:var(--accent,#9c3f27)}.ds-nav a:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-nav{gap:18px;font-size:12px}}"
+    },
+    {
+      "name": "Evidence tabs",
+      "kind": "custom",
+      "refersTo": "evidence-tab",
+      "description": "Selected and unselected tab appearance. Application logic supplies panel changes, arrow keys, and roving tabindex.",
+      "html": "<div class=\"ds-evidence-tabs\" role=\"tablist\" aria-label=\"FSK project views\"><button role=\"tab\" aria-selected=\"true\" tabindex=\"0\">Logistics visibility</button><button role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Document review</button></div>",
+      "css": ".ds-evidence-tabs{display:flex;gap:26px;margin-bottom:16px}.ds-evidence-tabs button{font-family:Pretendard,sans-serif;font-size:13px;line-height:1.75;padding:6px 0;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted,#656b65);cursor:pointer}.ds-evidence-tabs button[aria-selected=\"true\"]{color:var(--ink,#242a28);border-bottom-color:var(--accent,#9c3f27)}.ds-evidence-tabs button:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}"
+    },
+    {
+      "name": "Dark-field event action",
+      "kind": "button",
+      "refersTo": "event-link",
+      "description": "Square pale action on the dark community field.",
+      "html": "<div class=\"ds-dark-field\"><a class=\"ds-event-link\" href=\"https://fdethon.beyonddeploy.kr/\" target=\"_blank\" rel=\"noopener noreferrer\">FDEthon event details<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></div>",
+      "css": ".ds-dark-field{background:var(--dark,#26352e);padding:20px}.ds-event-link{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;justify-content:space-between;align-items:center;background:#e6ecd7;color:var(--dark,#26352e);padding:15px 20px;font-size:14px;text-decoration:none}.ds-event-link:hover{background:white;color:var(--dark,#26352e)}.ds-event-link:focus-visible{outline:2px solid #e6ecd7;outline-offset:5px}"
+    },
+    {
+      "name": "Contact action",
+      "kind": "custom",
+      "description": "Matching ruled email action used for each of the two contact intents.",
+      "html": "<a class=\"ds-contact-action\" href=\"mailto:yclee913@gmail.com\">Email about a project<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-contact-action{font-family:Pretendard,sans-serif;color:var(--ink,#242a28);line-height:1.75;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #bcc5b4;padding-block:27px 16px;font-size:14px;font-weight:550;text-decoration:none}.ds-contact-action:hover{color:var(--accent,#9c3f27)}.ds-contact-action:focus-visible{outline:2px solid var(--accent,#9c3f27);outline-offset:5px;}@media(max-width:700px){.ds-contact-action{padding-top:21px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Work Record",
+    "overview": "A warm, restrained editorial world gives the work room to be examined. Book-serif names establish identity; Korean and English reading text stays in a quiet sans serif. Hairline divisions and broad margins organize the page without enclosing every thought in a card.\n\nReal project imagery carries its own visual detail and color. The surrounding interface remains calm enough for captions, scope, and context to stay legible. A dark green field and a pale green field provide changes in reading pace within the same flat material language.",
+    "keyCharacteristics": [
+      "Warm paper, charcoal ink, and a restrained rust accent.",
+      "Self-hosted serif identity paired with bilingual sans-serif reading text.",
+      "Square evidence panels, hairline divisions, and open column layouts.",
+      "Visible content, explicit links, and keyboard-readable control states."
+    ],
+    "rules": [
+      {
+        "name": "The Quiet Frame Rule",
+        "body": "Keep the surrounding site palette restrained; colors inside genuine project evidence belong to that evidence and need not match the site accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Language Rule",
+        "body": "Preserve word boundaries in Korean and explicit whitespace in English when headings reflow. Headings balance their lines; paragraphs can wrap long strings to prevent overflow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Continue the page through spacing, rules, and tonal fields; keep evidence panels and editorial content flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** pair real evidence with readable captions, context, and a named full-image link.",
+      "**Do** use serif identity and sans-serif bilingual reading text for their established roles.",
+      "**Do** retain visible keyboard focus, selected-tab underlines, and reduced-motion behavior.",
+      "**Do** let desktop spreads collapse into a single reading column while preserving whitespace between words.",
+      "**Do** keep the two contact paths equal in hierarchy and visual weight."
+    ],
+    "donts": [
+      "**Don't** add floating card shells, shadows, or rounded screenshot panels to the flat editorial world.",
+      "**Don't** make screenshot text carry information that must be read in surrounding prose.",
+      "**Don't** promote one project's illustration colors or bespoke display size into the shared token system.",
+      "**Don't** invent an input, chip, modal, or button family that the build does not implement."
+    ]
+  }
+}
