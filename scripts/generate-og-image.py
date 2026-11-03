@@ -1,49 +1,31 @@
-"""Generate a 1200x630 OG image for social sharing."""
+"""Render a social preview in the site's sans-serif type and neutral/cobalt palette.
+
+Requires Pillow and fonttools[woff]. Uses the same bundled font as the website.
+"""
+from io import BytesIO
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+from fontTools.ttLib import TTFont
 
-DST = Path(r"C:/Users/admin/documents/github/website/public/og-image.png")
+ROOT = Path(__file__).resolve().parents[1]
+font = TTFont(ROOT / 'public/fonts/pretendard-variable.woff2')
+font.flavor = None
+buffer = BytesIO()
+font.save(buffer)
+font_data = buffer.getvalue()
 
-W, H = 1200, 630
-bg = (250, 250, 248)          # #FAFAF8 warm-bg
-dark = (28, 25, 23)            # #1C1917 stone-900
-muted = (120, 113, 108)        # #78716C stone-500
-accent = (196, 112, 63)        # #C4703F
+def face(size):
+    return ImageFont.truetype(BytesIO(font_data), size)
 
-title_font = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 104)
-tag_font = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 36)
-body_font = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 30)
-url_font = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 24)
-
-img = Image.new("RGB", (W, H), bg)
-draw = ImageDraw.Draw(img)
-
-# Left accent bar
-draw.rectangle((0, 0, 12, H), fill=accent)
-
-# Tagline (eyebrow)
-x = 88
-y = 110
-draw.text((x, y), "ENTERPRISE AI  ·  STRATEGY  ·  CURATION", fill=accent, font=tag_font)
-y += 64
-
-# Name
-draw.text((x, y), "Yaechan Lee", fill=dark, font=title_font)
-y += 152
-
-# Body lines
-for line in [
-    "Built STRIX at SK On — a Claude-powered RAG reaching 1,000+ employees",
-    "through SK Group's mySUNI, running daily in the strategy division.",
-]:
-    draw.text((x, y), line, fill=muted, font=body_font)
-    y += 46
-
-# URL at bottom-right
-url = "yclee.today"
-bbox = draw.textbbox((0, 0), url, font=url_font)
-url_w = bbox[2] - bbox[0]
-draw.text((W - url_w - 88, H - 68), url, fill=dark, font=url_font)
-
-img.save(DST, "PNG", optimize=True)
-print(f"saved: {DST.stat().st_size / 1024:.1f} KB")
+image = Image.new('RGB', (1200, 630), '#fcfcfc')
+draw = ImageDraw.Draw(image)
+draw.rectangle((64, 58, 116, 110), fill='#18202b')
+draw.text((76, 56), 'y.', font=face(42), fill='white')
+draw.text((136, 68), '이예찬  /  Yaechan Lee', font=face(24), fill='#18202b')
+draw.text((64, 192), 'AI 사업을 이끌고,', font=face(62), fill='#18202b')
+draw.text((64, 276), '제품을 직접 만듭니다.', font=face(62), fill='#586372')
+draw.line((64, 433, 1136, 433), fill='#dce1e7', width=2)
+draw.text((64, 466), 'FSK  /  SK On STRIX  /  Argus', font=face(25), fill='#586372')
+draw.text((64, 550), 'yclee.today', font=face(23), fill='#2255d9')
+draw.text((775, 550), 'Partner / Enterprise AX', font=face(23), fill='#18202b')
+image.save(ROOT / 'public/og-image.png', optimize=True)
