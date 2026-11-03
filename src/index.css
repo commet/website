@@ -1475,78 +1475,36 @@ svg {
   gap: 64px;
   align-items: center;
 }
-.yakbang-section {
-  padding-block: 56px 64px;
-  border-top: 1px solid var(--line);
-}
-.yakbang-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-  gap: clamp(32px, 4vw, 64px);
-  align-items: center;
-}
-.yakbang-intro .map-exhibit { margin: 0; }
-.yakbang-story h2 {
-  font-size: clamp(28px, 2.8vw, 38px);
-  line-height: 1.35;
-  letter-spacing: -.045em;
-  margin-bottom: 24px;
-}
-.yakbang-story p { font-size: 16px; color: var(--muted); margin-bottom: 16px; }
-.yakbang-visit {
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  min-height: 48px;
-  background: var(--ink);
-  color: white;
-  padding: 10px 20px;
-  margin-top: 8px;
-  font-size: 15px;
-  font-weight: 600;
-}
+.independent-heading { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+.yakbang-project { padding-bottom: 8px; }
+.yakbang-project + .argus-project { margin-top: 32px; padding-top: 32px; }
+.yakbang-project > .project-head { margin-bottom: 18px; }
+.yakbang-intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.yakbang-cover { display: block; border: 1px solid var(--line); }
+.yakbang-cover img { width: 100%; }
+.yakbang-story h4 { font-size: 28px; line-height: 1.4; letter-spacing: -.035em; margin-bottom: 14px; }
+.yakbang-story p { font-size: 16px; color: var(--muted); }
+.yakbang-flow { margin-top: 18px; border-top: 1px solid var(--line); }
+.yakbang-flow > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.5; }
+.yakbang-flow dt { font-weight: 600; }
+.yakbang-flow dd { color: var(--muted); }
+.yakbang-actions { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-top: 20px; }
+.yakbang-visit { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; background: var(--ink); color: white; padding: 10px 16px; font-size: 14px; font-weight: 600; }
 .yakbang-visit:hover { background: var(--accent); color: white; }
-.yakbang-entry-note { display: block; margin-top: 10px; color: var(--muted); font-size: 13px; }
-.yakbang-steps {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 36px 0 0;
-  padding: 0;
-  border-block: 1px solid var(--line);
-}
-.yakbang-steps li { display: flex; }
-.yakbang-steps li + li { border-left: 1px solid var(--line); }
-.yakbang-steps button {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  text-align: left;
-  padding: 28px 24px;
-  background: transparent;
-  border: 0;
-  color: var(--ink);
-}
-.yakbang-steps button:hover, .yakbang-steps button[aria-expanded="true"] { background: var(--tint); }
-.yakbang-step-number { color: var(--muted); font-size: 14px; padding-top: 3px; }
-.yakbang-steps strong { font-size: 18px; font-weight: 600; }
-.yakbang-step-body { display: block; margin-top: 10px; font-size: 15px; line-height: 1.75; color: var(--muted); word-break: keep-all; }
-.yakbang-screen-link { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 13px; font-weight: 600; color: var(--accent); }
-.yakbang-screen-link > span { font-size: 20px; line-height: 1; }
-.yakbang-screen { max-width: 960px; margin: 28px auto 0; }
+.evidence-compact > button { background: none; border: 0; padding: 10px 0; min-height: 44px; font-size: 14px; }
+.evidence-compact .image-viewer { width: min(920px, calc(100vw - 32px)); height: fit-content; max-height: calc(100dvh - 32px); }
+.evidence-compact .viewer-body { flex: 0 1 auto; display: block; padding: 0; }
+.evidence-compact .viewer-body img { height: auto; }
 @media (max-width: 900px) {
-  .yakbang-intro { grid-template-columns: 1fr; gap: 28px; }
-  .yakbang-story { max-width: 680px; }
-  .yakbang-story h2 { font-size: 32px; }
-  .yakbang-steps button { padding: 24px 16px; gap: 10px; }
+  .yakbang-intro { grid-template-columns: 1fr; gap: 22px; }
+  .yakbang-story h4 { font-size: 27px; }
+  .yakbang-flow { margin-top: 16px; }
 }
 @media (max-width: 600px) {
-  .yakbang-section { padding-block: 36px 44px; }
-  .yakbang-story h2 { font-size: 29px; }
+  .independent-heading { margin-top: 32px; padding-top: 24px; }
+  .yakbang-story h4 { font-size: 25px; }
   .yakbang-story p { font-size: 15px; }
-  .yakbang-steps { grid-template-columns: 1fr; margin-top: 28px; }
-  .yakbang-steps li + li { border-left: 0; border-top: 1px solid var(--line); }
-  .yakbang-steps button { padding: 22px 12px; gap: 16px; }
+  .yakbang-actions { gap: 16px; }
 }
 .scenario-facts {
   display: grid;

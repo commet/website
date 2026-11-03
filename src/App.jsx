@@ -5,7 +5,6 @@ import {
   Nav,
   Hero,
   Evidence,
-  Yakbang,
   SelectedWork,
   Community,
   About,
@@ -58,7 +57,6 @@ function Page() {
           <>
             <Hero />
             <Evidence />
-            <Yakbang />
             <SelectedWork />
             <Community />
             <Notes />
