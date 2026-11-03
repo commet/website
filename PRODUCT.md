@@ -17,6 +17,8 @@ Personal website at https://yclee.today, React/Vite, existing Vercel project `we
 - Preserve existing Calendly 15-minute meeting route alongside email and LinkedIn.
 
 ## Success and scope
+
+2026-11-03: User confirmed authorship of yakbang.app and approved adding it as a standalone product case after the main FSK exhibit. Show the actual public interface, the intake → first task → feedback flow, and a direct product link. Describe observed functionality without claiming adoption metrics, sole authorship of every asset, or business outcomes.
 Visitors can understand the work, inspect real evidence, and choose either contact path on mobile and desktop. Existing STRIX route keeps working. Remove job-application pitch, empty resume download, dead live-product links, metric clutter, and repetitive claims. Preserve unrelated APIs and existing deployment target.
 
 ## Source trail

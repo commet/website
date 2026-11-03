@@ -313,6 +313,57 @@ function WorkHeading({ title, subtitle, year, context }) {
     </div>
   );
 }
+export function Yakbang() {
+  const { lang } = useLang();
+  const kr = lang === "kr";
+  const [screen, setScreen] = useState(null);
+  const steps = kr ? [
+    { id: "intake", title: "막힌 일을 말하면", body: "AI를 어디에 쓸지 몰라도 괜찮습니다. 하던 일과 막힌 지점부터 정리합니다.", caption: "문진실 / 문제를 적는 첫 화면" },
+    { id: "prescription", title: "첫 작업을 함께", body: "메일 한 통, 회의 기록 하나로 시작합니다. 내 자료로 바로 쓸 작업본을 만듭니다.", caption: "공개 처방 / ‘오늘 할 일과 확인할 질문’의 작업본 형식" },
+    { id: "feedback", title: "써본 뒤에도 이어서", body: "잘된 점과 막힌 곳을 남깁니다. 다음에 고칠 곳을 정하고, 필요하면 사람에게 이어갑니다.", caption: "피드백 / 써본 결과를 전하는 화면" },
+  ] : [
+    { id: "intake", title: "Describe what is stuck", body: "Start with the task and where it gets difficult. You do not need to know how AI could help.", caption: "Intake / The first question about your task" },
+    { id: "prescription", title: "Make a first working draft", body: "Start with one email or meeting note. Work with your own material to produce something you can use.", caption: "Public prescription / The template for tasks and questions to follow up on" },
+    { id: "feedback", title: "Come back after trying it", body: "Share what worked and what got stuck. Decide what to improve next, with a person available to follow up.", caption: "Feedback / Reporting how the first attempt went" },
+  ];
+  const current = steps.find(step => step.id === screen);
+  return (
+    <section id="yakbang" className="yakbang-section shell" aria-labelledby="yakbang-title">
+      <WorkHeading title={kr ? "약방" : "Yakbang"}
+        subtitle={kr ? "업무와 일상의 막힌 일을 함께 푸는 AI 서비스" : "An AI service for getting unstuck at work and in everyday life"}
+        context={kr ? "직접 만든 제품" : "A product I built"} />
+      <div className="yakbang-intro">
+        <EvidenceImage src="/images/work/yakbang-home.png" width={1425} height={990}
+          title={kr ? "약방 첫 화면" : "Yakbang homepage"}
+          caption={kr ? "약방 실제 화면 / 2026.11" : "Actual product interface / Nov 2026"}
+          alt={kr ? "약사 캐릭터가 방문객을 맞이하고 진단서 받기와 공개 처방을 안내하는 약방 첫 화면" : "Yakbang's pharmacist welcomes visitors to describe their task or browse public prescriptions"}
+          note={kr ? "공개 서비스 화면을 캡처했습니다. 접수 가능 여부는 방문 시점에 따라 달라집니다." : "Captured from the public service. Availability may change."} />
+        <div className="yakbang-story">
+          <h2 id="yakbang-title">{kr ? <>막힌 일을 가져오면,<br />첫 작업부터 함께.</> : <>Bring a stuck task.<br />Make a start together.</>}</h2>
+          <p>{kr ? "AI를 써보고 싶어도 내 일의 어디에, 어떻게 써야 할지 막막할 수 있습니다. 약방에서는 하던 일을 평소 말하듯 적는 것부터 시작합니다." : "Wanting to use AI does not mean knowing where to start. Yakbang begins with a simple description of what you are trying to do."}</p>
+          <p>{kr ? "긴 메일에서 오늘 할 일을 꺼내고, 회의 뒤에는 맡은 일을 정리합니다. 문제를 듣고 첫 작업본을 만든 뒤, 써본 결과까지 이어갈 수 있는 서비스를 만들었습니다." : "Pull today's tasks out of a long email, or turn meeting notes into clear responsibilities. I built a service that connects describing the problem, making a first draft, and learning from the result."}</p>
+          <Link href="https://yakbang.app" className="yakbang-visit">{kr ? "약방 써보기" : "Try Yakbang"}<Arrow external /></Link>
+          <span className="yakbang-entry-note">{kr ? "첫 작업은 가입 없이" : "Start without an account"}</span>
+        </div>
+      </div>
+      <ol className="yakbang-steps">
+        {steps.map((step, index) => <li key={step.id}>
+          <button type="button" aria-expanded={screen === step.id} aria-controls="yakbang-screen" onClick={() => setScreen(screen === step.id ? null : step.id)}>
+            <span className="yakbang-step-number" aria-hidden="true">{index + 1}</span>
+            <span><strong>{step.title}</strong><span className="yakbang-step-body">{step.body}</span>
+              <span className="yakbang-screen-link">{screen === step.id ? (kr ? "화면 접기" : "Hide screen") : (kr ? "실제 화면 보기" : "View screen")}<span aria-hidden="true">{screen === step.id ? "−" : "+"}</span></span>
+            </span>
+          </button>
+        </li>)}
+      </ol>
+      <div id="yakbang-screen" hidden={!current} className="yakbang-screen">
+        {current && <EvidenceImage key={screen} src={`/images/work/yakbang-${screen}.png`} width={screen === "intake" ? 1440 : 1425} height={screen === "intake" ? 1000 : 990}
+          title={current.title} caption={current.caption} alt={current.caption}
+          note={kr ? "공개 서비스의 실제 화면입니다. 처방 화면은 작업본의 형식을 보여주며, 생성 결과나 고객 자료가 아닙니다." : "Actual public interface. The prescription shows an output template, not a generated result or customer data."} />}
+      </div>
+    </section>
+  );
+}
 export function SelectedWork() {
   const { lang } = useLang();
   const kr = lang === "kr";
