@@ -121,7 +121,7 @@ export function Hero() {
     </section>
   );
 }
-function EvidenceImage({ src, width, height, title, caption, alt, note, priority = false, compactLabel }) {
+function EvidenceImage({ src, width, height, title, caption, alt, note, priority = false }) {
   const { lang } = useLang();
   const kr = lang === "kr";
   const dialog = useRef(null);
@@ -144,29 +144,29 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
     setOpen(true);
   };
   return (
-    <figure className={compactLabel ? "evidence-compact" : "map-exhibit"}>
+    <figure className="map-exhibit">
       <button
         type="button"
-        className={compactLabel ? "text-link" : "map-open"}
+        className="map-open"
         onClick={show}
-        aria-label={compactLabel || `${title} ${kr ? "확대하기" : "expand"}`}
+        aria-label={`${title} ${kr ? "확대하기" : "expand"}`}
       >
-        {compactLabel ? <>{compactLabel}<Arrow external /></> : <img
+        <img
           src={src}
           width={width}
           height={height}
           fetchPriority={priority ? "high" : undefined}
           loading={priority ? "eager" : "lazy"}
           alt={alt}
-        />}
+        />
       </button>
-      {!compactLabel && <figcaption>
+      <figcaption>
         <span>{caption}</span>
         <button type="button" onClick={show}>
           {kr ? "전체 화면 확대" : "Expand full interface"}
           <Arrow external />
         </button>
-      </figcaption>}
+      </figcaption>
       <dialog
         ref={dialog}
         className="image-viewer"
@@ -313,6 +313,47 @@ function WorkHeading({ title, subtitle, year, context }) {
     </div>
   );
 }
+function YakbangResult() {
+  const { lang } = useLang();
+  const kr = lang === "kr";
+  const dialog = useRef(null);
+  const titleId = useId();
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const node = dialog.current;
+    node.showModal();
+    const before = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      if (node.open) node.close();
+      document.body.style.overflow = before;
+    };
+  }, [open]);
+  return <>
+    <button className="yakbang-result-open text-link" type="button" onClick={() => setOpen(true)}>
+      {kr ? "메일 정리 결과 보기" : "See an email result"}<Arrow external />
+    </button>
+    <dialog className="yakbang-result" ref={dialog} aria-labelledby={titleId} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
+      <header><h2 id={titleId}>{kr ? "메일 한 통에서, 오늘 할 일로." : "From one email to today's task."}</h2><button type="button" onClick={() => setOpen(false)}>{kr ? "닫기" : "Close"}</button></header>
+      <div className="yakbang-result-content">
+        <p className="yakbang-result-note">{kr ? "가상 행사 준비 메일로 약방에서 생성한 결과입니다. 읽기 쉽게 텍스트로 옮겼습니다." : "Actual output from a fictional event-planning email, transcribed for readability. The source and output are in Korean."}</p>
+        <div className="yakbang-result-columns">
+          <section aria-labelledby="yakbang-mail-title"><h3 id="yakbang-mail-title">{kr ? "넣은 메일" : "Input email"}</h3>
+            <p lang="ko">다음 주 제품 소개 행사 준비 건입니다.</p>
+            <p lang="ko">금요일 오후 3시까지 소개 자료 초안을 공유해 주세요. 행사 장소는 아직 확정되지 않았으니 운영 담당자에게 확인이 필요합니다.</p>
+            <p lang="ko">참가 신청은 목요일에 마감하며, 마감 후 최종 인원을 자료에 반영해 주세요. 이전 행사 사진은 참고용으로 첨부했습니다.</p>
+            <p lang="ko">오늘은 초안 목차를 먼저 잡아 주시면 됩니다.</p>
+          </section>
+          <section className="yakbang-result-output" aria-labelledby="yakbang-output-title"><h3 id="yakbang-output-title">{kr ? "약방이 꺼낸 오늘 할 일" : "Today's task from Yakbang"}</h3>
+            <dl lang="ko"><div><dt>행동</dt><dd>소개 자료 초안 목차 작성</dd></div><div><dt>기한</dt><dd>오늘 중</dd></div><div><dt>근거</dt><dd><blockquote>“오늘은 초안 목차를 먼저 잡아 주시면 됩니다”</blockquote></dd></div></dl>
+          </section>
+        </div>
+        <Link href="https://yakbang.app" className="text-link">{kr ? "내 일로 약방 써보기" : "Try Yakbang with your task"}<Arrow external /></Link>
+      </div>
+    </dialog>
+  </>;
+}
 function Yakbang() {
   const { lang } = useLang();
   const kr = lang === "kr";
@@ -322,8 +363,9 @@ function Yakbang() {
         subtitle={kr ? "막힌 일을 함께 푸는 AI 서비스" : "An AI service for getting unstuck"} />
       <div className="yakbang-intro">
         <Link href="https://yakbang.app" className="yakbang-cover" aria-label={kr ? "약방 방문하기" : "Visit Yakbang"}>
-          <img src="/images/work/yakbang-home.png" width={1085} height={710} loading="lazy"
-            alt={kr ? "약사가 방문객을 맞이하며 진단서 받기와 공개 처방을 안내하는 약방 실제 첫 화면" : "Yakbang's actual homepage: a pharmacist welcomes visitors to describe a task or try a public prescription"} />
+          <img src="/images/work/yakbang-review.webp" width={1536} height={1024} loading="lazy"
+            alt={kr ? "약방 서비스에서 사용하는 원본 이미지: 작업지를 함께 살펴보는 약사" : "Original artwork used in Yakbang: a pharmacist reviewing the work with you"} />
+          <span className="yakbang-cover-caption"><strong>{kr ? "여기까지 만들었어요. 함께 볼까요?" : "Here is a first draft. Shall we take a look?"}</strong><span>yakbang.app<Arrow external /></span></span>
         </Link>
         <div className="yakbang-story">
           <h4 id="yakbang-title">{kr ? <>무엇부터 해야 할지 막힐 때,<br />같이 시작하는 약방.</> : <>When you are stuck,<br />a place to make a start.</>}</h4>
@@ -335,11 +377,7 @@ function Yakbang() {
           </dl>
           <div className="yakbang-actions">
             <Link href="https://yakbang.app" className="yakbang-visit">{kr ? "약방 써보기" : "Try Yakbang"}<Arrow external /></Link>
-            <EvidenceImage src="/images/work/yakbang-result.png" width={920} height={807}
-              compactLabel={kr ? "메일 정리 결과 보기" : "See an email result"}
-              title={kr ? "약방의 메일 정리 결과" : "An email result from Yakbang"}
-              alt={kr ? "가상의 행사 준비 메일에서 오늘 할 일과 기한, 원문 근거를 추출한 약방의 실제 결과 화면" : "Actual Yakbang output extracting an action, deadline, and source quote from a fictional event-planning email"}
-              note={kr ? "시연용 가상 메일로 실제 생성한 결과입니다. 고객 자료가 아닙니다." : "Actually generated from a fictional email for this demonstration. No customer data."} />
+            <YakbangResult />
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ Personal website at https://yclee.today, React/Vite, existing Vercel project `we
 
 ## Success and scope
 
-2026-11-03: User confirmed authorship of yakbang.app and approved adding it as a standalone product case. Correction: keep FSK monitoring and DocAgent adjacent; place Yakbang with Argus in the independent-products group after STRIX. Use compact presentation and actual useful output rather than empty-form screenshots. Show the actual public interface, the intake → first task → feedback flow, and a direct product link. Describe observed functionality without claiming adoption metrics, sole authorship of every asset, or business outcomes.
+2026-11-03: User confirmed authorship of yakbang.app and approved adding it as a standalone product case. Correction: keep FSK monitoring and DocAgent adjacent; place Yakbang with Argus in the independent-products group after STRIX. Use compact presentation and actual useful output rather than empty-form screenshots. Image-quality correction: use original product artwork and selectable HTML for result evidence; identify the latter as a transcription of an actual demonstration, not a screenshot. Show the actual public interface, the intake → first task → feedback flow, and a direct product link. Describe observed functionality without claiming adoption metrics, sole authorship of every asset, or business outcomes.
 Visitors can understand the work, inspect real evidence, and choose either contact path on mobile and desktop. Existing STRIX route keeps working. Remove job-application pitch, empty resume download, dead live-product links, metric clutter, and repetitive claims. Preserve unrelated APIs and existing deployment target.
 
 ## Source trail
