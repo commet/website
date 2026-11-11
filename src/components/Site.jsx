@@ -540,7 +540,7 @@ export function SelectedWork() {
             <div><dt>{kr ? "맡은 일" : "Role"}</dt><dd>{kr ? "개발, 보안 협의, 경영진 설명, 사용자 교육" : "Development, security review, executive briefings, user training"}</dd></div>
             <div><dt>{kr ? "등록자" : "Registered"}</dt><dd>{kr ? "600명 이상(당시 기준)" : "600+ at the time"}</dd></div>
             <div><dt>{kr ? "일상 사용자" : "Daily users"}</dt><dd>{kr ? "약 30명(전략기획본부)" : "About 30 in the Strategy Division"}</dd></div>
-            <div><dt>{kr ? "사내 교육" : "Training"}</dt><dd>{kr ? "SK 그룹 mySUNI 교육 콘텐츠, 1,000명 이상 도달" : "SK Group mySUNI course, reached 1,000+"}</dd></div>
+            <div><dt>{kr ? "사내 교육" : "Training"}</dt><dd>{kr ? "mySUNI 교육 콘텐츠, 1,000명 이상 도달" : "SK Group mySUNI course, reached 1,000+"}</dd></div>
           </dl>
           <a className="text-link" href="/case-study/strix">
             {kr ? "STRIX 도입 과정" : "How STRIX was adopted"}
