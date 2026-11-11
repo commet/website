@@ -1640,43 +1640,11 @@ svg {
   flex-shrink: 0;
   color: var(--accent);
 }
-.map-description {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  padding: 32px 0 48px;
-}
-.map-description h4,
 .schedule-heading h4 {
   font-size: 29px;
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.5;
-}
-.map-description h4 {
-  max-width: 440px;
-}
-.map-description p {
-  color: var(--muted);
-  font-size: 16px;
-}
-.map-capabilities {
-  margin-top: 24px;
-}
-.map-capabilities > div {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 16px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  line-height: 1.6;
-}
-.map-capabilities dt {
-  font-weight: 600;
-}
-.map-capabilities dd {
-  color: var(--muted);
 }
 .schedule-heading {
   border-top: 1px solid var(--line);
@@ -1700,22 +1668,6 @@ svg {
     gap: 10px;
     padding: 12px;
     font-size: 12px;
-  }
-  .map-description {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 0 32px;
-  }
-  .map-description h4 {
-    font-size: 25px;
-  }
-  .map-description p {
-    font-size: 15px;
-  }
-  .map-capabilities > div {
-    grid-template-columns: 90px 1fr;
-    font-size: 12px;
-    gap: 12px;
   }
   .schedule-heading {
     padding: 24px 0 20px;
@@ -1847,9 +1799,6 @@ svg {
 .doc-project,
 .strix-project { grid-column: 1 / -1; }
 .doc-project { padding-bottom: 56px; border-bottom: 1px solid var(--line); }
-.doc-explanation { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; padding: 32px 0; }
-.doc-explanation h4 { font-size: 30px; line-height: 1.45; letter-spacing: -0.03em; }
-.doc-explanation p { font-size: 16px; line-height: 1.85; color: var(--muted); }
 .doc-workflow { padding: 28px 0; border-block: 1px solid var(--line); }
 .doc-workflow-heading { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-bottom: 28px; }
 .doc-workflow-heading h4 { font-size: 21px; }
@@ -1872,9 +1821,6 @@ svg {
 .strix-project > .text-link { align-self: start; }
 @media (max-width:760px) {
   .doc-project { padding-bottom: 36px; }
-  .doc-explanation { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
-  .doc-explanation h4 { font-size: 25px; }
-  .doc-explanation p { font-size: 15px; }
   .doc-workflow-heading { flex-direction: column; gap: 8px; margin-bottom: 20px; }
   .doc-workflow ol { grid-template-columns: 1fr; }
   .doc-workflow li p { font-size: 15px; }
