@@ -308,7 +308,7 @@ export function Evidence() {
           <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p></div>
         </div>
         <EvidenceImage
-          src="/images/work/client-monitoring.png" width={1920} height={1080} priority
+          src="/images/work/client-monitoring-light.webp" width={1920} height={1080} priority
           title={kr ? "고객사 설비 운송 관제" : "Client equipment shipment control"}
           caption={kr ? "고객사 운송 관제 / 고객명 비공개 · 예시 데이터" : "Client shipment control / Client name withheld · Example data"}
           alt={kr ? "왼쪽 운송 현황, 중앙 부산에서 파나마와 Newark를 잇는 지도, 오른쪽 구간 감시, 하단 항차 일정이 모두 보이는 고객사 운송 관제 전체 화면" : "Full client monitoring interface: shipment status on the left, route map in the center, risk monitoring on the right, and voyage schedule below"}
@@ -363,17 +363,17 @@ export function Evidence() {
               ? [["도입 전", 100, <>6일 넘게 빗나간 예측 <b>29.7%</b></>], ["도입 후", 48, <>6일 넘게 빗나간 예측 <b>14.3%</b></>]]
               : [["Before", 100, <>Estimates off by 6+ days <b>29.7%</b></>], ["After", 48, <>Estimates off by 6+ days <b>14.3%</b></>]],
           }}
-          src="/images/fsk/control-tower.webp" ratio="2336 / 1000" dim={0.3} wide
-          alt={kr ? "FSK L&S 운송 관제 화면에서 도착항 혼잡, 날짜별 기상 위험, 최종 도착항 세 곳을 밝게 표시한 그림" : "The FSK L&S control tower with three areas highlighted: destination port congestion, weather risks by date, and the final port"}
-          spots={[{ n: 1, x: 39.4, y: 38.1, w: 13.8, h: 5.7 }, { n: 2, x: 73.7, y: 13, w: 25.3, h: 75 }, { n: 3, x: 56.4, y: 39.4, w: 11.2, h: 5.7 }]}
+          src="/images/work/client-monitoring-light.webp" ratio="16 / 9" dim={0.34}
+          alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
+          spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: 19.3 }, { n: 3, x: 0.8, y: 84.9, w: 38.6, h: 13.6 }]}
           steps={kr ? [
-            ["항로와 항만 상황을 함께 봅니다", "출발항부터 도착항까지 항만 혼잡을 항로 위에 표시합니다.", "4.51일", "3.61일", "도착 예측 평균 오차"],
-            ["기상 위험을 일정 옆에 모읍니다", "항로 주변의 태풍과 영향권을 날짜별로 정리합니다.", "29.7%", "14.3%", "6일 넘게 빗나간 예측"],
-            ["공장 도착일까지 잇습니다", "도착항에 내린 뒤의 내륙 운송까지 더해 공장 도착일을 냅니다.", "", "73%", "3일 안에 맞춘 공장 도착 예측"],
+            ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배와 도착 범위를 새로 냅니다.", "4.51일", "3.61일", "도착 예측 평균 오차"],
+            ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 보여 줍니다.", "29.7%", "14.3%", "6일 넘게 빗나간 예측"],
+            ["공장 도착일까지 잇습니다", "항만에 내린 뒤의 내륙 운송까지 예측합니다.", "", "73%", "3일 안에 맞춘 공장 도착 예측"],
           ] : [
-            ["Routes and ports on one map", "Port congestion from origin to destination is shown on the route.", "4.51 days", "3.61 days", "average arrival error"],
-            ["Weather risks beside the schedule", "Typhoons and their reach near the route are listed by date.", "29.7%", "14.3%", "estimates off by 6+ days"],
-            ["Through to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "73%", "factory arrivals within 3 days"],
+            ["Arrival is recalculated", "When a release date moves, available sailings and the arrival range are recomputed.", "4.51 days", "3.61 days", "average arrival error"],
+            ["Checks are grouped by leg", "Weather, canal, and port risks are shown for each leg.", "29.7%", "14.3%", "estimates off by 6+ days"],
+            ["Through to the factory", "Inland transport after the port is estimated as well.", "", "73%", "factory arrivals within 3 days"],
           ]}
           like={kr ? "협력사 납기 관리, 원자재 수급 점검, 프로젝트 일정 관리" : "Supplier delivery tracking, material supply checks, project scheduling"}
           basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(부킹 시점 도착 예측 523건, 공장 도착 228건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking; 228 factory arrivals)"}
