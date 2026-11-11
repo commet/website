@@ -528,8 +528,8 @@ export function SelectedWork() {
               ? "전략기획팀이 보고서의 근거를 찾으려고 쌓여 있는 내부 문서를 하나씩 검색하고 정리했습니다."
               : "The strategy team searched and summarized a growing pile of internal documents one by one to find evidence for each report."}
             after={kr
-              ? "질문하면 열람 권한이 있는 문서 안에서 근거와 함께 답을 받습니다. 개발부터 보안 협의, 교육, 사내 확산까지 맡았습니다."
-              : "Ask a question and get an answer with sources, drawn only from documents the user may already access. I built it and led security review, training, and rollout."}
+              ? "질문하면 열람 권한이 있는 문서 안에서 근거와 함께 답을 받습니다."
+              : "Ask a question and get an answer with sources, drawn only from documents the user may already access."}
             metrics={kr ? [
               ["사내 등록자", "", "600명 이상", ""],
               ["매일 쓰는 사용자", "", "약 30명", "전략기획본부"],
