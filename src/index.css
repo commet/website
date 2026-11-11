@@ -1924,11 +1924,17 @@ svg {
 .spotlight-num svg { align-self: center; width: 16px; height: 16px; color: #6f7c90; }
 .spotlight-num b { font-size: 30px; font-weight: 650; line-height: 1.1; white-space: nowrap; }
 .spotlight-num small { font-size: 13px; letter-spacing: 0; color: #9aa6b8; }
+.spotlight-stage.is-wide { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }  /* 가로로 긴 화면은 설명을 그림 아래 세 칸으로 */
+.spotlight-stage.is-wide .spotlight-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: auto; column-gap: 40px; }
+.spotlight-stage.is-wide .spotlight-steps li { align-content: start; border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
 .spotlight-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 32px; margin-top: 36px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.13); font-size: 13px; line-height: 1.7; color: #9aa6b8; }
 .spotlight-foot b { margin-right: 12px; font-weight: 600; color: #fff; }
 @media (max-width: 1100px) {
   .spotlight-stage { grid-template-columns: 1fr; row-gap: 28px; }
   .spotlight-steps { grid-auto-rows: auto; }
+  .spotlight-stage.is-wide .spotlight-steps { grid-template-columns: 1fr; }
+  .spotlight-stage.is-wide .spotlight-steps li { border-bottom: 0; }
+  .spotlight-stage.is-wide .spotlight-steps li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
 }
 @media (max-width: 760px) {
   .spotlight { margin: 32px -20px; padding: 40px 20px 28px; }
