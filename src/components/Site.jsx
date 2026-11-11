@@ -207,6 +207,41 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
     </figure>
   );
 }
+function Outcome({ id, before, after, metrics, basis, like }) {
+  const { lang } = useLang();
+  const kr = lang === "kr";
+  return (
+    <section className="outcome" aria-labelledby={id}>
+      <h4 id={id} className="outcome-title">{kr ? "무엇이 달라졌나" : "What changed"}</h4>
+      <div className="outcome-shift">
+        <div className="outcome-col">
+          <span className="outcome-label">{kr ? "도입 전" : "Before"}</span>
+          <p>{before}</p>
+        </div>
+        <div className="outcome-col is-after">
+          <span className="outcome-label">{kr ? "도입 후" : "After"}</span>
+          <p>{after}</p>
+        </div>
+      </div>
+      <dl className="outcome-metrics">
+        {metrics.map(([label, from, to, note]) => (
+          <div key={label}>
+            <dt>{label}</dt>
+            <dd>
+              {from && <><span className="outcome-from">{from}</span><Arrow /></>}
+              <strong>{to}</strong>
+            </dd>
+            {note && <p>{note}</p>}
+          </div>
+        ))}
+      </dl>
+      <div className="outcome-foot">
+        {like && <p className="outcome-like"><span>{kr ? "같은 구조의 업무" : "Work with the same shape"}</span>{like}</p>}
+        {basis && <p className="outcome-basis">{basis}</p>}
+      </div>
+    </section>
+  );
+}
 export function Evidence() {
   const { lang } = useLang();
   const kr = lang === "kr";
@@ -249,6 +284,28 @@ export function Evidence() {
           <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송. 부산에서 여러 항차로 출발한 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was handling a client's equipment shipment: multiple sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
           <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p></div>
         </div>
+        <Outcome
+          id="outcome-control"
+          before={kr
+            ? "출고일이 바뀔 때마다 담당자가 선사 일정표, 항만 상황, 내륙 운송을 따로 확인해 도착일을 다시 계산했습니다. 선사가 알려 준 도착 예정일은 평균 4.5일 빗나갔습니다."
+            : "Every time a release date moved, an operator checked carrier schedules, port conditions, and inland transport separately, then recalculated the arrival by hand. Carrier arrival estimates were off by 4.5 days on average."}
+          after={kr
+            ? "일정이 바뀌면 탈 수 있는 배와 공장 도착일이 한 화면에서 다시 계산됩니다. 담당자는 확인이 필요한 구간만 보고 고객에게 일정을 설명합니다."
+            : "When plans change, available sailings and factory arrival dates are recalculated on one screen. The operator reviews only the legs that need attention and explains the plan to the client."}
+          metrics={kr ? [
+            ["도착 예측 평균 오차", "4.51일", "3.61일", "선사 예정일에 과거 운송 기록을 더해 보정"],
+            ["6일 넘게 빗나간 예측", "29.7%", "14.3%", "크게 틀리는 경우가 절반으로"],
+            ["공장 도착일 예측", "", "73%가 3일 안", "오차의 중앙값 2.0일"],
+          ] : [
+            ["Average arrival error", "4.51 days", "3.61 days", "Carrier estimates corrected with past shipment records"],
+            ["Estimates off by 6+ days", "29.7%", "14.3%", "Large misses cut in half"],
+            ["Factory arrival estimates", "", "73% within 3 days", "Median error of 2.0 days"],
+          ]}
+          like={kr ? "협력사 납기 관리, 원자재 수급 점검, 프로젝트 일정 관리" : "Supplier delivery tracking, material supply checks, project scheduling"}
+          basis={kr
+            ? "FSK L&S 북미행 해상 운송의 과거 기록으로 검증한 값입니다(도착 예측 화물 523건, 공장 도착일 228건)."
+            : "Validated against past FSK L&S ocean shipments to North America (523 shipments for arrival estimates, 228 for factory arrival)."}
+        />
         <EvidenceImage
           src="/images/work/client-monitoring.png" width={1920} height={1080} priority
           title={kr ? "고객사 설비 운송 관제" : "Client equipment shipment control"}
@@ -399,6 +456,28 @@ export function SelectedWork() {
           <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
             subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문 연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
+          <Outcome
+            id="outcome-documents"
+            before={kr
+              ? "담당자가 메일로 온 수출입 서류를 한 장씩 열어 값을 시스템에 입력하고, 서류끼리 눈으로 대조했습니다. 자동으로 처리되는 서류는 10%대였습니다."
+              : "Operators opened each import and export document from email, typed the values into the system, and compared documents by eye. Barely one in ten was processed automatically."}
+            after={kr
+              ? "AI가 서류를 읽어 입력하고 서류끼리 대조합니다. 담당자는 값이 서로 맞지 않는 곳만 원문과 함께 확인합니다."
+              : "AI reads and enters the documents and cross-checks them. Operators review only the fields that disagree, beside the source."}
+            metrics={kr ? [
+              ["자동 처리 비율", "10%대", "90% 이상", "사람 손을 거치지 않고 끝나는 서류"],
+              ["판독 정확도", "65%", "99.5%", "서류에서 값을 맞게 읽는 비율"],
+              ["오류 사전 검출", "", "95% 이상", "시스템에 들어가기 전에 찾은 오류"],
+              ["처리한 수출입 서류", "", "500만 건 이상", ""],
+            ] : [
+              ["Processed automatically", "10–20%", "90%+", "Documents completed without manual handling"],
+              ["Reading accuracy", "65%", "99.5%", "Values read correctly from documents"],
+              ["Errors caught early", "", "95%+", "Found before they reach the system"],
+              ["Documents processed", "", "5M+", ""],
+            ]}
+            like={kr ? "세금계산서와 발주서 대조, 보험금 청구 접수, 계약서 검토" : "Invoice and purchase-order matching, insurance claims intake, contract review"}
+            basis={kr ? "FSK L&S 수출입 서류 업무 기준이며, 고객사가 확인한 수치입니다." : "Based on FSK L&S import and export document operations; figures confirmed by the client."}
+          />
           <EvidenceImage src="/images/fsk/document-review.webp" width={2280} height={1280}
             title={kr ? "DocAgent 원문 대조와 검증" : "DocAgent source review"}
             caption={kr ? "검증 화면 구현 예시 / 고객 식별정보 가림" : "Review interface example / Client identifiers redacted"}
@@ -443,6 +522,25 @@ export function SelectedWork() {
             year="2024"
             context="SK On"
           />
+          <Outcome
+            id="outcome-strix"
+            before={kr
+              ? "전략기획팀이 보고서의 근거를 찾으려고 쌓여 있는 내부 문서를 하나씩 검색하고 정리했습니다."
+              : "The strategy team searched and summarized a growing pile of internal documents one by one to find evidence for each report."}
+            after={kr
+              ? "질문하면 열람 권한이 있는 문서 안에서 근거와 함께 답을 받습니다. 개발부터 보안 협의, 교육, 사내 확산까지 맡았습니다."
+              : "Ask a question and get an answer with sources, drawn only from documents the user may already access. I built it and led security review, training, and rollout."}
+            metrics={kr ? [
+              ["사내 등록자", "", "600명 이상", ""],
+              ["매일 쓰는 사용자", "", "약 30명", "전략기획본부"],
+              ["교육 수강", "", "1,000명 이상", "SK 그룹 mySUNI, 사용자 수와는 별개"],
+            ] : [
+              ["Registered users", "", "600+", ""],
+              ["Daily users", "", "about 30", "Strategy Division"],
+              ["Training reach", "", "1,000+", "SK Group mySUNI; separate from usage"],
+            ]}
+            like={kr ? "리서치, 법무 검토, 사내 규정과 기술 문서 조회" : "Research, legal review, policy and technical document lookup"}
+          />
           <a className="media-frame strix-frame" href="/case-study/strix">
             <img
               src="/images/strix-video.jpeg"
@@ -463,8 +561,8 @@ export function SelectedWork() {
           </h4>
           <p>
             {kr
-              ? "SK On 전략기획팀에서 문서를 찾고 정리하던 업무에 AI를 적용했습니다. 시스템 개발과 보안 협의, 경영진 설명, 사용자 교육까지 맡았습니다. 당시 등록자는 600명 이상, 전략기획본부 일상 사용자는 약 30명이었습니다."
-              : "I built STRIX for strategy work at SK On and led security discussions, executive communication, training, and rollout. It reached over 600 registrations, with around 30 daily users in the Strategy Division at the time."}
+              ? "SK On 전략기획팀에서 문서를 찾고 정리하던 업무에 AI를 적용했습니다. 시스템 개발과 보안 협의, 경영진 설명, 사용자 교육까지 맡았습니다."
+              : "I built STRIX for strategy work at SK On and led security discussions, executive communication, training, and rollout."}
           </p>
           <a className="text-link" href="/case-study/strix">
             {kr ? "STRIX 도입 과정" : "How STRIX was adopted"}
