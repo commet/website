@@ -23,7 +23,7 @@ export default function SignalMap({ mission, sources, loading, kr }) {
   const failed = sources.length > 0 && !sources.some(s => ['disasters','earthquakes'].includes(s.id) && s.status === 'ok');
   return <div className="signal-map">
     <div className="signal-map-canvas">
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={kr ? `${region?.name || '전 세계'}의 재해·지진 관측 위치` : `Natural event and earthquake observations around ${region?.name || 'the world'}`}>
+      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={kr ? `${region?.name || '전 세계'}의 재해와 지진 관측 위치` : `Natural event and earthquake observations around ${region?.name || 'the world'}`}>
         <path className="signal-map-grid" d={path(geoGraticule10())} />
         <path className="signal-map-land" d={path(land)} />
         {scope && <path className="signal-map-scope" d={path(scope)} />}
@@ -43,12 +43,12 @@ export default function SignalMap({ mission, sources, loading, kr }) {
     </div>
     <div className="signal-map-reading" aria-live="polite">
       {selected ? <>
-        <div className="map-reading-head"><span>{selected.source === 'earthquakes' ? 'USGS' : 'NASA EONET'} · {date(selected.occurredAt,kr)} KST</span><span>{selectedIndex + 1} / {observations.length}</span></div>
+        <div className="map-reading-head"><span>{selected.source === 'earthquakes' ? 'USGS' : 'NASA EONET'} | {date(selected.occurredAt,kr)} KST</span><span>{selectedIndex + 1} / {observations.length}</span></div>
         <strong className="map-reading-value">{Number.isFinite(selected.magnitude) ? `M ${selected.magnitude.toFixed(1)}` : (kr ? '자연재해 관측' : 'Natural event')}</strong>
         <p>{selected.title}</p>
         <div className="map-reading-actions"><a href={selected.url} target="_blank" rel="noreferrer">{kr ? '관측 원문' : 'Source record'}<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a><div>{[-1,1].map(delta => <button key={delta} onClick={() => setPicked(observations[(selectedIndex + delta + observations.length) % observations.length].id)} disabled={observations.length < 2} aria-label={delta < 0 ? (kr ? '이전 관측' : 'Previous observation') : (kr ? '다음 관측' : 'Next observation')}><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={delta < 0 ? 'M16 5 9 12l7 7' : 'm8 5 7 7-7 7'} /></svg></button>)}</div></div>
-      </> : <><strong className="map-empty-title">{loading ? (kr ? '관측을 불러오는 중' : 'Loading observations') : failed ? (kr ? '위치 정보를 가져오지 못했습니다' : 'Location data unavailable') : (kr ? '이 범위에 표시할 관측이 없습니다' : 'No mapped observations in this area')}</strong><p>{loading ? (kr ? 'NASA와 USGS의 위치 정보를 확인합니다.' : 'Checking location data from NASA and USGS.') : (kr ? '브리핑에서 다른 정보원과 조회 범위를 함께 확인하세요.' : 'Check the briefing for other sources and coverage.')}</p></>}
-      <span className="map-sample-note">{kr ? '위치가 제공된 재해·지진 표본 · 기상 특보는 브리핑에서 확인' : 'Geolocated event samples · Weather alerts appear in the brief'}</span>
+      </> : <><strong className="map-empty-title">{loading ? (kr ? '관측을 불러오는 중' : 'Loading observations') : failed ? (kr ? '위치 정보를 가져오지 못했습니다' : 'Location data unavailable') : (kr ? '이 범위에 표시할 관측이 없습니다' : 'No mapped observations in this area')}</strong><p>{loading ? (kr ? 'NASA와 USGS의 위치 정보를 확인합니다.' : 'Checking location data from NASA and USGS.') : (kr ? '브리핑에서 다른 정보원과 조회 범위를 함께 확인하십시오.' : 'Check the briefing for other sources and coverage.')}</p></>}
+      <span className="map-sample-note">{kr ? '위치가 제공된 재해와 지진 표본 | 기상 특보는 브리핑에서 확인' : 'Geolocated event samples · Weather alerts appear in the brief'}</span>
     </div>
   </div>;
 }

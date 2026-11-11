@@ -305,51 +305,16 @@ export function Evidence() {
         <div className="shipment-story">
           <h4>{kr ? <>설비는 언제<br />미국 공장에 도착할까?</> : <>When will the equipment<br />reach the US factory?</>}</h4>
           <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송. 부산에서 여러 항차로 출발한 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was handling a client's equipment shipment: multiple sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
-          <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p></div>
+          <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p>
+          <p>{kr ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제를 설계하고 개발해 배포했습니다." : "I worked through the workflow and its exceptions with the operators, then designed, built, and deployed the control tower, from release planning to route monitoring."}</p></div>
         </div>
         <EvidenceImage
           src="/images/work/client-monitoring-light.webp" width={1920} height={1080} priority
           title={kr ? "고객사 설비 운송 관제" : "Client equipment shipment control"}
-          caption={kr ? "고객사 운송 관제 / 고객명 비공개 · 예시 데이터" : "Client shipment control / Client name withheld · Example data"}
+          caption={kr ? "고객사 운송 관제 / 고객명 비공개 | 예시 데이터" : "Client shipment control / Client name withheld | Example data"}
           alt={kr ? "왼쪽 운송 현황, 중앙 부산에서 파나마와 Newark를 잇는 지도, 오른쪽 구간 감시, 하단 항차 일정이 모두 보이는 고객사 운송 관제 전체 화면" : "Full client monitoring interface: shipment status on the left, route map in the center, risk monitoring on the right, and voyage schedule below"}
           note={kr ? "2026년 12월 24일 상황을 가정한 시연입니다. 화면의 일정과 물량은 예시이며 실제 운송 현황이 아닙니다." : "Demonstration as of December 24, 2026. Dates and quantities are examples, not live shipment data."}
         />
-        <div className="map-description">
-          <h4>
-            {kr
-              ? "일정과 위험을 한 화면에 연결했습니다."
-              : "Connect the schedule, the risks, and the next decision."}
-          </h4>
-          <div>
-            <p>
-              {kr
-                ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제를 설계·개발해 배포했습니다. 일정이 바뀌면 대체 항차를 살펴보고, 항로 주변의 위험과 도착 예상 범위를 같은 화면에서 확인할 수 있습니다."
-                : "I worked with operators to understand their workflow and exceptions, then designed, built, and deployed the control tower. They can explore alternative sailings when plans change and review route risks alongside arrival ranges."}
-            </p>
-            <dl className="map-capabilities">
-              <div>
-                <dt>{kr ? "일정이 바뀌면" : "When plans change"}</dt>
-                <dd>
-                  {kr
-                    ? "이용 가능한 항차와 도착일 재계산"
-                    : "Recalculate available sailings and arrival dates"}
-                </dd>
-              </div>
-              <div>
-                <dt>{kr ? "항로를 살피면" : "Along the route"}</dt>
-                <dd>{kr ? "기상·운하·항만의 확인 사항을 구간별로" : "Weather, canal, and port issues by leg"}</dd>
-              </div>
-              <div>
-                <dt>{kr ? "판단이 필요하면" : "Before a decision"}</dt>
-                <dd>
-                  {kr
-                    ? "계획과 예측, 확인된 근거를 구분"
-                    : "Distinguish plans, estimates, and observed evidence"}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
         <Spotlight
           id="spotlight-control"
           title={kr ? <>크게 빗나가는 도착 예측이<br /><em>절반</em>으로 줄었습니다.</> : <>Badly missed arrival estimates<br />were cut in <em>half</em>.</>}
@@ -513,14 +478,10 @@ export function SelectedWork() {
             like={kr ? "세금계산서와 발주서 대조, 보험금 청구 접수, 계약서 검토" : "Invoice and purchase-order matching, insurance claims intake, contract review"}
             basis={kr ? "FSK L&S 수출입 서류 500만 건 이상 처리 기준. 화면은 고객 식별정보를 가린 검증 화면" : "Based on 5M+ FSK L&S import and export documents. Client identifiers are redacted"}
           />
-          <div id="doc-workflow" className="doc-explanation">
-            <h4>{kr ? "불일치를 찾고, 원문으로 확인합니다." : "Flag discrepancies. Check the source."}</h4>
-            <p>{kr ? "운송장과 포장명세서의 중량이 다를 때, 두 값을 원문과 함께 보여줍니다. 불일치와 누락을 확인하는 검증 화면을 만들었고, 담당자가 승인한 값을 주문 시스템에 연결하는 과정까지 구축하고 있습니다." : "When the air waybill and packing list disagree on weight, an operator needs the source. I built a review screen that flags discrepancies beside the original document, and am building the connection from reviewed fields to order creation."}</p>
-          </div>
-          <div className="doc-workflow">
+          <div id="doc-workflow" className="doc-workflow">
             <div className="doc-workflow-heading">
               <h4>{kr ? "문서 검토와 주문 연동 흐름" : "Document review and order integration"}</h4>
-              <span>{kr ? "업무 흐름 / 구축·검증 중" : "Workflow / Implementation and validation"}</span>
+              <span>{kr ? "업무 흐름 / 구축과 검증 중" : "Workflow / Implementation and validation"}</span>
             </div>
             <ol>
               {(kr ? [
@@ -572,9 +533,15 @@ export function SelectedWork() {
           </h4>
           <p>
             {kr
-              ? "SK On 전략기획팀에서 문서를 찾고 정리하던 업무에 AI를 적용했습니다. 시스템 개발과 보안 협의, 경영진 설명, 사용자 교육까지 맡았습니다. 당시 등록자는 600명 이상, 전략기획본부 일상 사용자는 약 30명이었습니다."
-              : "I built STRIX for strategy work at SK On and led security discussions, executive communication, training, and rollout. It reached over 600 registrations, with around 30 daily users in the Strategy Division at the time."}
+              ? "SK On 전략기획팀이 여러 문서에서 정보를 찾고 비교해 의사결정 근거로 정리하던 일에 문서 검색과 LLM을 결합했습니다. 업무 흐름을 바꾸지 않도록 Excel, Word, Outlook에서 바로 쓰게 연결했습니다."
+              : "The SK On strategy team kept finding, comparing, and summarizing documents to support decisions. STRIX combined document search with an LLM and worked inside Excel, Word, and Outlook, so the workflow did not have to change."}
           </p>
+          <dl className="yakbang-flow strix-facts">
+            <div><dt>{kr ? "맡은 일" : "Role"}</dt><dd>{kr ? "개발, 보안 협의, 경영진 설명, 사용자 교육" : "Development, security review, executive briefings, user training"}</dd></div>
+            <div><dt>{kr ? "등록자" : "Registered"}</dt><dd>{kr ? "600명 이상(당시 기준)" : "600+ at the time"}</dd></div>
+            <div><dt>{kr ? "일상 사용자" : "Daily users"}</dt><dd>{kr ? "약 30명(전략기획본부)" : "About 30 in the Strategy Division"}</dd></div>
+            <div><dt>{kr ? "사내 교육" : "Training"}</dt><dd>{kr ? "SK 그룹 mySUNI 교육 콘텐츠, 1,000명 이상 도달" : "SK Group mySUNI course, reached 1,000+"}</dd></div>
+          </dl>
           <a className="text-link" href="/case-study/strix">
             {kr ? "STRIX 도입 과정" : "How STRIX was adopted"}
             <Arrow />
@@ -748,7 +715,7 @@ export function About() {
         <div className="about-copy">
           <h3>
             {kr
-              ? "전략기획을 하며, 직접 만들기 시작했습니다."
+              ? <>전략기획을 하며,<br />직접 만들기 시작했습니다.</>
               : "I started building while working in strategy."}
           </h3>
           <p>
@@ -832,7 +799,7 @@ export function Contact() {
       id: "project-contact",
       title: kr ? "프로젝트 상담" : "Discuss a project",
       body: kr
-        ? "AI를 적용할 업무를 찾고 있거나, 구상한 시스템을 실제로 만들어야 한다면 연락 주세요. 현재 업무와 목표를 듣고 범위와 구현 방법을 함께 검토하겠습니다."
+        ? "AI를 적용할 업무를 찾고 있거나, 구상한 시스템을 실제로 만들어야 한다면 연락 주십시오. 현재 업무와 목표를 듣고 범위와 구현 방법을 함께 검토하겠습니다."
         : "Get in touch if you are deciding where AI could help or need to build a system you have in mind. We can review the current workflow, goals, scope, and implementation together.",
       action: kr ? "프로젝트 문의하기" : "Email about a project",
       subject: kr ? "AX 프로젝트 문의" : "AX project inquiry",
@@ -842,7 +809,7 @@ export function Contact() {
       id: "collaborate-contact",
       title: kr ? "협업 제안" : "Collaborate",
       body: kr
-        ? "함께 만들 제품이나 같이 맡을 프로젝트를 제안해 주세요. 개발, 기획, 사업 경험을 나누거나 커뮤니티에서 만나는 자리도 좋습니다."
+        ? "함께 만들 제품이나 같이 맡을 프로젝트를 제안해 주십시오. 개발, 기획, 사업 경험을 나누거나 커뮤니티에서 만나는 자리도 좋습니다."
         : "Suggest a product to build or a project to take on together. I am also open to exchanging experience in engineering, product, and business, or meeting through the community.",
       action: kr ? "협업 제안하기" : "Email about collaborating",
       subject: kr ? "협업 제안" : "Collaboration",
@@ -878,7 +845,7 @@ export function Contact() {
         <div className="contact-bottom">
           <span>
             {kr
-              ? "메일로 내용을 보내거나, 짧은 미팅을 예약해 주세요."
+              ? "메일로 내용을 보내거나, 짧은 미팅을 예약하십시오."
               : "Send a note or book a short call."}
           </span>
           <Link

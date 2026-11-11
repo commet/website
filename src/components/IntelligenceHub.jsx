@@ -13,13 +13,13 @@ import SignalMap from './SignalMap';
 
 function Arrow() { return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>; }
 function formatTime(value, kr) {
-  if (!value || Number.isNaN(Date.parse(value))) return '—';
+  if (!value || Number.isNaN(Date.parse(value))) return '-';
   return new Intl.DateTimeFormat(kr ? 'ko-KR' : 'en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' }).format(new Date(value));
 }
 const errorCopy = {
-  rate_limited: ['잠시 요청이 많습니다. 10분 뒤 다시 실행해 주세요. 공개 정보는 계속 확인할 수 있습니다.', 'The demo is busy. Try again in 10 minutes; public sources remain available.'],
+  rate_limited: ['잠시 요청이 많습니다. 10분 뒤 다시 실행하십시오. 공개 정보는 계속 확인할 수 있습니다.', 'The demo is busy. Try again in 10 minutes; public sources remain available.'],
   busy: ['같은 범위의 브리핑을 생성 중입니다. 잠시 뒤 다시 실행하면 결과를 받을 수 있습니다.', 'A briefing for this scope is being generated. Try again shortly to retrieve it.'],
-  agent_unavailable: ['AI 브리핑을 완료하지 못했습니다. 다시 실행하거나 아래 원문을 확인해 주세요.', 'The AI briefing could not finish. Retry or review the source records below.'],
+  agent_unavailable: ['AI 브리핑을 완료하지 못했습니다. 다시 실행하거나 아래 원문을 확인하십시오.', 'The AI briefing could not finish. Retry or review the source records below.'],
 };
 function Desk({ kr }) {
   const l = kr ? 0 : 1;
@@ -118,7 +118,7 @@ function Desk({ kr }) {
   return <section className="intelligence" id="intelligence" ref={root} aria-labelledby="intelligence-title">
     <div className="intelligence-intro">
       <h4 id="intelligence-title">{kr ? '항로 주변의 변화를, AI가 먼저 읽는다면.' : 'Let AI read the signals along the route.'}</h4>
-      <p>{kr ? '운송 관제에서 필요한 외부 정보 확인을 공개 데이터로 체험해 보세요. 파나마와 미국 도착지 주변의 관측을 모아, AI가 확인할 이슈와 근거를 정리합니다.' : 'Try the external-information check behind shipment monitoring. Explore observations around Panama or the US arrival area, then ask AI to identify what needs a closer look.'}</p>
+      <p>{kr ? '운송 관제에서 필요한 외부 정보 확인을 공개 데이터로 체험할 수 있습니다. 파나마와 미국 도착지 주변의 관측을 모아, AI가 확인할 이슈와 근거를 정리합니다.' : 'Try the external-information check behind shipment monitoring. Explore observations around Panama or the US arrival area, then ask AI to identify what needs a closer look.'}</p>
     </div>
     <div className="signal-desk">
       <header className="desk-header"><h5>Signal Desk</h5><span>{kr ? '공개 API × AI 브리핑' : 'Public APIs × AI briefing'}</span></header>
@@ -126,7 +126,7 @@ function Desk({ kr }) {
         <div className="desk-scopes" role="group" aria-label={kr ? '조회 범위' : 'Scope'}>{missions.map(m => <button key={m.id} aria-pressed={mission === m.id} disabled={busy} onClick={() => changeMission(m.id)}>{m.name[l]}</button>)}</div>
         <div className="desk-request"><p>{selected.prompt[l]}</p><button className="desk-run" onClick={run} disabled={busy}>{busy ? (kr ? '확인 중' : 'Working') : result ? (kr ? '다시 확인' : 'Check again') : (kr ? '에이전트 실행' : 'Run agent')}<Arrow /></button></div>
       </div>
-      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong>{result && <a className="desk-brief-jump" href="#signal-brief">{kr ? '브리핑 보기' : 'Read briefing'}<Arrow /></a>}<span>{result ? `${result.cached ? (kr ? '최근 결과 · ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
+      <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong>{result && <a className="desk-brief-jump" href="#signal-brief">{kr ? '브리핑 보기' : 'Read briefing'}<Arrow /></a>}<span>{result ? `${result.cached ? (kr ? '최근 결과 | ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
       <SignalMap key={mission} mission={mission} sources={displaySources} loading={feedState === 'loading' && !displaySources.length} kr={kr} />
       <div className="desk-connections" aria-label={kr ? '정보원 연결 상태' : 'Source connections'}>
         {providers.map(p => {
@@ -170,15 +170,15 @@ function Desk({ kr }) {
           {!filter && records.length > previewRecords.length && <button className="desk-retry-feeds" onClick={() => setExpanded(v => !v)}>{expanded ? (kr ? '미리보기로 접기' : 'Collapse to preview') : (kr ? `원문 ${records.length}건 모두 보기` : `Show all ${records.length} records`)}</button>}
           <div className="source-metadata">{providers.map(p => {
             const source = displaySources.find(s => s.id === p.id);
-            return <p key={p.id}><a href={p.url} target="_blank" rel="noreferrer">{p.name} ↗</a><span>{p.coverage[l]}{source?.status === 'ok' ? (kr ? ` · 조회 ${source.count}건 중 ${source.records.length}건 수집` : ` · ${source.records.length} of ${source.count} retrieved`) : ''}{source?.fetchedAt ? ` · ${formatTime(source.fetchedAt, kr)} KST` : ''}</span></p>;
+            return <p key={p.id}><a href={p.url} target="_blank" rel="noreferrer">{p.name} ↗</a><span>{p.coverage[l]}{source?.status === 'ok' ? (kr ? ` | 조회 ${source.count}건 중 ${source.records.length}건 수집` : ` · ${source.records.length} of ${source.count} retrieved`) : ''}{source?.fetchedAt ? ` | ${formatTime(source.fetchedAt, kr)} KST` : ''}</span></p>;
           })}</div>
-          <p className="desk-scope-note">{mission === 'world' ? (kr ? '기상 특보는 미국, 재해·지진은 전 세계를 조회합니다.' : 'Weather alerts cover the US; natural events and earthquakes cover the world.') : mission === 'panama' ? (kr ? '파나마 운하 반경 1,000km를 조회합니다. NOAA 기상 특보는 이 지역을 지원하지 않습니다.' : 'Within 1,000 km of the Panama Canal. NOAA alerts do not cover this area.') : (kr ? '재해·지진은 Newark 반경 750km, 기상 특보는 Newark 지점 기준입니다.' : 'Events and earthquakes within 750 km of Newark; weather alerts at Newark point.')}</p>
+          <p className="desk-scope-note">{mission === 'world' ? (kr ? '기상 특보는 미국, 재해와 지진은 전 세계를 조회합니다.' : 'Weather alerts cover the US; natural events and earthquakes cover the world.') : mission === 'panama' ? (kr ? '파나마 운하 반경 1,000km를 조회합니다. NOAA 기상 특보는 이 지역을 지원하지 않습니다.' : 'Within 1,000 km of the Panama Canal. NOAA alerts do not cover this area.') : (kr ? '재해와 지진은 Newark 반경 750km, 기상 특보는 Newark 지점 기준입니다.' : 'Events and earthquakes within 750 km of Newark; weather alerts at Newark point.')}</p>
           {result?.brief.unknowns.length > 0 && <div className="brief-unknown"><h6>{kr ? '추가 확인이 필요한 부분' : 'Still to verify'}</h6><ul>{result.brief.unknowns.map(v => <li key={v}>{v}</li>)}</ul></div>}
           {feedState === 'error' && !busy && <button className="desk-retry-feeds" onClick={() => { setFeedState('loading'); setReload(v => v + 1); }}>{kr ? '정보원 다시 조회' : 'Retry sources'}</button>}
-          <p className="desk-scope-note">{kr ? '최대 10분 캐시 · NASA 목록 최대 100건 · 원문 영어. 항만 운영·선박 위치·고객 일정은 연결하지 않았습니다.' : 'Up to 10-minute cache · NASA catalog capped at 100 · English source text. Port operations, vessel positions, and client schedules are not connected.'}</p>
+          <p className="desk-scope-note">{kr ? '최대 10분 캐시 | NASA 목록 최대 100건 | 원문 영어. 항만 운영, 선박 위치, 고객 일정은 연결하지 않았습니다.' : 'Up to 10-minute cache · NASA catalog capped at 100 · English source text. Port operations, vessel positions, and client schedules are not connected.'}</p>
         </div>
       </details>
-      <footer className="desk-footnote"><p>{kr ? '공개 데이터 데모 · 수집된 표본 기준이며, 운송 영향이나 안전 여부를 판단하지 않습니다.' : 'Public-data demo · Based on retrieved samples, not a determination of shipping impact or safety.'}</p></footer>
+      <footer className="desk-footnote"><p>{kr ? '공개 데이터 데모. 수집된 표본 기준이며, 운송 영향이나 안전 여부를 판단하지 않습니다.' : 'Public-data demo · Based on retrieved samples, not a determination of shipping impact or safety.'}</p></footer>
     </div>
     <a className="text-link intelligence-case-link" href="/case-study/fsk">{kr ? '운송 관제와 출고 계획의 실제 설계 과정' : 'The shipment monitoring and planning case study'}<Arrow /></a>
   </section>;
