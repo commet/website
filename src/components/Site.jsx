@@ -121,13 +121,16 @@ export function Hero() {
     </section>
   );
 }
-function EvidenceImage({ src, width, height, title, caption, alt, note, priority = false }) {
+function ImageViewer({ open, onClose, src, width, height, title, alt, note }) {
   const { lang } = useLang();
   const kr = lang === "kr";
   const dialog = useRef(null);
   const titleId = useId();
-  const [open, setOpen] = useState(false);
   const [zoom, setZoom] = useState(false);
+  const close = () => {
+    setZoom(false);
+    onClose();
+  };
   useEffect(() => {
     if (!open) return;
     const node = dialog.current;
@@ -139,10 +142,51 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
       document.body.style.overflow = before;
     };
   }, [open]);
-  const show = () => {
-    setZoom(false);
-    setOpen(true);
-  };
+  return (
+    <dialog
+      ref={dialog}
+      className="image-viewer"
+      aria-labelledby={titleId}
+      onClose={close}
+      onCancel={close}
+    >
+      <div className="viewer-toolbar">
+        <h2 id={titleId}>{title}</h2>
+        <div>
+          <button onClick={() => setZoom(!zoom)} aria-pressed={zoom}>
+            {zoom
+              ? kr
+                ? "화면에 맞추기"
+                : "Fit to screen"
+              : kr
+                ? "원본 크기"
+                : "Original size"}
+          </button>
+          <button onClick={close}>
+            {kr ? "닫기" : "Close"}
+          </button>
+        </div>
+      </div>
+      <div
+        className={`viewer-body${zoom ? " is-zoomed" : ""}`}
+        tabIndex="0"
+        aria-label={
+          kr
+            ? "원본 크기에서는 스크롤로 이미지를 이동할 수 있습니다."
+            : "Scroll to pan the image at original size."
+        }
+      >
+        {open && <img src={src} width={width} height={height} style={zoom ? { width, height } : undefined} alt={alt} />}
+      </div>
+      {note && <p className="viewer-note">{note}</p>}
+    </dialog>
+  );
+}
+function EvidenceImage({ src, width, height, title, caption, alt, note, priority = false }) {
+  const { lang } = useLang();
+  const kr = lang === "kr";
+  const [open, setOpen] = useState(false);
+  const show = () => setOpen(true);
   return (
     <figure className="map-exhibit">
       <button
@@ -167,49 +211,14 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
           <Arrow external />
         </button>
       </figcaption>
-      <dialog
-        ref={dialog}
-        className="image-viewer"
-        aria-labelledby={titleId}
-        onClose={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-      >
-        <div className="viewer-toolbar">
-          <h2 id={titleId}>{title}</h2>
-          <div>
-            <button onClick={() => setZoom(!zoom)} aria-pressed={zoom}>
-              {zoom
-                ? kr
-                  ? "화면에 맞추기"
-                  : "Fit to screen"
-                : kr
-                  ? "원본 크기"
-                  : "Original size"}
-            </button>
-            <button onClick={() => setOpen(false)}>
-              {kr ? "닫기" : "Close"}
-            </button>
-          </div>
-        </div>
-        <div
-          className={`viewer-body${zoom ? " is-zoomed" : ""}`}
-          tabIndex="0"
-          aria-label={
-            kr
-              ? "원본 크기에서는 스크롤로 이미지를 이동할 수 있습니다."
-              : "Scroll to pan the image at original size."
-          }
-        >
-          <img src={src} width={width} height={height} style={zoom ? { width, height } : undefined} alt={alt} />
-        </div>
-        <p className="viewer-note">{note}</p>
-      </dialog>
+      <ImageViewer open={open} onClose={() => setOpen(false)} src={src} width={width} height={height} title={title} alt={alt} note={note} />
     </figure>
   );
 }
-function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like, basis, dim = 0.62, wide = false }) {
+function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like, basis, dim = 0.62, wide = false, viewer }) {
   const { lang } = useLang();
   const kr = lang === "kr";
+  const [open, setOpen] = useState(false);
   const pos = ({ x, y, w, h }) => ({
     left: `${x}%`, top: `${y}%`, width: `${w}%`, height: `${h}%`,
     backgroundImage: `url(${src})`,
@@ -236,10 +245,18 @@ function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like
         </div>
       </div>
       <div className={wide ? "spotlight-stage is-wide" : "spotlight-stage"}>
-        <div className="spotlight-shot" style={{ aspectRatio: ratio, backgroundImage: `url(${src})`, "--dim": dim }} role="img" aria-label={alt}>
-          {spots.map((spot, i) => (
-            <div key={i} className="spot" style={pos(spot)}><span>{spot.n}</span></div>
-          ))}
+        <div className="spotlight-figure">
+          <div className="spotlight-shot" style={{ aspectRatio: ratio, backgroundImage: `url(${src})`, "--dim": dim }} role="img" aria-label={alt}>
+            {spots.map((spot, i) => (
+              <div key={i} className="spot" style={pos(spot)}><span>{spot.n}</span></div>
+            ))}
+          </div>
+          {viewer && <>
+            <button type="button" className="spotlight-open" onClick={() => setOpen(true)}>
+              {kr ? "원래 화면 크게 보기" : "View the full screen"}<Arrow external />
+            </button>
+            <ImageViewer open={open} onClose={() => setOpen(false)} src={src} width={viewer.width} height={viewer.height} title={viewer.title} alt={viewer.alt || alt} note={viewer.note} />
+          </>}
         </div>
         <ol className="spotlight-steps">
           {steps.map(([name, body, from, to, unit], i) => (
@@ -464,6 +481,7 @@ export function SelectedWork() {
                 : [["Before", 1, <>Automatic <b>10–20%</b></>], ["After", 9, <>Automatic <b>90%+</b></>]],
             }}
             src="/images/fsk/document-review.webp" ratio="2280 / 1280"
+            viewer={{ width: 2280, height: 1280, title: kr ? "서류 검증 화면" : "Document review screen", alt: kr ? "AI가 읽은 값과 원문을 나란히 놓고 불일치를 표시한 서류 검증 화면. 고객 식별정보는 가렸습니다." : "Document review screen showing extracted fields beside the source, with mismatches flagged. Client identifiers are redacted.", note: kr ? "고객 식별정보를 가린 검증 화면입니다." : "Client identifiers are redacted." }}
             alt={kr ? "서류 검증 화면에서 AI가 읽은 값, 서로 맞지 않는 값과 원문, 등록 단추를 밝게 표시한 그림" : "The document review screen with three areas highlighted: fields read by AI, a mismatch beside its source, and the register action"}
             spots={[{ n: 1, x: 2.5, y: 34, w: 32, h: 45 }, { n: 2, x: 2.5, y: 80.6, w: 32, h: 13.2 }, { n: 2, x: 43.4, y: 65.6, w: 31.2, h: 5.5 }, { n: 3, x: 1.2, y: 2.8, w: 25, h: 5.3 }]}
             steps={kr ? [

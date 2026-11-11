@@ -1910,7 +1910,11 @@ svg {
 .spotlight .bar i { display: block; height: 100%; background: #5d6a7e; }
 .spotlight .is-after .bar i { background: var(--accent); }
 .spotlight-stage { display: grid; grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr); column-gap: 40px; align-items: stretch; margin-top: 48px; }
-.spotlight-shot { position: relative; align-self: start; width: 100%; background-size: 100% auto; background-repeat: no-repeat; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -20px rgba(0, 0, 0, 0.6); }
+.spotlight-figure { align-self: start; min-width: 0; }
+.spotlight-open { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 0; border: 0; background: none; color: #9aa6b8; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.spotlight-open:hover, .spotlight-open:focus-visible { color: #fff; }
+.spotlight-open svg { width: 14px; height: 14px; }
+.spotlight-shot { position: relative; width: 100%; background-size: 100% auto; background-repeat: no-repeat; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -20px rgba(0, 0, 0, 0.6); }
 .spotlight-shot::after { content: ""; position: absolute; inset: 0; background: rgba(13, 18, 27, var(--dim, 0.62)); }  /* 어두운 화면(관제)은 덜 낮춘다 */
 .spot { position: absolute; z-index: 1; background-repeat: no-repeat; box-shadow: 0 0 0 2px var(--accent), 0 10px 28px rgba(0, 0, 0, 0.5); }
 .spot span, .spotlight-steps li > span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; font-weight: 700; }
