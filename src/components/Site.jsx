@@ -309,7 +309,7 @@ export function Evidence() {
           <p>{kr ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제를 설계하고 개발해 배포했습니다." : "I worked through the workflow and its exceptions with the operators, then designed, built, and deployed the control tower, from release planning to route monitoring."}</p></div>
         </div>
         <EvidenceImage
-          src="/images/work/client-monitoring-light.webp" width={1920} height={1080} priority
+          src={kr ? "/images/work/client-monitoring-light.webp" : "/images/work/client-monitoring-light-en.webp"} width={1920} height={1080} priority
           title={kr ? "고객사 설비 운송 관제" : "Client equipment shipment control"}
           caption={kr ? "고객사 운송 관제 / 고객명 비공개 | 예시 데이터" : "Client shipment control / Client name withheld | Example data"}
           alt={kr ? "왼쪽 운송 현황, 중앙 부산에서 파나마와 Newark를 잇는 지도, 오른쪽 구간 감시, 하단 항차 일정이 모두 보이는 고객사 운송 관제 전체 화면" : "Full client monitoring interface: shipment status on the left, route map in the center, risk monitoring on the right, and voyage schedule below"}
@@ -328,9 +328,9 @@ export function Evidence() {
               ? [["도입 전", 100, <>6일 넘게 빗나간 예측 <b>29.7%</b></>], ["도입 후", 48, <>6일 넘게 빗나간 예측 <b>14.3%</b></>]]
               : [["Before", 100, <>Estimates off by 6+ days <b>29.7%</b></>], ["After", 48, <>Estimates off by 6+ days <b>14.3%</b></>]],
           }}
-          src="/images/work/client-monitoring-light.webp" ratio="16 / 9" dim={0.34}
+          src={kr ? "/images/work/client-monitoring-light.webp" : "/images/work/client-monitoring-light-en.webp"} ratio="16 / 9" dim={0.34}
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
-          spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: 19.3 }, { n: 3, x: 0.8, y: 84.9, w: 38.6, h: 13.6 }]}
+          spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: kr ? 19.3 : 23.4 }, { n: 3, x: 0.8, y: 84.9, w: kr ? 38.6 : 45.4, h: 13.6 }]}
           steps={kr ? [
             ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배와 도착 범위를 새로 냅니다.", "4.51일", "3.61일", "도착 예측 평균 오차"],
             ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 보여 줍니다.", "29.7%", "14.3%", "6일 넘게 빗나간 예측"],
