@@ -207,7 +207,7 @@ function EvidenceImage({ src, width, height, title, caption, alt, note, priority
     </figure>
   );
 }
-function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like, basis }) {
+function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like, basis, dim = 0.62 }) {
   const { lang } = useLang();
   const kr = lang === "kr";
   const pos = ({ x, y, w, h }) => ({
@@ -236,7 +236,7 @@ function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like
         </div>
       </div>
       <div className="spotlight-stage">
-        <div className="spotlight-shot" style={{ aspectRatio: ratio, backgroundImage: `url(${src})` }} role="img" aria-label={alt}>
+        <div className="spotlight-shot" style={{ aspectRatio: ratio, backgroundImage: `url(${src})`, "--dim": dim }} role="img" aria-label={alt}>
           {spots.map((spot, i) => (
             <div key={i} className="spot" style={pos(spot)}><span>{spot.n}</span></div>
           ))}
@@ -363,7 +363,7 @@ export function Evidence() {
               ? [["도입 전", 100, <>6일 넘게 빗나간 예측 <b>29.7%</b></>], ["도입 후", 48, <>6일 넘게 빗나간 예측 <b>14.3%</b></>]]
               : [["Before", 100, <>Estimates off by 6+ days <b>29.7%</b></>], ["After", 48, <>Estimates off by 6+ days <b>14.3%</b></>]],
           }}
-          src="/images/work/client-monitoring.png" ratio="16 / 9"
+          src="/images/work/client-monitoring.png" ratio="16 / 9" dim={0.18}
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
           spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: 19.3 }, { n: 3, x: 0.8, y: 84.9, w: 37.1, h: 13.6 }]}
           steps={kr ? [
