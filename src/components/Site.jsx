@@ -276,7 +276,7 @@ function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like
         </ol>
       </div>
       <p className="spotlight-foot">
-        <span><b>{kr ? "적용 가능한 업무" : "Similar workflows"}</b>{like}</span>
+        <span><b>{kr ? "다른 업종 적용" : "Other industries"}</b>{like}</span>
         <span>{basis}</span>
       </p>
     </section>
@@ -344,8 +344,8 @@ export function Evidence() {
           id="spotlight-control"
           title={kr ? <>크게 빗나가는 도착 예측을<br /><em>절반</em>으로 줄였습니다.</> : <>Badly missed arrival estimates,<br />cut in <em>half</em>.</>}
           lead={kr
-            ? "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 선사\u2060(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 그만큼 빗나갔는데, 과거 운송 기록으로 보정하자 이 비율이 52%\u2060 줄었습니다(29.7%\u00a0→\u00a014.3%)."
-            : "The client's KPI was the share of arrival estimates off by more than six days. Carrier dates given at booking missed by that much about three times in ten; corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
+            ? "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 선사\u2060(해운사)가 선적 예약 때 알려 준 도착 예정일(ETA)은 열 건 중 세 건꼴로 그만큼 빗나갔는데, 과거 운송 기록으로 보정하자 이 비율이 52%\u2060 줄었습니다(29.7%\u00a0→\u00a014.3%)."
+            : "The client's KPI was the share of arrival estimates off by more than six days. Carrier arrival dates (ETA) given at booking missed by that much about three times in ten; corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
           aside={{
             kind: "bar",
             label: kr ? "KPI, 6일 넘게 빗나간 도착 예측: 선사 예정일 29.7%, 보정한 예측 14.3%" : "Arrival estimates off by more than six days: carrier dates 29.7%, corrected estimates 14.3%",
@@ -365,7 +365,7 @@ export function Evidence() {
             ["Groups checks by leg", "Weather, canal, and port risks appear for each leg, with unconfirmed plans kept apart.", "", "", ""],
             ["Carries it to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "", ""],
           ]}
-          like={kr ? "협력사 납기 관리, 원자재 수급 점검, 프로젝트 일정 관리" : "Supplier delivery tracking, material supply checks, project scheduling"}
+          like={kr ? "반도체 장비 반입, 해외 플랜트 기자재 조달, 제약 원료 수입" : "Semiconductor tool move-ins, overseas plant equipment procurement, pharmaceutical ingredient imports"}
           basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(선적 예약 시점의 도착 예측 523건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking)"}
         />
         <IntelligenceHub />
@@ -480,7 +480,7 @@ export function SelectedWork() {
             <h4>{kr ? <>수출입 서류,<br />언제까지 손으로 옮겨 적을까?</> : <>Must every document<br />still be typed in by hand?</>}</h4>
             <dl className="shipment-facts">
               {(kr ? [
-                ["상황", <>업무 과제 32개를 따라가 보니 <b>원인은 서류{"\u00a0"}입력{"\u00a0"}단계</b></>],
+                ["상황", <>업무 과제 32개를 따라가 보니 <b>공통 원인은 서류{"\u00a0"}입력{"\u00a0"}단계</b></>],
                 ["변수", <><b>메일로 오는 서류마다 양식이 다름</b>. 서류끼리 중량 같은 값이 어긋나기도 함</>],
                 ["필요", <><b>어긋난 곳만 사람이</b> 보고, 나머지는 손대지 않고 등록되어야 함</>],
                 ["한 일", <>판독, 원문 대조, 코드 연결까지 <b>검증 화면과 업무{"\u00a0"}흐름을 설계하고 구축</b></>],
@@ -518,7 +518,7 @@ export function SelectedWork() {
               ["A person sees only mismatches", "When documents disagree, the values appear beside the source.", "", "95%+", "errors caught before entry"],
               ["Matching documents go straight in", "Documents whose values all agree are registered without anyone touching them.", "10–20%", "90%+", "straight-through processing"],
             ]}
-            like={kr ? "세금계산서와 발주서 대조, 보험금 청구 접수, 계약서 검토" : "Invoice and purchase-order matching, insurance claims intake, contract review"}
+            like={kr ? "보험사 청구 서류 심사, 은행 대출 서류 검토, 제조사 발주서와 세금계산서 대조" : "Insurance claim review, bank loan document checks, manufacturer purchase-order and invoice matching"}
             basis={kr ? "FSK L&S 수출입 서류 500만 건 이상 처리 기준 | 고객 식별정보를 가린 화면" : "Based on 5M+ FSK L&S import and export documents. Client identifiers are redacted"}
           />
           <div id="doc-workflow" className="doc-workflow">
@@ -577,14 +577,15 @@ export function SelectedWork() {
           </h4>
           <p>
             {kr
-              ? "SK On 전략기획팀은 여러 문서에서 정보를 찾고 비교해 의사결정 근거로 정리하는 일을 반복했습니다. 문서 검색과 LLM(대규모 언어 모델)을 결합한 지식 시스템을 만들고, 일하는 방식을 바꾸지 않도록 Excel, Word, Outlook에서 바로 쓰게 연결했습니다."
-              : "The SK On strategy team kept finding, comparing, and summarizing documents to support decisions. STRIX combined document search with an LLM and worked inside Excel, Word, and Outlook, so the workflow did not have to change."}
+              ? "SK On 전략기획팀은 여러 문서에서 정보를 찾고 비교해 의사결정 근거로 정리하는 일을 반복했습니다. 사내외 정보를 한데 모은 지식 시스템을 직접 만들어 매일 쓰는 Excel, Word, Outlook에 연결했고, 보안 협의와 경영진 설명, 사용자 교육까지 맡았습니다."
+              : "The SK On strategy team kept finding and comparing documents to support decisions. I built a knowledge system that brings internal and external information together, connected it to Excel, Word, and Outlook, and handled security review, executive briefings, and training."}
           </p>
           <dl className="yakbang-flow strix-facts">
-            <div><dt>{kr ? "맡은 일" : "Role"}</dt><dd>{kr ? "개발, 보안 협의, 경영진 설명, 사용자 교육" : "Development, security review, executive briefings, user training"}</dd></div>
-            <div><dt>{kr ? "등록자" : "Registered"}</dt><dd>{kr ? "600명 이상(당시 기준)" : "600+ at the time"}</dd></div>
-            <div><dt>{kr ? "일상 사용자" : "Daily users"}</dt><dd>{kr ? "약 30명(전략기획본부)" : "About 30 in the Strategy Division"}</dd></div>
-            <div><dt>{kr ? "사내 교육" : "Training"}</dt><dd>{kr ? "SK 그룹 mySUNI 교육 콘텐츠로 소개(1,000명 이상)" : "SK Group mySUNI course, reached 1,000+"}</dd></div>
+            <div><dt>{kr ? "효과" : "Result"}</dt><dd><b>{kr ? "기획서 작성 시간 평균 약 50% 단축" : "Planning documents drafted in about half the time"}</b></dd></div>
+            <div><dt>{kr ? "활용 예" : "Use"}</dt><dd>{kr ? "의사결정 자료와 시장 정보로 기획서 초안 작성, 경영진 알림" : "Draft planning documents from past decisions and market data; executive alerts"}</dd></div>
+            <div><dt>{kr ? "구성" : "Stack"}</dt><dd>{kr ? "경량 로컬 LLM과 문서 검색(LangChain\u00a0RAG), Office 연동(VBA)" : "Lightweight local LLM with document search (LangChain RAG), Office integration (VBA)"}</dd></div>
+            <div><dt>{kr ? "사용" : "Adoption"}</dt><dd>{kr ? "일상 사용자 약 30명, 등록자 600명 이상, mySUNI 소개(1,000명 이상)" : "About 30 daily users, 600+ registered, featured on mySUNI (1,000+)"}</dd></div>
+            <div><dt>{kr ? "다른 업종" : "Elsewhere"}</dt><dd>{kr ? "증권사 리서치, 로펌 판례와 의견서 검토, 컨설팅사 제안서 준비" : "Equity research, legal precedent and opinion review, consulting proposals"}</dd></div>
           </dl>
           <a className="text-link" href="/case-study/strix">
             {kr ? "STRIX 도입 과정" : "How STRIX was adopted"}

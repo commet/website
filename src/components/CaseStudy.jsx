@@ -162,7 +162,7 @@ const content = {
         {
           title: "문서 검색과 정보 정리에 AI 적용",
           text: [
-            "전략기획에서는 여러 문서에서 정보를 찾고 비교해 의사결정에 필요한 근거로 정리하는 일이 반복됩니다. 이 업무에 문서 검색과 LLM(대규모 언어 모델)을 결합한 지식 시스템을 적용했습니다.",
+            "전략기획에서는 여러 문서에서 정보를 찾고 비교해 의사결정에 필요한 근거로 정리하는 일이 반복됩니다. 사내외 정보를 한데 모으고, 경량 로컬 LLM과 문서 검색(LangChain RAG)을 결합한 지식 시스템을 직접 만들었습니다. 과거 전략과 투자 의사결정 자료, 산업과 시장 정보를 묶어 기획서 초안을 쓰고 경영진에게 알림을 보냅니다.",
             "기능을 만드는 동시에 어떤 정보를 다룰지, 누가 쓸지, 운영을 어떻게 이어 갈지 정해야 했습니다. 현업이 원하는 것과 사내 도입 조건을 함께 조율했습니다.",
           ],
         },
@@ -182,7 +182,7 @@ const content = {
           caption:
             "SK 그룹 mySUNI에 소개된 STRIX 교육 콘텐츠. 수치는 당시 기준입니다.",
           metrics: [
-            ["1,000명+", "mySUNI 교육 콘텐츠를 접한 인원"],
+            ["약 50%", "기획서 작성 시간 단축(평균)"],
             ["600명+", "시스템 등록자"],
             ["약 30명", "전략기획본부 일상 사용자"],
           ],
@@ -191,7 +191,7 @@ const content = {
       closingTitle: "개발부터 보안 협의와 교육까지",
       closing:
         "STRIX에서는 코드 작성과 함께 보안 협의, 경영진 설명, 사용자 교육을 진행했습니다. 제품을 만들고 조직 안에서 쓰이게 하는 과정 전체를 경험했고, 이후 기업 AX 프로젝트로 일을 넓혔습니다.",
-      note: "사용 수치는 기존 공개 사례에 기록된 당시 기준입니다. 등록자와 학습 도달 인원을 활성 사용자로 합산하지 않았으며, 시간 절감이나 유지율을 별도 계측 결과로 제시하지 않았습니다.",
+      note: "수치는 당시 기준입니다. 등록자와 학습 도달 인원을 활성 사용자로 합산하지 않았습니다.",
     },
     en: {
       title: "STRIX",
@@ -206,7 +206,7 @@ const content = {
         {
           title: "Starting with research and supporting evidence",
           text: [
-            "Strategy work repeatedly involves finding information across documents and turning it into evidence for a decision. I applied a knowledge system combining document retrieval with an LLM to that work.",
+            "Strategy work repeatedly involves finding information across documents and turning it into evidence for a decision. I built a knowledge system that brings internal and external information together, combining a lightweight local LLM with document retrieval (LangChain RAG). It drafts planning documents from past strategy and investment decisions and market data, and sends alerts to executives.",
             "Implementation came with discussions about the information in scope, who would use it, and how operations would continue. I worked across the needs of users and the conditions for adoption inside the company.",
           ],
         },
@@ -226,7 +226,7 @@ const content = {
           caption:
             "STRIX training on SK Group mySUNI. Figures describe reach, registration, and daily use during the original rollout.",
           metrics: [
-            ["1,000+", "mySUNI learning-content reach"],
+            ["~50%", "Less time drafting planning documents (average)"],
             ["600+", "System registrations"],
             ["~30", "Daily users in Strategy Division"],
           ],
@@ -235,7 +235,7 @@ const content = {
       closingTitle: "Implementation, security, and training in one project",
       closing:
         "AI adoption required understanding the work, building the system, and establishing the conditions for people to use it together. STRIX became a starting point for my subsequent independent AX engagements.",
-      note: "These figures describe the period documented in the original public case. Registrations and learning reach are not added together as active users. Time savings and retention are not presented as separately measured outcomes.",
+      note: "Figures describe the period of the original rollout. Registrations and learning reach are not added together as active users.",
     },
   },
 };

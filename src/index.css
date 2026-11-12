@@ -1975,3 +1975,4 @@ main .yakbang-project + .argus-project { margin-top: 96px; padding-top: 64px; bo
   main .independent-heading { margin-top: 72px; }
   main .yakbang-project + .argus-project { margin-top: 56px; padding-top: 40px; }
 }
+.strix-facts b { color: var(--ink); font-weight: 600; }
