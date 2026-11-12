@@ -27,7 +27,7 @@ export default function SignalMap({ mission, sources, loading, error = false, kr
         <path className="signal-map-grid" d={path(geoGraticule10())} />
         <path className="signal-map-land" d={path(land)} />
         {scope && <path className="signal-map-scope" d={path(scope)} />}
-        {position && <g transform={`translate(${position})`} className="signal-map-center"><path d="M-6 0H6M0-6V6"/><text x="10" y="-10">{region.name}</text></g>}
+        {position && <g transform={`translate(${position})`} className="signal-map-center"><path d="M-6 0H6M0-6V6"/><text x="10" y="-10">{kr ? region.ko : region.name}</text></g>}
         {observations.map(r => { const p = projection(r.coords); if (!p || p[0] < 0 || p[0] > width || p[1] < 0 || p[1] > height) return null;
           return <g key={r.id} transform={`translate(${p})`} className={`map-observation ${r.source} ${selected?.id === r.id ? 'selected' : ''}`}>
             {selected?.id === r.id && <circle className="observation-ring" r="13" />}
