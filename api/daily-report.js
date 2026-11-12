@@ -31,7 +31,7 @@ function kstRange(daysAgo) {
   return { start, end, label }
 }
 
-function kstDateLabel(date) {
+function _kstDateLabel(date) {
   const kst = new Date(date.getTime() + 9 * 60 * 60 * 1000)
   return kst.toISOString().split('T')[0]
 }
@@ -149,14 +149,14 @@ export default async function handler(req, res) {
   const preview = req.query?.preview === '1'
 
   const yesterday = kstRange(1)
-  const today = kstRange(0)
+  const _today = kstRange(0)
   const last7Start = kstRange(7).start
   const last7End = kstRange(1).end
 
   // ─── Fetch all analytics in parallel ───
   const [
-    pathStats, referrerStats, refHostStats, countryStats, deviceStats, eventStats, osStats,
-    pathStats7d,
+    pathStats, _referrerStats, refHostStats, countryStats, deviceStats, eventStats, _osStats,
+    _pathStats7d,
     realtime, simTraces,
   ] = await Promise.all([
     vercelStat('path', yesterday.start, yesterday.end),

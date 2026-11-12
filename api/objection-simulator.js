@@ -73,7 +73,7 @@ export default async function handler(req, res) {
 
   const body = typeof req.body === 'string' ? (() => { try { return JSON.parse(req.body) } catch { return {} } })() : (req.body || {})
   const pitch = typeof body.pitch === 'string' ? body.pitch.trim() : ''
-  const lang = body.lang === 'kr' ? 'kr' : 'en'
+  const _lang = body.lang === 'kr' ? 'kr' : 'en'
 
   if (pitch.length < 10 || pitch.length > 500) {
     return res.status(400).json({ error: 'invalid_input' })

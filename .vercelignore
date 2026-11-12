@@ -1,0 +1,8 @@
+.git
+.impeccable
+PRODUCT.md
+DESIGN.md
+README.md
+node_modules
+scripts
+*.md
