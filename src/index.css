@@ -58,6 +58,10 @@ dd,
 figure {
   margin: 0;
 }
+body {
+  word-break: keep-all;  /* 한국어는 낱말 단위로 줄을 바꾼다. p 와 제목에만 걸면 dd, span 에서 낱말이 갈린다 */
+  overflow-wrap: break-word;
+}
 h1,
 h2,
 h3,
@@ -68,6 +72,7 @@ h4 {
 p {
   word-break: keep-all;
   overflow-wrap: break-word;
+  text-wrap: pretty;  /* 문단 마지막 줄에 낱말 하나만 남기지 않는다 */
   line-height: 1.8;
 }
 a,
@@ -221,6 +226,8 @@ svg {
   line-height: 1.6;
 }
 .hero-actions a {
+  min-height: 44px;  /* 누르는 영역 */
+  align-items: flex-end;
   border-bottom: 1px solid var(--ink);
   padding-bottom: 6px;
 }
@@ -700,6 +707,7 @@ svg {
 }
 .contact-title > a {
   display: flex;
+  min-height: 44px;
   align-items: center;
   gap: 16px;
   font-size: 17px;
@@ -710,7 +718,8 @@ svg {
 .contact-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-rows: auto 1fr auto;  /* 두 칸의 제목, 본문, 단추를 같은 줄에 맞춘다 */
+  gap: 0 64px;
   border-top: 1px solid #3e4652;
   padding-top: 32px;
 }
@@ -724,6 +733,12 @@ svg {
   font-size: 15px;
   color: #b5c0cf;
   max-width: 470px;
+}
+.contact-options > div {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  justify-items: start;
 }
 .contact-action {
   display: inline-flex;
@@ -747,6 +762,7 @@ svg {
 }
 .contact-bottom > a {
   display: flex;
+  min-height: 44px;
   align-items: center;
   gap: 12px;
   color: #fff;
@@ -945,6 +961,12 @@ svg {
   font-size: 40px;
   letter-spacing: -0.035em;
 }
+.case-metrics-note {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
 .case-closing {
   border-top: 1px solid var(--ink);
   padding: 48px 0 80px;
@@ -1043,6 +1065,10 @@ svg {
   }
   .header-inner nav > a:nth-child(2) {
     display: none;
+  }
+  @media (min-width: 380px) {
+    .header-inner nav { gap: 12px; }
+    .header-inner nav > a:nth-child(2) { display: inline; }
   }
   .language {
     min-width: 34px;
@@ -1317,8 +1343,13 @@ svg {
   }
   .contact-options {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 32px;
     padding-top: 28px;
+  }
+  .contact-options > div {
+    display: block;
+    grid-row: auto;
   }
   .contact-options > div + div {
     border-top: 1px solid #3e4652;
@@ -1640,43 +1671,11 @@ svg {
   flex-shrink: 0;
   color: var(--accent);
 }
-.map-description {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  padding: 32px 0 48px;
-}
-.map-description h4,
 .schedule-heading h4 {
   font-size: 29px;
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.5;
-}
-.map-description h4 {
-  max-width: 440px;
-}
-.map-description p {
-  color: var(--muted);
-  font-size: 16px;
-}
-.map-capabilities {
-  margin-top: 24px;
-}
-.map-capabilities > div {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 16px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  line-height: 1.6;
-}
-.map-capabilities dt {
-  font-weight: 600;
-}
-.map-capabilities dd {
-  color: var(--muted);
 }
 .schedule-heading {
   border-top: 1px solid var(--line);
@@ -1700,22 +1699,6 @@ svg {
     gap: 10px;
     padding: 12px;
     font-size: 12px;
-  }
-  .map-description {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 0 32px;
-  }
-  .map-description h4 {
-    font-size: 25px;
-  }
-  .map-description p {
-    font-size: 15px;
-  }
-  .map-capabilities > div {
-    grid-template-columns: 90px 1fr;
-    font-size: 12px;
-    gap: 12px;
   }
   .schedule-heading {
     padding: 24px 0 20px;
@@ -1847,9 +1830,6 @@ svg {
 .doc-project,
 .strix-project { grid-column: 1 / -1; }
 .doc-project { padding-bottom: 56px; border-bottom: 1px solid var(--line); }
-.doc-explanation { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; padding: 32px 0; }
-.doc-explanation h4 { font-size: 30px; line-height: 1.45; letter-spacing: -0.03em; }
-.doc-explanation p { font-size: 16px; line-height: 1.85; color: var(--muted); }
 .doc-workflow { padding: 28px 0; border-block: 1px solid var(--line); }
 .doc-workflow-heading { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-bottom: 28px; }
 .doc-workflow-heading h4 { font-size: 21px; }
@@ -1864,16 +1844,14 @@ svg {
 .doc-workflow li p { margin-top: 12px; color: var(--muted); font-size: 16px; line-height: 1.75; }
 .doc-workflow .human-review strong { color: var(--accent); }
 .doc-workflow li > span { display: block; color: var(--accent); font-size: 12px; margin-top: 12px; }
-.strix-project { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 20px; align-items: start; }
+.strix-project { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto auto 1fr; column-gap: 48px; row-gap: 20px; align-items: start; }  /* 남는 높이는 맨 아래 행이 받는다 */
 .strix-project > .project-head { grid-column: 1 / -1; padding-bottom: 4px; }
-.strix-project > .media-frame { grid-column: 1; grid-row: 2 / 5; }
-.strix-project > h4, .strix-project > p, .strix-project > .text-link { grid-column: 2; margin-top: 0; }
+.strix-project > .media-frame { grid-column: 1; grid-row: 2 / 7; }
+.strix-project > h4, .strix-project > p, .strix-project > dl, .strix-project > .text-link { grid-column: 2; margin-top: 0; }
+.strix-facts > div { grid-template-columns: 88px 1fr; }
 .strix-project > .text-link { align-self: start; }
 @media (max-width:760px) {
   .doc-project { padding-bottom: 36px; }
-  .doc-explanation { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
-  .doc-explanation h4 { font-size: 25px; }
-  .doc-explanation p { font-size: 15px; }
   .doc-workflow-heading { flex-direction: column; gap: 8px; margin-bottom: 20px; }
   .doc-workflow ol { grid-template-columns: 1fr; }
   .doc-workflow li p { font-size: 15px; }
@@ -1883,5 +1861,67 @@ svg {
   .doc-workflow svg { transform: rotate(90deg); }
   .strix-project { display: block; }
   .strix-project > h4 { margin-top: 24px; }
-  .strix-project > p, .strix-project > .text-link { margin-top: 16px; }
+  .strix-project > p, .strix-project > dl, .strix-project > .text-link { margin-top: 16px; }
+}
+
+/* Spotlight(2026-11-11): 사례의 전후와 수치를 실제 화면 위에서 보인다. 화면 전체를 낮추고 볼 곳만 원래 밝기로 남긴다. */
+.spotlight { margin: 48px 0; padding: 56px 48px 40px; background: var(--dark); color: #fff; word-break: keep-all; }
+.spotlight-lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); column-gap: 56px; align-items: end; }
+.spotlight-lead h4 { font-size: clamp(30px, 3.6vw, 50px); font-weight: 650; line-height: 1.26; letter-spacing: -0.045em; color: #fff; }
+.spotlight-lead h4 em { font-style: normal; color: #8fb0ff; }
+.spotlight-lead > div > p { margin-top: 16px; max-width: 34em; font-size: 17px; line-height: 1.75; color: #c3ccd9; }
+.spotlight-aside { display: grid; row-gap: 16px; }
+.spotlight-aside > div { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 4px; row-gap: 6px; align-items: center; }
+.spotlight-aside span { font-size: 13px; font-weight: 600; color: #6f7c90; }
+.spotlight-aside .is-after span { color: #8fb0ff; }
+.spotlight-aside p { grid-column: 2; font-size: 13px; color: #9aa6b8; }
+.spotlight-aside p b { color: #fff; font-weight: 600; }
+.spotlight .ten { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: 6px; }
+.spotlight .ten i { position: relative; height: 38px; border: 1.5px solid rgba(255, 255, 255, 0.22); }
+.spotlight .ten i::before, .spotlight .ten i::after { content: ""; position: absolute; left: 18%; right: 18%; top: 10px; height: 2px; background: rgba(255, 255, 255, 0.2); }
+.spotlight .ten i::after { top: 17px; right: 40%; }
+.spotlight .ten i.on { background: #5d6a7e; border-color: #5d6a7e; }
+.spotlight .is-after .ten i.on { background: var(--accent); border-color: var(--accent); }
+.spotlight .ten i.on::before, .spotlight .ten i.on::after { background: rgba(255, 255, 255, 0.6); }
+.spotlight .bar { height: 14px; background: rgba(255, 255, 255, 0.08); }
+.spotlight .bar i { display: block; height: 100%; background: #5d6a7e; }
+.spotlight .is-after .bar i { background: var(--accent); }
+.spotlight-stage { display: grid; grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr); column-gap: 40px; align-items: stretch; margin-top: 48px; }
+.spotlight-figure { align-self: start; min-width: 0; }
+.spotlight-open { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 2px; padding: 0; border: 0; background: none; color: #9aa6b8; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.spotlight-open:hover, .spotlight-open:focus-visible { color: #fff; }
+.spotlight-open svg { width: 14px; height: 14px; }
+.spotlight-shot { position: relative; width: 100%; background-size: 100% auto; background-repeat: no-repeat; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -20px rgba(0, 0, 0, 0.6); }
+.spotlight-shot::after { content: ""; position: absolute; inset: 0; background: rgba(13, 18, 27, var(--dim, 0.62)); }  /* 어두운 화면(관제)은 덜 낮춘다 */
+.spot { position: absolute; z-index: 1; background-repeat: no-repeat; box-shadow: 0 0 0 2px var(--accent), 0 10px 28px rgba(0, 0, 0, 0.5); }
+.spot span, .spotlight-steps li > span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; font-weight: 700; }
+.spot span { position: absolute; right: -15px; top: 50%; margin-top: -15px; box-shadow: 0 0 0 4px var(--dark); }
+.spotlight-steps { display: grid; grid-auto-rows: 1fr; margin: 0; padding: 0; list-style: none; min-width: 0; }
+.spotlight-steps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 14px; align-content: center; padding: 18px 0; border-top: 1px solid rgba(255, 255, 255, 0.13); }
+.spotlight-steps li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
+.spotlight-steps strong { display: block; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+.spotlight-steps p { margin-top: 3px; font-size: 14px; line-height: 1.55; color: #9aa6b8; }
+.spotlight-steps .spotlight-num { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 12px; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; color: #fff; }
+.spotlight-num s { text-decoration: none; font-size: 20px; color: #6f7c90; }
+.spotlight-num svg { align-self: center; width: 16px; height: 16px; color: #6f7c90; }
+.spotlight-num b { font-size: 30px; font-weight: 650; line-height: 1.1; white-space: nowrap; }
+.spotlight-num small { font-size: 13px; letter-spacing: 0; color: #9aa6b8; }
+.spotlight-stage.is-wide { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }  /* 가로로 긴 화면은 설명을 그림 아래 세 칸으로 */
+.spotlight-stage.is-wide .spotlight-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: auto; column-gap: 40px; }
+.spotlight-stage.is-wide .spotlight-steps li { align-content: start; border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
+.spotlight-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 32px; margin-top: 36px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.13); font-size: 13px; line-height: 1.7; color: #9aa6b8; }
+.spotlight-foot b { margin-right: 12px; font-weight: 600; color: #fff; }
+@media (max-width: 1100px) {
+  .spotlight-stage { grid-template-columns: 1fr; row-gap: 28px; }
+  .spotlight-steps { grid-auto-rows: auto; }
+  .spotlight-stage.is-wide .spotlight-steps { grid-template-columns: 1fr; }
+  .spotlight-stage.is-wide .spotlight-steps li { border-bottom: 0; }
+  .spotlight-stage.is-wide .spotlight-steps li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
+}
+@media (max-width: 760px) {
+  .spotlight { margin: 32px -20px; padding: 40px 20px 28px; }
+  .spotlight-lead { grid-template-columns: 1fr; row-gap: 28px; }
+  .spotlight-lead > div > p { font-size: 16px; }
+  .spot span { width: 22px; height: 22px; right: -11px; margin-top: -11px; font-size: 12px; box-shadow: 0 0 0 3px var(--dark); }
+  .spotlight-num b { font-size: 26px; }
 }
