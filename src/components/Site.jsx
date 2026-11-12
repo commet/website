@@ -477,12 +477,28 @@ export function SelectedWork() {
           <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
             subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
+          <div className="shipment-story">
+            <h4>{kr ? <>수출입 서류,<br />언제까지 손으로 옮겨 적을까?</> : <>Must every document<br />still be typed in by hand?</>}</h4>
+            <dl className="shipment-facts">
+              {(kr ? [
+                ["상황", <>업무 과제 32개를 따라가 보니 <b>원인은 서류{"\u00a0"}입력{"\u00a0"}단계</b></>],
+                ["변수", <><b>메일로 오는 서류마다 양식이 다름</b>. 서류끼리 중량 같은 값이 어긋나기도 함</>],
+                ["필요", <><b>어긋난 곳만 사람이</b> 보고, 나머지는 손대지 않고 등록되어야 함</>],
+                ["한 일", <>판독, 원문 대조, 코드 연결까지 <b>검증 화면과 업무{"\u00a0"}흐름을 설계하고 구축</b></>],
+              ] : [
+                ["Context", <>Tracing 32 workflow problems led to <b>one cause: document entry</b></>],
+                ["Variables", <><b>Every emailed document has its own format</b>, and values such as weight can disagree</>],
+                ["Need", <><b>A person should see only the mismatches</b>; the rest should go in untouched</>],
+                ["What I did", <><b>Designed and built the review screen and workflow</b>, from reading to source checks and code matching</>],
+              ]).map(([label, text]) => <div key={label}><dt>{label}</dt><dd>{text}</dd></div>)}
+            </dl>
+          </div>
           <Spotlight
             id="spotlight-documents"
             title={kr ? <>서류 열 건 중 <em>아홉 건</em>이<br />사람 손을 거치지 않고 끝납니다.</> : <><em>Nine in ten</em> documents go through<br />without anyone touching them.</>}
             lead={kr
-              ? "전에는 담당자가 메일로 온 서류를 한 장씩 열어 값을 옮겨 적었고, 사람 손을 거치지 않고 끝나는 서류의 비율(자동 처리율, STP)은 10%대였습니다. 지금은 서류끼리 맞지 않는 곳만 담당자가 확인하고, 열 건 중 아홉 건은 처음부터 끝까지 자동으로 처리됩니다."
-              : "Before, operators opened each emailed document and typed the values in, and only 10–20% went through without a person (straight-through processing, STP). Now operators check only where documents disagree, and nine in ten are processed end to end automatically."}
+              ? "전에는 사람 손을 거치지 않고 끝나는 서류의 비율(자동 처리율, STP)이 10%\u2060대였습니다. 지금은 열 건 중 아홉 건이 처음부터 끝까지 자동으로 처리되고, 담당자는 어긋난 곳만 확인합니다."
+              : "Before, only 10–20% of documents went through without a person (straight-through processing, STP). Now nine in ten are processed end to end automatically, and operators check only where documents disagree."}
             aside={{
               kind: "ten",
               label: kr ? "자동 처리율(STP): 도입 전 10%대, 도입 후 90% 이상" : "Straight-through processing: 10–20% before, over 90% after",
