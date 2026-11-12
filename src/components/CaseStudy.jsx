@@ -37,11 +37,11 @@ const content = {
           caption: "항로와 기상 위험을 함께 확인하는 운송 관제 화면",
           state: "관제 구축과 배포 / 예측 기능은 별도 검증",
           metrics: [
-            ["14.3%", "6일 넘게 빗나간 도착 예측(선사 예정일 29.7%)"],
-            ["3.61일", "도착 예측 평균 오차(선사 예정일 4.51일)"],
-            ["73%", "오차 3일 이내인 공장 도착 예측"],
+            ["52%", "6일 넘게 빗나간 도착 예측 감소(29.7% → 14.3%)"],
+            ["20%", "도착 예측 평균 오차 감소(4.51일 → 3.61일)"],
+            ["523건", "검증에 쓴 과거 운송 기록"],
           ],
-          metricsNote: "선적 예약 시점의 도착 예측 523건과 공장 도착 228건을 과거 기록으로 사후 검증한 결과입니다. 운영 중에 쌓인 기록은 아닙니다.",
+          metricsNote: "선사가 선적 예약 때 알려 준 도착 예정일과 보정한 예측을 과거 기록으로 사후 검증한 결과입니다. 운영 중에 쌓인 기록은 아닙니다.",
         },
         {
           id: "documents",
@@ -54,11 +54,11 @@ const content = {
           caption: "원문과 추출한 값을 대조해 불일치를 확인하는 검증 화면",
           state: "주문 연동은 구축과 검증 중 / 담당자 검토와 승인을 포함한 업무 흐름",
           metrics: [
-            ["90% 이상", "자동 처리 비율(이전 10%대)"],
+            ["90% 이상", "자동 처리율 STP(이전 10%대)"],
             ["99.5%", "판독 정확도(이전 65%)"],
             ["95% 이상", "등록 전에 찾은 오류"],
           ],
-          metricsNote: "FSK L&S 수출입 서류 500만 건 이상을 처리한 기준입니다.",
+          metricsNote: "자동 처리율(STP, Straight-Through Processing)은 사람의 개입 없이 처음부터 끝까지 자동으로 끝난 서류의 비율입니다. FSK L&S 수출입 서류 500만 건 이상을 처리한 기준입니다.",
         },
         {
           id: "reconciliation",
@@ -109,11 +109,11 @@ const content = {
           state:
             "Control tower built and deployed / Prediction evaluated separately",
           metrics: [
-            ["14.3%", "Arrival estimates off by 6+ days (carrier dates 29.7%)"],
-            ["3.61 days", "Average arrival error (carrier dates 4.51 days)"],
-            ["73%", "Factory arrivals estimated within 3 days"],
+            ["52%", "Fewer estimates off by 6+ days (29.7% to 14.3%)"],
+            ["20%", "Lower average arrival error (4.51 to 3.61 days)"],
+            ["523", "Past shipment records used to check"],
           ],
-          metricsNote: "Checked afterwards against past records: 523 arrival estimates made at booking and 228 factory arrivals. Not a record from live operation.",
+          metricsNote: "Carrier arrival dates given at booking and corrected estimates, checked afterwards against past records. Not a record from live operation.",
         },
         {
           id: "documents",
@@ -128,11 +128,11 @@ const content = {
           state:
             "Order integration in build and validation / Includes operator review and approval",
           metrics: [
-            ["90%+", "Processed automatically (previously 10-20%)"],
+            ["90%+", "Straight-through processing (previously 10-20%)"],
             ["99.5%", "Reading accuracy (previously 65%)"],
             ["95%+", "Errors caught before entry"],
           ],
-          metricsNote: "Based on more than 5 million FSK L&S import and export documents.",
+          metricsNote: "Straight-through processing (STP) is the share of documents completed end to end with no human intervention. Based on more than 5 million FSK L&S import and export documents.",
         },
         {
           id: "reconciliation",
