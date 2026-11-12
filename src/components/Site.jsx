@@ -300,15 +300,13 @@ export function Evidence() {
       <article className="featured-work">
         <div className="project-head">
           <div className="project-name">
-            <span className="client-symbol" aria-hidden="true">
-              F
-            </span>
+            <span className="project-no" aria-hidden="true">01</span>
             <div>
-              <h3>{kr ? "물류기업 FSK L&S" : "FSK L&S / Logistics"}</h3>
+              <h3>{kr ? "운송 관제" : "Shipment monitoring"}</h3>
               <p>
                 {kr
-                  ? "설비 운송 관제 / 출고 계획부터 항로 감시까지"
-                  : "Equipment shipment control / Planning and route monitoring"}
+                  ? "물류기업 FSK L&S / 출고 계획부터 항로 감시까지"
+                  : "FSK L&S, logistics / From release planning to route monitoring"}
               </p>
             </div>
           </div>
@@ -375,10 +373,11 @@ export function Evidence() {
     </section>
   );
 }
-function WorkHeading({ title, subtitle, year, context }) {
+function WorkHeading({ no, title, subtitle, year, context }) {
   return (
     <div className="project-head">
       <div className="project-name">
+        {no && <span className="project-no" aria-hidden="true">{no}</span>}
         <div>
           <h3>{title}</h3>
           <p>{subtitle}</p>
@@ -437,7 +436,7 @@ function Yakbang() {
   const kr = lang === "kr";
   return (
     <article id="yakbang" className="yakbang-project" aria-labelledby="yakbang-title">
-      <WorkHeading title={kr ? "약방" : "Yakbang"}
+      <WorkHeading no="04" title={kr ? "약방" : "Yakbang"}
         subtitle={kr ? "막힌 일을 함께 푸는 AI 서비스" : "An AI service for getting unstuck"} />
       <div className="yakbang-intro">
         <Link href="https://yakbang.app" className="yakbang-cover" aria-label={kr ? "약방 방문하기" : "Visit Yakbang"}>
@@ -474,8 +473,8 @@ export function SelectedWork() {
     >
       <div className="project-grid">
         <article id="doc-agent" className="project doc-project">
-          <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
-            subtitle={kr ? "FSK L&S DocAgent / 메일\u00a0접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
+          <WorkHeading no="02" title={kr ? "문서 자동화" : "Document automation"}
+            subtitle={kr ? "물류기업 FSK L&S / 메일\u00a0접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
           <div className="shipment-story">
             <h4>{kr ? <>수출입 서류,<br />언제까지 손으로 옮겨 적을까?</> : <>Must every document<br />still be typed in by hand?</>}</h4>
@@ -548,6 +547,7 @@ export function SelectedWork() {
         </article>
         <article className="project strix-project">
           <WorkHeading
+            no="03"
             title="STRIX"
             subtitle={
               kr
@@ -596,6 +596,7 @@ export function SelectedWork() {
       <Yakbang />
       <article id="argus" className="argus-project">
         <WorkHeading
+          no="05"
           title="Argus"
           subtitle={
             kr
