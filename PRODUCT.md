@@ -82,3 +82,8 @@ The monitoring Spotlight first used the dark client monitoring screen, which loo
 
 - Monitoring: the owner asked for the reduction itself. Misses of more than six days fell by 52% ((29.7 − 14.3) / 29.7 = 51.9%), and the average error by 20% ((4.51 − 3.61) / 4.51 = 19.96%). The 73% factory-arrival figure (228 records) is a separate measure and was dropped from the home page, the case study and the summary text so the case tells one story.
 - Documents: the owner defined 자동 처리율 as STP (straight-through processing), the share of documents completed end to end with no human intervention. The headline returns to "사람 손을 거치지 않고 끝납니다", the lead and the case study note define STP, and the workflow says only documents with mismatches or gaps go to an operator.
+
+## Final copy from the owner (2026-11-12)
+
+- The owner sent the final summary for the Arkpoint COO and asked for the site to follow it. Each case now names other industries instead of generic tasks: monitoring (semiconductor tool move-ins, overseas plant equipment procurement, pharmaceutical ingredient imports), documents (insurance claim review, bank loan document checks, manufacturer purchase-order and invoice matching), STRIX (equity research, legal precedent and opinion review, consulting proposals). The footer label is 다른 업종 적용.
+- STRIX facts supplied by the owner: lightweight local LLM with document search (LangChain RAG), Office integration through VBA, planning drafts from past strategy and investment decisions plus industry and market data, executive alerts, and planning-document drafting time cut by about 50% on average. The case study note no longer says time savings are not presented.
