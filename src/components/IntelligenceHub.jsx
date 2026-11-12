@@ -117,7 +117,7 @@ function Desk({ kr }) {
   const step = phase === 'done' ? 3 : phase === 'synthesizing' ? 2 : busy ? 1 : 0;
   return <section className="intelligence" id="intelligence" ref={root} aria-labelledby="intelligence-title">
     <div className="intelligence-intro">
-      <h4 id="intelligence-title">{kr ? '항로 주변의 변화를, AI가 먼저 읽는다면.' : 'Let AI read the signals along the route.'}</h4>
+      <h4 id="intelligence-title">{kr ? '항로 주변의 변화를 AI가 먼저 읽습니다.' : 'Let AI read the signals along the route.'}</h4>
       <p>{kr ? '운송 관제에서 필요한 외부 정보 확인을 공개 데이터로 체험할 수 있습니다. 파나마와 미국 도착지 주변의 관측을 모아, AI가 확인할 이슈와 근거를 정리합니다.' : 'Try the external-information check behind shipment monitoring. Explore observations around Panama or the US arrival area, then ask AI to identify what needs a closer look.'}</p>
     </div>
     <div className="signal-desk">
@@ -127,7 +127,7 @@ function Desk({ kr }) {
         <div className="desk-request"><p>{selected.prompt[l]}</p><button className="desk-run" onClick={run} disabled={busy}>{busy ? (kr ? '확인 중' : 'Working') : result ? (kr ? '다시 확인' : 'Check again') : (kr ? '에이전트 실행' : 'Run agent')}<Arrow /></button></div>
       </div>
       <div className="desk-status" role="status" aria-live="polite"><span className={busy ? 'status-dot running' : 'status-dot'} aria-hidden="true" /><strong>{phases[phase][l]}</strong>{result && <a className="desk-brief-jump" href="#signal-brief">{kr ? '브리핑 보기' : 'Read briefing'}<Arrow /></a>}<span>{result ? `${result.cached ? (kr ? '최근 결과 | ' : 'Recent result · ') : ''}${formatTime(result.generatedAt, kr)} KST` : busy ? (kr ? '조회 결과부터 표시합니다' : 'Source results appear as they arrive') : (kr ? '실제 공개 데이터를 조회합니다' : 'Queries real public data')}</span></div>
-      <SignalMap key={mission} mission={mission} sources={displaySources} loading={feedState === 'loading' && !displaySources.length} kr={kr} />
+      <SignalMap key={mission} mission={mission} sources={displaySources} loading={feedState === 'loading' && !displaySources.length} error={feedState === 'error' && !displaySources.length} kr={kr} />
       <div className="desk-connections" aria-label={kr ? '정보원 연결 상태' : 'Source connections'}>
         {providers.map(p => {
           const source = displaySources.find(s => s.id === p.id);
@@ -136,8 +136,8 @@ function Desk({ kr }) {
           let status = kr ? '연결 대기' : 'Waiting';
           if (feedState === 'loading' && !source) status = kr ? '불러오는 중' : 'Loading';
           if (source?.status === 'ok') status = kr ? `${source.records.length}건 ${result || state === 'ok' ? '확인' : '준비'}` : `${source.records.length} records ${result || state === 'ok' ? 'checked' : 'ready'}`;
-          if (unsupported) status = kr ? '이 지역 미지원' : 'Outside coverage';
           if (source?.status === 'unavailable' || (feedState === 'error' && !source)) status = kr ? '연결 실패' : 'Unavailable';
+          if (unsupported) status = kr ? '이 지역 미지원' : 'Outside coverage';
           if (state === 'running') status = kr ? '조회 중' : 'Querying';
           return <div className="desk-connection" key={p.id} data-state={state === 'running' ? 'running' : unsupported ? 'unsupported' : source?.status}>
             <span className="connection-label">{p.label[l]}</span><strong>{p.name}</strong><span className="connection-status"><i aria-hidden="true" />{status}</span>
@@ -151,12 +151,12 @@ function Desk({ kr }) {
           <ol className="brief-findings">{result.brief.findings.map((f, i) => <li key={i}>
             <span className="finding-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <div><h6>{f.title}</h6><p className="brief-action">{f.action}</p>
-              <details className="finding-detail"><summary>{kr ? '판단 근거' : 'Why this matters'}</summary><p>{f.detail}</p><button className="brief-citation" onClick={() => showEvidence(f)} aria-pressed={filter?.records === f.records}>{kr ? '원문 확인' : 'View sources'} <span>{f.sources.map(id => providers.find(p => p.id === id)?.name).join(' · ')}</span><Arrow /></button></details>
+              <details className="finding-detail"><summary>{kr ? '판단 근거' : 'Why this matters'}</summary><p>{f.detail}</p><button className="brief-citation" onClick={() => showEvidence(f)} aria-pressed={filter?.records === f.records}>{kr ? '원문 확인' : 'View sources'} <span>{f.sources.map(id => providers.find(p => p.id === id)?.name).join(', ')}</span><Arrow /></button></details>
             </div>
           </li>)}</ol>
         </> : <div className="brief-awaiting">
           {busy && <div className="brief-progress" aria-label={kr ? '실행 단계' : 'Run stages'}>{[[kr ? 'API 조회' : 'Query APIs'], [kr ? '핵심 정리' : 'Find signals'], [kr ? '브리핑' : 'Brief']].map(([label], i) => <span key={i} data-state={step > i + 1 ? 'done' : step === i + 1 ? 'active' : 'pending'}><b aria-hidden="true">0{i + 1}</b>{label}</span>)}</div>}
-          <h5>{busy ? phases[phase][l] : (kr ? '이 구간에서, 무엇을 확인해야 할까?' : 'What needs a closer look on this leg?')}</h5>
+          <h5>{busy ? phases[phase][l] : (kr ? '이 구간에서 무엇을 확인해야\u00a0할까?' : 'What needs a closer look on this leg?')}</h5>
           <p>{busy ? (phase === 'synthesizing' ? (kr ? '도착한 관측을 읽고, 확인할 이슈와 다음 행동을 정리하고 있습니다.' : 'Reading the observations to identify relevant signals and next steps.') : (kr ? '정보원을 동시에 조회합니다. 도착한 결과는 위에 바로 표시됩니다.' : 'Querying sources in parallel. Results appear above as they arrive.')) : (kr ? '지도의 관측만으로 운송 영향을 단정할 수는 없습니다. AI가 조회한 근거를 읽고, 담당자가 추가로 확인할 일을 정리합니다.' : 'An observation alone does not establish a shipping impact. The agent reads the evidence and suggests what an operator should check next.')}</p>
           {busy && <p className="desk-elapsed"><span>{elapsed}{kr ? '초 경과' : 's elapsed'}</span>{elapsed >= 15 && <span>{kr ? '응답이 늦어지고 있습니다. 수집한 원문은 아래에서 먼저 볼 수 있습니다.' : 'Taking a little longer. You can already open the source records below.'}</span>}</p>}
         </div>}

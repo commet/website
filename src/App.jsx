@@ -29,7 +29,7 @@ function Page() {
     if (target) document.getElementById(target)?.scrollIntoView({ behavior: "instant" });
   }, []);
   useEffect(() => {
-    document.title = `${caseId ? `${caseId.toUpperCase()} / ` : ""}${lang === "kr" ? "이예찬 | AI 사업과 제품 개발" : "Yaechan Lee | AI ventures & product development"}`;
+    document.title = `${caseId ? `${caseId.toUpperCase()} / ` : ""}${lang === "kr" ? "이예찬 | AI 사업과 제품 개발" : "Yaechan Lee | Enterprise AI and product development"}`;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical)
       canonical.href = `https://yclee.today${caseId ? `/case-study/${caseId}` : "/"}`;

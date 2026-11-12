@@ -58,6 +58,10 @@ dd,
 figure {
   margin: 0;
 }
+body {
+  word-break: keep-all;  /* 한국어는 낱말 단위로 줄을 바꾼다. p 와 제목에만 걸면 dd, span 에서 낱말이 갈린다 */
+  overflow-wrap: break-word;
+}
 h1,
 h2,
 h3,
@@ -68,6 +72,7 @@ h4 {
 p {
   word-break: keep-all;
   overflow-wrap: break-word;
+  text-wrap: pretty;  /* 문단 마지막 줄에 낱말 하나만 남기지 않는다 */
   line-height: 1.8;
 }
 a,
@@ -221,6 +226,8 @@ svg {
   line-height: 1.6;
 }
 .hero-actions a {
+  min-height: 44px;  /* 누르는 영역 */
+  align-items: flex-end;
   border-bottom: 1px solid var(--ink);
   padding-bottom: 6px;
 }
@@ -700,6 +707,7 @@ svg {
 }
 .contact-title > a {
   display: flex;
+  min-height: 44px;
   align-items: center;
   gap: 16px;
   font-size: 17px;
@@ -710,7 +718,8 @@ svg {
 .contact-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-rows: auto 1fr auto;  /* 두 칸의 제목, 본문, 단추를 같은 줄에 맞춘다 */
+  gap: 0 64px;
   border-top: 1px solid #3e4652;
   padding-top: 32px;
 }
@@ -724,6 +733,12 @@ svg {
   font-size: 15px;
   color: #b5c0cf;
   max-width: 470px;
+}
+.contact-options > div {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  justify-items: start;
 }
 .contact-action {
   display: inline-flex;
@@ -747,6 +762,7 @@ svg {
 }
 .contact-bottom > a {
   display: flex;
+  min-height: 44px;
   align-items: center;
   gap: 12px;
   color: #fff;
@@ -945,6 +961,12 @@ svg {
   font-size: 40px;
   letter-spacing: -0.035em;
 }
+.case-metrics-note {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
 .case-closing {
   border-top: 1px solid var(--ink);
   padding: 48px 0 80px;
@@ -1043,6 +1065,10 @@ svg {
   }
   .header-inner nav > a:nth-child(2) {
     display: none;
+  }
+  @media (min-width: 380px) {
+    .header-inner nav { gap: 12px; }
+    .header-inner nav > a:nth-child(2) { display: inline; }
   }
   .language {
     min-width: 34px;
@@ -1317,8 +1343,13 @@ svg {
   }
   .contact-options {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 32px;
     padding-top: 28px;
+  }
+  .contact-options > div {
+    display: block;
+    grid-row: auto;
   }
   .contact-options > div + div {
     border-top: 1px solid #3e4652;
@@ -1840,7 +1871,7 @@ svg {
 .spotlight-lead h4 em { font-style: normal; color: #8fb0ff; }
 .spotlight-lead > div > p { margin-top: 16px; max-width: 34em; font-size: 17px; line-height: 1.75; color: #c3ccd9; }
 .spotlight-aside { display: grid; row-gap: 16px; }
-.spotlight-aside > div { display: grid; grid-template-columns: 60px minmax(0, 1fr); column-gap: 4px; row-gap: 6px; align-items: center; }
+.spotlight-aside > div { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 4px; row-gap: 6px; align-items: center; }
 .spotlight-aside span { font-size: 13px; font-weight: 600; color: #6f7c90; }
 .spotlight-aside .is-after span { color: #8fb0ff; }
 .spotlight-aside p { grid-column: 2; font-size: 13px; color: #9aa6b8; }
@@ -1857,7 +1888,7 @@ svg {
 .spotlight .is-after .bar i { background: var(--accent); }
 .spotlight-stage { display: grid; grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr); column-gap: 40px; align-items: stretch; margin-top: 48px; }
 .spotlight-figure { align-self: start; min-width: 0; }
-.spotlight-open { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 0; border: 0; background: none; color: #9aa6b8; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.spotlight-open { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 2px; padding: 0; border: 0; background: none; color: #9aa6b8; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
 .spotlight-open:hover, .spotlight-open:focus-visible { color: #fff; }
 .spotlight-open svg { width: 14px; height: 14px; }
 .spotlight-shot { position: relative; width: 100%; background-size: 100% auto; background-repeat: no-repeat; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -20px rgba(0, 0, 0, 0.6); }

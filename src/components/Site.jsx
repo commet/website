@@ -90,9 +90,9 @@ export function Hero() {
             </>
           ) : (
             <>
-              I lead enterprise AI.
+              I lead enterprise AI work
               <br />
-              <span>And build the software.</span>
+              <span>and build the software myself.</span>
             </>
           )}
         </h1>
@@ -100,12 +100,12 @@ export function Hero() {
       <div className="hero-context">
         <p>
           {kr
-            ? "물류기업의 운송 관제부터 SK On의 사내 AI까지. 업무를 분석하고, 제품을 설계하고, 직접 개발해 왔습니다."
-            : "From shipment monitoring for a logistics company to internal AI at SK On. My work spans understanding the operation, designing the product, and writing the software."}
+            ? "기업이 반복하는 업무에 AI를 적용하고 운영까지 맡습니다. 물류기업의 운송 관제와 서류 처리, SK On의 사내 AI를 업무 분석부터 설계와 개발까지 직접 했습니다."
+            : "I apply AI to the work companies repeat every day and stay on through operation. For a logistics company's shipment monitoring and document processing, and for internal AI at SK On, I did the analysis, design, and engineering myself."}
         </p>
         <div className="role-line">
           <span>Arkpoint</span>
-          <span>Partner / Enterprise AX</span>
+          <span>{kr ? "파트너 / 기업 AI 전환(AX)" : "Partner / Enterprise AI transformation (AX)"}</span>
         </div>
         <div className="hero-actions">
           <a href="#project-contact">
@@ -265,18 +265,18 @@ function Spotlight({ id, title, lead, aside, src, ratio, alt, spots, steps, like
               <div>
                 <strong>{name}</strong>
                 <p>{body}</p>
-                <p className="spotlight-num">
+                {to && <p className="spotlight-num">
                   {from && <><s>{from}</s><Arrow /></>}
                   <b>{to}</b>
                   <small>{unit}</small>
-                </p>
+                </p>}
               </div>
             </li>
           ))}
         </ol>
       </div>
       <p className="spotlight-foot">
-        <span><b>{kr ? "같은 구조의 업무" : "Work with the same shape"}</b>{like}</span>
+        <span><b>{kr ? "같은 구조의 업무" : "Similar workflows"}</b>{like}</span>
         <span>{basis}</span>
       </p>
     </section>
@@ -321,7 +321,7 @@ export function Evidence() {
         </div>
         <div className="shipment-story">
           <h4>{kr ? <>설비는 언제<br />미국 공장에 도착할까?</> : <>When will the equipment<br />reach the US factory?</>}</h4>
-          <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송. 부산에서 여러 항차로 출발한 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was handling a client's equipment shipment: multiple sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
+          <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송입니다. 부산에서 매주 떠나는 배 여러 척에 나눠 실은 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was moving a client's equipment: cargo split across several weekly sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
           <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라집니다. 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자에게 필요한 것은 이 변수를 함께 보고, 도착 일정과 확인할 일을 설명할 수 있는 화면이었습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p>
           <p>{kr ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제를 설계하고 개발해 배포했습니다." : "I worked through the workflow and its exceptions with the operators, then designed, built, and deployed the control tower, from release planning to route monitoring."}</p></div>
         </div>
@@ -334,31 +334,31 @@ export function Evidence() {
         />
         <Spotlight
           id="spotlight-control"
-          title={kr ? <>크게 빗나가는 도착 예측이<br /><em>절반</em>으로 줄었습니다.</> : <>Badly missed arrival estimates<br />were cut in <em>half</em>.</>}
+          title={kr ? <>크게 빗나가는 도착 예측을<br /><em>절반</em>으로 줄였습니다.</> : <>Badly missed arrival estimates,<br />cut in <em>half</em>.</>}
           lead={kr
-            ? "전에는 출고일이 바뀔 때마다 담당자가 선사 일정, 항만 상황, 내륙 운송을 따로 확인해 도착일을 다시 계산했습니다. 지금은 한 화면에서 다시 계산합니다."
-            : "Before, every change to a release date meant checking carrier schedules, port conditions, and inland transport separately, then recalculating by hand. Now it is recalculated on one screen."}
+            ? "선사(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 6일 넘게 빗나갔습니다. 과거 운송 기록으로 보정하자 그 비율이 14.3%로 내려갔습니다. 화면에서는 출고일이 바뀔 때마다 탈 수 있는 배와 도착 범위를 다시 계산합니다."
+            : "Arrival dates the carrier gave at booking missed by more than six days about three times in ten. Corrected against past shipment records, that share fell to 14.3%. On screen, available sailings and the arrival range are recalculated whenever a release date moves."}
           aside={{
             kind: "bar",
-            label: kr ? "6일 넘게 빗나간 도착 예측: 도입 전 29.7%, 도입 후 14.3%" : "Arrival estimates off by more than six days: 29.7% before, 14.3% after",
+            label: kr ? "6일 넘게 빗나간 도착 예측: 선사 예정일 29.7%, 보정한 예측 14.3%" : "Arrival estimates off by more than six days: carrier dates 29.7%, corrected estimates 14.3%",
             rows: kr
-              ? [["도입 전", 100, <>6일 넘게 빗나간 예측 <b>29.7%</b></>], ["도입 후", 48, <>6일 넘게 빗나간 예측 <b>14.3%</b></>]]
-              : [["Before", 100, <>Estimates off by 6+ days <b>29.7%</b></>], ["After", 48, <>Estimates off by 6+ days <b>14.3%</b></>]],
+              ? [["선사 예정일", 100, <>6일 넘게 빗나간 비율 <b>29.7%</b></>], ["보정한 예측", 48, <>6일 넘게 빗나간 비율 <b>14.3%</b></>]]
+              : [["Carrier date", 100, <>Off by 6+ days <b>29.7%</b></>], ["Corrected", 48, <>Off by 6+ days <b>14.3%</b></>]],
           }}
           src={kr ? "/images/work/client-monitoring-light.webp" : "/images/work/client-monitoring-light-en.webp"} ratio="16 / 9" dim={0.34}
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
           spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: kr ? 19.3 : 23.4 }, { n: 3, x: 0.8, y: 84.9, w: kr ? 38.6 : 45.4, h: 13.6 }]}
           steps={kr ? [
             ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배와 도착 범위를 새로 냅니다.", "4.51일", "3.61일", "도착 예측 평균 오차"],
-            ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 보여 줍니다.", "29.7%", "14.3%", "6일 넘게 빗나간 예측"],
-            ["공장 도착일까지 잇습니다", "항만에 내린 뒤의 내륙 운송까지 예측합니다.", "", "73%", "3일 안에 맞춘 공장 도착 예측"],
+            ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 표시하고, 확정되지 않은 일정은 따로 묶습니다.", "", "", ""],
+            ["공장 도착일까지 잇습니다", "항만에 내린 뒤의 내륙 운송까지 더해 공장 도착일을 예측합니다.", "", "73%", "3일 안에 맞춘 공장 도착 예측"],
           ] : [
-            ["Arrival is recalculated", "When a release date moves, available sailings and the arrival range are recomputed.", "4.51 days", "3.61 days", "average arrival error"],
-            ["Checks are grouped by leg", "Weather, canal, and port risks are shown for each leg.", "29.7%", "14.3%", "estimates off by 6+ days"],
-            ["Through to the factory", "Inland transport after the port is estimated as well.", "", "73%", "factory arrivals within 3 days"],
+            ["Recalculates arrival", "When a release date moves, it finds the sailings still available and a new arrival range.", "4.51 days", "3.61 days", "average arrival error"],
+            ["Groups checks by leg", "Weather, canal, and port risks appear for each leg, with unconfirmed plans kept apart.", "", "", ""],
+            ["Carries it to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "73%", "factory arrivals within 3 days"],
           ]}
           like={kr ? "협력사 납기 관리, 원자재 수급 점검, 프로젝트 일정 관리" : "Supplier delivery tracking, material supply checks, project scheduling"}
-          basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(부킹 시점 도착 예측 523건, 공장 도착 228건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking; 228 factory arrivals)"}
+          basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(선적 예약 시점의 도착 예측 523건, 공장 도착 228건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking; 228 factory arrivals)"}
         />
         <IntelligenceHub />
       </article>
@@ -403,7 +403,7 @@ function YakbangResult() {
       {kr ? "메일 정리 결과 보기" : "See an email result"}<Arrow external />
     </button>
     <dialog className="yakbang-result" ref={dialog} aria-labelledby={titleId} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
-      <header><h2 id={titleId}>{kr ? "메일 한 통에서, 오늘 할 일로." : "From one email to today's task."}</h2><button type="button" onClick={() => setOpen(false)}>{kr ? "닫기" : "Close"}</button></header>
+      <header><h2 id={titleId}>{kr ? "메일 한 통으로 정리한 오늘 할 일" : "From one email to today's task."}</h2><button type="button" onClick={() => setOpen(false)}>{kr ? "닫기" : "Close"}</button></header>
       <div className="yakbang-result-content">
         <p className="yakbang-result-note">{kr ? "가상 행사 준비 메일로 약방에서 생성한 결과입니다. 읽기 쉽게 텍스트로 옮겼습니다." : "Actual output from a fictional event-planning email, transcribed for readability. The source and output are in Korean."}</p>
         <div className="yakbang-result-columns">
@@ -417,7 +417,7 @@ function YakbangResult() {
             <dl lang="ko"><div><dt>행동</dt><dd>소개 자료 초안 목차 작성</dd></div><div><dt>기한</dt><dd>오늘 중</dd></div><div><dt>근거</dt><dd><blockquote>“오늘은 초안 목차를 먼저 잡아 주시면 됩니다”</blockquote></dd></div></dl>
           </section>
         </div>
-        <Link href="https://yakbang.app" className="text-link">{kr ? "내 일로 약방 써보기" : "Try Yakbang with your task"}<Arrow external /></Link>
+        <Link href="https://yakbang.app" className="text-link">{kr ? "내 일로 약방 사용하기" : "Try Yakbang with your task"}<Arrow external /></Link>
       </div>
     </dialog>
   </>;
@@ -433,18 +433,18 @@ function Yakbang() {
         <Link href="https://yakbang.app" className="yakbang-cover" aria-label={kr ? "약방 방문하기" : "Visit Yakbang"}>
           <img src="/images/work/yakbang-review.webp" width={1536} height={1024} loading="lazy"
             alt={kr ? "약방 서비스에서 사용하는 원본 이미지: 작업지를 함께 살펴보는 약사" : "Original artwork used in Yakbang: a pharmacist reviewing the work with you"} />
-          <span className="yakbang-cover-caption"><strong>{kr ? "여기까지 만들었어요. 함께 볼까요?" : "Here is a first draft. Shall we take a look?"}</strong><span>yakbang.app<Arrow external /></span></span>
+          <span className="yakbang-cover-caption"><strong>{kr ? "“여기까지 만들었어요. 함께 볼까요?”" : "Here is a first draft. Shall we take a look?"}</strong><span>yakbang.app<Arrow external /></span></span>
         </Link>
         <div className="yakbang-story">
-          <h4 id="yakbang-title">{kr ? <>무엇부터 해야 할지 막힐 때,<br />같이 시작하는 약방.</> : <>When you are stuck,<br />a place to make a start.</>}</h4>
+          <h4 id="yakbang-title">{kr ? <>무엇부터 해야 할지 막힐 때,<br />같이 시작하는 약방.</> : <>When you are stuck,<br />start here with Yakbang.</>}</h4>
           <p>{kr ? "AI에 무슨 질문을 해야 할지 몰라도, 하던 일을 이야기하면 됩니다. 메일과 회의록 같은 내 자료로 첫 작업본을 만들고, 써본 결과를 바탕으로 다음 작업을 이어가는 서비스를 만들었습니다." : "You do not need to know what to ask AI. Describe the task, bring an email or meeting note, and make a first draft. I built Yakbang to carry that work through to feedback and the next attempt."}</p>
           <dl className="yakbang-flow">
             <div><dt>{kr ? "문진" : "Describe"}</dt><dd>{kr ? "하던 일과 막힌 지점을 정리" : "Describe the task and where you got stuck"}</dd></div>
             <div><dt>{kr ? "첫 작업" : "Make"}</dt><dd>{kr ? "내 자료에서 할 일과 확인할 질문 추출" : "Turn your material into tasks and questions"}</dd></div>
-            <div><dt>{kr ? "피드백" : "Refine"}</dt><dd>{kr ? "써본 뒤 수정하고, 필요하면 사람과 연결" : "Try it, revise it, and follow up with a person"}</dd></div>
+            <div><dt>{kr ? "피드백" : "Refine"}</dt><dd>{kr ? "사용한 뒤 수정하고, 필요하면 사람과 연결" : "Try it, revise it, and follow up with a person"}</dd></div>
           </dl>
           <div className="yakbang-actions">
-            <Link href="https://yakbang.app" className="yakbang-visit">{kr ? "약방 써보기" : "Try Yakbang"}<Arrow external /></Link>
+            <Link href="https://yakbang.app" className="yakbang-visit">{kr ? "약방 사용하기" : "Try Yakbang"}<Arrow external /></Link>
             <YakbangResult />
           </div>
         </div>
@@ -465,11 +465,11 @@ export function SelectedWork() {
       <div className="project-grid">
         <article id="doc-agent" className="project doc-project">
           <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
-            subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문 연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
+            subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
           <Spotlight
             id="spotlight-documents"
-            title={kr ? <>서류 열 건 중 <em>아홉 건</em>이<br />사람 손 없이 끝납니다.</> : <><em>Nine in ten</em> documents finish<br />without manual handling.</>}
+            title={kr ? <>서류 열 건 중 <em>아홉 건</em>을<br />AI가 처리합니다.</> : <><em>Nine in ten</em> documents<br />processed by AI.</>}
             lead={kr
               ? "전에는 담당자가 메일로 온 서류를 한 장씩 열어 값을 옮겨 적었습니다. 지금은 서로 맞지 않는 곳만 확인합니다."
               : "Before, operators opened each emailed document and typed the values in by hand. Now they review only the fields that disagree."}
@@ -485,13 +485,13 @@ export function SelectedWork() {
             alt={kr ? "서류 검증 화면에서 AI가 읽은 값, 서로 맞지 않는 값과 원문, 등록 단추를 밝게 표시한 그림" : "The document review screen with three areas highlighted: fields read by AI, a mismatch beside its source, and the register action"}
             spots={[{ n: 1, x: 2.5, y: 34, w: 32, h: 45 }, { n: 2, x: 2.5, y: 80.6, w: 32, h: 13.2 }, { n: 2, x: 43.4, y: 65.6, w: 31.2, h: 5.5 }, { n: 3, x: 1.2, y: 2.8, w: 25, h: 5.3 }]}
             steps={kr ? [
-              ["값은 AI가 읽습니다", "서류에서 필요한 값을 찾아 채웁니다.", "65%", "99.5%", "판독 정확도"],
-              ["안 맞는 곳만 담당자에게", "서류끼리 값이 다르면 원문과 나란히 보여 줍니다.", "", "95% 이상", "등록 전에 찾은 오류"],
-              ["확인이 끝나면 바로 등록", "나머지 서류는 사람을 거치지 않습니다.", "10%대", "90% 이상", "자동 처리"],
+              ["AI가 값을 읽습니다", "서류에서 필요한 값을 찾아 채웁니다.", "65%", "99.5%", "판독 정확도"],
+              ["맞지 않는 곳만 담당자가 봅니다", "서류끼리 값이 다르면 원문과 나란히 표시합니다.", "", "95% 이상", "등록 전에 찾은 오류"],
+              ["값이 맞으면 바로 등록합니다", "맞는 서류는 담당자가 다시 입력하지 않고 시스템에 올립니다.", "10%대", "90% 이상", "자동 처리"],
             ] : [
               ["AI reads the values", "It finds and fills the fields each document needs.", "65%", "99.5%", "reading accuracy"],
-              ["Only mismatches reach a person", "When documents disagree, the values appear beside the source.", "", "95%+", "errors caught before entry"],
-              ["Registered once reviewed", "Everything else skips manual handling.", "10–20%", "90%+", "automatic"],
+              ["A person sees only mismatches", "When documents disagree, the values appear beside the source.", "", "95%+", "errors caught before entry"],
+              ["Matching documents go straight in", "Documents that agree enter the system without retyping.", "10–20%", "90%+", "automatic"],
             ]}
             like={kr ? "세금계산서와 발주서 대조, 보험금 청구 접수, 계약서 검토" : "Invoice and purchase-order matching, insurance claims intake, contract review"}
             basis={kr ? "FSK L&S 수출입 서류 500만 건 이상 처리 기준. 화면은 고객 식별정보를 가린 검증 화면" : "Based on 5M+ FSK L&S import and export documents. Client identifiers are redacted"}
@@ -499,12 +499,12 @@ export function SelectedWork() {
           <div id="doc-workflow" className="doc-workflow">
             <div className="doc-workflow-heading">
               <h4>{kr ? "문서 검토와 주문 연동 흐름" : "Document review and order integration"}</h4>
-              <span>{kr ? "업무 흐름 / 구축과 검증 중" : "Workflow / Implementation and validation"}</span>
+              <span>{kr ? "업무 흐름 / 주문 연동은 구축과 검증 중" : "Workflow / Order integration in build and validation"}</span>
             </div>
             <ol>
               {(kr ? [
                 ["메일과 첨부 접수", "메일 본문과 첨부서류에서 고객과 운송 유형을 확인합니다."],
-                ["항목 추출과 코드 연결", "중량과 수량 등을 읽고, 거래처와 항만 이름을 시스템 코드에 연결합니다."],
+                ["항목 추출과 코드 연결", "중량과 수량 등을 읽고, 거래처와 공항, 항만 이름을 시스템 코드에 연결합니다."],
                 ["원문 대조와 검토", "불일치와 누락을 표시합니다. 담당자는 원문을 대조해 수정하고 승인합니다."],
                 ["주문 확인과 시스템 연동", "기존 주문을 조회한 뒤 승인된 값을 물류 업무 시스템 KEROL에 연결합니다."],
               ] : [
@@ -608,7 +608,7 @@ export function SelectedWork() {
                 : "Record the evidence behind a decision, the assumptions it depends on, and what to check next. I design and build the product so those judgments can be revisited later."}
             </p>
             <Link href={argusUrl} className="text-link">
-              {kr ? "Argus 사용해 보기" : "Try Argus"}
+              {kr ? "Argus 사용하기" : "Try Argus"}
               <Arrow external />
             </Link>
           </div>
@@ -687,13 +687,13 @@ export function Community() {
                   <dt>{kr ? "참가" : "Entry"}</dt>
                   <dd>
                     {kr
-                      ? "개인 또는 1–3인 팀 / 무료"
+                      ? "개인 또는 1~3인 팀 / 무료"
                       : "Individuals or teams of 1–3 / Free"}
                   </dd>
                 </div>
                 <div>
                   <dt>{kr ? "상금" : "Prizes"}</dt>
-                  <dd>{kr ? "총 200만원" : "KRW 2,000,000 total"}</dd>
+                  <dd>{kr ? "총 200만 원" : "KRW 2,000,000 total"}</dd>
                 </div>
               </dl>
               <Link

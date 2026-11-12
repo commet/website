@@ -9,7 +9,7 @@ const regions = { panama: { center: [-79.7, 9.1], radius: 1000, name: 'Panama' }
 const width = 800, height = 280;
 function date(value, kr) { return new Intl.DateTimeFormat(kr ? 'ko-KR' : 'en-US', { month:'short', day:'numeric', timeZone:'Asia/Seoul' }).format(new Date(value)); }
 
-export default function SignalMap({ mission, sources, loading, kr }) {
+export default function SignalMap({ mission, sources, loading, error = false, kr }) {
   const [picked, setPicked] = useState(null);
   const observations = sources.flatMap(s => s.status === 'ok' ? s.records : []).filter(r => Array.isArray(r.coords) && r.coords.length >= 2 && r.coords.every(Number.isFinite)).sort((a,b) => (b.magnitude || 0) - (a.magnitude || 0));
   const selected = observations.find(r => r.id === picked) || observations[0];
@@ -20,7 +20,7 @@ export default function SignalMap({ mission, sources, loading, kr }) {
   const path = geoPath(projection);
   const position = region ? projection(region.center) : null;
   const selectedIndex = selected ? observations.indexOf(selected) : 0;
-  const failed = sources.length > 0 && !sources.some(s => ['disasters','earthquakes'].includes(s.id) && s.status === 'ok');
+  const failed = error || (sources.length > 0 && !sources.some(s => ['disasters','earthquakes'].includes(s.id) && s.status === 'ok'));  // 받지 못한 것을 관측 없음으로 보이지 않는다
   return <div className="signal-map">
     <div className="signal-map-canvas">
       <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={kr ? `${region?.name || '전 세계'}의 재해와 지진 관측 위치` : `Natural event and earthquake observations around ${region?.name || 'the world'}`}>

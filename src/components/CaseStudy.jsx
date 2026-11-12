@@ -36,6 +36,12 @@ const content = {
           image: "/images/fsk/control-tower.webp",
           caption: "항로와 기상 위험을 함께 확인하는 운송 관제 화면",
           state: "관제 구축과 배포 / 예측 기능은 별도 검증",
+          metrics: [
+            ["14.3%", "6일 넘게 빗나간 도착 예측(선사 예정일 29.7%)"],
+            ["3.61일", "도착 예측 평균 오차(선사 예정일 4.51일)"],
+            ["73%", "3일 안에 맞춘 공장 도착 예측"],
+          ],
+          metricsNote: "선적 예약 시점의 도착 예측 523건과 공장 도착 228건을 과거 기록으로 사후 검증한 결과입니다. 운영 중에 쌓인 기록은 아닙니다.",
         },
         {
           id: "documents",
@@ -46,7 +52,13 @@ const content = {
           ],
           image: "/images/fsk/document-review.webp",
           caption: "원문과 추출값을 대조하고 불일치를 확인하는 검증 화면",
-          state: "구축과 검증 / 담당자 검토와 승인을 포함한 업무 흐름",
+          state: "주문 연동은 구축과 검증 중 / 담당자 검토와 승인을 포함한 업무 흐름",
+          metrics: [
+            ["90% 이상", "자동 처리 비율(이전 10%대)"],
+            ["99.5%", "판독 정확도(이전 65%)"],
+            ["95% 이상", "등록 전에 찾은 오류"],
+          ],
+          metricsNote: "FSK L&S 수출입 서류 500만 건 이상을 처리한 기준입니다.",
         },
         {
           id: "reconciliation",
@@ -96,6 +108,12 @@ const content = {
           caption: "The control tower showing shipment routes and weather risk",
           state:
             "Control tower built and deployed / Prediction evaluated separately",
+          metrics: [
+            ["14.3%", "Arrival estimates off by 6+ days (carrier dates 29.7%)"],
+            ["3.61 days", "Average arrival error (carrier dates 4.51 days)"],
+            ["73%", "Factory arrivals estimated within 3 days"],
+          ],
+          metricsNote: "Checked afterwards against past records: 523 arrival estimates made at booking and 228 factory arrivals. Not a record from live operation.",
         },
         {
           id: "documents",
@@ -108,7 +126,13 @@ const content = {
           caption:
             "Actual project interface for comparing extracted values with source documents",
           state:
-            "Implementation and validation / Includes operator review and approval",
+            "Order integration in build and validation / Includes operator review and approval",
+          metrics: [
+            ["90%+", "Processed automatically (previously 10-20%)"],
+            ["99.5%", "Reading accuracy (previously 65%)"],
+            ["95%+", "Errors caught before entry"],
+          ],
+          metricsNote: "Based on more than 5 million FSK L&S import and export documents.",
         },
         {
           id: "reconciliation",
@@ -143,7 +167,7 @@ const content = {
           ],
         },
         {
-          title: "Excel, Word, Outlook에서 쓰도록 연결",
+          title: "Excel,\u00a0Word,\u00a0Outlook에서 쓰도록 연결",
           text: [
             "AI를 쓰기 위해 기존 업무 흐름을 크게 바꾸지 않아도 되도록 Excel, Word, Outlook과 연결하는 방식을 택했습니다. VBA와 사내 API를 활용해 반복 작업에서 AI를 호출할 수 있게 했습니다.",
             "경영진에게는 기능뿐 아니라 도입 비용과 업무에서의 활용 방식도 설명했습니다. 사용자 교육과 피드백을 통해 실제 사용으로 이어지는 과정에 참여했습니다.",
@@ -319,6 +343,7 @@ export default function CaseStudy({ id }) {
               ))}
             </dl>
           )}
+          {s.metricsNote && <p className="case-metrics-note">{s.metricsNote}</p>}
         </section>
       ))}
       <section className="case-closing">
