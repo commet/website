@@ -5,7 +5,7 @@ import atlas from '../data/land-110m.json';
 import './SignalMap.css';
 
 const land = feature(atlas, atlas.objects.land);
-const regions = { panama: { center: [-79.7, 9.1], radius: 1000, name: 'Panama' }, newark: { center: [-74.15, 40.684], radius: 750, name: 'Newark' } };
+const regions = { panama: { center: [-79.7, 9.1], radius: 1000, name: 'Panama', ko: '파나마' }, newark: { center: [-74.15, 40.684], radius: 750, name: 'Newark', ko: 'Newark' } };
 const width = 800, height = 280;
 function date(value, kr) { return new Intl.DateTimeFormat(kr ? 'ko-KR' : 'en-US', { month:'short', day:'numeric', timeZone:'Asia/Seoul' }).format(new Date(value)); }
 
@@ -23,7 +23,7 @@ export default function SignalMap({ mission, sources, loading, error = false, kr
   const failed = error || (sources.length > 0 && !sources.some(s => ['disasters','earthquakes'].includes(s.id) && s.status === 'ok'));  // 받지 못한 것을 관측 없음으로 보이지 않는다
   return <div className="signal-map">
     <div className="signal-map-canvas">
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={kr ? `${region?.name || '전 세계'}의 재해와 지진 관측 위치` : `Natural event and earthquake observations around ${region?.name || 'the world'}`}>
+      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={kr ? `${region?.ko || '전 세계'} 주변의 재해와 지진 관측 위치` : `Natural event and earthquake observations around ${region?.name || 'the world'}`}>
         <path className="signal-map-grid" d={path(geoGraticule10())} />
         <path className="signal-map-land" d={path(land)} />
         {scope && <path className="signal-map-scope" d={path(scope)} />}
@@ -38,7 +38,7 @@ export default function SignalMap({ mission, sources, loading, error = false, kr
       <div className="map-points" aria-label={kr ? '관측 선택' : 'Select an observation'}>{observations.map(r => { const p = projection(r.coords); if (!p || p[0] < 0 || p[0] > width || p[1] < 0 || p[1] > height) return null;
         return <button key={r.id} style={{left:`${p[0]/width*100}%`,top:`${p[1]/height*100}%`}} onClick={() => setPicked(r.id)} aria-label={r.title} aria-pressed={selected?.id === r.id} title={r.title} />;
       })}</div>
-      <div className="map-legend"><span><i className="legend-quake"/>{kr ? '지진' : 'Earthquakes'}</span><span><i className="legend-event"/>{kr ? '자연재해' : 'Natural events'}</span>{region && <span className="map-radius">{kr ? '조회 반경 ' : 'Scope '}{region.radius.toLocaleString()} km</span>}</div>
+      <div className="map-legend"><span><i className="legend-quake"/>{kr ? '지진' : 'Earthquakes'}</span><span><i className="legend-event"/>{kr ? '자연재해' : 'Natural events'}</span>{region && <span className="map-radius">{kr ? '조회 반경 ' : 'Scope '}{region.radius.toLocaleString()}{kr ? 'km' : ' km'}</span>}</div>
       <a className="map-attribution" href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Natural Earth</a>
     </div>
     <div className="signal-map-reading" aria-live="polite">
