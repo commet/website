@@ -346,7 +346,7 @@ export function Evidence() {
           id="spotlight-control"
           title={kr ? <>크게 빗나가는 도착 예측을<br /><em>절반</em>으로 줄였습니다.</> : <>Badly missed arrival estimates,<br />cut in <em>half</em>.</>}
           lead={kr
-            ? "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 선사\u2060(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 그만큼 빗나갔는데, 과거 운송 기록으로 보정하자 이 비율이 52%\u2060 줄었습니다(29.7% → 14.3%)."
+            ? "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 선사\u2060(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 그만큼 빗나갔는데, 과거 운송 기록으로 보정하자 이 비율이 52%\u2060 줄었습니다(29.7%\u00a0→\u00a014.3%)."
             : "The client's KPI was the share of arrival estimates off by more than six days. Carrier dates given at booking missed by that much about three times in ten; corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
           aside={{
             kind: "bar",
@@ -475,7 +475,7 @@ export function SelectedWork() {
       <div className="project-grid">
         <article id="doc-agent" className="project doc-project">
           <WorkHeading title={kr ? "물류 문서 자동화" : "Logistics document automation"}
-            subtitle={kr ? "FSK L&S DocAgent / 메일 접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
+            subtitle={kr ? "FSK L&S DocAgent / 메일\u00a0접수부터 주문\u00a0연동까지" : "FSK L&S DocAgent / From inbox to order integration"}
             year="2026" context="Praxis" />
           <div className="shipment-story">
             <h4>{kr ? <>수출입 서류,<br />언제까지 손으로 옮겨 적을까?</> : <>Must every document<br />still be typed in by hand?</>}</h4>
