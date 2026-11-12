@@ -48,4 +48,9 @@
 .shipment-story h4 { font-size:38px; line-height:1.3; letter-spacing:-.03em; font-weight:600; word-break:keep-all; }
 .shipment-story p { font-size:16px; line-height:1.85; color:var(--muted); }
 .shipment-story p + p { margin-top:16px; }
-@media(max-width:760px) { .shipment-story { grid-template-columns:1fr; gap:20px; margin-bottom:28px; } .shipment-story h4 { font-size:29px; } .shipment-story p { font-size:15px; } }
+.shipment-facts { border-top:1px solid var(--line); }
+.shipment-facts > div { display:grid; grid-template-columns:72px minmax(0,1fr); column-gap:20px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--line); }
+.shipment-facts dt { font-size:13px; font-weight:600; color:var(--muted); }
+.shipment-facts dd { font-size:16px; line-height:1.7; color:var(--muted); text-wrap:pretty; }
+.shipment-facts b { color:var(--ink); font-weight:600; }
+@media(max-width:760px) { .shipment-story { grid-template-columns:1fr; gap:20px; margin-bottom:28px; } .shipment-story h4 { font-size:29px; } .shipment-story p { font-size:15px; } .shipment-facts > div { grid-template-columns:56px minmax(0,1fr); column-gap:14px; padding:12px 0; } .shipment-facts dd { font-size:15px; } }

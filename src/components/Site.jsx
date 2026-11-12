@@ -321,9 +321,19 @@ export function Evidence() {
         </div>
         <div className="shipment-story">
           <h4>{kr ? <>설비는 언제<br />미국 공장에 도착할까?</> : <>When will the equipment<br />reach the US factory?</>}</h4>
-          <div><p>{kr ? "FSK L&S가 맡은 고객사의 설비 운송입니다. 부산에서 매주 떠나는 배 여러 척에 나눠 실은 화물이 파나마 운하와 Newark항을 거쳐 미국 공장에 도착해야 했습니다." : "FSK L&S was moving a client's equipment: cargo split across several weekly sailings from Busan, through the Panama Canal and Newark, to a US factory."}</p>
-          <p>{kr ? "출고일이 바뀌면 탈 수 있는 배가 달라지고, 바다를 건넌 뒤에도 항만 대기와 내륙 운송이 남습니다. 담당자는 이런 변수를 한 화면에서 보고 도착 일정과 확인할 일을 설명할 수 있어야 했습니다." : "A changed release date can mean a different sailing. Port dwell and inland delivery still lie ahead after the ocean crossing. Operators needed to see these dependencies together, explain the arrival plan, and know what to check next."}</p>
-          <p>{kr ? "업무 절차와 예외를 담당자들과 확인하고, 출고 계획부터 항로 감시까지 관제 화면을 설계하고 개발해 배포했습니다." : "I worked through the workflow and its exceptions with the operators, then designed, built, and deployed the control tower, from release planning to route monitoring."}</p></div>
+          <dl className="shipment-facts">
+            {(kr ? [
+              ["경로", <>부산 → 파나마 운하 → Newark항 → <b>미국{"\u00a0"}공장</b>, 매주 여러 척에 나눠 운송</>],
+              ["변수", <><b>출고일이 바뀌면 탈 배가 달라짐</b>. 도착 뒤에도 항만 대기와 내륙 운송이 남음</>],
+              ["필요", <>담당자가 <b>도착 일정과 확인할 일을 한 화면에서</b> 보고 설명할 수 있어야 함</>],
+              ["한 일", <>업무 절차와 예외를 담당자들과 확인하고, <b>관제{"\u00a0"}화면을 설계, 개발해 배포</b></>],
+            ] : [
+              ["Route", <>Busan → Panama Canal → Newark → <b>US factory</b>, split across weekly sailings</>],
+              ["Variables", <><b>A new release date can mean a different ship</b>. Port dwell and inland delivery come after</>],
+              ["Need", <>Operators had to <b>see the arrival plan and what to check on one screen</b>, and explain it</>],
+              ["What I did", <>Worked through the workflow with the operators, then <b>designed, built, and deployed the control tower</b></>],
+            ]).map(([label, text]) => <div key={label}><dt>{label}</dt><dd>{text}</dd></div>)}
+          </dl>
         </div>
         <EvidenceImage
           src={kr ? "/images/work/client-monitoring-light.webp" : "/images/work/client-monitoring-light-en.webp"} width={1920} height={1080} priority
