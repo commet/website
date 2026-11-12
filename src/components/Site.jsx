@@ -336,14 +336,14 @@ export function Evidence() {
           id="spotlight-control"
           title={kr ? <>크게 빗나가는 도착 예측을<br /><em>절반</em>으로 줄였습니다.</> : <>Badly missed arrival estimates,<br />cut in <em>half</em>.</>}
           lead={kr
-            ? "선사(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 6일 넘게 빗나갔습니다. 과거 운송 기록으로 예정일을 보정하자 이렇게 크게 빗나가는 예측이 52%\u2060 줄었습니다(29.7% → 14.3%)."
-            : "Arrival dates the carrier gave at booking missed by more than six days about three times in ten. Corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
+            ? "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 선사\u2060(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 그만큼 빗나갔는데, 과거 운송 기록으로 보정하자 이 비율이 52%\u2060 줄었습니다(29.7% → 14.3%)."
+            : "The client's KPI was the share of arrival estimates off by more than six days. Carrier dates given at booking missed by that much about three times in ten; corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
           aside={{
             kind: "bar",
-            label: kr ? "6일 넘게 빗나간 도착 예측: 선사 예정일 29.7%, 보정한 예측 14.3%" : "Arrival estimates off by more than six days: carrier dates 29.7%, corrected estimates 14.3%",
+            label: kr ? "KPI, 6일 넘게 빗나간 도착 예측: 선사 예정일 29.7%, 보정한 예측 14.3%" : "Arrival estimates off by more than six days: carrier dates 29.7%, corrected estimates 14.3%",
             rows: kr
-              ? [["선사 예정일", 100, <>6일 넘게 빗나간 비율 <b>29.7%</b></>], ["보정한 예측", 48, <>6일 넘게 빗나간 비율 <b>14.3%</b></>]]
-              : [["Carrier date", 100, <>Off by 6+ days <b>29.7%</b></>], ["Corrected", 48, <>Off by 6+ days <b>14.3%</b></>]],
+              ? [["선사 예정일", 100, <>KPI: 6일 넘게 빗나간 비율 <b>29.7%</b></>], ["보정한 예측", 48, <>KPI: 6일 넘게 빗나간 비율 <b>14.3%</b></>]]
+              : [["Carrier date", 100, <>KPI: off by 6+ days <b>29.7%</b></>], ["Corrected", 48, <>KPI: off by 6+ days <b>14.3%</b></>]],
           }}
           src={kr ? "/images/work/client-monitoring-light.webp" : "/images/work/client-monitoring-light-en.webp"} ratio="16 / 9" dim={0.34}
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}

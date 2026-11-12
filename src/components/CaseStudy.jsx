@@ -37,11 +37,11 @@ const content = {
           caption: "항로와 기상 위험을 함께 확인하는 운송 관제 화면",
           state: "관제 구축과 배포 / 예측 기능은 별도 검증",
           metrics: [
-            ["52%", "6일 넘게 빗나간 도착 예측 감소(29.7% → 14.3%)"],
+            ["52%", "KPI 개선: 6일 넘게 빗나간 도착 예측 감소(29.7% → 14.3%)"],
             ["20%", "도착 예측 평균 오차 감소(4.51일 → 3.61일)"],
             ["523건", "검증에 쓴 과거 운송 기록"],
           ],
-          metricsNote: "선사가 선적 예약 때 알려 준 도착 예정일과 보정한 예측을 과거 기록으로 사후 검증한 결과입니다. 운영 중에 쌓인 기록은 아닙니다.",
+          metricsNote: "고객사는 도착 예측이 6일 넘게 빗나가는 비율을 핵심 지표(KPI)로 봤습니다. 수치는 선사가 선적 예약 때 알려 준 도착 예정일과 보정한 예측을 과거 기록으로 사후 검증한 결과이며, 운영 중에 쌓인 기록은 아닙니다.",
         },
         {
           id: "documents",
@@ -109,11 +109,11 @@ const content = {
           state:
             "Control tower built and deployed / Prediction evaluated separately",
           metrics: [
-            ["52%", "Fewer estimates off by 6+ days (29.7% to 14.3%)"],
+            ["52%", "KPI: fewer estimates off by 6+ days (29.7% to 14.3%)"],
             ["20%", "Lower average arrival error (4.51 to 3.61 days)"],
             ["523", "Past shipment records used to check"],
           ],
-          metricsNote: "Carrier arrival dates given at booking and corrected estimates, checked afterwards against past records. Not a record from live operation.",
+          metricsNote: "The client's KPI was the share of arrival estimates off by more than six days. Figures compare carrier dates given at booking with corrected estimates, checked afterwards against past records; not a record from live operation.",
         },
         {
           id: "documents",
