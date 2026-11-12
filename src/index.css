@@ -1976,3 +1976,45 @@ main .yakbang-project + .argus-project { margin-top: 96px; padding-top: 64px; bo
   main .yakbang-project + .argus-project { margin-top: 56px; padding-top: 40px; }
 }
 .strix-facts b { color: var(--ink); font-weight: 600; }
+
+/* 상세 쪽 위계 (2026-11-12). 홈과 같은 원칙: 제목 > 번호 붙은 절 제목 > 이름표 줄, 핵심 구절만 굵게. */
+main .case-title-row h1 { font-size: 56px; }
+main .case-header > h2 { font-size: 24px; font-weight: 550; color: var(--muted); margin-top: 12px; }
+main .case-facts { margin-top: 32px; border-top: 1px solid var(--line); }
+main .case-facts > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 20px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+main .case-facts dt { font-size: 13px; font-weight: 600; color: var(--muted); }
+main .case-facts dd { font-size: 16px; line-height: 1.7; color: var(--muted); text-wrap: pretty; }
+main .case-facts b { color: var(--ink); font-weight: 600; }
+main .case-highlights { margin-top: 24px; }
+main .case-index { padding: 32px 0 56px; gap: 8px 28px; }
+main .case-index > a { font-size: 14px; color: var(--ink); }
+main .case-index > a svg { color: var(--accent); }
+main .case-no { display: inline-block; min-width: 30px; margin-right: 8px; font-size: 15px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: 0; vertical-align: 0.35em; }
+main .case-index .case-no { font-size: 13px; min-width: 0; vertical-align: baseline; }
+main .case-section { padding-block: 56px 72px; }
+main .case-section-copy { gap: 64px; margin-bottom: 40px; }
+main .case-section-copy h2 { font-size: 28px; line-height: 1.4; }
+main .case-section-copy .case-facts { margin-top: 0; }
+main .case-closing h2 { font-size: 28px; }
+main .case-closing .case-facts { max-width: 800px; margin-bottom: 32px; }
+@media screen and (max-width: 760px) {
+  main .case-title-row h1 { font-size: 40px; }
+  main .case-header > h2 { font-size: 19px; }
+  main .case-facts > div { grid-template-columns: 64px minmax(0, 1fr); column-gap: 14px; padding: 12px 0; }
+  main .case-facts dd { font-size: 15px; }
+  main .case-index { flex-direction: column; padding: 24px 0 40px; }
+  main .case-section { padding-block: 40px 48px; }
+  main .case-section-copy { gap: 20px; }
+  main .case-section-copy h2 { font-size: 22px; }
+  main .case-no { font-size: 13px; min-width: 24px; vertical-align: 0.25em; }
+  main .case-closing h2 { font-size: 22px; }
+}
+@media screen and (max-width: 760px) {
+  main .case-metrics { grid-template-columns: 1fr; gap: 0; padding: 4px 20px; }
+  main .case-metrics > div { flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+  main .case-metrics > div:first-child { border-top: 0; }
+  main .case-metrics dd { font-size: 26px; min-width: 96px; white-space: nowrap; }
+  main .case-metrics dt { font-size: 13px; line-height: 1.5; }
+  main .case-index > a { justify-content: flex-start; }
+  main .case-index > a svg { margin-left: auto; }
+}

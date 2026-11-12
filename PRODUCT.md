@@ -87,3 +87,7 @@ The monitoring Spotlight first used the dark client monitoring screen, which loo
 
 - The owner sent the final summary for the Arkpoint COO and asked for the site to follow it. Each case now names other industries instead of generic tasks: monitoring (semiconductor tool move-ins, overseas plant equipment procurement, pharmaceutical ingredient imports), documents (insurance claim review, bank loan document checks, manufacturer purchase-order and invoice matching), STRIX (equity research, legal precedent and opinion review, consulting proposals). The footer label is 다른 업종 적용.
 - STRIX facts supplied by the owner: lightweight local LLM with document search (LangChain RAG), Office integration through VBA, planning drafts from past strategy and investment decisions plus industry and market data, executive alerts, and planning-document drafting time cut by about 50% on average. The case study note no longer says time savings are not presented.
+
+## Case study pages restructured (2026-11-12)
+
+The case studies now follow the home page: a short subtitle, label rows for client, role and status (or stack), a three-figure highlight band, a numbered index, and numbered sections whose body is label rows (상황, 문제, 한 일, plus one more) with the key phrase in bold. Paragraph text, the intro, the role and context blocks and the closing paragraph were replaced by rows; the closing is also rows. Figures and facts are unchanged. On phones, metric bands stack as number and label rows.
