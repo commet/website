@@ -336,8 +336,8 @@ export function Evidence() {
           id="spotlight-control"
           title={kr ? <>크게 빗나가는 도착 예측을<br /><em>절반</em>으로 줄였습니다.</> : <>Badly missed arrival estimates,<br />cut in <em>half</em>.</>}
           lead={kr
-            ? "선사(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 6일 넘게 빗나갔습니다. 과거 운송 기록으로 예정일을 보정하자 이 비율이 14.3%\u2060로 내려갔습니다."
-            : "Arrival dates the carrier gave at booking missed by more than six days about three times in ten. Corrected against past shipment records, that share fell to 14.3%. On screen, available sailings and the arrival range are recalculated whenever a release date moves."}
+            ? "선사(해운사)가 선적 예약 때 알려 준 도착 예정일은 열 건 중 세 건꼴로 6일 넘게 빗나갔습니다. 과거 운송 기록으로 예정일을 보정하자 이렇게 크게 빗나가는 예측이 52%\u2060 줄었습니다(29.7% → 14.3%)."
+            : "Arrival dates the carrier gave at booking missed by more than six days about three times in ten. Corrected against past shipment records, such misses fell by 52% (29.7% to 14.3%)."}
           aside={{
             kind: "bar",
             label: kr ? "6일 넘게 빗나간 도착 예측: 선사 예정일 29.7%, 보정한 예측 14.3%" : "Arrival estimates off by more than six days: carrier dates 29.7%, corrected estimates 14.3%",
@@ -349,16 +349,16 @@ export function Evidence() {
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
           spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: kr ? 19.3 : 23.4 }, { n: 3, x: 0.8, y: 84.9, w: kr ? 38.6 : 45.4, h: 13.6 }]}
           steps={kr ? [
-            ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배를 다시 찾고, 도착 범위를 새로 산출합니다.", "4.51일", "3.61일", "도착 예측 평균 오차"],
+            ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배를 다시 찾고, 도착 범위를 새로 산출합니다.", "4.51일", "3.61일", "도착 예측 평균 오차(20% 감소)"],
             ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 표시하고, 계획을 확정하기 전에 풀어야 할 일은 따로 묶습니다.", "", "", ""],
-            ["공장 도착일까지 예측합니다", "항만에 내린 뒤의 내륙 운송 기간을 더합니다.", "", "73%", "오차 3일 이내인 공장 도착 예측"],
+            ["공장 도착일까지 예측합니다", "항만에 내린 뒤의 내륙 운송 기간까지 더해 공장 도착일을 냅니다.", "", "", ""],
           ] : [
-            ["Recalculates arrival", "When a release date moves, it finds the sailings still available and a new arrival range.", "4.51 days", "3.61 days", "average arrival error"],
+            ["Recalculates arrival", "When a release date moves, it finds the sailings still available and a new arrival range.", "4.51 days", "3.61 days", "average arrival error (down 20%)"],
             ["Groups checks by leg", "Weather, canal, and port risks appear for each leg, with unconfirmed plans kept apart.", "", "", ""],
-            ["Carries it to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "73%", "factory arrivals within 3 days"],
+            ["Carries it to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "", ""],
           ]}
           like={kr ? "협력사 납기 관리, 원자재 수급 점검, 프로젝트 일정 관리" : "Supplier delivery tracking, material supply checks, project scheduling"}
-          basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(선적 예약 시점의 도착 예측 523건, 공장 도착 228건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking; 228 factory arrivals)"}
+          basis={kr ? "FSK L&S 북미행 해상 운송의 과거 기록으로 사후 검증(선적 예약 시점의 도착 예측 523건)" : "Checked afterwards against past FSK L&S ocean shipments to North America (523 arrival estimates made at booking)"}
         />
         <IntelligenceHub />
       </article>
@@ -469,16 +469,16 @@ export function SelectedWork() {
             year="2026" context="Praxis" />
           <Spotlight
             id="spotlight-documents"
-            title={kr ? <>서류 열 건 중 <em>아홉 건</em>을<br />AI가 처리합니다.</> : <><em>Nine in ten</em> documents<br />processed by AI.</>}
+            title={kr ? <>서류 열 건 중 <em>아홉 건</em>이<br />사람 손을 거치지 않고 끝납니다.</> : <><em>Nine in ten</em> documents go through<br />without anyone touching them.</>}
             lead={kr
-              ? "전에는 담당자가 메일로 온 서류를 한 장씩 열어 값을 옮겨 적었습니다. 지금은 서로 맞지 않는 곳만 확인합니다."
-              : "Before, operators opened each emailed document and typed the values in by hand. Now they review only the fields that disagree."}
+              ? "전에는 담당자가 메일로 온 서류를 한 장씩 열어 값을 옮겨 적었고, 사람 손을 거치지 않고 끝나는 서류의 비율(자동 처리율, STP)은 10%대였습니다. 지금은 서류끼리 맞지 않는 곳만 담당자가 확인하고, 열 건 중 아홉 건은 처음부터 끝까지 자동으로 처리됩니다."
+              : "Before, operators opened each emailed document and typed the values in, and only 10–20% went through without a person (straight-through processing, STP). Now operators check only where documents disagree, and nine in ten are processed end to end automatically."}
             aside={{
               kind: "ten",
-              label: kr ? "자동으로 처리되는 서류: 도입 전 10%대, 도입 후 90% 이상" : "Documents processed automatically: 10–20% before, over 90% after",
+              label: kr ? "자동 처리율(STP): 도입 전 10%대, 도입 후 90% 이상" : "Straight-through processing: 10–20% before, over 90% after",
               rows: kr
-                ? [["도입 전", 1, <>자동 처리 <b>10%대</b></>], ["도입 후", 9, <>자동 처리 <b>90% 이상</b></>]]
-                : [["Before", 1, <>Automatic <b>10–20%</b></>], ["After", 9, <>Automatic <b>90%+</b></>]],
+                ? [["도입 전", 1, <>자동 처리율 <b>10%대</b></>], ["도입 후", 9, <>자동 처리율 <b>90% 이상</b></>]]
+                : [["Before", 1, <>STP <b>10–20%</b></>], ["After", 9, <>STP <b>90%+</b></>]],
             }}
             src="/images/fsk/document-review.webp" ratio="2280 / 1280"
             viewer={{ width: 2280, height: 1280, title: kr ? "서류 검증 화면" : "Document review screen", alt: kr ? "AI가 읽은 값과 원문을 나란히 놓고 불일치를 표시한 서류 검증 화면. 고객 식별정보는 가렸습니다." : "Document review screen showing extracted fields beside the source, with mismatches flagged. Client identifiers are redacted.", note: kr ? "고객 식별정보를 가린 검증 화면입니다." : "Client identifiers are redacted." }}
@@ -487,11 +487,11 @@ export function SelectedWork() {
             steps={kr ? [
               ["AI가 값을 읽습니다", "서류에서 필요한 값을 찾아 채웁니다.", "65%", "99.5%", "판독 정확도"],
               ["맞지 않는 곳만 담당자가 확인합니다", "서류끼리 값이 다르면 원문과 나란히 표시합니다.", "", "95% 이상", "등록 전에 찾은 오류"],
-              ["값이 맞으면 바로 등록합니다", "값이 맞는 서류는 담당자가 다시 입력하지 않아도 됩니다.", "10%대", "90% 이상", "자동 처리"],
+              ["값이 맞으면 바로 등록합니다", "값이 모두 맞는 서류는 사람 손을 거치지 않고 등록까지 끝납니다.", "10%대", "90% 이상", "자동 처리율(STP)"],
             ] : [
               ["AI reads the values", "It finds and fills the fields each document needs.", "65%", "99.5%", "reading accuracy"],
               ["A person sees only mismatches", "When documents disagree, the values appear beside the source.", "", "95%+", "errors caught before entry"],
-              ["Matching documents go straight in", "Documents that agree enter the system without retyping.", "10–20%", "90%+", "automatic"],
+              ["Matching documents go straight in", "Documents whose values all agree are registered without anyone touching them.", "10–20%", "90%+", "straight-through processing"],
             ]}
             like={kr ? "세금계산서와 발주서 대조, 보험금 청구 접수, 계약서 검토" : "Invoice and purchase-order matching, insurance claims intake, contract review"}
             basis={kr ? "FSK L&S 수출입 서류 500만 건 이상 처리 기준 | 고객 식별정보를 가린 화면" : "Based on 5M+ FSK L&S import and export documents. Client identifiers are redacted"}
@@ -505,7 +505,7 @@ export function SelectedWork() {
               {(kr ? [
                 ["메일과 첨부 접수", "메일 본문과 첨부서류에서 고객과 운송 유형을 확인합니다."],
                 ["항목 추출과 코드 연결", "중량과 수량 등을 읽고, 거래처와 공항, 항만 이름을 시스템 코드에 연결합니다."],
-                ["원문 대조와 검토", "불일치와 누락을 표시합니다. 담당자는 원문을 대조해 수정하고 승인합니다."],
+                ["원문 대조와 검토", "불일치나 누락이 있는 서류만 표시합니다. 담당자는 원문을 대조해 고치고 승인합니다."],
                 ["주문 확인과 시스템 연동", "기존 주문을 조회한 뒤, 승인된 값으로 물류 업무 시스템 KEROL에 주문을 만듭니다."],
               ] : [
                 ["Receive", "Group the email and attachments by customer and shipment type."],
