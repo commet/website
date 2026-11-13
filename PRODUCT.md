@@ -91,3 +91,7 @@ The monitoring Spotlight first used the dark client monitoring screen, which loo
 ## Case study pages restructured (2026-11-12)
 
 The case studies now follow the home page: a short subtitle, label rows for client, role and status (or stack), a three-figure highlight band, a numbered index, and numbered sections whose body is label rows (상황, 문제, 한 일, plus one more) with the key phrase in bold. Paragraph text, the intro, the role and context blocks and the closing paragraph were replaced by rows; the closing is also rows. Figures and facts are unchanged. On phones, metric bands stack as number and label rows.
+
+## Average arrival error corrected (2026-11-13)
+
+The owner corrected the average arrival estimate error: 3.61 days was an early figure, and the correction later brought it down to 2.61 days. The repository records (R11) still show 3.61; 2.61 comes from the owner. The site now shows 4.51 to 2.61 days, a 42% reduction ((4.51 − 2.61) / 4.51 = 42.1%). The six-day miss rate (29.7% to 14.3%, down 52%) is unchanged.

@@ -49,7 +49,7 @@ const content = {
           state: "관제 구축과 배포 / 예측 기능은 별도 검증",
           metrics: [
             ["52%", "KPI 개선: 6일 넘게 빗나간 도착 예측 감소(29.7% → 14.3%)"],
-            ["20%", "도착 예측 평균 오차 감소(4.51일 → 3.61일)"],
+            ["42%", "도착 예측 평균 오차 감소(4.51일 → 2.61일)"],
             ["523건", "검증에 쓴 과거 운송 기록"],
           ],
           metricsNote: "선사가 선적 예약 때 알려 준 도착 예정일과 보정한 예측을 실제 도착일과 비교해 과거 기록으로 사후 검증한 결과이며, 운영 중에 쌓인 기록은 아닙니다.",
@@ -138,7 +138,7 @@ const content = {
           state: "Control tower built and deployed / Prediction evaluated separately",
           metrics: [
             ["52%", "KPI: fewer estimates off by 6+ days (29.7% to 14.3%)"],
-            ["20%", "Lower average arrival error (4.51 to 3.61 days)"],
+            ["42%", "Lower average arrival error (4.51 to 2.61 days)"],
             ["523", "Past shipment records used to check"],
           ],
           metricsNote: "Carrier dates given at booking and corrected estimates, compared with actual arrival on past records after the fact; not a record from live operation.",

@@ -357,11 +357,11 @@ export function Evidence() {
           alt={kr ? "고객사 운송 관제 화면에서 도착 범위, 구간 감시, 항차 일정 세 곳을 밝게 표시한 그림" : "The client monitoring screen with three areas highlighted: arrival range, route monitoring, and voyage schedule"}
           spots={[{ n: 1, x: 0.8, y: 10, w: 19, h: 12 }, { n: 2, x: 80.4, y: 16.3, w: 18.8, h: kr ? 19.3 : 23.4 }, { n: 3, x: 0.8, y: 84.9, w: kr ? 38.6 : 45.4, h: 13.6 }]}
           steps={kr ? [
-            ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배를 다시 찾고, 도착 범위를 새로 산출합니다.", "4.51일", "3.61일", "도착 예측 평균 오차(20% 감소)"],
+            ["도착일을 다시 계산합니다", "출고일이 바뀌면 탈 수 있는 배를 다시 찾고, 도착 범위를 새로 산출합니다.", "4.51일", "2.61일", "도착 예측 평균 오차(42% 감소)"],
             ["확인할 일을 구간별로 모읍니다", "기상, 운하, 항만의 위험을 구간마다 표시하고, 계획을 확정하기 전에 풀어야 할 일은 따로 묶습니다.", "", "", ""],
             ["공장 도착일까지 예측합니다", "항만에 내린 뒤의 내륙 운송 기간까지 더해 공장 도착일을 냅니다.", "", "", ""],
           ] : [
-            ["Recalculates arrival", "When a release date moves, it finds the sailings still available and a new arrival range.", "4.51 days", "3.61 days", "average arrival error (down 20%)"],
+            ["Recalculates arrival", "When a release date moves, it finds the sailings still available and a new arrival range.", "4.51 days", "2.61 days", "average arrival error (down 42%)"],
             ["Groups checks by leg", "Weather, canal, and port risks appear for each leg, with unconfirmed plans kept apart.", "", "", ""],
             ["Carries it to the factory", "Inland transport after the port is added to estimate factory arrival.", "", "", ""],
           ]}
